@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About — Vera Zheng</title>
+<meta name="description" content="About Vera Zheng — UX Designer & Researcher." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="index.html">Vera Zheng</a>
+      <nav class="nav-links">
+        <a href="index.html#work">Work</a>
+        <a href="journal.html">Journal</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page wrap">
+    <span class="kicker">About</span>
+    <h1>About</h1>
+    <p class="lead">This page is in progress. Soon you'll find my background, education,
+    experience, and the way I approach research and design here.</p>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <span class="mono">Vera Zheng</span>
+      <a class="email" href="mailto:zzx0826vera@gmail.com">zzx0826vera@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var bar = document.querySelector('.topbar');
+      function onScroll() {
+        if (window.scrollY > 4) bar.classList.add('scrolled');
+        else bar.classList.remove('scrolled');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html>

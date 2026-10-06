@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vera Zheng — UX Designer &amp; Researcher</title>
+<meta name="description" content="Vera Zheng — UX Designer &amp; Researcher. Master of Information (UX Design), University of Toronto. Previously Design Researcher at RBC, Online Banking." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <span class="brand">Vera Zheng</span>
+      <nav class="nav-links">
+        <a href="#work">Work</a>
+        <a href="journal.html">Journal</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-status mono">
+        <span><span class="d"></span>Open to full-time roles — Toronto</span>
+        <span>Portfolio 2026</span>
+      </div>
+
+      <div class="hero-id">
+        <div class="photo" aria-label="Portrait placeholder"><span>Photo</span></div>
+        <div class="hero-name">
+          <h1>Vera <em>Zheng</em></h1>
+          <h2 class="hero-role">UX Designer &amp; Researcher</h2>
+        </div>
+      </div>
+
+      <div class="hero-foot">
+        <div class="cred">
+          <span class="mono k">Experience</span>
+          <div class="v">Design Researcher<em> — </em>RBC<span class="sub">Online Banking · 2025–2026</span></div>
+        </div>
+        <div class="cred">
+          <span class="mono k">Education</span>
+          <div class="v">Master of Information<em> — </em>UX Design<span class="sub">University of Toronto</span></div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn-line fill" href="resume.pdf">Download résumé ↓</a>
+          <a class="btn-line" href="#">LinkedIn ↗</a>
+          <span class="email-row">
+            <span class="cta-sub">or email</span>
+            <a class="email" href="mailto:zzx0826vera@gmail.com">zzx0826vera@gmail.com</a>
+            <button class="copy-btn" type="button" data-email="zzx0826vera@gmail.com">Copy</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="wrap">
+    <div class="work-head">
+      <h2>Projects</h2>
+      <span class="mono">04 projects · 2024–2026</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="#">
+        <div class="cover"><span class="ph">MaaTRx · cover</span><span class="num">01</span></div>
+        <div class="card-body">
+          <div class="card-tags"><span class="tag">Dashboard</span><span class="tag">Research</span></div>
+          <h3>MaaTRx — Drug Shortage Dashboard</h3>
+          <p>Reframed a dense clinical tool into a scan-first layout; +38% task completion in usability testing.</p>
+          <span class="card-go">View case study <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="cover"><span class="ph">ReBites · cover</span><span class="num">02</span></div>
+        <div class="card-body">
+          <div class="card-tags"><span class="tag">Mobile</span><span class="tag">Hackathon</span></div>
+          <h3>ReBites — Food Sustainability for Kids</h3>
+          <p>A dual student / teacher platform for everyday food choices — 1st place, Seneca Hackathon 2025.</p>
+          <span class="card-go">View case study <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="cover"><span class="ph">Weavy · cover</span><span class="num">03</span></div>
+        <div class="card-body">
+          <div class="card-tags"><span class="tag">Mobile</span><span class="tag">Designathon</span></div>
+          <h3>Weavy — Human-Centered Matching</h3>
+          <p>Turned 10-question primary research into a low-pressure social product concept in 24 hours.</p>
+          <span class="card-go">View case study <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="cover"><span class="ph">LemonWise · cover</span><span class="num">04</span></div>
+        <div class="card-body">
+          <div class="card-tags"><span class="tag">Mobile</span><span class="tag">Finance</span></div>
+          <h3>LemonWise — Student Finance App</h3>
+          <p>8 interviews → a habit-building budgeting experience designed around real student behaviour.</p>
+          <span class="card-go">View case study <span class="arrow">→</span></span>
+        </div>
+      </a>
+    </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <span class="mono">Vera Zheng</span>
+      <a class="email" href="mailto:zzx0826vera@gmail.com">zzx0826vera@gmail.com</a>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Email copied</div>
+  <script>
+    (function () {
+      var toast = document.getElementById('toast');
+      var timer;
+      function showToast() {
+        toast.classList.add('show');
+        clearTimeout(timer);
+        timer = setTimeout(function () { toast.classList.remove('show'); }, 1400);
+      }
+      document.querySelectorAll('.copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var email = btn.getAttribute('data-email');
+          function done() {
+            btn.textContent = 'Copied';
+            btn.classList.add('done');
+            showToast();
+            setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1500);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(done).catch(done);
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = email; document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta); done();
+          }
+        });
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var bar = document.querySelector('.topbar');
+      function onScroll() {
+        if (window.scrollY > 4) bar.classList.add('scrolled');
+        else bar.classList.remove('scrolled');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html>
