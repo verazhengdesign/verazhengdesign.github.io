@@ -48,6 +48,7 @@
     <!-- ===== body: TOC + sections ===== -->
     <div class="case-body">
       <nav class="toc" aria-label="Sections">
+        <span class="toc-label">On this page</span>
         <a href="#overview">Overview</a>
         <a href="#context">Context</a>
         <a href="#research">Research</a>
@@ -159,9 +160,8 @@
       var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
       var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
       function setActive() {
-        var y = window.scrollY + 140;
         var current = 0;
-        sections.forEach(function (s, i) { if (s && s.offsetTop <= y) current = i; });
+        sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
         links.forEach(function (l, i) { l.classList.toggle('active', i === current); });
       }
       window.addEventListener('scroll', setActive, { passive: true });
