@@ -56,6 +56,7 @@
     display: grid; place-items: center;
   }
   .photo span { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block; }
   .hero h1 {
     margin: 0; font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
     font-weight: 400; font-style: italic; letter-spacing: -0.005em; line-height: 0.98;
