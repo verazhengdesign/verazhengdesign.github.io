@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vera Zheng — Hero Concept 1 · Asymmetric Split</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ===== Variant 1 — Asymmetric split: statement left, proof panel right ===== */
+  .v1-hero { padding: 70px 0 64px; }
+  .v1-grid {
+    display: grid;
+    grid-template-columns: 1.02fr 0.98fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .v1-copy > * + * { margin-top: 22px; }
+  .v1-copy h1 { max-width: 12ch; }
+  .v1-panel { position: relative; }
+  .mock {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: 0 1px 2px rgba(16,16,16,.03), 0 24px 60px rgba(16,16,16,.09);
+    overflow: hidden;
+  }
+  .mock-top {
+    display: flex; align-items: center; gap: 9px;
+    padding: 14px 16px; border-bottom: 1px solid var(--line-soft);
+  }
+  .mock-dot { width: 10px; height: 10px; border-radius: 50%; background: #e6e6e1; }
+  .mock-dot:first-child { background: #d9dae0; }
+  .mock-tab {
+    margin-left: 8px; font-size: 12px; color: var(--ink-3);
+    border: 1px solid var(--line); border-radius: 7px; padding: 3px 9px;
+  }
+  .mock-body { padding: 20px; }
+  .mock-label { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+  .mock-metric { font-size: 30px; font-weight: 620; letter-spacing: -.03em; margin: 4px 0 2px; }
+  .mock-metric .up { color: var(--ok); font-size: 13px; font-weight: 600; margin-left: 8px; vertical-align: middle; }
+  .bars { display: flex; align-items: flex-end; gap: 10px; height: 116px; margin-top: 20px; }
+  .bars span { flex: 1; border-radius: 7px 7px 4px 4px; background: linear-gradient(180deg,#e2e6ff,#c8d1ff); }
+  .bars span.a { background: linear-gradient(180deg,#c3ccff,#9fb0ff); }
+  .bars span.hot { background: linear-gradient(180deg,#8ea3ff,#6d86ff); }
+  .mock-rows { margin-top: 18px; border-top: 1px solid var(--line-soft); }
+  .mrow { display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--line-soft); font-size: 13px; color: var(--ink-2); }
+  .mrow b { color: var(--ink); font-weight: 560; }
+  .chip {
+    position: absolute; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 13px; box-shadow: var(--shadow); padding: 11px 14px;
+    display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 540;
+  }
+  .chip small { display: block; color: var(--ink-3); font-size: 11px; font-weight: 500; letter-spacing: 0; }
+  .chip .ico { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-size: 14px; }
+  .chip-rbc { left: -18px; top: 44px; }
+  .chip-rbc .ico { background: var(--accent-soft); color: var(--accent-ink); }
+  .chip-award { right: 6px; bottom: -22px; }
+  .chip-award .ico { background: var(--ok-soft); color: var(--ok); }
+
+  @media (max-width: 700px) {
+    .v1-grid { grid-template-columns: 1fr; gap: 44px; }
+    .v1-copy h1 { max-width: none; }
+    .chip-rbc { left: 8px; top: 12px; }
+    .chip-award { right: 8px; bottom: -16px; }
+  }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><span class="mark">VZ</span> Vera Zheng</div>
+      <nav class="nav-links">
+        <a href="#">Work</a>
+        <a href="#">About</a>
+        <a href="#">Journal</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="link-quiet" href="#">Email</a>
+        <a class="btn btn-primary btn-sm" href="#">Resume <span class="arrow">↓</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="v1-hero wrap">
+      <div class="v1-grid">
+        <div class="v1-copy">
+          <span class="badge"><span class="dot pulse"></span> Open to full-time Product / UX roles</span>
+          <h1>Designing clarity for complex, data&#8209;heavy products.</h1>
+          <p class="lead">
+            I pair user research with interface design to make complicated tools feel obvious.
+            <span class="hl">Ex&#8209;RBC Digital · Online Banking</span>, M.I. in UX Design @ U&nbsp;of&nbsp;T.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#">Download Resume <span class="arrow">↓</span></a>
+            <a class="btn btn-ghost" href="#">View selected work <span class="arrow">→</span></a>
+          </div>
+          <div class="proof">
+            <span class="item"><span class="strong">RBC</span> Digital</span>
+            <span class="sep"></span>
+            <span class="item">University of Toronto</span>
+            <span class="sep"></span>
+            <span class="item"><span class="strong">1st</span> · Seneca Hackathon</span>
+          </div>
+        </div>
+
+        <div class="v1-panel">
+          <div class="mock" aria-hidden="true">
+            <div class="mock-top">
+              <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+              <span class="mock-tab">Drug Shortage Dashboard</span>
+            </div>
+            <div class="mock-body">
+              <div class="mock-label">Task completion</div>
+              <div class="mock-metric">+38% <span class="up">▲ vs. baseline</span></div>
+              <div class="bars">
+                <span style="height:34%"></span>
+                <span style="height:46%"></span>
+                <span style="height:58%"></span>
+                <span class="a" style="height:72%"></span>
+                <span class="hot" style="height:92%"></span>
+                <span style="height:64%"></span>
+                <span class="a" style="height:80%"></span>
+              </div>
+              <div class="mock-rows">
+                <div class="mrow"><span>Usability test pass rate</span><b>12 / 14</b></div>
+                <div class="mrow"><span>Tickets after launch</span><b>−27%</b></div>
+              </div>
+            </div>
+          </div>
+          <div class="chip chip-rbc">
+            <span class="ico">◧</span>
+            <span><b>RBC Digital</b><small>Design Researcher · 2 terms</small></span>
+          </div>
+          <div class="chip chip-award">
+            <span class="ico">★</span>
+            <span><b>Seneca Hackathon</b><small>1st Place · 2025</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="peek wrap">
+      <div class="peek-head">
+        <h2 class="peek-title">Selected Work <span class="count">(3)</span></h2>
+        <a class="link-quiet" href="#">All projects <span class="arrow">→</span></a>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="thumb"><div class="thumb-inner g1"></div></div>
+          <div class="card-body">
+            <div class="card-tag">Dashboard · Research</div>
+            <h3 class="card-title">MaaTRx — Drug Shortage Dashboard</h3>
+            <p class="card-impact">Reframed a clinical data dashboard, lifting task completion by 38% in testing.</p>
+            <span class="card-view">View case study <span class="arrow">→</span></span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"><div class="thumb-inner g2"></div></div>
+          <div class="card-body">
+            <div class="card-tag">Mobile · Hackathon</div>
+            <h3 class="card-title">ReBites — Food Sustainability for Kids</h3>
+            <p class="card-impact">Won 1st place at Seneca Hackathon with a dual student/teacher platform.</p>
+            <span class="card-view">View case study <span class="arrow">→</span></span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"><div class="thumb-inner g3"></div></div>
+          <div class="card-body">
+            <div class="card-tag">Mobile · Designathon</div>
+            <h3 class="card-title">Weavy — Human-Centered Matching</h3>
+            <p class="card-impact">Validated a low-pressure social concept through 10-question primary research.</p>
+            <span class="card-view">View case study <span class="arrow">→</span></span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

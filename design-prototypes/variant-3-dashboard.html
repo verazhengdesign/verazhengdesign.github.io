@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vera Zheng — Hero Concept 3 · Recruiter Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ===== Variant 3 — Recruiter dashboard: profile card + evidence panel ===== */
+  .v3-hero { padding: 48px 0 80px; }
+  .v3-grid { display: grid; grid-template-columns: 292px 1fr; gap: 44px; align-items: start; }
+
+  /* profile card */
+  .profile {
+    position: sticky; top: 92px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 22px; box-shadow: var(--shadow); padding: 22px;
+  }
+  .avatar {
+    width: 64px; height: 64px; border-radius: 18px;
+    background: linear-gradient(145deg, #2c2c28, #4a4a44);
+    color: #fff; display: grid; place-items: center;
+    font-size: 22px; font-weight: 560; letter-spacing: -.02em;
+  }
+  .profile h2 { margin: 16px 0 2px; font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+  .profile .role { font-size: 13.5px; color: var(--ink-2); }
+  .profile .status { margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ok); font-weight: 540; }
+  .profile .rows { margin-top: 18px; border-top: 1px solid var(--line-soft); }
+  .prow { display: flex; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line-soft); font-size: 13px; }
+  .prow .k { color: var(--ink-3); }
+  .prow .v { color: var(--ink); font-weight: 540; text-align: right; }
+  .profile .actions { margin-top: 18px; display: flex; flex-direction: column; gap: 9px; }
+  .profile .actions .btn { width: 100%; justify-content: center; }
+
+  /* right column */
+  .v3-main { padding-top: 6px; }
+  .v3-main h1 { font-size: clamp(2.4rem, 4.4vw, 3.5rem); max-width: 16ch; }
+  .v3-main .lead { margin-top: 22px; }
+  .v3-cta { margin-top: 26px; }
+
+  .metrics {
+    margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    background: var(--surface);
+  }
+  .metric { padding: 18px 16px; border-right: 1px solid var(--line-soft); }
+  .metric:last-child { border-right: 0; }
+  .metric .n { font-size: 25px; font-weight: 600; letter-spacing: -.03em; }
+  .metric .n em { color: var(--accent); font-style: normal; }
+  .metric .c { font-size: 12.5px; color: var(--ink-3); margin-top: 4px; line-height: 1.45; }
+
+  .v3-list-head {
+    margin: 52px 0 6px; display: flex; align-items: baseline; justify-content: space-between;
+  }
+  .v3-list-head h2 { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  @media (max-width: 700px) {
+    .v3-grid { grid-template-columns: 1fr; gap: 36px; }
+    .profile { position: static; }
+    .metrics { grid-template-columns: 1fr; }
+    .metric { border-right: 0; border-bottom: 1px solid var(--line-soft); }
+    .metric:last-child { border-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><span class="mark">VZ</span> Vera Zheng</div>
+      <nav class="nav-links">
+        <a href="#">Work</a>
+        <a href="#">About</a>
+        <a href="#">Journal</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="link-quiet" href="#">Email</a>
+        <a class="btn btn-primary btn-sm" href="#">Resume <span class="arrow">↓</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="v3-hero wrap">
+    <div class="v3-grid">
+      <aside class="profile">
+        <div class="avatar">VZ</div>
+        <h2>Vera Zheng</h2>
+        <div class="role">Product / UX Designer &amp; Researcher</div>
+        <div class="status"><span class="dot pulse"></span> Open to full-time roles</div>
+        <div class="rows">
+          <div class="prow"><span class="k">Based in</span><span class="v">Toronto, Canada</span></div>
+          <div class="prow"><span class="k">Current</span><span class="v">M.I. UXD @ U of T</span></div>
+          <div class="prow"><span class="k">Recent</span><span class="v">RBC Digital (2 terms)</span></div>
+          <div class="prow"><span class="k">Languages</span><span class="v">EN · 中文 · 日本語</span></div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="#">Download Resume <span class="arrow">↓</span></a>
+          <a class="btn btn-ghost" href="#">Get in touch</a>
+        </div>
+      </aside>
+
+      <section class="v3-main">
+        <span class="eyebrow">Product / UX · Toronto</span>
+        <h1 style="margin-top:16px">Designing clarity for complex, data&#8209;heavy products.</h1>
+        <p class="lead">
+          I bring research and interface design together to make complicated tools feel obvious —
+          shaped by two terms at <span class="hl">RBC Digital, Online Banking</span> and an M.I. in
+          User Experience Design at the University of Toronto.
+        </p>
+        <div class="cta-row v3-cta">
+          <a class="btn btn-primary" href="#">View case studies <span class="arrow">→</span></a>
+          <a class="link-quiet" href="#">LinkedIn ↗</a>
+        </div>
+
+        <div class="metrics">
+          <div class="metric"><div class="n"><em>38%</em></div><div class="c">Lift in task completion in dashboard usability testing</div></div>
+          <div class="metric"><div class="n"><em>1st</em> place</div><div class="c">Seneca Hackathon 2025 · food-sustainability app</div></div>
+          <div class="metric"><div class="n"><em>8+</em> per study</div><div class="c">Interviews run, synthesized into design decisions</div></div>
+        </div>
+
+        <div class="v3-list-head">
+          <h2>Selected Work</h2>
+          <a class="link-quiet" href="#">All projects <span class="arrow">→</span></a>
+        </div>
+        <div class="worklist">
+          <a class="workrow" href="#">
+            <span class="wr-idx">01</span>
+            <span><span class="wr-title">MaaTRx — Drug Shortage Dashboard</span><span class="wr-tag">Dashboard · Research</span></span>
+            <span class="wr-impact">Reframed clinical data into a scan-first layout; +38% task completion.</span>
+            <span class="wr-cta">View <span class="arrow">→</span></span>
+          </a>
+          <a class="workrow" href="#">
+            <span class="wr-idx">02</span>
+            <span><span class="wr-title">ReBites — Food Sustainability for Kids</span><span class="wr-tag">Mobile · Hackathon</span></span>
+            <span class="wr-impact">Dual student/teacher platform that won 1st place at Seneca Hackathon.</span>
+            <span class="wr-cta">View <span class="arrow">→</span></span>
+          </a>
+          <a class="workrow" href="#">
+            <span class="wr-idx">03</span>
+            <span><span class="wr-title">Weavy — Human-Centered Matching</span><span class="wr-tag">Mobile · Designathon</span></span>
+            <span class="wr-impact">Primary research turned into a low-pressure social product concept.</span>
+            <span class="wr-cta">View <span class="arrow">→</span></span>
+          </a>
+          <a class="workrow" href="#">
+            <span class="wr-idx">04</span>
+            <span><span class="wr-title">LemonWise — Student Finance App</span><span class="wr-tag">Mobile · Research</span></span>
+            <span class="wr-impact">8 interviews → a habit-building budgeting experience for students.</span>
+            <span class="wr-cta">View <span class="arrow">→</span></span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

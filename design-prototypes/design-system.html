@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vera Zheng — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@200..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ============ Design-system page chrome (prefix: .ds-) ============ */
+  .ds-main { max-width: 1040px; margin: 0 auto; padding: 0 40px 140px; }
+
+  .ds-subnav {
+    position: sticky; top: 66px; z-index: 40;
+    background: rgba(250, 250, 249, 0.8);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .ds-subnav .inner {
+    max-width: 1040px; margin: 0 auto; padding: 11px 40px;
+    display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none;
+  }
+  .ds-subnav .inner::-webkit-scrollbar { display: none; }
+  .ds-subnav a { font-size: 13.5px; color: var(--ink-2); white-space: nowrap; }
+  .ds-subnav a:hover { color: var(--ink); }
+
+  .ds-intro { padding: 72px 0 4px; max-width: 720px; }
+  .ds-intro h1 { font-size: clamp(2rem, 4vw, 2.9rem); }
+  .ds-intro p { margin-top: 16px; }
+
+  .ds-section { padding-top: 70px; scroll-margin-top: 132px; }
+  .ds-head { display: flex; align-items: baseline; gap: 12px; border-top: 1px solid var(--line); padding-top: 22px; }
+  .ds-head h2 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  .ds-head .num { font-size: 12px; color: var(--ink-3); font-weight: 600; letter-spacing: 0.1em; font-family: "Geist Mono", ui-monospace, monospace; }
+  .ds-desc { margin: 12px 0 26px; max-width: 66ch; color: var(--ink-2); font-size: 15px; }
+
+  .ds-grid { display: grid; gap: 18px; }
+  .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .ds-panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+
+  /* theme editor */
+  .editor { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 22px; align-items: start; }
+  .editor > * { min-width: 0; }
+  .editor-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .ctrl {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px;
+    background: var(--bg); min-width: 0;
+  }
+  .ctrl label { font-size: 13px; color: var(--ink-2); font-weight: 540; white-space: nowrap; }
+  .ctrl .val { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; min-width: 20px; text-align: right; }
+  .color-field { display: flex; align-items: center; gap: 8px; }
+  .ctrl input[type="color"] {
+    width: 32px; height: 30px; flex: none;
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 0; background: none; cursor: pointer;
+  }
+  .hex-input {
+    width: 84px; font-family: "Geist Mono", ui-monospace, monospace; font-size: 12px;
+    color: var(--ink); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px;
+    text-transform: lowercase;
+  }
+  .hex-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .hex-input.invalid { border-color: #d64545; box-shadow: 0 0 0 3px rgba(214, 69, 69, 0.13); }
+  .ctrl input[type="range"] { width: 116px; accent-color: var(--accent); }
+  .ctrl select {
+    font: inherit; font-size: 13px; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 9px; padding: 6px 10px; cursor: pointer;
+  }
+
+  .code-card { background: #101010; border-radius: 16px; padding: 16px 18px 18px; }
+  .code-card .bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .code-card .bar span { color: #8f8f89; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+  .code-card pre {
+    margin: 0; color: #e9e9e4; white-space: pre; overflow: auto; max-height: 340px;
+    font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px; line-height: 1.7;
+  }
+
+  /* color swatches */
+  .swatch {
+    display: flex; flex-direction: column; gap: 10px; text-align: left;
+    border: 1px solid var(--line); border-radius: 14px; padding: 12px;
+    background: var(--surface); cursor: pointer; font: inherit;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  }
+  .swatch:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: rgba(14,14,12,.16); }
+  .swatch .chip { height: 54px; border-radius: 9px; border: 1px solid var(--line-soft); }
+  .swatch .name { font-family: "Geist Mono", ui-monospace, monospace; font-size: 12px; font-weight: 500; }
+  .swatch .hex { font-family: "Geist Mono", ui-monospace, monospace; font-size: 11px; color: var(--ink-3); margin-top: -4px; }
+
+  /* type specimens */
+  .spec { display: grid; grid-template-columns: 168px 1fr; gap: 22px; padding: 18px 0; border-bottom: 1px solid var(--line-soft); align-items: baseline; }
+  .spec:last-child { border-bottom: 0; }
+  .spec .meta { font-family: "Geist Mono", ui-monospace, monospace; font-size: 11.5px; color: var(--ink-3); line-height: 1.7; }
+
+  /* component demo frame */
+  .demo { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+  .demo-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--line-soft); background: rgba(14, 14, 12, 0.015); }
+  .demo-bar .t { font-size: 12.5px; font-weight: 570; color: var(--ink-2); }
+  .demo-stage { padding: 26px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .demo-stage.col { flex-direction: column; align-items: stretch; gap: 16px; }
+  .demo-stage.center { justify-content: center; }
+  .copy-btn {
+    font-size: 11.5px; font-weight: 550; color: var(--ink-3); background: none;
+    border: 1px solid var(--line); border-radius: 8px; padding: 4px 9px; cursor: pointer;
+    font-family: inherit; transition: color .16s ease, border-color .16s ease;
+  }
+  .copy-btn:hover { color: var(--ink); border-color: rgba(14, 14, 12, 0.24); }
+
+  .sw-row { display: flex; align-items: center; gap: 14px; }
+  .sw-box { border-radius: 14px; background: var(--surface); border: 1px solid var(--line); padding: 18px; flex: 1; }
+  .sw-box.shadow-sm { box-shadow: var(--shadow-sm); }
+  .sw-box.shadow-md { box-shadow: var(--shadow); }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px);
+    background: #101010; color: #fff; font-size: 13px; padding: 9px 15px;
+    border-radius: 10px; opacity: 0; pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease; z-index: 200;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 860px) {
+    .ds-main { padding: 0 24px 100px; }
+    .ds-subnav .inner { padding: 11px 24px; }
+    .editor { grid-template-columns: 1fr; }
+    .cols-3, .cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; }
+    .editor-controls { grid-template-columns: 1fr; }
+    .spec { grid-template-columns: 1fr; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><span class="mark">VZ</span> Design System</div>
+      <nav class="nav-links">
+        <a href="index.html">Hero concepts</a>
+        <a href="variant-3-dashboard.html">Concept 03</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="link-quiet" href="#theme">Theme</a>
+        <a class="btn btn-primary btn-sm" href="#components">Components</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="ds-subnav">
+    <div class="inner">
+      <a href="#theme">Theme</a>
+      <a href="#colors">Colors</a>
+      <a href="#type">Typography</a>
+      <a href="#shape">Radius &amp; Shadow</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#badges">Badges</a>
+      <a href="#forms">Forms</a>
+      <a href="#cards">Cards</a>
+      <a href="#worklist">Work list</a>
+      <a href="#stats">Stats</a>
+      <a href="#usage">Usage</a>
+    </div>
+  </nav>
+
+  <main class="ds-main">
+    <section class="ds-intro">
+      <span class="badge"><span class="dot"></span> Living style guide · source of truth</span>
+      <h1 style="margin-top:22px">The building blocks.</h1>
+      <p class="lead">Every token and component used across the portfolio. All values come from
+      <code>styles.css</code> — edit the file, or tweak the live theme below and copy the
+      generated <code>:root</code> block back in.</p>
+    </section>
+
+    <!-- ================= THEME ================= -->
+    <section class="ds-section" id="theme">
+      <div class="ds-head"><span class="num">00</span><h2>Theme editor</h2></div>
+      <p class="ds-desc">Change a value to preview it on the whole page in real time. For colors,
+      click the swatch for the system picker, <strong>or type / paste a HEX</strong> (e.g.
+      <code>#3a54eb</code> — the <code>#</code> is optional). When you like the result, copy the
+      generated CSS and paste it over the <code>:root</code> block in <code>styles.css</code>.</p>
+
+      <div class="editor">
+        <div class="ds-panel">
+          <div class="editor-controls">
+            <div class="ctrl">
+              <label for="in-bg">Background</label>
+              <span class="color-field">
+                <input type="color" id="in-bg" data-key="bg" value="#fafaf9" aria-label="Background picker" />
+                <input type="text" class="hex-input" data-key="bg" value="#fafaf9" spellcheck="false" maxlength="7" aria-label="Background hex" />
+              </span>
+            </div>
+            <div class="ctrl">
+              <label for="in-surface">Surface</label>
+              <span class="color-field">
+                <input type="color" id="in-surface" data-key="surface" value="#ffffff" aria-label="Surface picker" />
+                <input type="text" class="hex-input" data-key="surface" value="#ffffff" spellcheck="false" maxlength="7" aria-label="Surface hex" />
+              </span>
+            </div>
+            <div class="ctrl">
+              <label for="in-ink">Ink (text)</label>
+              <span class="color-field">
+                <input type="color" id="in-ink" data-key="ink" value="#0e0e0c" aria-label="Ink picker" />
+                <input type="text" class="hex-input" data-key="ink" value="#0e0e0c" spellcheck="false" maxlength="7" aria-label="Ink hex" />
+              </span>
+            </div>
+            <div class="ctrl">
+              <label for="in-accent">Accent</label>
+              <span class="color-field">
+                <input type="color" id="in-accent" data-key="accent" value="#3a54eb" aria-label="Accent picker" />
+                <input type="text" class="hex-input" data-key="accent" value="#3a54eb" spellcheck="false" maxlength="7" aria-label="Accent hex" />
+              </span>
+            </div>
+            <div class="ctrl">
+              <label for="in-radius">Radius</label>
+              <span style="display:flex;align-items:center;gap:10px">
+                <input type="range" id="in-radius" min="0" max="28" value="20" />
+                <span class="val" id="radius-val">20</span>
+              </span>
+            </div>
+            <div class="ctrl">
+              <label for="in-font">Font</label>
+              <select id="in-font">
+                <option value="geist">Geist</option>
+                <option value="inter">Inter</option>
+                <option value="jakarta">Plus Jakarta Sans</option>
+                <option value="instrument">Instrument Sans</option>
+                <option value="system">System UI</option>
+              </select>
+            </div>
+          </div>
+          <div class="cta-row" style="margin-top:18px">
+            <button class="btn btn-ghost btn-sm" id="reset-theme" type="button">Reset defaults</button>
+            <span class="link-quiet" style="font-size:13px;cursor:default">Live preview on this page</span>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="bar">
+            <span>:root tokens</span>
+            <button class="copy-btn" id="copy-css" type="button" style="color:#cfcfc8;border-color:rgba(255,255,255,.18)">Copy CSS</button>
+          </div>
+          <pre id="css-out">:root { }</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COLORS ================= -->
+    <section class="ds-section" id="colors">
+      <div class="ds-head"><span class="num">01</span><h2>Colors</h2></div>
+      <p class="ds-desc">Near-black ink on a warm off-white. One accent (indigo) for emphasis, one
+      green for positive status. Secondary tones are derived from ink, so the palette stays
+      coherent when you change it. Click a swatch to copy its <code>var()</code>.</p>
+
+      <div class="ds-grid cols-4">
+        <button class="swatch" type="button" data-var="--bg"><span class="chip" style="background:var(--bg)"></span><span class="name">--bg</span><span class="hex"></span></button>
+        <button class="swatch" type="button" data-var="--surface"><span class="chip" style="background:var(--surface)"></span><span class="name">--surface</span><span class="hex"></span></button>
+        <button class="swatch" type="button" data-var="--ink"><span class="chip" style="background:var(--ink)"></span><span class="name">--ink</span><span class="hex"></span></button>
+        <button class="swatch" type="button" data-var="--ink-2"><span class="chip" style="background:var(--ink-2)"></span><span class="name">--ink-2</span><span class="hex"></span></button>
+
+        <button class="swatch" type="button" data-var="--ink-3"><span class="chip" style="background:var(--ink-3)"></span><span class="name">--ink-3</span><span class="hex"></span></button>
+        <button class="swatch" type="button" data-var="--line"><span class="chip" style="background:var(--line)"></span><span class="name">--line</span><span class="hex"></span></button>
+        <button class="swatch" type="button" data-var="--line-soft"><span class="chip" style="background:var(--line-soft)"></span><span class="name">--line-soft</span><span class="hex"></span></button>
+        <button class="swatch" type="button" data-var="--accent"><span class="chip" style="background:var(--accent)"></span><span class="name">--accent</span><span class="hex"></span></button>
+
+        <button class="swatch" type="button" data-var="--accent-ink"><span class="chip" style="background:var(--accent-ink)"></span><span class="name">--accent-ink</span><span class="hex"></span></button>
+        <button class="swatch" type="button" data-var="--accent-soft"><span class="chip" style="background:var(--accent-soft)"></span><span class="name">--accent-soft</span><span class="hex"></span></button>
+        <button class="swatch" type="button" data-var="--ok"><span class="chip" style="background:var(--ok)"></span><span class="name">--ok</span><span class="hex"></span></button>
+        <button class="swatch" type="button" data-var="--ok-soft"><span class="chip" style="background:var(--ok-soft)"></span><span class="name">--ok-soft</span><span class="hex"></span></button>
+      </div>
+    </section>
+
+    <!-- ================= TYPOGRAPHY ================= -->
+    <section class="ds-section" id="type">
+      <div class="ds-head"><span class="num">02</span><h2>Typography</h2></div>
+      <p class="ds-desc">One sans-serif family throughout — no mixing weights that fight. Display
+      sizes are tight-tracked and tight-leading; body text stays comfortable. Change the family in
+      the theme editor above.</p>
+
+      <div class="ds-panel">
+        <div class="spec">
+          <div class="meta">Display / h1<br />clamp(2.6–4.1rem)<br />weight 560 · -0.035em</div>
+          <div style="font-size:clamp(2.2rem,4vw,3rem);line-height:1.02;letter-spacing:-.035em;font-weight:560">Designing clarity</div>
+        </div>
+        <div class="spec">
+          <div class="meta">Heading / h2<br />2.1rem · 1.1 · -0.03em</div>
+          <div style="font-size:2.1rem;line-height:1.1;letter-spacing:-.03em;font-weight:560">Selected Work</div>
+        </div>
+        <div class="spec">
+          <div class="meta">Title / h3<br />17px · 570 · -0.02em</div>
+          <div style="font-size:17px;line-height:1.25;letter-spacing:-.02em;font-weight:570">MaaTRx — Drug Shortage Dashboard</div>
+        </div>
+        <div class="spec">
+          <div class="meta">Lead<br />1.18rem · 1.6 · ink-2</div>
+          <div class="lead">I pair user research with interface design to make complicated tools feel obvious.</div>
+        </div>
+        <div class="spec">
+          <div class="meta">Body<br />16px · 1.55</div>
+          <div>Good design is invisible. It shows up as fewer questions, faster tasks, and less hesitation.</div>
+        </div>
+        <div class="spec">
+          <div class="meta">Body small<br />13.5px · ink-2</div>
+          <div style="font-size:13.5px;color:var(--ink-2)">Reframed a clinical data dashboard, lifting task completion by 38% in testing.</div>
+        </div>
+        <div class="spec">
+          <div class="meta">Eyebrow<br />12.5px · 0.12em · uppercase</div>
+          <div class="eyebrow">Product / UX · Toronto</div>
+        </div>
+        <div class="spec">
+          <div class="meta">Mono<br />Geist Mono · 12px</div>
+          <div style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12.5px;color:var(--ink-2)">--accent: #3a54eb;</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RADIUS & SHADOW ================= -->
+    <section class="ds-section" id="shape">
+      <div class="ds-head"><span class="num">03</span><h2>Radius &amp; shadow</h2></div>
+      <p class="ds-desc">Generous but not bubbly. Borders are barely-there; depth comes from a soft,
+      low-opacity shadow rather than hard lines.</p>
+
+      <div class="ds-grid cols-2">
+        <div class="ds-panel">
+          <div class="eyebrow" style="margin-bottom:18px">Radius scale</div>
+          <div style="display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap">
+            <div style="text-align:center"><div style="width:64px;height:64px;background:var(--accent-soft);border:1px solid var(--line);border-radius:8px"></div><div class="hex" style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--ink-3);margin-top:8px">8px</div></div>
+            <div style="text-align:center"><div style="width:64px;height:64px;background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius-sm)"></div><div class="hex" style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--ink-3);margin-top:8px">--radius-sm</div></div>
+            <div style="text-align:center"><div style="width:64px;height:64px;background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius)"></div><div class="hex" style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--ink-3);margin-top:8px">--radius</div></div>
+            <div style="text-align:center"><div style="width:64px;height:64px;background:var(--accent-soft);border:1px solid var(--line);border-radius:999px"></div><div class="hex" style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--ink-3);margin-top:8px">999px</div></div>
+          </div>
+        </div>
+        <div class="ds-panel">
+          <div class="eyebrow" style="margin-bottom:18px">Elevation</div>
+          <div class="sw-row">
+            <div class="sw-box shadow-sm"><div class="meta" style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--ink-3)">--shadow-sm</div><div style="margin-top:6px;font-weight:560">Resting card</div></div>
+            <div class="sw-box shadow-md"><div class="meta" style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--ink-3)">--shadow</div><div style="margin-top:6px;font-weight:560">Hover / panel</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BUTTONS ================= -->
+    <section class="ds-section" id="buttons">
+      <div class="ds-head"><span class="num">04</span><h2>Buttons &amp; links</h2></div>
+      <p class="ds-desc">One primary action per view. Ghost buttons for secondary paths. The arrow
+      nudges right on hover for affordance.</p>
+
+      <div class="demo" id="demo-buttons">
+        <div class="demo-bar"><span class="t">Buttons</span><button class="copy-btn" type="button" data-copy="#demo-buttons .demo-stage">Copy HTML</button></div>
+        <div class="demo-stage">
+          <a class="btn btn-primary" href="#">Download Resume <span class="arrow">↓</span></a>
+          <a class="btn btn-ghost" href="#">View selected work <span class="arrow">→</span></a>
+          <a class="btn btn-primary btn-sm" href="#">Resume <span class="arrow">↓</span></a>
+          <a class="link-quiet" href="#">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BADGES ================= -->
+    <section class="ds-section" id="badges">
+      <div class="ds-head"><span class="num">05</span><h2>Badges &amp; tags</h2></div>
+      <p class="ds-desc">The availability badge with a status dot is the first thing a recruiter
+      sees. Tags label a project's discipline — keep them short and specific.</p>
+
+      <div class="demo" id="demo-badges">
+        <div class="demo-bar"><span class="t">Badges &amp; tags</span><button class="copy-btn" type="button" data-copy="#demo-badges .demo-stage">Copy HTML</button></div>
+        <div class="demo-stage">
+          <span class="badge"><span class="dot pulse"></span> Open to full-time Product / UX roles</span>
+          <span class="badge"><span class="dot"></span> Available · Toronto</span>
+          <span class="tag">Dashboard · Research</span>
+          <span class="tag tag-neutral">Mobile · Hackathon</span>
+          <span class="card-tag">Mobile · Designathon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FORMS ================= -->
+    <section class="ds-section" id="forms">
+      <div class="ds-head"><span class="num">06</span><h2>Forms</h2></div>
+      <p class="ds-desc">For a contact form or any input. Focus state uses the accent color with a
+      soft ring — enough to be obvious, quiet enough to stay on-brand.</p>
+
+      <div class="demo" id="demo-forms">
+        <div class="demo-bar"><span class="t">Inputs</span><button class="copy-btn" type="button" data-copy="#demo-forms .demo-stage">Copy HTML</button></div>
+        <div class="demo-stage col" style="max-width:520px">
+          <div><label class="label" for="f-name">Your name</label><input class="input" id="f-name" placeholder="Jane Doe" /></div>
+          <div><label class="label" for="f-role">Role you're hiring for</label>
+            <select class="select" id="f-role">
+              <option>Product Designer</option>
+              <option>UX Designer</option>
+              <option>UX Researcher</option>
+            </select>
+          </div>
+          <div><label class="label" for="f-msg">Message</label><textarea class="textarea" id="f-msg" placeholder="Let's talk about…"></textarea></div>
+          <div><button class="btn btn-primary" type="button">Send message</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CARDS ================= -->
+    <section class="ds-section" id="cards">
+      <div class="ds-head"><span class="num">07</span><h2>Project card</h2></div>
+      <p class="ds-desc">The workhorse of the homepage. Hover lifts the card 4px and gently scales the
+      thumbnail. Every card carries a tag, a name, one line of impact, and a cue to open the case
+      study.</p>
+
+      <div class="demo" id="demo-card">
+        <div class="demo-bar"><span class="t">Project card</span><button class="copy-btn" type="button" data-copy="#demo-card .demo-stage">Copy HTML</button></div>
+        <div class="demo-stage" style="justify-content:center;background:var(--bg)">
+          <article class="card" style="max-width:330px">
+            <div class="thumb"><div class="thumb-inner g1"></div></div>
+            <div class="card-body">
+              <div class="card-tag">Dashboard · Research</div>
+              <h3 class="card-title">MaaTRx — Drug Shortage Dashboard</h3>
+              <p class="card-impact">Reframed a clinical data dashboard, lifting task completion by 38% in testing.</p>
+              <span class="card-view">View case study <span class="arrow">→</span></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WORK LIST ================= -->
+    <section class="ds-section" id="worklist">
+      <div class="ds-head"><span class="num">08</span><h2>Work list row</h2></div>
+      <p class="ds-desc">The compact, editorial alternative to cards — an index of work you can scan
+      in one pass. Rows reveal a "View" affordance on hover.</p>
+
+      <div class="demo" id="demo-rows">
+        <div class="demo-bar"><span class="t">Work list</span><button class="copy-btn" type="button" data-copy="#demo-rows .demo-stage">Copy HTML</button></div>
+        <div class="demo-stage col">
+          <div class="worklist">
+            <a class="workrow" href="#">
+              <span class="wr-idx">01</span>
+              <span><span class="wr-title">MaaTRx — Drug Shortage Dashboard</span><span class="wr-tag">Dashboard · Research</span></span>
+              <span class="wr-impact">Reframed clinical data into a scan-first layout; +38% task completion.</span>
+              <span class="wr-cta">View <span class="arrow">→</span></span>
+            </a>
+            <a class="workrow" href="#">
+              <span class="wr-idx">02</span>
+              <span><span class="wr-title">ReBites — Food Sustainability for Kids</span><span class="wr-tag">Mobile · Hackathon</span></span>
+              <span class="wr-impact">Dual student/teacher platform that won 1st place at Seneca Hackathon.</span>
+              <span class="wr-cta">View <span class="arrow">→</span></span>
+            </a>
+            <a class="workrow" href="#">
+              <span class="wr-idx">03</span>
+              <span><span class="wr-title">Weavy — Human-Centered Matching</span><span class="wr-tag">Mobile · Designathon</span></span>
+              <span class="wr-impact">Primary research turned into a low-pressure social product concept.</span>
+              <span class="wr-cta">View <span class="arrow">→</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STATS ================= -->
+    <section class="ds-section" id="stats">
+      <div class="ds-head"><span class="num">09</span><h2>Stats &amp; proof</h2></div>
+      <p class="ds-desc">Numbers are the fastest way to earn credibility. Use real ones only. The
+      proof bar lists employers, schools and awards in quiet text.</p>
+
+      <div class="ds-grid cols-2" style="margin-bottom:18px">
+        <div class="ds-panel stat"><div class="n"><em>38%</em></div><div class="c">Lift in task completion in dashboard usability testing</div></div>
+        <div class="ds-panel stat"><div class="n"><em>1st</em> place</div><div class="c">Seneca Hackathon 2025 · food-sustainability app</div></div>
+      </div>
+      <div class="ds-panel">
+        <div class="proof">
+          <span class="item"><span class="strong">RBC</span> Digital</span>
+          <span class="sep"></span>
+          <span class="item">University of Toronto</span>
+          <span class="sep"></span>
+          <span class="item"><span class="strong">1st</span> · Seneca Hackathon</span>
+          <span class="sep"></span>
+          <span class="item">Google Data Analytics</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= USAGE ================= -->
+    <section class="ds-section" id="usage">
+      <div class="ds-head"><span class="num">10</span><h2>How to edit</h2></div>
+      <p class="ds-desc">Everything lives in two files.</p>
+      <div class="ds-grid cols-2">
+        <div class="ds-panel">
+          <div class="eyebrow" style="margin-bottom:10px">styles.css</div>
+          <p style="margin:0;color:var(--ink-2);font-size:14.5px">The source of truth: the <code>:root</code>
+          tokens at the top, then every reused class (buttons, badges, cards, forms, rows).
+          Change a token once and it updates the whole site.</p>
+        </div>
+        <div class="ds-panel">
+          <div class="eyebrow" style="margin-bottom:10px">this page</div>
+          <p style="margin:0;color:var(--ink-2);font-size:14.5px">Tweak the theme editor, copy the
+          generated <code>:root</code> block, and paste it into <code>styles.css</code>. Copy any
+          component's HTML with the button on each demo.</p>
+        </div>
+      </div>
+      <p class="ds-desc" style="margin-top:26px;font-size:13.5px">Note: the impact numbers shown here
+      (<code>38%</code>, <code>1st</code>, <code>8+</code>) are placeholders — replace them with real
+      results before publishing.</p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast">Copied</div>
+
+  <script>
+  (function () {
+    var root = document.documentElement;
+
+    var stacks = {
+      geist: '"Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+      inter: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+      jakarta: '"Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      instrument: '"Instrument Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      system: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+    };
+
+    var defaults = { bg: '#fafaf9', surface: '#ffffff', ink: '#0e0e0c', accent: '#3a54eb', radius: 20, font: 'geist' };
+    var state = Object.assign({}, defaults);
+
+    function hexToRgb(hex) {
+      hex = hex.replace('#', '');
+      if (hex.length === 3) hex = hex.split('').map(function (c) { return c + c; }).join('');
+      var n = parseInt(hex, 16);
+      return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+    }
+    function toHex(c) {
+      return '#' + [c.r, c.g, c.b].map(function (v) {
+        return Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0');
+      }).join('');
+    }
+    function mix(a, b, t) {
+      var A = hexToRgb(a), B = hexToRgb(b);
+      return { r: A.r + (B.r - A.r) * t, g: A.g + (B.g - A.g) * t, b: A.b + (B.b - A.b) * t };
+    }
+    function rgba(hex, a) {
+      var c = hexToRgb(hex);
+      return 'rgba(' + c.r + ', ' + c.g + ', ' + c.b + ', ' + a + ')';
+    }
+
+    function derived() {
+      return {
+        ink2: toHex(mix(state.ink, state.bg, 0.38)),
+        ink3: toHex(mix(state.ink, state.bg, 0.58)),
+        line: rgba(state.ink, 0.09),
+        lineSoft: rgba(state.ink, 0.055),
+        accentInk: toHex(mix(state.accent, '#000000', 0.28)),
+        accentSoft: rgba(state.accent, 0.09)
+      };
+    }
+
+    function apply() {
+      var d = derived();
+      root.style.setProperty('--bg', state.bg);
+      root.style.setProperty('--surface', state.surface);
+      root.style.setProperty('--ink', state.ink);
+      root.style.setProperty('--ink-2', d.ink2);
+      root.style.setProperty('--ink-3', d.ink3);
+      root.style.setProperty('--line', d.line);
+      root.style.setProperty('--line-soft', d.lineSoft);
+      root.style.setProperty('--accent', state.accent);
+      root.style.setProperty('--accent-ink', d.accentInk);
+      root.style.setProperty('--accent-soft', d.accentSoft);
+      root.style.setProperty('--radius', state.radius + 'px');
+      root.style.setProperty('--radius-sm', Math.max(4, Math.round(state.radius * 0.6)) + 'px');
+      root.style.setProperty('--font', stacks[state.font]);
+      updateSwatches();
+      renderCss();
+    }
+
+    function updateSwatches() {
+      document.querySelectorAll('.swatch').forEach(function (sw) {
+        var name = sw.getAttribute('data-var');
+        var value = getComputedStyle(root).getPropertyValue(name).trim();
+        var hexEl = sw.querySelector('.hex');
+        if (hexEl) hexEl.textContent = value;
+      });
+    }
+
+    function renderCss() {
+      var d = derived();
+      var css = ':root {\n' +
+        '  --bg: ' + state.bg + ';\n' +
+        '  --surface: ' + state.surface + ';\n' +
+        '  --ink: ' + state.ink + ';\n' +
+        '  --ink-2: ' + d.ink2 + ';\n' +
+        '  --ink-3: ' + d.ink3 + ';\n' +
+        '  --line: ' + d.line + ';\n' +
+        '  --line-soft: ' + d.lineSoft + ';\n' +
+        '\n' +
+        '  --accent: ' + state.accent + ';\n' +
+        '  --accent-ink: ' + d.accentInk + ';\n' +
+        '  --accent-soft: ' + d.accentSoft + ';\n' +
+        '  --ok: #1f9d63;\n' +
+        '  --ok-soft: rgba(31, 157, 99, 0.11);\n' +
+        '\n' +
+        '  --radius: ' + state.radius + 'px;\n' +
+        '  --radius-sm: ' + Math.max(4, Math.round(state.radius * 0.6)) + 'px;\n' +
+        '\n' +
+        '  --font: ' + stacks[state.font] + ';\n' +
+        '}';
+      document.getElementById('css-out').textContent = css;
+    }
+
+    // ---- bind controls ----
+    function normalizeHex(v) {
+      v = (v || '').trim();
+      if (v.charAt(0) === '#') v = v.slice(1);
+      if (/^[0-9a-fA-F]{3}$/.test(v)) v = v.split('').map(function (c) { return c + c; }).join('');
+      if (/^[0-9a-fA-F]{6}$/.test(v)) return '#' + v.toLowerCase();
+      return null;
+    }
+    function setColorInputs(key, value) {
+      document.querySelectorAll('[data-key="' + key + '"]').forEach(function (el) {
+        el.value = value;
+        el.classList.remove('invalid');
+      });
+    }
+
+    ['bg', 'surface', 'ink', 'accent'].forEach(function (key) {
+      document.querySelectorAll('[data-key="' + key + '"]').forEach(function (el) {
+        el.addEventListener('input', function () {
+          if (el.type === 'color') {
+            state[key] = el.value;
+            setColorInputs(key, el.value);
+            apply();
+          } else {
+            var norm = normalizeHex(el.value);
+            if (norm) {
+              state[key] = norm;
+              el.classList.remove('invalid');
+              // keep the native picker in sync without touching the field being typed in
+              document.querySelectorAll('[data-key="' + key + '"][type="color"]').forEach(function (c) { c.value = norm; });
+              apply();
+            } else {
+              el.classList.add('invalid');
+            }
+          }
+        });
+      });
+    });
+
+    var radiusEl = document.getElementById('in-radius');
+    radiusEl.addEventListener('input', function () {
+      state.radius = parseInt(radiusEl.value, 10);
+      document.getElementById('radius-val').textContent = state.radius;
+      apply();
+    });
+
+    var fontEl = document.getElementById('in-font');
+    fontEl.addEventListener('change', function () {
+      state.font = fontEl.value;
+      apply();
+    });
+
+    document.getElementById('reset-theme').addEventListener('click', function () {
+      state = Object.assign({}, defaults);
+      setColorInputs('bg', state.bg);
+      setColorInputs('surface', state.surface);
+      setColorInputs('ink', state.ink);
+      setColorInputs('accent', state.accent);
+      radiusEl.value = state.radius;
+      document.getElementById('radius-val').textContent = state.radius;
+      fontEl.value = state.font;
+      apply();
+    });
+
+    // ---- copy helpers ----
+    var toast = document.getElementById('toast');
+    var toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 1400);
+    }
+    function copy(text, msg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { showToast(msg || 'Copied'); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+        showToast(msg || 'Copied');
+      }
+    }
+    function tidy(html) {
+      return html.split('\n').map(function (l) { return l.trim(); })
+        .filter(function (l, i, arr) { return !(l === '' && (i === 0 || i === arr.length - 1)); })
+        .join('\n');
+    }
+
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var el = document.querySelector(btn.getAttribute('data-copy'));
+        if (el) copy(tidy(el.innerHTML), 'HTML copied');
+      });
+    });
+
+    document.querySelectorAll('.swatch').forEach(function (sw) {
+      sw.addEventListener('click', function () {
+        copy('var(' + sw.getAttribute('data-var') + ')', 'var() copied');
+      });
+    });
+
+    document.getElementById('copy-css').addEventListener('click', function () {
+      copy(document.getElementById('css-out').textContent, 'CSS copied');
+    });
+
+    apply();
+  })();
+  </script>
+</body>
+</html>

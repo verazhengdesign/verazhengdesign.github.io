@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vera Zheng — Hero Concept 2 · Centered Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ===== Variant 2 — Centered editorial: calm, symmetrical, credibility strip ===== */
+  .v2-hero { padding: 92px 0 0; text-align: center; }
+  .v2-inner { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+  .v2-hero h1 { font-size: clamp(2.8rem, 6vw, 4.7rem); max-width: 17ch; }
+  .v2-hero .lead { max-width: 54ch; }
+  .v2-cta { justify-content: center; }
+
+  .v2-strip {
+    margin-top: 62px;
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    background: linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,0));
+  }
+  .v2-strip-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  .v2-stat {
+    padding: 26px 28px;
+    text-align: left;
+    border-right: 1px solid var(--line-soft);
+  }
+  .v2-stat:last-child { border-right: 0; }
+  .v2-stat .num { font-size: 26px; font-weight: 600; letter-spacing: -.03em; }
+  .v2-stat .num em { color: var(--accent); font-style: normal; }
+  .v2-stat .cap { font-size: 13px; color: var(--ink-3); margin-top: 3px; line-height: 1.45; }
+
+  .v2-logos {
+    padding: 30px 0;
+  }
+  .v2-logos .proof { justify-content: center; }
+
+  @media (max-width: 700px) {
+    .v2-hero { padding-top: 64px; }
+    .v2-strip-inner { grid-template-columns: repeat(2, 1fr); }
+    .v2-stat { border-bottom: 1px solid var(--line-soft); }
+    .v2-stat:nth-child(2) { border-right: 0; }
+    .v2-stat:nth-child(3), .v2-stat:nth-child(4) { border-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><span class="mark">VZ</span> Vera Zheng</div>
+      <nav class="nav-links">
+        <a href="#">Work</a>
+        <a href="#">About</a>
+        <a href="#">Journal</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="link-quiet" href="#">Email</a>
+        <a class="btn btn-primary btn-sm" href="#">Resume <span class="arrow">↓</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="v2-hero wrap">
+      <div class="v2-inner">
+        <span class="badge"><span class="dot pulse"></span> Available · Full-time Product / UX · Toronto</span>
+        <h1>I turn complex, data&#8209;heavy products into clear experiences.</h1>
+        <p class="lead">
+          Research-led UX design, sharpened at <span class="hl">RBC Digital · Online Banking</span>.
+          M.I. in User Experience Design @ University of Toronto.
+        </p>
+        <div class="cta-row v2-cta">
+          <a class="btn btn-primary" href="#">Download Resume <span class="arrow">↓</span></a>
+          <a class="btn btn-ghost" href="#">View case studies <span class="arrow">→</span></a>
+          <a class="link-quiet" href="#" style="margin-left:6px">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="v2-strip">
+      <div class="v2-strip-inner">
+        <div class="v2-stat">
+          <div class="num"><em>2</em> terms</div>
+          <div class="cap">Design Researcher at RBC Digital, Online Banking</div>
+        </div>
+        <div class="v2-stat">
+          <div class="num"><em>4</em> studies</div>
+          <div class="cap">End-to-end case studies, research to high-fidelity</div>
+        </div>
+        <div class="v2-stat">
+          <div class="num"><em>1st</em> place</div>
+          <div class="cap">Seneca Hackathon 2025, food-sustainability app</div>
+        </div>
+        <div class="v2-stat">
+          <div class="num">JLPT <em>N1</em></div>
+          <div class="cap">Bilingual — English, Mandarin, Japanese</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="v2-logos wrap">
+      <div class="proof">
+        <span class="item">RBC Digital</span>
+        <span class="sep"></span>
+        <span class="item">University of Toronto</span>
+        <span class="sep"></span>
+        <span class="item">Google Data Analytics</span>
+        <span class="sep"></span>
+        <span class="item">Seneca Hackathon Winner</span>
+      </div>
+    </section>
+
+    <section class="peek wrap">
+      <div class="peek-head">
+        <h2 class="peek-title">Selected Work <span class="count">(3)</span></h2>
+        <a class="link-quiet" href="#">All projects <span class="arrow">→</span></a>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="thumb"><div class="thumb-inner g1"></div></div>
+          <div class="card-body">
+            <div class="card-tag">Dashboard · Research</div>
+            <h3 class="card-title">MaaTRx — Drug Shortage Dashboard</h3>
+            <p class="card-impact">Reframed a clinical data dashboard, lifting task completion by 38% in testing.</p>
+            <span class="card-view">View case study <span class="arrow">→</span></span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"><div class="thumb-inner g2"></div></div>
+          <div class="card-body">
+            <div class="card-tag">Mobile · Hackathon</div>
+            <h3 class="card-title">ReBites — Food Sustainability for Kids</h3>
+            <p class="card-impact">Won 1st place at Seneca Hackathon with a dual student/teacher platform.</p>
+            <span class="card-view">View case study <span class="arrow">→</span></span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"><div class="thumb-inner g3"></div></div>
+          <div class="card-body">
+            <div class="card-tag">Mobile · Designathon</div>
+            <h3 class="card-title">Weavy — Human-Centered Matching</h3>
+            <p class="card-impact">Validated a low-pressure social concept through 10-question primary research.</p>
+            <span class="card-view">View case study <span class="arrow">→</span></span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

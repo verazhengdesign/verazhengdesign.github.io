@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vera Zheng — Concept 7 · Poster (Light)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f8f6f1;
+    --panel: #f1eee6;
+    --surface: #fffefb;
+    --ink: #14130e;
+    --muted: #6d695e;
+    --line: #e4e0d5;
+    --line-strong: #d2cdbe;
+
+    --banner: #12110d;
+    --cream: #f3eee3;
+
+    --accent: #ff5b26;
+    --accent-ink: #b23a10;
+
+    --tag-bg: rgba(14, 124, 107, 0.10);
+    --tag-ink: #0c6b5d;
+    --tag-bg-hover: rgba(14, 124, 107, 0.18);
+
+    --maxw: 1200px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 16px; line-height: 1.5; letter-spacing: -0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
+  .mono { font-family: "Geist Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  /* ---------- sticky banner ---------- */
+  .topbar { position: sticky; top: 0; z-index: 50; background: var(--banner); color: var(--cream); }
+  .topbar-inner { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .brand { font-weight: 700; letter-spacing: -0.03em; font-size: 16px; color: var(--cream); }
+  .nav-links { display: flex; gap: 30px; align-items: center; font-size: 14px; }
+  .nav-links a { color: rgba(243, 238, 227, 0.62); transition: color .15s ease; }
+  .nav-links a:hover { color: var(--cream); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 64px 0 60px; }
+  .hero-status { display: flex; align-items: center; justify-content: space-between; margin: 0 0 34px; color: var(--muted); }
+  .hero-status .d { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 9px; vertical-align: middle; }
+
+  .hero h1 {
+    margin: 0; font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-weight: 600; letter-spacing: -0.05em; line-height: 0.9; text-transform: uppercase;
+    font-size: clamp(4rem, 14.5vw, 12rem);
+  }
+  .hero h1 .thin { color: transparent; -webkit-text-stroke: 1.6px var(--ink); }
+
+  /* credentials — one row, left aligned, roomy */
+  .hero-foot {
+    margin-top: 52px; padding-top: 30px; border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 48px; align-items: start;
+  }
+  .cred .k { display: block; color: var(--muted); margin-bottom: 11px; }
+  .cred .v { font-size: 19px; line-height: 1.3; letter-spacing: -0.02em; }
+  .cred .v em { font-style: normal; color: var(--muted); }
+  .cred .v b { font-weight: 700; color: var(--accent-ink); white-space: nowrap; }
+  .cred .v .sub { display: block; color: var(--muted); font-size: 15px; margin-top: 4px; }
+
+  .hero-cta { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
+    padding: 11px 20px; font-size: 14.5px; font-weight: 550; border: 1px solid var(--line-strong);
+    transition: background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .btn:hover { border-color: var(--ink); }
+  .btn.fill { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn.fill:hover { background: #ff7444; border-color: #ff7444; }
+
+  .email-row { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin-left: 4px; }
+  .email-row .lbl { color: var(--muted); font-size: 13px; }
+  .email {
+    font-weight: 700; color: var(--accent-ink); font-size: 15px;
+    border-bottom: 1.5px solid currentColor; padding-bottom: 1px;
+  }
+  .email:hover { color: var(--accent); }
+  .copy-btn {
+    font-family: "Geist Mono", monospace; font-size: 10.5px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink); background: var(--surface);
+    border: 1px solid var(--line-strong); border-radius: 999px; padding: 4px 9px; cursor: pointer;
+    transition: border-color .16s ease, color .16s ease, background .16s ease;
+  }
+  .copy-btn:hover { border-color: var(--ink); }
+  .copy-btn.done { background: var(--tag-bg); color: var(--tag-ink); border-color: var(--tag-ink); }
+
+  /* ---------- projects ---------- */
+  .projects { background: var(--panel); border-top: 1px solid var(--line); padding: 84px 0 120px; }
+  .projects-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 34px; }
+  .projects-head h2 { margin: 0; font-size: clamp(2rem, 4.4vw, 3.2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+  .projects-head .mono { color: var(--muted); }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .card {
+    display: flex; flex-direction: column; overflow: hidden;
+    border: 1px solid var(--line); border-radius: 18px; background: var(--surface);
+    transition: border-color .2s ease;
+  }
+  .card:hover { border-color: var(--ink); }
+
+  .cover {
+    position: relative; aspect-ratio: 2.2 / 1;
+    border-bottom: 1px solid var(--line); background: var(--panel);
+    display: grid; place-items: center;
+  }
+  .cover .ph { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .cover .num {
+    position: absolute; top: 12px; left: 12px; font-family: "Geist Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.1em; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); padding: 3px 9px; border-radius: 999px;
+  }
+
+  .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 15px; }
+  .tag {
+    font-family: "Geist Mono", monospace; font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 500;
+    color: var(--tag-ink); background: var(--tag-bg);
+    border-radius: 999px; padding: 5px 11px; transition: background .16s ease;
+  }
+  .card:hover .tag { background: var(--tag-bg-hover); }
+
+  .card h3 { margin: 0 0 9px; font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-weight: 650; letter-spacing: -0.03em; line-height: 1.12; }
+  .card p { margin: 0; color: var(--muted); font-size: 14.5px; max-width: 46ch; }
+  .card-go { margin-top: auto; padding-top: 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 550; }
+  .card-go .arrow { transition: color .2s ease; }
+  .card:hover .card-go .arrow { color: var(--accent); }
+
+  .foot { padding: 34px 0 64px; display: flex; justify-content: space-between; align-items: center; color: var(--muted); }
+  .foot .email { font-size: 14px; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 14px);
+    background: var(--ink); color: #fff; font-size: 13px; padding: 9px 15px; border-radius: 10px;
+    opacity: 0; pointer-events: none; transition: opacity .22s ease, transform .22s ease; z-index: 60;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 820px) {
+    .wrap { padding: 0 22px; }
+    .nav-links { gap: 18px; font-size: 13.5px; }
+    .hero-foot { grid-template-columns: 1fr; gap: 24px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <span class="brand">Vera Zheng</span>
+      <nav class="nav-links">
+        <a href="#projects">Work</a>
+        <a href="#">Journal</a>
+        <a href="#">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero wrap">
+    <div class="hero-status mono">
+      <span><span class="d"></span>Open to full-time roles — Toronto</span>
+      <span>Portfolio 2026</span>
+    </div>
+
+    <h1>Vera<br /><span class="thin">Zheng</span></h1>
+
+    <div class="hero-foot">
+      <div class="cred">
+        <span class="mono k">Experience</span>
+        <div class="v">Design Researcher <em>—</em> <b>RBC</b><span class="sub">Online Banking · 2025–2026</span></div>
+      </div>
+      <div class="cred">
+        <span class="mono k">Education</span>
+        <div class="v">Master of Information <em>—</em> <b>UX Design</b><span class="sub">University of Toronto</span></div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn fill" href="#">Download résumé ↓</a>
+        <a class="btn" href="#">LinkedIn ↗</a>
+        <span class="email-row">
+          <span class="lbl">or email</span>
+          <a class="email" href="mailto:zzx0826vera@gmail.com">zzx0826vera@gmail.com</a>
+          <button class="copy-btn" type="button" data-email="zzx0826vera@gmail.com">Copy</button>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="wrap">
+      <div class="projects-head">
+        <h2>Projects</h2>
+        <span class="mono">04 projects · 2024–2026</span>
+      </div>
+      <div class="grid">
+        <a class="card" href="#">
+          <div class="cover"><span class="ph">MaaTRx · cover</span><span class="num mono">01</span></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="tag">Dashboard</span><span class="tag">Research</span></div>
+            <h3>MaaTRx — Drug Shortage Dashboard</h3>
+            <p>Reframed a dense clinical tool into a scan-first layout; +38% task completion in usability testing.</p>
+            <span class="card-go">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="cover"><span class="ph">ReBites · cover</span><span class="num mono">02</span></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="tag">Mobile</span><span class="tag">Hackathon</span></div>
+            <h3>ReBites — Food Sustainability for Kids</h3>
+            <p>A dual student / teacher platform for everyday food choices — 1st place, Seneca Hackathon 2025.</p>
+            <span class="card-go">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="cover"><span class="ph">Weavy · cover</span><span class="num mono">03</span></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="tag">Mobile</span><span class="tag">Designathon</span></div>
+            <h3>Weavy — Human-Centered Matching</h3>
+            <p>Turned 10-question primary research into a low-pressure social product concept in 24 hours.</p>
+            <span class="card-go">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="cover"><span class="ph">LemonWise · cover</span><span class="num mono">04</span></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="tag">Mobile</span><span class="tag">Finance</span></div>
+            <h3>LemonWise — Student Finance App</h3>
+            <p>8 interviews → a habit-building budgeting experience designed around real student behaviour.</p>
+            <span class="card-go">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot wrap">
+    <span class="mono">Vera Zheng</span>
+    <a class="email" href="mailto:zzx0826vera@gmail.com">zzx0826vera@gmail.com</a>
+  </footer>
+
+  <div class="toast" id="toast">Email copied</div>
+
+  <script>
+    (function () {
+      var toast = document.getElementById('toast');
+      var timer;
+      function showToast() {
+        toast.classList.add('show');
+        clearTimeout(timer);
+        timer = setTimeout(function () { toast.classList.remove('show'); }, 1400);
+      }
+      document.querySelectorAll('.copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var email = btn.getAttribute('data-email');
+          function done() {
+            btn.textContent = 'Copied';
+            btn.classList.add('done');
+            showToast();
+            setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1500);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(done).catch(done);
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = email; document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta); done();
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

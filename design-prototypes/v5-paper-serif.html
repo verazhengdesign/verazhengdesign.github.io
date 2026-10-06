@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vera Zheng — Concept 5 · Paper Serif</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f3eee3;
+    --paper-2: #ece5d6;
+    --ink: #211f19;
+    --muted: #726a5b;
+    --line: #d9cfbc;
+    --accent: #9d4b2a;
+    --maxw: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px; line-height: 1.55; letter-spacing: -0.006em;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 48px; }
+  .serif { font-family: "Fraunces", Georgia, "Times New Roman", serif; font-optical-sizing: auto; }
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+  }
+
+  /* nav */
+  .nav { padding-top: 26px; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .brand { font-family: "Fraunces", serif; font-size: 20px; letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 26px; align-items: center; font-size: 14px; color: var(--muted); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links .resume { color: var(--accent); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+
+  /* hero */
+  .hero { padding: 74px 0 0; }
+  .eyebrow-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
+  .status { display: inline-flex; align-items: center; gap: 10px; }
+  .status .d { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .hero h1 {
+    margin: 0; font-weight: 360; letter-spacing: -0.02em; line-height: 1.02;
+    font-size: clamp(2.6rem, 6.2vw, 5.1rem); max-width: 15ch;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-foot { margin-top: 44px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; }
+  .hero-lede { margin: 0; font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.5; color: #3a362c; max-width: 40ch; }
+  .hero-actions { display: flex; gap: 22px; justify-content: flex-end; align-items: center; font-size: 14.5px; }
+  .act-primary { color: var(--accent); font-weight: 500; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+  .act-plain { color: var(--muted); }
+  .act-plain:hover { color: var(--ink); }
+
+  /* colophon */
+  .colophon {
+    margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line);
+  }
+  .col { padding: 24px 40px 28px 0; }
+  .col + .col { border-left: 1px solid var(--line); padding-left: 40px; }
+  .col .k { display: block; margin-bottom: 12px; }
+  .col .big { font-family: "Fraunces", serif; font-size: 20px; line-height: 1.25; letter-spacing: -0.01em; }
+  .col .big em { font-style: italic; }
+  .col .sub { color: var(--muted); font-size: 15px; margin-top: 3px; }
+
+  /* work */
+  .work { padding: 92px 0 130px; }
+  .work-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 26px; }
+  .work-head h2 { margin: 0; font-family: "Fraunces", serif; font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -0.015em; }
+  .jobs { border-top: 1px solid var(--line); }
+  .job {
+    display: grid; grid-template-columns: 1fr 40px; gap: 24px; align-items: center;
+    padding: 30px 0; border-bottom: 1px solid var(--line);
+    transition: padding 0.3s cubic-bezier(.22,1,.36,1);
+  }
+  .job:hover { padding-left: 14px; }
+  .job-tags { display: flex; gap: 8px; margin-bottom: 12px; }
+  .tag {
+    font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    border: 1px solid var(--line); border-radius: 2px; padding: 3px 8px; background: rgba(255,255,255,.4);
+  }
+  .job h3 { margin: 0; font-family: "Fraunces", serif; font-weight: 400; font-size: clamp(1.4rem, 2.6vw, 2rem); letter-spacing: -0.015em; line-height: 1.1; }
+  .job p { margin: 10px 0 0; color: var(--muted); font-size: 15px; max-width: 54ch; }
+  .job-arrow { justify-self: end; font-size: 20px; color: var(--muted); transition: transform .28s ease, color .28s ease; }
+  .job:hover .job-arrow { transform: translateX(8px); color: var(--accent); }
+
+  .footer { padding: 0 0 70px; }
+  .footer .mono { color: var(--muted); }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 26px; }
+    .hero-foot { grid-template-columns: 1fr; gap: 28px; }
+    .hero-actions { justify-content: flex-start; }
+    .colophon { grid-template-columns: 1fr; }
+    .col + .col { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+    .job { grid-template-columns: 1fr 24px; }
+  }
+</style>
+</head>
+<body>
+  <header class="nav wrap">
+    <div class="nav-inner">
+      <span class="brand">Vera Zheng</span>
+      <nav class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#">About</a>
+        <a href="#">Email</a>
+        <a class="resume" href="#">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="eyebrow-row">
+        <span class="mono status"><span class="d"></span> Available for full-time roles</span>
+        <span class="mono">Toronto · 2026</span>
+      </div>
+
+      <h1 class="serif">Design &amp; research for <em>complex</em>, data-heavy products.</h1>
+
+      <div class="hero-foot">
+        <p class="hero-lede">I move between user research and interface design — the thinking and the making — to make difficult tools feel considered.</p>
+        <div class="hero-actions">
+          <a class="act-primary" href="#">Download résumé</a>
+          <a class="act-plain" href="#">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div class="colophon">
+        <div class="col">
+          <span class="mono k">Education</span>
+          <div class="big"><em>Master of Information</em><br />User Experience Design</div>
+          <div class="sub">University of Toronto</div>
+        </div>
+        <div class="col">
+          <span class="mono k">Experience</span>
+          <div class="big">Design Researcher<br /><em>RBC · Online Banking</em></div>
+          <div class="sub">May 2025 — Apr 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work wrap" id="work">
+      <div class="work-head">
+        <h2>Selected work</h2>
+        <span class="mono">04 projects</span>
+      </div>
+      <div class="jobs">
+        <a class="job" href="#">
+          <div>
+            <div class="job-tags"><span class="tag">Dashboard</span><span class="tag">Research</span></div>
+            <h3>MaaTRx — Drug Shortage Dashboard</h3>
+            <p>Reframed a dense clinical tool into a scan-first layout; +38% task completion in usability testing.</p>
+          </div>
+          <span class="job-arrow">→</span>
+        </a>
+        <a class="job" href="#">
+          <div>
+            <div class="job-tags"><span class="tag">Mobile</span><span class="tag">Hackathon</span></div>
+            <h3>ReBites — Food Sustainability for Kids</h3>
+            <p>A dual student / teacher platform for everyday food choices — 1st place, Seneca Hackathon 2025.</p>
+          </div>
+          <span class="job-arrow">→</span>
+        </a>
+        <a class="job" href="#">
+          <div>
+            <div class="job-tags"><span class="tag">Mobile</span><span class="tag">Designathon</span></div>
+            <h3>Weavy — Human-Centered Matching</h3>
+            <p>Turned 10-question primary research into a low-pressure social product concept in 24 hours.</p>
+          </div>
+          <span class="job-arrow">→</span>
+        </a>
+        <a class="job" href="#">
+          <div>
+            <div class="job-tags"><span class="tag">Mobile</span><span class="tag">Finance</span></div>
+            <h3>LemonWise — Student Finance App</h3>
+            <p>8 interviews → a habit-building budgeting experience designed around real student behaviour.</p>
+          </div>
+          <span class="job-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer wrap">
+      <span class="mono">Vera Zheng — zzx0826vera@gmail.com</span>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vera Zheng — Concept 4 · Editorial Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #faf9f6;
+    --ink: #141413;
+    --muted: #6d6c65;
+    --faint: #98978f;
+    --line: #e3e2db;
+    --red: #e5401b;
+    --maxw: 1140px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px; line-height: 1.5; letter-spacing: -0.008em;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 44px; }
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
+  }
+  .rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+  /* nav */
+  .nav { border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand { font-weight: 700; letter-spacing: -0.025em; }
+  .nav-links { display: flex; gap: 28px; align-items: center; font-size: 14.5px; }
+  .nav-links a { color: var(--muted); transition: color .15s ease; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links .resume { color: var(--ink); font-weight: 600; }
+  .nav-links .resume::after { content: " ↓"; color: var(--red); }
+
+  /* hero */
+  .hero { padding: 66px 0 0; }
+  .hero-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 52px; }
+  .status { display: inline-flex; align-items: center; gap: 10px; }
+  .status .d { width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .hero h1 {
+    margin: 0; font-weight: 600; letter-spacing: -0.05em; line-height: 0.9;
+    font-size: clamp(3.4rem, 10.5vw, 8.4rem);
+  }
+  .hero-sub {
+    margin-top: 34px; display: grid; grid-template-columns: 1.35fr 1fr; gap: 44px; align-items: end;
+  }
+  .hero-lede { margin: 0; font-size: clamp(1.05rem, 1.7vw, 1.35rem); line-height: 1.45; letter-spacing: -0.015em; }
+  .hero-lede b { font-weight: 650; }
+  .hero-actions { display: flex; align-items: center; gap: 22px; justify-content: flex-end; }
+  .link-red { color: var(--red); font-weight: 600; }
+  .link-red:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .link-plain { color: var(--muted); }
+
+  /* credentials */
+  .creds {
+    margin-top: 60px; border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  }
+  .cred { padding: 26px 40px 30px 0; }
+  .cred + .cred { border-left: 1px solid var(--line); padding-left: 40px; }
+  .cred .k { display: block; margin-bottom: 12px; }
+  .cred p { margin: 0; font-size: 17px; line-height: 1.4; letter-spacing: -0.015em; }
+  .cred .role { font-weight: 650; }
+  .cred .inst { color: var(--muted); }
+
+  /* work */
+  .work { padding: 84px 0 130px; }
+  .work-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
+  .work-head h2 { margin: 0; font-size: 13px; }
+  .jobs { border-top: 1px solid var(--line); }
+  .job {
+    display: grid; grid-template-columns: 52px 1fr 40px; gap: 28px; align-items: start;
+    padding: 34px 0; border-bottom: 1px solid var(--line);
+    transition: padding 0.25s cubic-bezier(.22,1,.36,1);
+  }
+  .job:hover { padding-left: 14px; }
+  .job-index { padding-top: 4px; }
+  .job-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .tag {
+    font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink);
+    border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
+    background: #fff;
+  }
+  .job h3 {
+    margin: 0; font-size: clamp(1.5rem, 2.9vw, 2.3rem); font-weight: 600;
+    letter-spacing: -0.03em; line-height: 1.05;
+  }
+  .job p { margin: 12px 0 0; color: var(--muted); font-size: 15px; max-width: 56ch; }
+  .job-arrow { justify-self: end; font-size: 22px; color: var(--faint); transition: transform .25s ease, color .25s ease; }
+  .job:hover .job-arrow { transform: translateX(8px); color: var(--red); }
+  .job:hover h3 { color: var(--ink); }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 24px; }
+    .nav-links { gap: 18px; font-size: 13.5px; }
+    .hero-sub { grid-template-columns: 1fr; gap: 26px; }
+    .hero-actions { justify-content: flex-start; }
+    .creds { grid-template-columns: 1fr; }
+    .cred + .cred { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+    .job { grid-template-columns: 34px 1fr 24px; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <span class="brand">Vera Zheng</span>
+      <nav class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#">About</a>
+        <a href="#">Email</a>
+        <a class="resume" href="#">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-top">
+        <span class="mono status"><span class="d"></span> Open to full-time roles — Toronto</span>
+        <span class="mono">Portfolio · 2026</span>
+      </div>
+
+      <h1>Vera&nbsp;Zheng</h1>
+
+      <div class="hero-sub">
+        <p class="hero-lede">UX designer &amp; researcher working on complex, data&#8209;heavy products — <b>from early research through to interface.</b></p>
+        <div class="hero-actions">
+          <a class="link-red" href="#">Download résumé ↓</a>
+          <a class="link-plain" href="#">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div class="creds">
+        <div class="cred">
+          <span class="mono k">Education</span>
+          <p><span class="role">Master of Information, UX Design</span><br /><span class="inst">University of Toronto</span></p>
+        </div>
+        <div class="cred">
+          <span class="mono k">Experience</span>
+          <p><span class="role">Design Researcher</span><br /><span class="inst">RBC · Online Banking</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="work wrap" id="work">
+      <div class="work-head">
+        <h2 class="mono">Selected Work — 04</h2>
+        <span class="mono">2024 — 2026</span>
+      </div>
+      <div class="jobs">
+        <a class="job" href="#">
+          <span class="job-index mono">01</span>
+          <div>
+            <div class="job-tags"><span class="tag">Dashboard</span><span class="tag">Research</span></div>
+            <h3>MaaTRx — Drug Shortage Dashboard</h3>
+            <p>Reframed a dense clinical tool into a scan-first layout; +38% task completion in usability testing.</p>
+          </div>
+          <span class="job-arrow">→</span>
+        </a>
+        <a class="job" href="#">
+          <span class="job-index mono">02</span>
+          <div>
+            <div class="job-tags"><span class="tag">Mobile</span><span class="tag">Hackathon</span></div>
+            <h3>ReBites — Food Sustainability for Kids</h3>
+            <p>A dual student / teacher platform for everyday food choices — 1st place, Seneca Hackathon 2025.</p>
+          </div>
+          <span class="job-arrow">→</span>
+        </a>
+        <a class="job" href="#">
+          <span class="job-index mono">03</span>
+          <div>
+            <div class="job-tags"><span class="tag">Mobile</span><span class="tag">Designathon</span></div>
+            <h3>Weavy — Human-Centered Matching</h3>
+            <p>Turned 10-question primary research into a low-pressure social product concept in 24 hours.</p>
+          </div>
+          <span class="job-arrow">→</span>
+        </a>
+        <a class="job" href="#">
+          <span class="job-index mono">04</span>
+          <div>
+            <div class="job-tags"><span class="tag">Mobile</span><span class="tag">Finance</span></div>
+            <h3>LemonWise — Student Finance App</h3>
+            <p>8 interviews → a habit-building budgeting experience designed around real student behaviour.</p>
+          </div>
+          <span class="job-arrow">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

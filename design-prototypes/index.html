@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vera Zheng — Hero Exploration Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .intro { padding: 72px 0 8px; max-width: 720px; }
+  .intro h1 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+  .intro p { margin-top: 18px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding: 48px 0 90px; }
+  .opt {
+    display: flex; flex-direction: column; background: var(--surface);
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 24px;
+    box-shadow: var(--shadow-sm); transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s ease;
+  }
+  .opt:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .opt .n { font-size: 12.5px; color: var(--ink-3); font-weight: 600; letter-spacing: .1em; }
+  .opt h2 { margin: 10px 0 8px; font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+  .opt p { margin: 0 0 18px; font-size: 14px; color: var(--ink-2); flex: 1; }
+  .opt .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+  .tag { font-size: 11.5px; padding: 4px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); font-weight: 550; }
+  @media (max-width: 900px) { .grid3 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><span class="mark">VZ</span> Hero Exploration</div>
+      <nav class="nav-links"><a href="../">← Back to repo</a></nav>
+      <div class="nav-cta"></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <span class="badge"><span class="dot"></span> Direction B (recruiter-first) + A (restrained minimal)</span>
+      <h1 style="margin-top:22px">Three ways to open the page.</h1>
+      <p class="lead">Same content, three different structures. All make the value proposition, the RBC
+      credential, and a Resume download visible before the fold. Click through and tell me which
+      structure feels right — we can also mix pieces.</p>
+    </section>
+
+    <section class="grid3">
+      <a class="opt" href="variant-1-split.html">
+        <div class="n">CONCEPT 01</div>
+        <h2>Asymmetric Split</h2>
+        <p>Statement headline on the left, a live “proof panel” on the right showing outcome
+        metrics with floating RBC / award chips. Most visual, most confident.</p>
+        <div class="tags"><span class="tag">Asymmetric</span><span class="tag">Impact panel</span><span class="tag">Bold</span></div>
+        <span class="btn btn-primary btn-sm">Open concept <span class="arrow">→</span></span>
+      </a>
+
+      <a class="opt" href="variant-2-centered.html">
+        <div class="n">CONCEPT 02</div>
+        <h2>Centered Editorial</h2>
+        <p>Calm, symmetrical, typography-led. A four-column credibility strip under the fold
+        turns your background into scannable numbers. Safest and most timeless.</p>
+        <div class="tags"><span class="tag">Centered</span><span class="tag">Metrics strip</span><span class="tag">Calm</span></div>
+        <span class="btn btn-primary btn-sm">Open concept <span class="arrow">→</span></span>
+      </a>
+
+      <a class="opt" href="variant-3-dashboard.html">
+        <div class="n">CONCEPT 03</div>
+        <h2>Recruiter Dashboard</h2>
+        <p>A sticky “candidate card” (availability, location, resume) beside the pitch and an
+        evidence table. The most literal answer to “give HR what they need in 6 seconds.”</p>
+        <div class="tags"><span class="tag">Profile card</span><span class="tag">Evidence table</span><span class="tag">Recruiter-first</span></div>
+        <span class="btn btn-primary btn-sm">Open concept <span class="arrow">→</span></span>
+      </a>
+    </section>
+  </main>
+</body>
+</html>
