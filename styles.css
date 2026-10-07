@@ -314,3 +314,7 @@
 .shot-name { display: block; margin-top: 12px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-d); }
 .case-section .note { margin: 16px 0 0; font-size: clamp(13px, 1vw, 14px); color: var(--muted-d); }
 @media (max-width: 720px) { .shots { grid-template-columns: 1fr; } }
+
+/* external link inside case sections */
+.case-section .ext-link { color: var(--accent); font-weight: 550; border-bottom: 1px solid currentColor; }
+.case-section .ext-link:hover { opacity: 0.75; }
