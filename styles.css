@@ -318,3 +318,15 @@
 /* external link inside case sections */
 .case-section .ext-link { color: var(--accent); font-weight: 550; border-bottom: 1px solid currentColor; }
 .case-section .ext-link:hover { opacity: 0.75; }
+
+/* ---------- design details carousel ---------- */
+.carousel { margin-top: clamp(24px, 3vw, 36px); }
+.carousel-viewport { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); }
+.carousel-track { display: flex; transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.carousel-track img { flex: 0 0 100%; width: 100%; display: block; }
+.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); display: grid; place-items: center; cursor: pointer; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10); transition: border-color 0.16s ease; }
+.carousel-btn:hover { border-color: var(--ink); }
+.carousel-btn.prev { left: 16px; }
+.carousel-btn.next { right: 16px; }
+.carousel-counter { margin-top: 14px; text-align: center; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
+@media (max-width: 720px) { .carousel-btn { width: 40px; height: 40px; } .carousel-btn.prev { left: 10px; } .carousel-btn.next { right: 10px; } }

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.css?v=22" />
+<link rel="stylesheet" href="../styles.css?v=23" />
 <style>
   /* page-specific accent for this case study only */
   :root { --accent: #42c49e; --accent-ink: #2e9a7a; --accent-soft: rgba(66, 196, 158, 0.16); }
@@ -76,6 +76,7 @@
         <a href="#problem">Problem</a>
         <a href="#research">Research</a>
         <a href="#design">Design</a>
+        <a href="#details">Details</a>
         <a href="#outcome">Outcome</a>
       </nav>
 
@@ -176,7 +177,7 @@
           </figure>
           
           <h2>Design Process</h2>
-          <p>Through continuous discussion and iteration as a team, the work moved from our original design deliverables through two rounds of iteration. Guided by our design strategies, we worked through the three quick-win problems and arrived at a page that feels modern, trustworthy, and more user-friendly.</p>
+          <p>Through continuous discussion and iteration as a team, the work moved from our original design deliverables through two rounds of iteration. Guided by our design strategies, we worked through the three quick-win problems and arrived at new pages that feels modern, trustworthy, and more user-friendly.</p>
 
           <div class="shots">
             <div class="shot">
@@ -197,6 +198,33 @@
           <p class="note">A look at our design process — from the original deliverables through two rounds of iteration.</p>
           <p>For the full process, see the <a class="ext-link" href="https://www.figma.com/design/UU1XfWQjvHkla8YR5KWyN1/-Maatrx-.prototype.final--Copy---Copy-?node-id=2-32" target="_blank" rel="noopener">Redesign rationals — Figma Page ↗</a>.</p>
         </section>
+
+        <!-- DESIGN DETAILS -->
+        <section class="case-section" id="details">
+          <span class="kicker">Design details</span>
+          <h2>Design details</h2>
+          <p>A closer look at some of the redesigned screens.</p>
+          <div class="carousel">
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="carousel-track">
+                <img src="../assets/maatrx-detail-01.jpg" alt="Design detail 1" loading="lazy" />
+                <img src="../assets/maatrx-detail-02.jpg" alt="Design detail 2" loading="lazy" />
+                <img src="../assets/maatrx-detail-03.jpg" alt="Design detail 3" loading="lazy" />
+                <img src="../assets/maatrx-detail-04.jpg" alt="Design detail 4" loading="lazy" />
+                <img src="../assets/maatrx-detail-05.jpg" alt="Design detail 5" loading="lazy" />
+                <img src="../assets/maatrx-detail-06.jpg" alt="Design detail 6" loading="lazy" />
+                <img src="../assets/maatrx-detail-07.jpg" alt="Design detail 7" loading="lazy" />
+                <img src="../assets/maatrx-detail-08.jpg" alt="Design detail 8" loading="lazy" />
+                <img src="../assets/maatrx-detail-09.jpg" alt="Design detail 9" loading="lazy" />
+                <img src="../assets/maatrx-detail-10.jpg" alt="Design detail 10" loading="lazy" />
+              </div>
+              <button class="carousel-btn prev" type="button" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7" /></svg></button>
+              <button class="carousel-btn next" type="button" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg></button>
+            </div>
+            <div class="carousel-counter"><span id="carousel-index">1</span> / 10</div>
+          </div>
+        </section>
+
 
         <!-- OUTCOME -->
         <section class="case-section" id="outcome">
@@ -337,6 +365,24 @@
       lb.addEventListener('touchend', function () { pinchDist = 0; });
 
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>
+  <script>
+    (function () {
+      var track = document.getElementById('carousel-track');
+      if (!track) return;
+      var imgs = track.querySelectorAll('img');
+      var indexEl = document.getElementById('carousel-index');
+      var i = 0;
+      function go(n) {
+        i = (n + imgs.length) % imgs.length;
+        track.style.transform = 'translateX(-' + (i * 100) + '%)';
+        if (indexEl) indexEl.textContent = i + 1;
+      }
+      var prev = document.querySelector('.carousel-btn.prev');
+      var next = document.querySelector('.carousel-btn.next');
+      if (prev) prev.addEventListener('click', function () { go(i - 1); });
+      if (next) next.addEventListener('click', function () { go(i + 1); });
     })();
   </script>
 </body>
