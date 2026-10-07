@@ -301,3 +301,6 @@
 
 /* design strategy index number */
 .strategy .s-idx { display: inline-block; margin-right: 10px; font-family: "Geist Mono", monospace; font-size: 12px; color: var(--muted-d); }
+
+/* second-level section titles share the h2 size, with top spacing */
+.case-section h2:not(:first-of-type) { margin-top: clamp(44px, 5vw, 76px); }
