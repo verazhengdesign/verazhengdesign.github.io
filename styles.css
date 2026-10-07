@@ -195,8 +195,8 @@
   background: var(--surface);
 }
 .case-meta .meta-item {
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  gap: 12px; padding: clamp(24px, 2.8vw, 40px) clamp(14px, 1.6vw, 28px);
+  display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0;
+  gap: 8px; padding: clamp(16px, 1.9vw, 26px) clamp(14px, 1.6vw, 28px);
   border-right: 1px solid var(--line);
 }
 .case-meta .meta-item:last-child { border-right: 0; }
