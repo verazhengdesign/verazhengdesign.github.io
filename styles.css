@@ -320,7 +320,8 @@
 .case-section .ext-link:hover { opacity: 0.75; }
 
 /* ---------- design details carousel ---------- */
-.carousel { margin-top: clamp(24px, 3vw, 36px); }
+.carousel { margin-top: clamp(12px, 1.6vw, 20px); }
+.carousel + p { margin-top: clamp(30px, 3.6vw, 52px); }
 .carousel-viewport { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); }
 .carousel-track { display: flex; transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
 .carousel-track img { flex: 0 0 100%; width: 100%; display: block; }
