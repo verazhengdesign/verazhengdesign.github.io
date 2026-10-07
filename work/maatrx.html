@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.css?v=9" />
+<link rel="stylesheet" href="../styles.css?v=10" />
 <style>
   /* page-specific accent for this case study only */
   :root { --accent: #42c49e; --accent-ink: #2e9a7a; --accent-soft: rgba(66, 196, 158, 0.16); }
@@ -111,7 +111,7 @@
         <section class="case-section" id="research">
           <span class="kicker">Research</span>
           <h2>Discovery phase</h2>
-          <p>In the discovery phase we wanted to learn more about the SynapseRx workflow, identify where users could be facing challenges, and find design improvements.</p>
+          <p>In the discovery phase we used 4 methods to learn more about the SynapseRx workflow, identify where users could be facing challenges, and find design improvements.</p>
           <div class="methods">
             <div class="method">
               <div class="method-thumb"><img src="../assets/maatrx-swot.png" alt="SWOT analysis" loading="lazy" /></div>
@@ -232,21 +232,71 @@
     })();
   </script>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true"><img id="lightbox-img" src="" alt="" /></div>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img id="lightbox-img" src="" alt="" draggable="false" />
+    <span class="lightbox-hint">Scroll / pinch to zoom · Esc to close</span>
+  </div>
   <script>
     (function () {
       var lb = document.getElementById('lightbox');
       var lbImg = document.getElementById('lightbox-img');
+      var scale = 1, tx = 0, ty = 0, dragging = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
+
+      function apply() {
+        lbImg.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
+        lbImg.classList.toggle('zoomed', scale > 1);
+      }
+      function reset() { scale = 1; tx = 0; ty = 0; apply(); }
+      function open(src, alt) {
+        lbImg.src = src; lbImg.alt = alt; reset();
+        lb.classList.add('open'); document.body.style.overflow = 'hidden';
+      }
+      function close() { lb.classList.remove('open'); document.body.style.overflow = ''; reset(); }
+
       document.querySelectorAll('.method-thumb > img').forEach(function (img) {
-        img.parentElement.addEventListener('click', function () {
-          lbImg.src = img.currentSrc || img.src;
-          lbImg.alt = img.alt;
-          lb.classList.add('open');
-          document.body.style.overflow = 'hidden';
-        });
+        img.parentElement.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
       });
-      function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
-      lb.addEventListener('click', close);
+
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+
+      // scroll / trackpad-pinch to zoom
+      lb.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        var factor = e.ctrlKey ? 0.012 : 0.0018;
+        scale = Math.max(1, Math.min(6, scale * Math.exp(-e.deltaY * factor)));
+        if (scale === 1) { tx = 0; ty = 0; }
+        apply();
+      }, { passive: false });
+
+      // drag to pan when zoomed
+      lbImg.addEventListener('pointerdown', function (e) {
+        if (scale <= 1) return;
+        dragging = true; startX = e.clientX; startY = e.clientY; startTx = tx; startTy = ty;
+        lbImg.setPointerCapture(e.pointerId);
+      });
+      lbImg.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        tx = startTx + (e.clientX - startX); ty = startTy + (e.clientY - startY); apply();
+      });
+      lbImg.addEventListener('pointerup', function () { dragging = false; });
+
+      // click image to close when not zoomed
+      lbImg.addEventListener('click', function () { if (scale <= 1) close(); });
+
+      // touch pinch
+      var pinchDist = 0, pinchScale = 1;
+      lb.addEventListener('touchstart', function (e) {
+        if (e.touches.length === 2) { pinchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); pinchScale = scale; }
+      }, { passive: true });
+      lb.addEventListener('touchmove', function (e) {
+        if (e.touches.length === 2 && pinchDist) {
+          e.preventDefault();
+          var d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+          scale = Math.max(1, Math.min(6, pinchScale * d / pinchDist)); apply();
+        }
+      }, { passive: false });
+      lb.addEventListener('touchend', function () { pinchDist = 0; });
+
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
     })();
   </script>
