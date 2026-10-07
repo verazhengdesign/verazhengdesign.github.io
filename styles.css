@@ -306,7 +306,8 @@
 .case-section h2:not(:first-of-type) { margin-top: clamp(44px, 5vw, 76px); }
 
 /* design process shots row */
-.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 24px); margin-top: clamp(24px, 3vw, 36px); }
-.shots .method-thumb { border: 1px solid var(--line); border-radius: 14px; }
+.shots { display: grid; grid-template-columns: 1fr; gap: clamp(30px, 3.6vw, 54px); margin-top: clamp(24px, 3vw, 36px); }
+.shots .method-thumb { border: 1px solid var(--line); border-radius: 16px; }
+.shot-name { display: block; margin-top: 12px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-d); }
 .case-section .note { margin: 16px 0 0; font-size: clamp(13px, 1vw, 14px); color: var(--muted-d); }
 @media (max-width: 720px) { .shots { grid-template-columns: 1fr; } }
