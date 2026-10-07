@@ -184,13 +184,32 @@
 
 /* ---------- case study pages ---------- */
 .case { padding: clamp(36px, 6vw, 92px) 0 0; }
-.case-meta { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-bottom: clamp(26px, 3vw, 44px); }
-.case-meta .item { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-d); }
-.case-meta .item b { color: var(--ink); font-weight: 600; }
-.case h1 { margin: 0; font-size: clamp(2.6rem, 6.4vw, 5.2rem); font-weight: 700; letter-spacing: -0.045em; line-height: 0.98; max-width: 18ch; }
+.case-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(30px, 4vw, 56px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.case-meta .meta-item {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 12px; padding: clamp(24px, 2.8vw, 40px) clamp(14px, 1.6vw, 28px);
+  border-right: 1px solid var(--line);
+}
+.case-meta .meta-item:last-child { border-right: 0; }
+.case-meta .meta-label { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
+.case-meta .meta-value { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 34px; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--ink); }
+.case-meta .meta-caption { font-size: clamp(13px, 1.05vw, 15px); color: var(--muted-d); line-height: 1.4; max-width: 22ch; }
+.case-meta .avatars { display: flex; }
+.case-meta .avatars span { width: 30px; height: 30px; border-radius: 50%; background: #d8d1c4; border: 2px solid var(--surface); margin-left: -10px; }
+.case-meta .avatars span:first-child { margin-left: 0; }
+.case-meta .tool-chip { width: 36px; height: 36px; border-radius: 11px; background: var(--panel); border: 1px solid var(--line); display: grid; place-items: center; font-family: "Geist Mono", monospace; font-size: 11px; color: var(--ink); }
+.case h1 { margin: 0; font-size: clamp(2rem, 4.6vw, 3.4rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.03; max-width: 24ch; }
 .case-summary { margin: clamp(18px, 2vw, 28px) 0 0; max-width: 56ch; font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.45; color: var(--muted-d); }
 .case-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(22px, 2.4vw, 32px); }
-.case-cover { margin-top: clamp(40px, 5vw, 78px); aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: var(--panel); }
+.case-cover { margin: clamp(30px, 4vw, 56px) 0 0; aspect-ratio: 2.2 / 1; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: var(--panel); }
 .case-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .case-body { display: grid; grid-template-columns: 208px minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); padding: clamp(56px, 7vw, 116px) 0 clamp(80px, 10vw, 150px); }
@@ -229,6 +248,10 @@
 .case-next .label { display: block; margin-bottom: clamp(22px, 2.5vw, 34px); font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
 
 @media (max-width: 720px) {
+  .case-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .case-meta .meta-item { border-bottom: 1px solid var(--line); }
+  .case-meta .meta-item:nth-child(2n) { border-right: 0; }
+  .case-meta .meta-item:nth-child(3), .case-meta .meta-item:nth-child(4) { border-bottom: 0; }
   .case-body { grid-template-columns: 1fr; gap: 28px; }
   .toc { position: static; flex-direction: row; gap: 18px; overflow-x: auto; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
   .toc .toc-label { display: none; }
