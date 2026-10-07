@@ -291,3 +291,10 @@
 .problem .q { margin-left: auto; font-family: "Geist Mono", monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
 .problem.quick .name { color: var(--accent); }
 @media (max-width: 720px) { .problems { grid-template-columns: 1fr; } }
+
+/* ---------- design strategies ---------- */
+.strategies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 34px); margin-top: clamp(24px, 3vw, 36px); }
+.strategy { border-top: 1px solid var(--line); padding-top: clamp(16px, 1.6vw, 22px); }
+.strategy .s-name { display: block; font-size: clamp(17px, 1.5vw, 20px); font-weight: 650; letter-spacing: -0.02em; color: var(--ink); }
+.strategy p { margin: 10px 0 0; max-width: none; }
+@media (max-width: 720px) { .strategies { grid-template-columns: 1fr; } }
