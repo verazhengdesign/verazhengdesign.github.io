@@ -234,7 +234,7 @@
 .case-section strong { color: var(--ink); font-weight: 650; }
 
 .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); margin: clamp(24px, 3vw, 40px) 0; padding: clamp(22px, 2.4vw, 32px) 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.stats .n { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+.stats .n { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: var(--accent); }
 .stats .n em { color: var(--accent); font-style: normal; }
 .stats .c { margin-top: 8px; font-size: 13px; line-height: 1.45; color: var(--muted-d); }
 
