@@ -307,7 +307,7 @@
 
 /* design process shots row */
 .shots { display: flex; flex-direction: column; align-items: center; margin-top: clamp(24px, 3vw, 36px); }
-.shot { width: 100%; max-width: 580px; }
+.shot { width: 100%; max-width: 440px; }
 .shots .method-thumb { border: 1px solid var(--line); border-radius: 16px; }
 .shots-arrow { margin: clamp(16px, 2.2vw, 28px) 0; color: var(--muted-d); }
 .shots-arrow svg { display: block; }
