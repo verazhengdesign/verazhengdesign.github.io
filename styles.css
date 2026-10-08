@@ -399,3 +399,10 @@ p.f-quote .f-by { display: block; margin-top: 6px; color: #7cc4ab; }
 /* findings: left align text, number badge to the left corner */
 .finding p:not(.f-title) { text-align: left; }
 .f-num { left: 0; }
+
+/* data section framed panel */
+.data-panel { border: 1px solid var(--line); border-radius: 26px; background: #ffffff; padding: clamp(28px, 3.6vw, 56px); }
+
+/* keep data tabs on one line inside the panel */
+.tab-bar { gap: clamp(16px, 2vw, 28px); }
+.tab { font-size: clamp(14px, 1.2vw, 17px); }
