@@ -411,3 +411,15 @@ p.f-quote .f-by { display: block; margin-top: 6px; color: #7cc4ab; }
 .data-panel { border: 0; border-radius: 0; background: transparent; padding: 0; }
 .tab-bar { gap: clamp(18px, 3vw, 44px); }
 .tab { font-size: clamp(15px, 1.4vw, 19px); }
+
+/* ---------- outcome: goals / callout / compare ---------- */
+.goals { display: flex; flex-direction: column; gap: clamp(12px, 1.4vw, 18px); margin-top: clamp(24px, 3vw, 36px); }
+.goal { display: flex; align-items: center; gap: clamp(16px, 1.6vw, 22px); border: 1px solid var(--line); border-radius: 14px; padding: clamp(16px, 1.7vw, 22px) clamp(20px, 2vw, 28px); background: var(--surface); }
+.goal .check { flex: none; width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--accent); color: var(--accent); display: grid; place-items: center; }
+.goal .goal-t { font-size: clamp(15px, 1.3vw, 18px); letter-spacing: -0.01em; color: var(--ink); }
+.callout .by { display: block; margin-top: 12px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-d); }
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 24px); margin-top: clamp(24px, 3vw, 36px); }
+.compare figure { margin: 0; }
+.compare img { width: 100%; display: block; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.compare figcaption { margin-top: 12px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
+@media (max-width: 720px) { .compare { grid-template-columns: 1fr; } }
