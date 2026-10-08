@@ -471,3 +471,6 @@ p.theme-desc { margin: 0; max-width: none; color: #3a372f; }
 .figure { cursor: zoom-in; }
 .figure img { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
 .figure:hover img { transform: scale(1.03); }
+
+/* small, borderless figure (transparent) */
+.figure-sm { max-width: 620px; background: transparent; border: 0; border-radius: 0; }
