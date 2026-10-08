@@ -439,3 +439,8 @@ p.f-quote .f-by { display: block; margin-top: 6px; color: #7cc4ab; }
 .case-meta .meta-item.team { position: relative; cursor: help; }
 .case-meta .team-pop { position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translate(-50%, 6px); white-space: nowrap; background: var(--ink); color: #fff; font-size: 12.5px; font-weight: 500; letter-spacing: -0.01em; padding: 8px 12px; border-radius: 10px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16); opacity: 0; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 20; }
 .case-meta .meta-item.team:hover .team-pop { opacity: 1; transform: translate(-50%, 0); }
+
+/* weavy: team popover below + procreate image icon */
+.case-meta .team-pop { top: calc(100% + 8px); bottom: auto; transform: translate(-50%, -6px); }
+.case-meta .meta-item.team:hover .team-pop { transform: translate(-50%, 0); }
+.case-meta .tool-icon img { width: 26px; height: 26px; object-fit: contain; display: block; }
