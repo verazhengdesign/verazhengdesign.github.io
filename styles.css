@@ -406,3 +406,8 @@ p.f-quote .f-by { display: block; margin-top: 6px; color: #7cc4ab; }
 /* keep data tabs on one line inside the panel */
 .tab-bar { gap: clamp(16px, 2vw, 28px); }
 .tab { font-size: clamp(14px, 1.2vw, 17px); }
+
+/* remove data panel frame (reverted) */
+.data-panel { border: 0; border-radius: 0; background: transparent; padding: 0; }
+.tab-bar { gap: clamp(18px, 3vw, 44px); }
+.tab { font-size: clamp(15px, 1.4vw, 19px); }
