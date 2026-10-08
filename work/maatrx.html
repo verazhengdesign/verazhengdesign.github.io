@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.css?v=28" />
+<link rel="stylesheet" href="../styles.css?v=29" />
 <style>
   /* page-specific accent for this case study only */
   :root { --accent: #42c49e; --accent-ink: #2e9a7a; --accent-soft: rgba(66, 196, 158, 0.16); }
@@ -234,7 +234,6 @@
         <!-- DATA COLLECTION -->
         <section class="case-section" id="data">
           <h2>Data Collection, Organization, &amp; Analysis</h2>
-          <p class="case-sub">Usability Testing</p>
           <div class="tabs">
             <div class="tab-bar">
               <button class="tab is-active" type="button" data-panel="0">Pain Point Tracker</button>
@@ -246,23 +245,23 @@
             <div class="tab-panels">
               <div class="tab-panel is-active">
                 <div class="tab-text">Records observed usability issues and moments of user difficulty during the test.</div>
-                <div class="tab-media"><img src="../assets/data-1.jpg" alt="Pain point tracker" loading="lazy" /></div>
+                <div class="tab-media"><div class="zoom-shot"><img src="../assets/data-1.jpg" alt="Pain point tracker" loading="lazy" /></div></div>
               </div>
               <div class="tab-panel">
                 <div class="tab-text">Quotes of participants for the non-actionable tasks — e.g. “What do you think you can do here?”</div>
-                <div class="tab-media"><img src="../assets/data-2.jpg" alt="Qualitative data analysis" loading="lazy" /></div>
+                <div class="tab-media"><div class="zoom-shot"><img src="../assets/data-2.jpg" alt="Qualitative data analysis" loading="lazy" /></div></div>
               </div>
               <div class="tab-panel">
                 <div class="tab-text">Measures task performance of the actionable tasks using indicators such as completion rate and user success.</div>
-                <div class="tab-media"><img src="../assets/data-3.jpg" alt="Success metrics" loading="lazy" /></div>
+                <div class="tab-media"><div class="zoom-shot"><img src="../assets/data-3.jpg" alt="Success metrics" loading="lazy" /></div></div>
               </div>
               <div class="tab-panel">
                 <div class="tab-text">Captures participants’ background information and has them read the consent form before testing.</div>
-                <div class="tab-media"><img src="../assets/data-4.jpg" alt="Pre-test" loading="lazy" /></div>
+                <div class="tab-media"><div class="zoom-shot"><img src="../assets/data-4.jpg" alt="Pre-test" loading="lazy" /></div></div>
               </div>
               <div class="tab-panel">
                 <div class="tab-text">Collects user feedback, reflections, and satisfaction after completing the tasks.</div>
-                <div class="tab-media"><img src="../assets/data-5.jpg" alt="Post-test" loading="lazy" /></div>
+                <div class="tab-media"><div class="zoom-shot"><img src="../assets/data-5.jpg" alt="Post-test" loading="lazy" /></div></div>
               </div>
             </div>
           </div>
@@ -389,7 +388,7 @@
       }
       function close() { lb.classList.remove('open'); document.body.style.overflow = ''; reset(); }
 
-      document.querySelectorAll('.method-thumb > img').forEach(function (img) {
+      document.querySelectorAll('.method-thumb > img, .zoom-shot > img').forEach(function (img) {
         img.parentElement.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
       });
 
