@@ -466,3 +466,8 @@ p.theme-desc { margin: 0; max-width: none; color: #3a372f; }
 .theme-num { display: block; font-size: 10.5px; line-height: 1.2; letter-spacing: 0.12em; color: var(--accent); }
 .theme-qs-label { font-size: 10.5px; line-height: 1.2; margin-bottom: 12px; }
 .theme h3 { margin: 12px 0 12px; }
+
+/* make .figure images zoomable + hover zoom */
+.figure { cursor: zoom-in; }
+.figure img { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.figure:hover img { transform: scale(1.03); }
