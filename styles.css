@@ -423,3 +423,12 @@ p.f-quote .f-by { display: block; margin-top: 6px; color: #7cc4ab; }
 .compare img { width: 100%; display: block; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
 .compare figcaption { margin-top: 12px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
 @media (max-width: 720px) { .compare { grid-template-columns: 1fr; } }
+
+/* outcome tweaks */
+.goals { gap: clamp(6px, 0.8vw, 10px); margin: clamp(20px, 2.4vw, 30px) 0 clamp(34px, 4vw, 56px); }
+.goal { border: 0; background: transparent; padding: clamp(4px, 0.6vw, 8px) 0; }
+.goal .check { width: 26px; height: 26px; }
+.goal .check svg { width: 14px; height: 14px; }
+.goal .goal-t { font-size: clamp(14px, 1.1vw, 16px); }
+.compare .zoom-shot { aspect-ratio: 4 / 3; }
+.compare .zoom-shot img { height: 100%; object-fit: cover; }
