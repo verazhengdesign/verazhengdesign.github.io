@@ -432,3 +432,4 @@ p.f-quote .f-by { display: block; margin-top: 6px; color: #7cc4ab; }
 .goal .goal-t { font-size: clamp(14px, 1.1vw, 16px); }
 .compare .zoom-shot { aspect-ratio: 4 / 3; }
 .compare .zoom-shot img { height: 100%; object-fit: cover; }
+.compare + p { margin-top: clamp(28px, 3.4vw, 48px); }
