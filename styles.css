@@ -395,3 +395,7 @@ p.f-quote .f-by { display: block; margin-top: 6px; color: #7cc4ab; }
 .finding .dots { gap: 6px; }
 .finding .dots span { width: 14px; height: 14px; }
 .finding p:not(.f-title) { text-align: justify; }
+
+/* findings: left align text, number badge to the left corner */
+.finding p:not(.f-title) { text-align: left; }
+.f-num { left: 0; }
