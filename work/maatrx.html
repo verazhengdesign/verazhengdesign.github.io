@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.css?v=27" />
+<link rel="stylesheet" href="../styles.css?v=28" />
 <style>
   /* page-specific accent for this case study only */
   :root { --accent: #42c49e; --accent-ink: #2e9a7a; --accent-soft: rgba(66, 196, 158, 0.16); }
@@ -77,6 +77,7 @@
         <a href="#research">Research</a>
         <a href="#design">Design</a>
         <a href="#usability-test">Usability test</a>
+        <a href="#data">Data &amp; analysis</a>
         <a href="#prototype">Prototype</a>
         <a href="#outcome">Outcome</a>
       </nav>
@@ -226,6 +227,43 @@
                 <li>Moderated “think-out-loud” test</li>
                 <li>Provided scenario + 24 mini tasks</li>
               </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- DATA COLLECTION -->
+        <section class="case-section" id="data">
+          <h2>Data Collection, Organization, &amp; Analysis</h2>
+          <p class="case-sub">Usability Testing</p>
+          <div class="tabs">
+            <div class="tab-bar">
+              <button class="tab is-active" type="button" data-panel="0">Pain Point Tracker</button>
+              <button class="tab" type="button" data-panel="1">Qualitative Data Analysis</button>
+              <button class="tab" type="button" data-panel="2">Success Metrics</button>
+              <button class="tab" type="button" data-panel="3">Pre-test</button>
+              <button class="tab" type="button" data-panel="4">Post-test</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tab-panel is-active">
+                <div class="tab-text">Records observed usability issues and moments of user difficulty during the test.</div>
+                <div class="tab-media"><img src="../assets/data-1.jpg" alt="Pain point tracker" loading="lazy" /></div>
+              </div>
+              <div class="tab-panel">
+                <div class="tab-text">Quotes of participants for the non-actionable tasks — e.g. “What do you think you can do here?”</div>
+                <div class="tab-media"><img src="../assets/data-2.jpg" alt="Qualitative data analysis" loading="lazy" /></div>
+              </div>
+              <div class="tab-panel">
+                <div class="tab-text">Measures task performance of the actionable tasks using indicators such as completion rate and user success.</div>
+                <div class="tab-media"><img src="../assets/data-3.jpg" alt="Success metrics" loading="lazy" /></div>
+              </div>
+              <div class="tab-panel">
+                <div class="tab-text">Captures participants’ background information and has them read the consent form before testing.</div>
+                <div class="tab-media"><img src="../assets/data-4.jpg" alt="Pre-test" loading="lazy" /></div>
+              </div>
+              <div class="tab-panel">
+                <div class="tab-text">Collects user feedback, reflections, and satisfaction after completing the tasks.</div>
+                <div class="tab-media"><img src="../assets/data-5.jpg" alt="Post-test" loading="lazy" /></div>
+              </div>
             </div>
           </div>
         </section>
@@ -414,6 +452,19 @@
       var next = document.querySelector('.carousel-btn.next');
       if (prev) prev.addEventListener('click', function () { go(i - 1); });
       if (next) next.addEventListener('click', function () { go(i + 1); });
+    })();
+  </script>
+  <script>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.tab-panel'));
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var i = parseInt(tab.getAttribute('data-panel'), 10);
+          tabs.forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+          panels.forEach(function (p, j) { p.classList.toggle('is-active', j === i); });
+        });
+      });
     })();
   </script>
 </body>

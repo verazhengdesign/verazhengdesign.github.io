@@ -351,3 +351,16 @@
 .info-card li { margin-bottom: 10px; font-size: clamp(14px, 1.05vw, 15.5px); line-height: 1.55; }
 .info-card li:last-child { margin-bottom: 0; }
 @media (max-width: 720px) { .info-cards { grid-template-columns: 1fr; } }
+
+/* ---------- tabs (data collection) ---------- */
+p.case-sub { margin: 8px 0 0; font-size: clamp(15px, 1.3vw, 18px); color: var(--muted-d); }
+.tabs { margin-top: clamp(28px, 3.5vw, 48px); }
+.tab-bar { display: flex; flex-wrap: wrap; gap: clamp(18px, 3vw, 44px); border-bottom: 1px solid var(--line); }
+.tab { appearance: none; background: none; border: 0; padding: 0 0 14px; margin-bottom: -1px; cursor: pointer; font-family: inherit; font-size: clamp(15px, 1.4vw, 19px); font-weight: 600; letter-spacing: -0.01em; color: var(--muted-d); border-bottom: 2px solid transparent; transition: color 0.16s ease, border-color 0.16s ease; }
+.tab:hover { color: var(--ink); }
+.tab.is-active { color: var(--ink); border-bottom-color: var(--accent); }
+.tab-panel { display: none; grid-template-columns: 0.9fr 1.4fr; gap: clamp(28px, 4vw, 64px); align-items: center; padding-top: clamp(28px, 3.5vw, 52px); }
+.tab-panel.is-active { display: grid; }
+.tab-text { font-size: clamp(17px, 1.9vw, 25px); line-height: 1.35; letter-spacing: -0.015em; color: var(--ink); }
+.tab-media img { width: 100%; display: block; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+@media (max-width: 720px) { .tab-panel { grid-template-columns: 1fr; gap: 20px; } }
