@@ -444,3 +444,15 @@ p.f-quote .f-by { display: block; margin-top: 6px; color: #7cc4ab; }
 .case-meta .team-pop { top: calc(100% + 8px); bottom: auto; transform: translate(-50%, -6px); }
 .case-meta .meta-item.team:hover .team-pop { transform: translate(-50%, 0); }
 .case-meta .tool-icon img { width: 26px; height: 26px; object-fit: contain; display: block; }
+
+/* ---------- research themes (numbered rows) ---------- */
+.themes { display: flex; flex-direction: column; gap: clamp(26px, 3.2vw, 48px); margin-top: clamp(24px, 3vw, 36px); }
+.theme { display: grid; grid-template-columns: 0.95fr 1.15fr; gap: clamp(28px, 4vw, 64px); }
+.theme-num { font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--accent); }
+.theme h3 { margin: 8px 0 12px; font-size: clamp(1.25rem, 1.8vw, 1.6rem); font-weight: 650; letter-spacing: -0.025em; line-height: 1.1; }
+p.theme-desc { margin: 0; max-width: none; color: #3a372f; }
+.theme-qs-label { display: block; margin-bottom: 12px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
+.theme-qs ul { margin: 0; padding-left: 18px; }
+.theme-qs li { margin-bottom: 12px; font-size: clamp(14px, 1.05vw, 15.5px); line-height: 1.55; color: #3a372f; }
+.theme-qs li:last-child { margin-bottom: 0; }
+@media (max-width: 720px) { .theme { grid-template-columns: 1fr; gap: 16px; } }
