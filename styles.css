@@ -461,3 +461,8 @@ p.theme-desc { margin: 0; max-width: none; color: #3a372f; }
 .themes { gap: clamp(22px, 2.6vw, 38px); }
 .theme { border-top: 1px solid var(--line); padding-top: clamp(22px, 2.6vw, 34px); }
 .theme h3 { color: var(--accent); }
+
+/* weavy themes: smaller Questions label + top alignment */
+.theme-num { display: block; font-size: 10.5px; line-height: 1.2; letter-spacing: 0.12em; color: var(--accent); }
+.theme-qs-label { font-size: 10.5px; line-height: 1.2; margin-bottom: 12px; }
+.theme h3 { margin: 12px 0 12px; }
