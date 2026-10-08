@@ -377,3 +377,14 @@ p.case-sub { margin: 8px 0 0; font-size: clamp(15px, 1.3vw, 18px); color: var(--
 .finding .dots span { width: 18px; height: 18px; border-radius: 50%; background: rgba(20, 19, 15, 0.10); }
 .finding .dots span.on { background: var(--accent); }
 @media (max-width: 720px) { .findings { grid-template-columns: 1fr; } }
+
+/* findings: numbering, rounder dots, quotes */
+.finding-wrap { display: flex; flex-direction: column; }
+.finding { flex: 1; }
+.f-num { align-self: flex-start; display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+.finding .dots span { flex: 0 0 auto; }
+p.f-quote { margin: 16px 4px 0; min-height: 4.6em; font-size: clamp(13px, 1vw, 14px); font-style: italic; line-height: 1.5; color: #5fb59a; }
+p.f-quote .f-by { display: block; margin-top: 6px; color: #7cc4ab; }
+.finding-quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: 18px; }
+.finding-quotes p.f-quote { margin: 0; min-height: 0; }
+@media (max-width: 720px) { .finding-quotes { grid-template-columns: 1fr; } }
