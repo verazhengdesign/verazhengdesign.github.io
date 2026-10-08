@@ -367,3 +367,13 @@ p.case-sub { margin: 8px 0 0; font-size: clamp(15px, 1.3vw, 18px); color: var(--
 .zoom-shot img { width: 100%; height: auto; display: block; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
 .zoom-shot:hover img { transform: scale(1.03); }
 @media (max-width: 720px) { .tab-panel { grid-template-columns: 1fr; gap: 20px; } }
+
+/* ---------- findings cards ---------- */
+.findings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(22px, 2.6vw, 32px); }
+.finding { border: 1.5px solid var(--accent); border-radius: 18px; padding: clamp(20px, 2.2vw, 28px); background: var(--surface); display: flex; flex-direction: column; }
+.finding .f-title { margin: 0 0 14px; font-size: clamp(16px, 1.4vw, 19px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; color: var(--ink); }
+.finding p { margin: 0 0 20px; max-width: none; font-size: clamp(14px, 1.05vw, 15.5px); line-height: 1.5; color: var(--muted-d); }
+.finding .dots { margin-top: auto; display: flex; gap: 7px; }
+.finding .dots span { width: 18px; height: 18px; border-radius: 50%; background: rgba(20, 19, 15, 0.10); }
+.finding .dots span.on { background: var(--accent); }
+@media (max-width: 720px) { .findings { grid-template-columns: 1fr; } }
