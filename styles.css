@@ -632,3 +632,9 @@ p.flow-cap { font-size: 13.5px; }
 .outcome-quotes .callout { margin: 0; }
 .outcome-quotes .callout p { font-size: clamp(15px, 1.3vw, 17px); line-height: 1.5; }
 @media (max-width: 720px) { .outcome-quotes { grid-template-columns: 1fr; } }
+
+/* outcome reception: photo on the left, quotes stacked on the right */
+.outcome-reception { display: grid; grid-template-columns: minmax(250px, 330px) 1fr; gap: clamp(18px, 2.4vw, 34px); align-items: start; margin: clamp(24px, 3vw, 40px) 0; }
+.outcome-reception .figure.mid { margin: 0; max-width: none; }
+.outcome-reception .outcome-quotes { grid-template-columns: 1fr; margin: 0; gap: clamp(12px, 1.6vw, 18px); }
+@media (max-width: 720px) { .outcome-reception { grid-template-columns: 1fr; } }
