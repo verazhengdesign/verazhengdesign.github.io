@@ -638,3 +638,6 @@ p.flow-cap { font-size: 13.5px; }
 .outcome-reception .figure.mid { margin: 0; max-width: none; }
 .outcome-reception .outcome-quotes { grid-template-columns: 1fr; margin: 0; gap: clamp(12px, 1.6vw, 18px); }
 @media (max-width: 720px) { .outcome-reception { grid-template-columns: 1fr; } }
+
+/* inline key-point highlight */
+.hl { background: var(--accent-soft); color: var(--accent-ink); font-weight: 600; border-radius: 3px; padding: 0.5px 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
