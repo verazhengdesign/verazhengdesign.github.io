@@ -497,3 +497,13 @@ p.b-evidence { margin: 0; max-width: none; font-size: clamp(14px, 1.05vw, 15.5px
 .b-dots { display: flex; gap: 7px; margin-top: 12px; }
 .b-dots span { width: 15px; height: 15px; border-radius: 50%; background: rgba(20, 19, 15, 0.12); flex: 0 0 auto; }
 .b-dots span.on { background: var(--accent); }
+
+/* more breathing room for case-study subsections */
+.case-section h3 { margin-top: clamp(48px, 5vw, 74px); }
+.theme h3 { margin-top: 12px; }
+
+/* behaviours: roomier + quoted block */
+.b-head { margin-bottom: 20px; }
+.behaviour ul { margin-bottom: 20px; }
+p.b-quote { margin: 0 0 20px; padding-left: 18px; border-left: 3px solid var(--accent); font-size: clamp(14.5px, 1.2vw, 17px); }
+.b-dots { margin-top: 16px; }
