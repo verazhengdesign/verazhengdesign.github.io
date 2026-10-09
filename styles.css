@@ -608,3 +608,8 @@ p.flow-cap { font-size: 13.5px; }
 
 /* centered figure caption (no box, body font) */
 .figure figcaption.cap { border-top: 0; padding: 15px 16px; text-align: center; font-family: inherit; font-size: 13.5px; letter-spacing: 0; text-transform: none; color: var(--muted-d); }
+
+/* prototype walkthrough: phone silhouette that clips the video's black corners */
+.walkthrough { display: flex; justify-content: center; margin: clamp(28px, 4vw, 48px) 0; }
+.phone-frame { width: min(330px, 74%); border-radius: 16% / 7.9%; overflow: hidden; background: #000; box-shadow: 0 26px 60px -30px rgba(0, 0, 0, 0.55); line-height: 0; }
+.phone-frame video { width: 100%; height: auto; display: block; }
