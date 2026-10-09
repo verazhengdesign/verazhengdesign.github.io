@@ -579,3 +579,13 @@ p.b-quote { margin: 0 0 14px; padding-left: 14px; }
 .step-name { font-size: clamp(15px, 1.3vw, 18px); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
 .step-media .figure { margin: 0; }
 @media (max-width: 720px) { .step { grid-template-columns: 1fr; gap: 14px; } .step-label { flex-direction: row; align-items: baseline; gap: 12px; } }
+
+/* ---------- design process flow (sketch -> arrow -> auto-scrolling low-fi) ---------- */
+.flow { display: grid; grid-template-columns: 360px auto 1fr; gap: clamp(18px, 2.4vw, 36px); align-items: center; margin-top: clamp(24px, 3vw, 36px); }
+.flow .figure { margin: 0; }
+.flow-arrow { display: grid; place-items: center; color: var(--muted-d); }
+.marquee { overflow: hidden; height: 200px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.marquee-track { display: flex; height: 100%; width: max-content; animation: marquee 34s linear infinite; }
+.marquee-track img { height: 100%; width: auto; display: block; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (max-width: 720px) { .flow { grid-template-columns: 1fr; } .flow-arrow { transform: rotate(90deg); } }
