@@ -570,3 +570,12 @@ p.b-quote { margin: 0 0 14px; padding-left: 14px; }
 .split { grid-template-columns: 0.78fr 1.22fr; }
 .split-text h4 { font-size: clamp(1.05rem, 1.3vw, 1.2rem); }
 .split-text li { font-size: clamp(13px, 0.95vw, 14.5px); }
+
+/* ---------- design process steps ---------- */
+.steps { display: flex; flex-direction: column; gap: clamp(30px, 3.6vw, 56px); margin-top: clamp(24px, 3vw, 36px); }
+.step { display: grid; grid-template-columns: 150px 1fr; gap: clamp(24px, 3vw, 48px); align-items: start; }
+.step-label { display: flex; flex-direction: column; gap: 6px; }
+.step-num { font-family: "Geist Mono", monospace; font-size: clamp(26px, 3.2vw, 38px); font-weight: 700; line-height: 1; color: var(--accent); letter-spacing: -0.02em; }
+.step-name { font-size: clamp(15px, 1.3vw, 18px); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+.step-media .figure { margin: 0; }
+@media (max-width: 720px) { .step { grid-template-columns: 1fr; gap: 14px; } .step-label { flex-direction: row; align-items: baseline; gap: 12px; } }
