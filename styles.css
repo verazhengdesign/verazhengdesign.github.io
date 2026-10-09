@@ -548,3 +548,8 @@ p.b-quote { margin: 0 0 14px; padding-left: 14px; }
 .rec-box { background: transparent; border-radius: 0; padding: 0 0 0 16px; margin-bottom: 14px; }
 .rec-box p { color: #2563eb; }
 .rec-foot { gap: 10px; }
+
+/* recommendations: tighter again, no left rule */
+.rec { padding: clamp(16px, 1.8vw, 20px); }
+.rec-head { margin-bottom: 10px; }
+.rec-box { border-left: 0; padding-left: 0; margin-bottom: 12px; }
