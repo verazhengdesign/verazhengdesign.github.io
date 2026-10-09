@@ -507,3 +507,12 @@ p.b-evidence { margin: 0; max-width: none; font-size: clamp(14px, 1.05vw, 15.5px
 .behaviour ul { margin-bottom: 20px; }
 p.b-quote { margin: 0 0 20px; padding-left: 18px; border-left: 3px solid var(--accent); font-size: clamp(14.5px, 1.2vw, 17px); }
 .b-dots { margin-top: 16px; }
+
+/* behaviours as 2-up light cards */
+.behaviours { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
+.behaviour { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: clamp(22px, 2.4vw, 30px); }
+.b-head { margin-bottom: 14px; }
+.behaviour ul { margin-bottom: 14px; }
+p.b-quote { margin: 0 0 14px; padding-left: 14px; }
+.b-dots { margin-top: 12px; }
+@media (max-width: 720px) { .behaviours { grid-template-columns: 1fr; } }
