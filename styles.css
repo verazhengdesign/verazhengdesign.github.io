@@ -523,3 +523,16 @@ p.b-quote { margin: 0 0 14px; padding-left: 14px; }
 /* behaviours: back to divider list (no cards) */
 .behaviour { border: 0; border-top: 1px solid var(--line); border-radius: 0; background: transparent; padding: clamp(26px, 3vw, 40px) 0 0; }
 .behaviours { gap: clamp(26px, 3.2vw, 46px); }
+
+/* ---------- design recommendations ---------- */
+.recs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(24px, 3vw, 36px); }
+.rec { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: clamp(20px, 2.2vw, 26px); }
+.rec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.rec-head svg { width: 22px; height: 22px; color: var(--accent); flex: none; }
+.rec-head h4 { margin: 0; font-size: clamp(1.05rem, 1.4vw, 1.25rem); font-weight: 650; letter-spacing: -0.02em; line-height: 1.2; }
+.rec-box { background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; }
+.rec-box .rec-label { display: block; margin-bottom: 8px; font-family: "Geist Mono", monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-ink); }
+.rec-box p { margin: 0; max-width: none; font-size: clamp(14px, 1.05vw, 15.5px); line-height: 1.5; color: var(--ink); }
+.rec-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.rec-evidence { font-size: clamp(13px, 1vw, 14.5px); font-style: italic; color: var(--muted-d); }
+@media (max-width: 720px) { .recs { grid-template-columns: 1fr; } }
