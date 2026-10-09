@@ -601,3 +601,7 @@ p.b-quote { margin: 0 0 14px; padding-left: 14px; }
 .flow-media { width: 100%; }
 .flow-cap { margin: 14px 0 0; text-align: center; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
 .flow-sketch figcaption { text-align: center; }
+
+/* flow captions: same font as body, title case, no box */
+.flow-cap { margin: 12px 0 0; font-family: inherit; font-size: 13.5px; letter-spacing: 0; text-transform: none; text-align: center; color: var(--muted-d); }
+p.flow-cap { font-size: 13.5px; }
