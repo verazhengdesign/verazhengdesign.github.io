@@ -519,3 +519,7 @@ p.b-quote { margin: 0 0 14px; padding-left: 14px; }
 
 /* behaviours single column */
 .behaviours { grid-template-columns: 1fr; }
+
+/* behaviours: back to divider list (no cards) */
+.behaviour { border: 0; border-top: 1px solid var(--line); border-radius: 0; background: transparent; padding: clamp(26px, 3vw, 40px) 0 0; }
+.behaviours { gap: clamp(26px, 3.2vw, 46px); }
