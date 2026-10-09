@@ -607,4 +607,4 @@ p.b-quote { margin: 0 0 14px; padding-left: 14px; }
 p.flow-cap { font-size: 13.5px; }
 
 /* centered figure caption (no box, body font) */
-.figure figcaption.cap { border-top: 0; padding: 14px 0 0; text-align: center; font-family: inherit; font-size: 13.5px; letter-spacing: 0; text-transform: none; color: var(--muted-d); }
+.figure figcaption.cap { border-top: 0; padding: 15px 16px; text-align: center; font-family: inherit; font-size: 13.5px; letter-spacing: 0; text-transform: none; color: var(--muted-d); }
