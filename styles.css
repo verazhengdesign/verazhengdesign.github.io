@@ -482,3 +482,18 @@ p.theme-desc { margin: 0; max-width: none; color: #3a372f; }
 .split-text > p:last-child { margin-bottom: 0; }
 .split-media .figure { margin: 0; }
 @media (max-width: 720px) { .split { grid-template-columns: 1fr; gap: 18px; } }
+
+/* ---------- defining behaviours ---------- */
+.behaviours { display: flex; flex-direction: column; gap: clamp(28px, 3.4vw, 52px); margin-top: clamp(24px, 3vw, 36px); }
+.behaviour { border-top: 1px solid var(--line); padding-top: clamp(22px, 2.6vw, 34px); }
+.b-head { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.b-num { flex: none; display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--accent-soft); color: var(--accent-ink); font-family: "Geist Mono", monospace; font-size: 15px; font-weight: 700; }
+.behaviour h4 { margin: 0; font-size: clamp(1.2rem, 1.7vw, 1.5rem); font-weight: 650; letter-spacing: -0.02em; line-height: 1.15; }
+.behaviour ul { margin: 0 0 18px; padding-left: 20px; }
+.behaviour li { margin-bottom: 8px; font-size: clamp(14px, 1.05vw, 15.5px); line-height: 1.55; color: #3a372f; }
+.behaviour li:last-child { margin-bottom: 0; }
+p.b-quote { margin: 0 0 18px; max-width: none; font-size: clamp(15px, 1.3vw, 18px); font-style: italic; font-weight: 550; line-height: 1.45; color: var(--accent); }
+p.b-evidence { margin: 0; max-width: none; font-size: clamp(14px, 1.05vw, 15.5px); color: #3a372f; }
+.b-dots { display: flex; gap: 7px; margin-top: 12px; }
+.b-dots span { width: 15px; height: 15px; border-radius: 50%; background: rgba(20, 19, 15, 0.12); flex: 0 0 auto; }
+.b-dots span.on { background: var(--accent); }
