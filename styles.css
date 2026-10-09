@@ -553,3 +553,9 @@ p.b-quote { margin: 0 0 14px; padding-left: 14px; }
 .rec { padding: clamp(16px, 1.8vw, 20px); }
 .rec-head { margin-bottom: 10px; }
 .rec-box { border-left: 0; padding-left: 0; margin-bottom: 12px; }
+
+/* rhythm: bigger gap between H2s, tighter content inside */
+.case-section h2:not(:first-of-type) { margin-top: clamp(60px, 6.5vw, 104px); }
+.case-section p { margin-bottom: 15px; }
+.case-section ul { margin-bottom: 15px; }
+.case-section li { margin-bottom: 6px; }
