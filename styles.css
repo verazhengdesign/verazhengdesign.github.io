@@ -639,3 +639,7 @@ p.flow-cap { font-size: 13.5px; }
 .outcome-reception .outcome-quotes { grid-template-columns: 1fr; margin: 0; gap: clamp(12px, 1.6vw, 18px); }
 @media (max-width: 720px) { .outcome-reception { grid-template-columns: 1fr; } }
 
+
+/* frameless figure: blends into the page background */
+.figure.bare { border: 0; border-radius: 0; background: transparent; }
+.figure.bare img { mix-blend-mode: darken; }
