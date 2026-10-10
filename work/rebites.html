@@ -14,6 +14,9 @@
   :root { --accent: #2e9e57; --accent-ink: #217a41; --accent-soft: rgba(46, 158, 87, 0.16); }
   /* ReBites: no hover zoom — click opens the full image instead */
   .figure:hover img { transform: none; }
+  /* ReBites: frameless figures that blend into the page background */
+  .figure { border: 0; border-radius: 0; background: transparent; }
+  .figure img { mix-blend-mode: darken; }
 </style>
 </head>
 <body>
@@ -142,9 +145,7 @@
             <li>A <strong>points system</strong> with leaderboards, redeemable at local markets.</li>
             <li><strong>Virtual + real farm trips</strong> for hands-on, meaningful learning.</li>
           </ul>
-          <figure class="figure"><img src="../assets/rebites-home.jpg" alt="Student home screen" loading="lazy" /></figure>
           <figure class="figure"><img src="../assets/rebites-learning.jpg" alt="Interactive learning and virtual farm tour" loading="lazy" /></figure>
-          <figure class="figure"><img src="../assets/rebites-flip.jpg" alt="Flip the Table mini-game" loading="lazy" /></figure>
           <figure class="figure"><img src="../assets/rebites-quiz.jpg" alt="Interactive quiz" loading="lazy" /></figure>
           <figure class="figure"><img src="../assets/rebites-leaderboard.jpg" alt="Leaderboard and competitions" loading="lazy" /></figure>
 
