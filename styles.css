@@ -646,3 +646,12 @@ p.flow-cap { font-size: 13.5px; }
 
 /* small note line */
 p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--muted-d); }
+
+/* methodology 2x2 grid (mimics the research slide) */
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; margin: clamp(24px, 3vw, 36px) 0; border-top: 1px solid var(--line); }
+.method-grid .m-cell { padding: clamp(16px, 2vw, 26px) 0; border-bottom: 1px solid var(--line); }
+.method-grid .m-cell:nth-child(odd) { padding-right: clamp(18px, 2.4vw, 36px); border-right: 1px solid var(--line); }
+.method-grid .m-cell:nth-child(even) { padding-left: clamp(18px, 2.4vw, 36px); }
+.method-grid .m-k { display: block; margin-bottom: 10px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
+.method-grid .m-v { display: block; font-size: clamp(15px, 1.3vw, 17px); line-height: 1.5; color: var(--ink); }
+@media (max-width: 720px) { .method-grid { grid-template-columns: 1fr; } .method-grid .m-cell:nth-child(odd) { padding-right: 0; border-right: 0; } .method-grid .m-cell:nth-child(even) { padding-left: 0; } }
