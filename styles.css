@@ -653,3 +653,6 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .method-grid .m-k::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #ef5b5b; flex: none; }
 .method-grid .m-v { display: block; font-size: clamp(15px, 1.3vw, 17px); line-height: 1.5; color: var(--ink); }
 @media (max-width: 720px) { .method-grid { grid-template-columns: 1fr; gap: 22px; } }
+
+/* inline logo inside method grid values */
+.method-grid .m-logo { width: 18px; height: 18px; object-fit: contain; vertical-align: -4px; margin-left: 5px; }
