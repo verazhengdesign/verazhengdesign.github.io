@@ -640,6 +640,6 @@ p.flow-cap { font-size: 13.5px; }
 @media (max-width: 720px) { .outcome-reception { grid-template-columns: 1fr; } }
 
 
-/* non-interactive figure (no hover zoom / lightbox) */
-.figure.no-zoom { cursor: default; }
+/* non-interactive, frameless figure (no border / no zoom) */
+.figure.no-zoom { border: 0; border-radius: 0; background: transparent; cursor: default; }
 .figure.no-zoom:hover img { transform: none; }
