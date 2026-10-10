@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.css?v=80" />
+<link rel="stylesheet" href="../styles.css?v=81" />
 <style>
   /* page-specific accent — ReBites (green) */
   :root { --accent: #2e9e57; --accent-ink: #217a41; --accent-soft: rgba(46, 158, 87, 0.16); }
@@ -85,7 +85,7 @@
           <span class="kicker">Overview</span>
           <h2>What This Project Is</h2>
           <p>Built in a one-week design sprint with a team of five, and awarded <strong>1st place at the Seneca Hackathon 2025</strong>.</p>
-          <figure class="figure bare"><img src="../assets/rebites-about.jpg" alt="About the project: role, tool, and team" loading="lazy" /></figure>
+          <figure class="figure no-zoom"><img src="../assets/rebites-about.jpg" alt="About the project: role, tool, and team" loading="lazy" /></figure>
 
           <div class="stats">
             <div class="stat"><div class="n">1st</div><div class="c">Place, Seneca Hackathon 2025</div></div>
@@ -102,7 +102,7 @@
           <span class="kicker">Problem</span>
           <h2>The Problem</h2>
           <p>Kids learn best when sustainability is <strong>playful and concrete</strong>, but most existing resources are text-heavy and built for adults. Teachers, on the other hand, need something quick and repeatable to run in a classroom.</p>
-          <figure class="figure bare"><img src="../assets/rebites-problem.jpg" alt="Problem statement and key stakeholders" loading="lazy" /></figure>
+          <figure class="figure no-zoom"><img src="../assets/rebites-problem.jpg" alt="Problem statement and key stakeholders" loading="lazy" /></figure>
         </section>
 
         <!-- RESEARCH -->
@@ -219,7 +219,7 @@
       function reset() { scale = 1; tx = 0; ty = 0; apply(); }
       function open(src, alt) { lbImg.src = src; lbImg.alt = alt; reset(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
       function close() { lb.classList.remove('open'); document.body.style.overflow = ''; reset(); }
-      document.querySelectorAll('.method-thumb > img, .zoom-shot > img, .figure > img').forEach(function (img) {
+      document.querySelectorAll('.method-thumb > img, .zoom-shot > img, .figure:not(.no-zoom) > img').forEach(function (img) {
         img.parentElement.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
       });
       lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
