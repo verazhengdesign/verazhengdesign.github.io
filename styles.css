@@ -640,9 +640,8 @@ p.flow-cap { font-size: 13.5px; }
 @media (max-width: 720px) { .outcome-reception { grid-template-columns: 1fr; } }
 
 
-/* non-interactive, frameless figure (no border / no zoom) */
-.figure.no-zoom { border: 0; border-radius: 0; background: transparent; cursor: default; }
-.figure.no-zoom:hover img { transform: none; }
+/* frameless figure */
+.figure.flat { border: 0; border-radius: 0; background: transparent; }
 
 /* small note line */
 p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--muted-d); }
@@ -660,3 +659,6 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 /* frameless figure that blends into the page background */
 .figure.blend { border: 0; border-radius: 0; background: transparent; }
 .figure.blend img { mix-blend-mode: darken; }
+
+/* no hover zoom anywhere — click opens the full image instead */
+.figure:hover img, .zoom-shot:hover img, .method:hover .method-thumb img { transform: none; }
