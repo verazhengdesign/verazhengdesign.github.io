@@ -643,3 +643,6 @@ p.flow-cap { font-size: 13.5px; }
 /* non-interactive, frameless figure (no border / no zoom) */
 .figure.no-zoom { border: 0; border-radius: 0; background: transparent; cursor: default; }
 .figure.no-zoom:hover img { transform: none; }
+
+/* small note line */
+p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--muted-d); }
