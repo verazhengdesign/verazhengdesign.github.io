@@ -666,3 +666,16 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 
 /* stacked variant of the label/value grid */
 .method-grid.stack { grid-template-columns: 1fr; gap: clamp(20px, 2.6vw, 32px); }
+
+/* research plan block: dashed stat chips + two info cards */
+.rstudy { margin: clamp(28px, 3.6vw, 46px) 0; }
+.rstudy-stats { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: clamp(10px, 1.4vw, 16px); margin-bottom: clamp(14px, 1.8vw, 22px); }
+.rstat { min-width: 100px; padding: clamp(12px, 1.4vw, 16px) clamp(16px, 1.8vw, 22px); border: 2px dashed var(--ink); border-radius: 18px; text-align: center; }
+.rstat-n { display: block; font-size: clamp(22px, 2.3vw, 30px); font-weight: 700; line-height: 1.1; color: var(--ink); }
+.rstat-c { display: block; margin-top: 4px; font-size: 12px; color: var(--muted-d); }
+.rstudy-cards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 24px); }
+.rcard { padding: clamp(20px, 2.4vw, 30px); background: var(--surface); border: 1px solid var(--line); border-radius: 18px; }
+.rcard p { margin: 0; max-width: none; font-size: clamp(15px, 1.3vw, 17px); line-height: 1.6; color: #3a372f; }
+.rcard .rlead { margin-bottom: 14px; font-weight: 700; color: var(--ink); }
+.rstudy .hl { color: var(--accent-ink); font-weight: 600; }
+@media (max-width: 720px) { .rstudy-cards { grid-template-columns: 1fr; } .rstudy-stats { justify-content: flex-start; } }
