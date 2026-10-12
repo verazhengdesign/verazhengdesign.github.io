@@ -16,6 +16,10 @@
   .figure { border: 0; border-radius: 0; background: transparent; }
   .figure img { mix-blend-mode: darken; }
   .figure:hover img { transform: none; }
+  /* white-background, non-interactive figure */
+  .figure.white { background: #fff; }
+  .figure.white img { mix-blend-mode: normal; }
+  .figure.noclick { cursor: default; }
 </style>
 </head>
 <body>
@@ -136,7 +140,7 @@
             </div>
           </div>
 
-          <h3>Interview questions</h3>
+          <h2>Interview Questions</h2>
           <p>Top 3 research questions:</p>
           <ol>
             <li>Do you have any experience using online financial management apps? If so, how was your experience?</li>
@@ -147,7 +151,8 @@
           <h2>Research Data</h2>
           <figure class="figure"><img src="../assets/lemonwise-research-data.png" alt="Research data: investment interest, financial tracking challenges, and financial literacy" loading="lazy" /></figure>
 
-          <figure class="figure"><img src="../assets/lemonwise-participants.jpg" alt="Interview participants" loading="lazy" /></figure>
+          <h2>User Quotes</h2>
+          <figure class="figure white noclick"><img src="../assets/lemonwise-participants.jpg" alt="Interview participants" loading="lazy" /></figure>
 
           <p>The findings point to a clear need for a <strong>simple, intuitive financial tool</strong> tailored to students — one that prioritises <strong>ease of use, clear guidance, and habit-building support</strong> over complex features.</p>
           <ul>
@@ -277,7 +282,7 @@
       function reset() { scale = 1; tx = 0; ty = 0; apply(); }
       function open(src, alt) { lbImg.src = src; lbImg.alt = alt; reset(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
       function close() { lb.classList.remove('open'); document.body.style.overflow = ''; reset(); }
-      document.querySelectorAll('.method-thumb > img, .zoom-shot > img, .figure > img').forEach(function (img) {
+      document.querySelectorAll('.method-thumb > img, .zoom-shot > img, .figure:not(.noclick) > img').forEach(function (img) {
         img.parentElement.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
       });
       lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
