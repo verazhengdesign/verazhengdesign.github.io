@@ -23,6 +23,7 @@
   /* sketch row: 3-up with hover + click zoom */
   .sketch-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.6vw, 20px); margin: clamp(24px, 3vw, 42px) 0; }
   .sketch-row .figure { margin: 0; }
+  .sketch-row .figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
   .sketch-row .figure:hover img { transform: scale(1.04); }
   @media (max-width: 720px) { .sketch-row { grid-template-columns: 1fr; } }
 </style>
