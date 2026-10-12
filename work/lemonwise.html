@@ -12,6 +12,10 @@
 <style>
   /* page-specific accent — LemonWise (yellow) */
   :root { --accent: #c99000; --accent-ink: #9c6f00; --accent-soft: rgba(201, 144, 0, 0.16); }
+  /* LemonWise: frameless figures that blend into the page; no hover zoom, click to enlarge */
+  .figure { border: 0; border-radius: 0; background: transparent; }
+  .figure img { mix-blend-mode: darken; }
+  .figure:hover img { transform: none; }
 </style>
 </head>
 <body>
