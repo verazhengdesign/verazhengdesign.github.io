@@ -26,6 +26,10 @@
   .sketch-row .figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
   .sketch-row .figure:hover img { transform: scale(1.04); }
   @media (max-width: 720px) { .sketch-row { grid-template-columns: 1fr; } }
+  /* wireframe marquee: auto-scroll to the right, seamless loop, frameless */
+  .lm-marquee { overflow: hidden; width: 100%; height: clamp(240px, 30vw, 400px); margin: clamp(24px, 3vw, 42px) 0; }
+  .lm-marquee .marquee-track { animation: lm-marquee 45s linear infinite; }
+  @keyframes lm-marquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 </style>
 </head>
 <body>
@@ -205,6 +209,12 @@
           </div>
 
           <h3>Wireframes</h3>
+          <div class="lm-marquee">
+            <div class="marquee-track">
+              <img src="../assets/wireframe.png" alt="Wireframe screens" loading="lazy" />
+              <img src="../assets/wireframe.png" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+          </div>
           <figure class="figure"><img src="../assets/lemonwise-wireframes.jpg" alt="Wireframes" loading="lazy" /></figure>
           <figure class="figure"><img src="../assets/lemonwise-wireframe-compare.jpg" alt="Old version vs. new iteration" loading="lazy" /></figure>
 
