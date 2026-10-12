@@ -20,6 +20,11 @@
   .figure.white { background: #fff; }
   .figure.white img { mix-blend-mode: normal; }
   .figure.noclick { cursor: default; }
+  /* sketch row: 3-up with hover + click zoom */
+  .sketch-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.6vw, 20px); margin: clamp(24px, 3vw, 42px) 0; }
+  .sketch-row .figure { margin: 0; }
+  .sketch-row .figure:hover img { transform: scale(1.04); }
+  @media (max-width: 720px) { .sketch-row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -189,6 +194,13 @@
               <h4>Learning Hub</h4>
               <p>Give users opportunity to learn including videos, articles, and interactive quizzes.</p>
             </div>
+          </div>
+
+          <h2>Sketch</h2>
+          <div class="sketch-row">
+            <figure class="figure white"><img src="../assets/lemonwise-sketch-1.jpg" alt="Sketch 1 — app screen wireframes" loading="lazy" /></figure>
+            <figure class="figure white"><img src="../assets/lemonwise-sketch-2.jpg" alt="Sketch 2 — navigation flow" loading="lazy" /></figure>
+            <figure class="figure white"><img src="../assets/lemonwise-sketch-3.jpg" alt="Sketch 3 — paper prototypes" loading="lazy" /></figure>
           </div>
 
           <h3>Wireframes</h3>
