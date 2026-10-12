@@ -679,3 +679,18 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .rcard .rlead { margin-bottom: 14px; font-weight: 700; color: var(--ink); }
 .rstudy .hl { color: var(--accent-ink); font-weight: 600; }
 @media (max-width: 720px) { .rstudy-cards { grid-template-columns: 1fr; } .rstudy-stats { justify-content: flex-start; } }
+
+/* four-pillar grid (colored cards) */
+.pillars { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.8vw, 22px); margin: clamp(26px, 3vw, 42px) 0; }
+.pillar { padding: clamp(22px, 2.6vw, 34px); border-radius: 16px; }
+.pillar h4 { margin: 0 0 14px; font-size: clamp(18px, 1.7vw, 22px); font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
+.pillar p { margin: 0; max-width: none; font-size: clamp(15px, 1.3vw, 17px); line-height: 1.5; font-style: italic; }
+.pillar.p-green { background: #f1f6e6; }
+.pillar.p-green p { color: #33392a; }
+.pillar.p-lav { background: #efeaf8; }
+.pillar.p-lav p { color: #8a63c9; }
+.pillar.p-blue { background: #e8f0fb; }
+.pillar.p-blue p { color: #3f7fc4; }
+.pillar.p-gold { background: #fdf6e2; }
+.pillar.p-gold p { color: #c2921a; }
+@media (max-width: 720px) { .pillars { grid-template-columns: 1fr; } }
