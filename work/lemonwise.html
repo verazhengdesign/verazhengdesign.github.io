@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.css?v=97" />
+<link rel="stylesheet" href="../styles.css?v=99" />
 <style>
   /* page-specific accent — LemonWise (yellow) */
   :root { --accent: #c99000; --accent-ink: #9c6f00; --accent-soft: rgba(201, 144, 0, 0.16); }
@@ -91,7 +91,17 @@
         <a href="#overview">Overview</a>
         <a href="#context">Context</a>
         <a href="#research">Research</a>
-        <a href="#design">Design</a>
+        <div class="toc-group">
+          <a href="#design" class="toc-parent">Design<span class="toc-caret" aria-hidden="true"></span></a>
+          <div class="toc-sub">
+            <a href="#design-approach">The Approach</a>
+            <a href="#design-sketch">Sketch</a>
+            <a href="#design-wireframes">Wireframes</a>
+            <a href="#design-usability">Usability Test</a>
+            <a href="#design-style-tile">Style Tile</a>
+            <a href="#design-final">Final Mock-ups</a>
+          </div>
+        </div>
         <a href="#outcome">Outcome</a>
       </nav>
 
@@ -179,7 +189,7 @@
         <!-- DESIGN -->
         <section class="case-section" id="design">
           <span class="kicker">Design</span>
-          <h2>The Approach</h2>
+          <h2 id="design-approach">The Approach</h2>
           <p>I turned the research into <strong>four high-level pillars</strong> — the goals every design decision had to serve — then moved from wireframes to a second usability test, iteration, and final mock-ups.</p>
 
           <div class="pillars">
@@ -201,14 +211,14 @@
             </div>
           </div>
 
-          <h2>Sketch</h2>
+          <h2 id="design-sketch">Sketch</h2>
           <div class="sketch-row">
             <figure class="figure white"><img src="../assets/lemonwise-sketch-1.jpg" alt="Sketch 1 — app screen wireframes" loading="lazy" /></figure>
             <figure class="figure white"><img src="../assets/lemonwise-sketch-2.jpg" alt="Sketch 2 — navigation flow" loading="lazy" /></figure>
             <figure class="figure white"><img src="../assets/lemonwise-sketch-3.jpg" alt="Sketch 3 — paper prototypes" loading="lazy" /></figure>
           </div>
 
-          <h2>Wireframes</h2>
+          <h2 id="design-wireframes">Wireframes</h2>
           <div class="lm-marquee">
             <div class="marquee-track">
               <img src="../assets/wireframe.png" alt="Wireframe screens" loading="lazy" />
@@ -216,7 +226,7 @@
             </div>
           </div>
 
-          <h2>Usability Test</h2>
+          <h2 id="design-usability">Usability Test</h2>
           <p><strong>Task:</strong> Set up a personal financial goal of saving $2000 for a Korea trip and allocating money per week for future investments.</p>
 
           <div class="utable-wrap">
@@ -269,10 +279,10 @@
             </table>
           </div>
 
-          <h2>Style Tile &amp; Mock-Up</h2>
+          <h2 id="design-style-tile">Style Tile</h2>
           <figure class="figure"><img src="../assets/lemonwise-style-tile.jpg" alt="Style tile and mock-up" loading="lazy" /></figure>
 
-          <h3>Final mock-ups</h3>
+          <h3 id="design-final">Final mock-ups</h3>
           <figure class="figure"><img src="../assets/lemonwise-screens.jpg" alt="Final screens across the four pillars" loading="lazy" /></figure>
           <figure class="figure"><img src="../assets/lemonwise-spending.jpg" alt="Spending analytics" loading="lazy" /></figure>
           <figure class="figure"><img src="../assets/lemonwise-investment.jpg" alt="Investment dashboard" loading="lazy" /></figure>
@@ -341,15 +351,29 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-      var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc > a'));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc-sub a'));
+      var mainSections = mainLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var subSections = subLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
       function setActive() {
         var current = 0;
-        sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
-        links.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+        mainSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
+        mainLinks.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+        var sc = -1;
+        subSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) sc = i; });
+        subLinks.forEach(function (l, i) { l.classList.toggle('active', i === sc); });
       }
       window.addEventListener('scroll', setActive, { passive: true });
       setActive();
+
+      var tocGroup = document.querySelector('.toc-group');
+      if (tocGroup) {
+        var tocParent = tocGroup.querySelector('.toc-parent');
+        tocParent.addEventListener('click', function () { tocGroup.classList.toggle('open'); });
+        subLinks.forEach(function (l) {
+          l.addEventListener('click', function () { tocGroup.classList.add('open'); });
+        });
+      }
 
       var lb = document.getElementById('lightbox');
       var lbImg = document.getElementById('lightbox-img');
