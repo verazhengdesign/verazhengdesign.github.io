@@ -803,7 +803,6 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .umanual-img { width: auto; height: auto; max-width: 100%; max-height: 240px; display: block; margin-inline: auto; border-radius: 16px; }
 @media (max-width: 720px) { .umanual-wrap { grid-template-columns: 1fr; } }
 
-/* drawings gallery (masonry-ish columns) */
-.paints { column-count: 3; column-gap: clamp(12px, 1.8vw, 22px); margin-top: clamp(18px, 2.4vw, 28px); }
-.paints img { width: 100%; height: auto; display: block; margin: 0 0 clamp(12px, 1.8vw, 22px); border-radius: 12px; break-inside: avoid; }
-@media (max-width: 720px) { .paints { column-count: 2; } }
+
+/* paintings: narrower gallery items */
+.igallery.paint .ig-item { flex: 0 0 clamp(150px, 24%, 280px); }

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=119" />
+<link rel="stylesheet" href="styles.css?v=120" />
 </head>
 <body>
   <header class="topbar">
@@ -78,15 +78,19 @@
     <section class="jgroup">
       <h2>Drawings</h2>
       <p class="jnote">A place for the things I make for fun — illustrations and paintings.</p>
-      <div class="paints">
-        <img src="assets/paint-1.jpg" alt="Drawing 1" loading="lazy" />
-        <img src="assets/paint-2.jpg" alt="Drawing 2" loading="lazy" />
-        <img src="assets/paint-3.jpg" alt="Drawing 3" loading="lazy" />
-        <img src="assets/paint-4.jpg" alt="Drawing 4" loading="lazy" />
-        <img src="assets/paint-5.jpg" alt="Drawing 5" loading="lazy" />
-        <img src="assets/paint-6.jpg" alt="Drawing 6" loading="lazy" />
-        <img src="assets/paint-7.jpg" alt="Drawing 7" loading="lazy" />
-        <img src="assets/paint-8.jpg" alt="Drawing 8" loading="lazy" />
+      <div class="igallery-wrap">
+        <div class="igallery paint">
+          <figure class="ig-item"><img src="assets/paint-1.jpg" alt="Drawing 1" loading="lazy" /></figure>
+          <figure class="ig-item"><img src="assets/paint-2.jpg" alt="Drawing 2" loading="lazy" /></figure>
+          <figure class="ig-item"><img src="assets/paint-3.jpg" alt="Drawing 3" loading="lazy" /></figure>
+          <figure class="ig-item"><img src="assets/paint-4.jpg" alt="Drawing 4" loading="lazy" /></figure>
+          <figure class="ig-item"><img src="assets/paint-5.jpg" alt="Drawing 5" loading="lazy" /></figure>
+          <figure class="ig-item"><img src="assets/paint-6.jpg" alt="Drawing 6" loading="lazy" /></figure>
+          <figure class="ig-item"><img src="assets/paint-7.jpg" alt="Drawing 7" loading="lazy" /></figure>
+          <figure class="ig-item"><img src="assets/paint-8.jpg" alt="Drawing 8" loading="lazy" /></figure>
+        </div>
+        <button class="igal-btn prev" type="button" aria-label="Previous drawing">‹</button>
+        <button class="igal-btn next" type="button" aria-label="Next drawing">›</button>
       </div>
     </section>
 
@@ -110,6 +114,10 @@
     </div>
   </footer>
 
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img id="lightbox-img" src="" alt="" draggable="false" />
+    <span class="lightbox-hint">Scroll / pinch to zoom · Esc to close</span>
+  </div>
   <script>
     (function () {
       var bar = document.querySelector('.topbar');
@@ -119,6 +127,59 @@
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+
+      Array.prototype.slice.call(document.querySelectorAll('.igallery-wrap')).forEach(function (wrap) {
+        var g = wrap.querySelector('.igallery');
+        var items = g.querySelectorAll('.ig-item');
+        var prev = wrap.querySelector('.igal-btn.prev');
+        var next = wrap.querySelector('.igal-btn.next');
+        function step() { var w = items.length ? items[0].getBoundingClientRect().width : 260; return w + 20; }
+        function update() {
+          var maxScroll = g.scrollWidth - g.clientWidth - 2;
+          if (prev) prev.disabled = g.scrollLeft <= 2;
+          if (next) next.disabled = g.scrollLeft >= maxScroll;
+        }
+        if (prev) prev.addEventListener('click', function () { g.scrollBy({ left: -step(), behavior: 'smooth' }); });
+        if (next) next.addEventListener('click', function () { g.scrollBy({ left: step(), behavior: 'smooth' }); });
+        g.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        Array.prototype.slice.call(g.querySelectorAll('img')).forEach(function (im) { im.addEventListener('load', update); });
+        update();
+      });
+
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      var scale = 1, tx = 0, ty = 0, dragging = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
+      function apply() {
+        lbImg.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
+        lbImg.classList.toggle('zoomed', scale > 1);
+      }
+      function reset() { scale = 1; tx = 0; ty = 0; apply(); }
+      function open(src, alt) { lbImg.src = src; lbImg.alt = alt; reset(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+      function close() { lb.classList.remove('open'); document.body.style.overflow = ''; reset(); }
+      document.querySelectorAll('.ig-item > img').forEach(function (img) {
+        img.parentElement.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
+      });
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+      lb.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        var factor = e.ctrlKey ? 0.012 : 0.0018;
+        scale = Math.max(1, Math.min(6, scale * Math.exp(-e.deltaY * factor)));
+        if (scale === 1) { tx = 0; ty = 0; }
+        apply();
+      }, { passive: false });
+      lbImg.addEventListener('pointerdown', function (e) {
+        if (scale <= 1) return;
+        dragging = true; startX = e.clientX; startY = e.clientY; startTx = tx; startTy = ty;
+        lbImg.setPointerCapture(e.pointerId);
+      });
+      lbImg.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        tx = startTx + (e.clientX - startX); ty = startTy + (e.clientY - startY); apply();
+      });
+      lbImg.addEventListener('pointerup', function () { dragging = false; });
+      lbImg.addEventListener('click', function () { if (scale <= 1) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
     })();
   </script>
 </body>
