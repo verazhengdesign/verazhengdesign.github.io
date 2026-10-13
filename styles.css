@@ -797,3 +797,8 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 /* logos inline in about lists */
 .jorg { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .jlogo { width: 26px; height: 26px; object-fit: contain; flex: none; border-radius: 6px; }
+
+/* user manual: text + image side by side */
+.umanual-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 52px); align-items: center; }
+.umanual-img { width: 100%; height: auto; display: block; border-radius: 16px; }
+@media (max-width: 720px) { .umanual-wrap { grid-template-columns: 1fr; } }
