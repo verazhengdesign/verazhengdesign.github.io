@@ -784,3 +784,12 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .jcard:hover h3 { color: var(--accent); }
 .jcard .jmeta { display: block; }
 @media (max-width: 720px) { .jcards { grid-template-columns: 1fr; } }
+
+/* about page helpers */
+.jlist .jrow { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding: clamp(14px, 1.8vw, 20px) 0; color: var(--ink); font-size: clamp(16px, 1.35vw, 19px); font-weight: 600; letter-spacing: -0.01em; }
+.umanual { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; max-width: 62ch; }
+.umanual li { position: relative; padding-left: 20px; font-size: clamp(15px, 1.2vw, 16.5px); line-height: 1.55; color: #3a372f; }
+.umanual li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.tool-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.jcards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 720px) { .jcards.three { grid-template-columns: 1fr; } }
