@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.css?v=106" />
+<link rel="stylesheet" href="../styles.css?v=107" />
 <style>
   /* page-specific accent — LemonWise (yellow) */
   :root { --accent: #c99000; --accent-ink: #9c6f00; --accent-soft: rgba(201, 144, 0, 0.16); }
@@ -330,7 +330,17 @@
           <figure class="figure"><img src="../assets/lemonwise-style-tile.jpg?v=2" alt="Style tile and mock-up" loading="lazy" /></figure>
 
           <h2 id="design-iteration">Iteration</h2>
-          <figure class="figure"><img src="../assets/lemonwise-iteration-steps.jpg" alt="Iteration: before and after for the home, goals, and contribution flows" loading="lazy" /></figure>
+          <div class="igallery-wrap">
+            <div class="igallery">
+              <figure class="ig-item"><img src="../assets/lemonwise-iteration-1.png" alt="Iteration — home and spending dashboard" loading="lazy" /></figure>
+              <figure class="ig-item"><img src="../assets/lemonwise-iteration-2.png" alt="Iteration — goals" loading="lazy" /></figure>
+              <figure class="ig-item"><img src="../assets/lemonwise-iteration-3.png" alt="Iteration — contribution options" loading="lazy" /></figure>
+              <figure class="ig-item"><img src="../assets/lemonwise-iteration-4.png" alt="Iteration — investment info" loading="lazy" /></figure>
+              <figure class="ig-item"><img src="../assets/lemonwise-iteration-5.png" alt="Iteration — learning" loading="lazy" /></figure>
+            </div>
+            <button class="igal-btn prev" type="button" aria-label="Previous iteration">‹</button>
+            <button class="igal-btn next" type="button" aria-label="Next iteration">›</button>
+          </div>
 
           <h3 id="design-final">Final mock-ups</h3>
           <figure class="figure"><img src="../assets/lemonwise-screens.jpg" alt="Final screens across the four pillars" loading="lazy" /></figure>
@@ -422,6 +432,24 @@
       subLinks.forEach(function (l) {
         l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
       });
+
+      var igal = document.querySelector('.igallery');
+      if (igal) {
+        var igItems = igal.querySelectorAll('.ig-item');
+        var igPrev = document.querySelector('.igal-btn.prev');
+        var igNext = document.querySelector('.igal-btn.next');
+        function igStep() { var w = igItems.length ? igItems[0].getBoundingClientRect().width : 320; return w + 20; }
+        function igUpdate() {
+          var maxScroll = igal.scrollWidth - igal.clientWidth - 2;
+          if (igPrev) igPrev.disabled = igal.scrollLeft <= 2;
+          if (igNext) igNext.disabled = igal.scrollLeft >= maxScroll;
+        }
+        if (igPrev) igPrev.addEventListener('click', function () { igal.scrollBy({ left: -igStep(), behavior: 'smooth' }); });
+        if (igNext) igNext.addEventListener('click', function () { igal.scrollBy({ left: igStep(), behavior: 'smooth' }); });
+        igal.addEventListener('scroll', igUpdate, { passive: true });
+        window.addEventListener('resize', igUpdate);
+        igUpdate();
+      }
 
       var lb = document.getElementById('lightbox');
       var lbImg = document.getElementById('lightbox-img');

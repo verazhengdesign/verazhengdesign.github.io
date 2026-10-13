@@ -734,3 +734,15 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .sb-val { min-width: 3.4em; text-align: right; font-weight: 700; font-size: clamp(15px, 1.3vw, 17px); color: var(--ink); }
 @media (max-width: 720px) { .iq { grid-template-columns: 1fr; } }
 
+
+/* iteration gallery: horizontally scrollable, snap */
+.igallery-wrap { position: relative; margin: clamp(20px, 2.6vw, 34px) 0 clamp(24px, 3vw, 40px); }
+.igallery { display: flex; gap: clamp(14px, 1.8vw, 22px); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 2px 16px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.igallery .ig-item { flex: 0 0 clamp(280px, 70%, 640px); margin: 0; scroll-snap-align: center; }
+.igallery .ig-item img { width: 100%; display: block; border-radius: 16px; }
+.igal-btn { position: absolute; top: calc(50% - 12px); transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 20px; line-height: 1; display: grid; place-items: center; cursor: pointer; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10); transition: border-color 0.16s ease, opacity 0.2s ease; }
+.igal-btn:hover { border-color: var(--ink); }
+.igal-btn.prev { left: 10px; }
+.igal-btn.next { right: 10px; }
+.igal-btn[disabled] { opacity: 0; pointer-events: none; }
+@media (max-width: 720px) { .igal-btn { display: none; } }
