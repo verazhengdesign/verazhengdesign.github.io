@@ -806,3 +806,10 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 
 /* paintings: narrower gallery items */
 .igallery.paint .ig-item { flex: 0 0 clamp(150px, 24%, 280px); }
+
+/* article cover + lists */
+.art-cover { margin: 0 0 clamp(28px, 3.4vw, 50px); }
+.art-cover img { width: 100%; height: auto; display: block; border-radius: 16px; }
+.art-body ul { margin: 0 0 clamp(18px, 2vw, 26px); padding-left: 20px; }
+.art-body li { margin-bottom: 6px; font-size: clamp(16px, 1.15vw, 18px); line-height: 1.6; color: #3a372f; }
+.art-body li:last-child { margin-bottom: 0; }
