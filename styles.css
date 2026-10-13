@@ -837,3 +837,8 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 
 /* optical left-alignment: compensate the italic overhang of the hero name */
 .hero h1 { margin-left: -0.06em; }
+
+/* about: photo beside the General text (vertically centered) */
+.general-wrap { display: grid; grid-template-columns: 1fr auto; gap: clamp(28px, 4vw, 64px); align-items: center; }
+.about-photo { width: clamp(150px, 18vw, 220px); height: auto; display: block; border-radius: 16px; }
+@media (max-width: 720px) { .general-wrap { grid-template-columns: 1fr; } }
