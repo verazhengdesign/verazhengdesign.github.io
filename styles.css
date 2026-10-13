@@ -762,3 +762,13 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .jlist a:hover { color: var(--accent); }
 .jmeta { flex: none; font-family: "Geist Mono", monospace; font-size: 12px; font-weight: 400; letter-spacing: 0.06em; color: var(--muted-d); white-space: nowrap; }
 @media (max-width: 560px) { .jlist a { flex-direction: column; gap: 4px; } }
+
+/* journal article */
+.article { max-width: 900px; }
+.art-date { display: block; margin: 0 0 clamp(28px, 3.4vw, 48px); font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: 0.08em; color: var(--muted-d); }
+.art-body { max-width: 68ch; }
+.art-body p { margin: 0 0 clamp(18px, 2vw, 26px); font-size: clamp(16px, 1.15vw, 18px); line-height: 1.7; color: #3a372f; }
+.art-body .figure { margin: clamp(24px, 3vw, 40px) 0; }
+.art-body h2 { margin: clamp(28px, 3.4vw, 44px) 0 14px; font-size: clamp(20px, 1.9vw, 26px); }
+.art-back { display: inline-block; margin-top: clamp(36px, 4vw, 64px); font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-d); text-decoration: none; transition: color 0.15s ease; }
+.art-back:hover { color: var(--accent); }
