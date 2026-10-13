@@ -824,3 +824,7 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 @media (max-width: 820px) {
   .cover { aspect-ratio: 16 / 9; }
 }
+
+/* robust project cover fill (Safari etc.: pin the image to the cover box) */
+.cover { position: relative; overflow: hidden; }
+.cover img { position: absolute; inset: 0; }
