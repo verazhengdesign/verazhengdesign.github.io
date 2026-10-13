@@ -746,3 +746,6 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .igal-btn.next { right: 10px; }
 .igal-btn[disabled] { opacity: 0; pointer-events: none; }
 @media (max-width: 720px) { .igal-btn { display: none; } }
+
+/* one-at-a-time gallery variant */
+.igallery.one .ig-item { flex: 0 0 100%; scroll-snap-align: center; }
