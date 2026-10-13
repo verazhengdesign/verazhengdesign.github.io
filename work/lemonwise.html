@@ -88,9 +88,30 @@
     <div class="case-body">
       <nav class="toc" aria-label="Sections">
         <span class="toc-label">On this page</span>
-        <a href="#overview">Overview</a>
-        <a href="#context">Context</a>
-        <a href="#research">Research</a>
+        <div class="toc-group">
+          <a href="#overview" class="toc-parent">Overview<span class="toc-caret" aria-hidden="true"></span></a>
+          <div class="toc-sub">
+            <a href="#overview-what">What This Project Is</a>
+          </div>
+        </div>
+        <div class="toc-group">
+          <a href="#context" class="toc-parent">Context<span class="toc-caret" aria-hidden="true"></span></a>
+          <div class="toc-sub">
+            <a href="#context-problem">The Problem</a>
+          </div>
+        </div>
+        <div class="toc-group">
+          <a href="#research" class="toc-parent">Research<span class="toc-caret" aria-hidden="true"></span></a>
+          <div class="toc-sub">
+            <a href="#research-learned">What I Learned</a>
+            <a href="#research-questions">Interview Questions</a>
+            <a href="#research-data">Research Data</a>
+            <a href="#research-quotes">User Quotes</a>
+            <a href="#research-analysis">Data Analysis</a>
+            <a href="#research-persona">Persona &amp; Journey Map</a>
+            <a href="#research-matrix">Prioritization Matrix</a>
+          </div>
+        </div>
         <div class="toc-group">
           <a href="#design" class="toc-parent">Design<span class="toc-caret" aria-hidden="true"></span></a>
           <div class="toc-sub">
@@ -102,14 +123,19 @@
             <a href="#design-final">Final Mock-ups</a>
           </div>
         </div>
-        <a href="#outcome">Outcome</a>
+        <div class="toc-group">
+          <a href="#outcome" class="toc-parent">Outcome<span class="toc-caret" aria-hidden="true"></span></a>
+          <div class="toc-sub">
+            <a href="#outcome-changed">What Changed</a>
+          </div>
+        </div>
       </nav>
 
       <div class="case-content">
         <!-- OVERVIEW -->
         <section class="case-section" id="overview">
           <span class="kicker">Overview</span>
-          <h2>What This Project Is</h2>
+          <h2 id="overview-what">What This Project Is</h2>
           <p><strong>LemonWise</strong> is a mobile app that helps young adults — especially university students — improve their financial literacy and build better money-management habits.</p>
           <p>Designed over a semester with a team of four, from interviews through to a tested, high-fidelity prototype.</p>
 
@@ -126,7 +152,7 @@
         <!-- CONTEXT -->
         <section class="case-section" id="context">
           <span class="kicker">Context</span>
-          <h2>The Problem</h2>
+          <h2 id="context-problem">The Problem</h2>
           <p>Many students struggle with budgeting, saving, and understanding basic financial concepts, which can lead to poor financial decisions and long-term consequences.</p>
 
           <blockquote class="bubble">“I just graduated and I’m making my own money for the first time. What do I do now?!”</blockquote>
@@ -140,7 +166,7 @@
         <!-- RESEARCH -->
         <section class="case-section" id="research">
           <span class="kicker">Research</span>
-          <h2>What I Learned</h2>
+          <h2 id="research-learned">What I Learned</h2>
           <p>My team and I conducted <strong>semi-structured interviews with 8 participants</strong> aged 21–25, all financially independent students, to understand the behaviours and struggles behind student money management.</p>
 
           <div class="rstudy">
@@ -160,7 +186,7 @@
             </div>
           </div>
 
-          <h2>Interview Questions</h2>
+          <h2 id="research-questions">Interview Questions</h2>
           <p>Top 3 research questions:</p>
           <ol>
             <li>Do you have any experience using online financial management apps? If so, how was your experience?</li>
@@ -168,21 +194,21 @@
             <li>Do you have any specific financial goals to achieve in the future?</li>
           </ol>
 
-          <h2>Research Data</h2>
+          <h2 id="research-data">Research Data</h2>
           <figure class="figure"><img src="../assets/lemonwise-research-data.png" alt="Research data: investment interest, financial tracking challenges, and financial literacy" loading="lazy" /></figure>
 
-          <h2>User Quotes</h2>
+          <h2 id="research-quotes">User Quotes</h2>
           <figure class="figure white noclick"><img src="../assets/lemonwise-participants.jpg" alt="Interview participants" loading="lazy" /></figure>
 
-          <h2>Data Analysis</h2>
+          <h2 id="research-analysis">Data Analysis</h2>
           <figure class="figure white"><img src="../assets/lemonwise-painpoints.jpg" alt="User pain points" loading="lazy" /></figure>
 
-          <h3>Persona &amp; journey map</h3>
+          <h3 id="research-persona">Persona &amp; journey map</h3>
           <p>We translated the interviews into a persona and an end-to-end journey map, then used a <strong>feasibility–priority matrix</strong> to decide which features to build first.</p>
           <figure class="figure white"><img src="../assets/lemonwise-persona.jpg" alt="User persona and pain points" loading="lazy" /></figure>
           <figure class="figure white"><img src="../assets/lemonwise-journey.jpg" alt="Journey map" loading="lazy" /></figure>
 
-          <h3>Prioritization matrix</h3>
+          <h3 id="research-matrix">Prioritization matrix</h3>
           <figure class="figure white"><img src="../assets/lemonwise-matrix.jpg" alt="Feasibility-priority matrix" loading="lazy" /></figure>
         </section>
 
@@ -293,7 +319,7 @@
         <!-- OUTCOME -->
         <section class="case-section" id="outcome">
           <span class="kicker">Outcome</span>
-          <h2>What Changed</h2>
+          <h2 id="outcome-changed">What Changed</h2>
           <p>We ran a <strong>second usability test</strong> on the prototype, then iterated on the flows that caused friction — clarifying navigation, improving data visualization, and making the language plainer.</p>
           <figure class="figure"><img src="../assets/lemonwise-usability-test.jpg" alt="Second usability test" loading="lazy" /></figure>
           <figure class="figure"><img src="../assets/lemonwise-iteration.jpg" alt="Iteration: old version vs. new iteration" loading="lazy" /></figure>
@@ -351,8 +377,8 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc > a'));
-      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc-sub a'));
+      var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-parent'));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-sub a'));
       var mainSections = mainLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
       var subSections = subLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
       function setActive() {
@@ -366,14 +392,12 @@
       window.addEventListener('scroll', setActive, { passive: true });
       setActive();
 
-      var tocGroup = document.querySelector('.toc-group');
-      if (tocGroup) {
-        var tocParent = tocGroup.querySelector('.toc-parent');
-        tocParent.addEventListener('click', function () { tocGroup.classList.toggle('open'); });
-        subLinks.forEach(function (l) {
-          l.addEventListener('click', function () { tocGroup.classList.add('open'); });
-        });
-      }
+      Array.prototype.slice.call(document.querySelectorAll('.toc-group')).forEach(function (g) {
+        g.querySelector('.toc-parent').addEventListener('click', function () { g.classList.toggle('open'); });
+      });
+      subLinks.forEach(function (l) {
+        l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
+      });
 
       var lb = document.getElementById('lightbox');
       var lbImg = document.getElementById('lightbox-img');
