@@ -713,5 +713,5 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .toc .toc-group.open .toc-caret { transform: rotate(225deg); margin-bottom: -3px; }
 .toc .toc-sub { display: flex; flex-direction: column; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
 .toc .toc-group.open .toc-sub { max-height: 360px; }
-.toc .toc-sub a { padding: 6px 0 6px 30px; font-size: 11px; letter-spacing: 0.04em; color: rgba(20, 19, 15, 0.42); }
+.toc .toc-sub a { padding: 6px 0 6px 30px; font-size: 11.5px; letter-spacing: 0.02em; text-transform: none; color: rgba(20, 19, 15, 0.42); }
 @media (max-width: 720px) { .toc .toc-sub, .toc .toc-caret { display: none; } }
