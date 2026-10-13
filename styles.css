@@ -818,3 +818,4 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .art-ph { margin: clamp(24px, 3vw, 40px) 0; }
 .art-ph-fig { aspect-ratio: 16 / 10; display: grid; place-items: center; background: var(--panel); border: 1px dashed var(--line-d); border-radius: 16px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
 .art-ph figcaption { margin-top: 12px; font-size: 13.5px; line-height: 1.5; color: var(--muted-d); }
+.art-ph img { width: 100%; height: auto; display: block; border-radius: 16px; }
