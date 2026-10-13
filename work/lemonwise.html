@@ -343,11 +343,17 @@
           </div>
 
           <h3 id="design-final">Final mock-ups</h3>
-          <figure class="figure"><img src="../assets/lemonwise-screens.jpg" alt="Final screens across the four pillars" loading="lazy" /></figure>
-          <figure class="figure"><img src="../assets/lemonwise-spending.jpg" alt="Spending analytics" loading="lazy" /></figure>
-          <figure class="figure"><img src="../assets/lemonwise-investment.jpg" alt="Investment dashboard" loading="lazy" /></figure>
-          <figure class="figure"><img src="../assets/lemonwise-goal-setting.jpg" alt="Goal setting" loading="lazy" /></figure>
-          <figure class="figure"><img src="../assets/lemonwise-learning-hub.jpg" alt="Learning hub" loading="lazy" /></figure>
+          <div class="igallery-wrap">
+            <div class="igallery">
+              <figure class="ig-item"><img src="../assets/lemonwise-screens.jpg" alt="Final screens across the four pillars" loading="lazy" /></figure>
+              <figure class="ig-item"><img src="../assets/lemonwise-spending.jpg" alt="Spending analytics" loading="lazy" /></figure>
+              <figure class="ig-item"><img src="../assets/lemonwise-investment.jpg" alt="Investment dashboard" loading="lazy" /></figure>
+              <figure class="ig-item"><img src="../assets/lemonwise-goal-setting.jpg" alt="Goal setting" loading="lazy" /></figure>
+              <figure class="ig-item"><img src="../assets/lemonwise-learning-hub.jpg" alt="Learning hub" loading="lazy" /></figure>
+            </div>
+            <button class="igal-btn prev" type="button" aria-label="Previous screen">‹</button>
+            <button class="igal-btn next" type="button" aria-label="Next screen">›</button>
+          </div>
         </section>
 
         <!-- OUTCOME -->
@@ -433,23 +439,24 @@
         l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
       });
 
-      var igal = document.querySelector('.igallery');
-      if (igal) {
-        var igItems = igal.querySelectorAll('.ig-item');
-        var igPrev = document.querySelector('.igal-btn.prev');
-        var igNext = document.querySelector('.igal-btn.next');
-        function igStep() { var w = igItems.length ? igItems[0].getBoundingClientRect().width : 320; return w + 20; }
-        function igUpdate() {
-          var maxScroll = igal.scrollWidth - igal.clientWidth - 2;
-          if (igPrev) igPrev.disabled = igal.scrollLeft <= 2;
-          if (igNext) igNext.disabled = igal.scrollLeft >= maxScroll;
+      Array.prototype.slice.call(document.querySelectorAll('.igallery-wrap')).forEach(function (wrap) {
+        var g = wrap.querySelector('.igallery');
+        var items = g.querySelectorAll('.ig-item');
+        var prev = wrap.querySelector('.igal-btn.prev');
+        var next = wrap.querySelector('.igal-btn.next');
+        function step() { var w = items.length ? items[0].getBoundingClientRect().width : 320; return w + 20; }
+        function update() {
+          var maxScroll = g.scrollWidth - g.clientWidth - 2;
+          if (prev) prev.disabled = g.scrollLeft <= 2;
+          if (next) next.disabled = g.scrollLeft >= maxScroll;
         }
-        if (igPrev) igPrev.addEventListener('click', function () { igal.scrollBy({ left: -igStep(), behavior: 'smooth' }); });
-        if (igNext) igNext.addEventListener('click', function () { igal.scrollBy({ left: igStep(), behavior: 'smooth' }); });
-        igal.addEventListener('scroll', igUpdate, { passive: true });
-        window.addEventListener('resize', igUpdate);
-        igUpdate();
-      }
+        if (prev) prev.addEventListener('click', function () { g.scrollBy({ left: -step(), behavior: 'smooth' }); });
+        if (next) next.addEventListener('click', function () { g.scrollBy({ left: step(), behavior: 'smooth' }); });
+        g.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        Array.prototype.slice.call(g.querySelectorAll('img')).forEach(function (im) { im.addEventListener('load', update); });
+        update();
+      });
 
       var lb = document.getElementById('lightbox');
       var lbImg = document.getElementById('lightbox-img');
