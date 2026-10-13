@@ -834,3 +834,6 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .hero h1 { font-size: clamp(3.8rem, 9.8vw, 10rem); }
 .hero-role { font-size: clamp(1.45rem, 2.9vw, 2.9rem); }
 .hero-foot { margin-top: clamp(64px, 9vw, 150px); }
+
+/* optical left-alignment: compensate the italic overhang of the hero name */
+.hero h1 { margin-left: 0.09em; }
