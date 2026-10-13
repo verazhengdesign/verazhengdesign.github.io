@@ -717,7 +717,7 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 @media (max-width: 720px) { .toc .toc-sub, .toc .toc-caret { display: none; } }
 
 /* interview questions: numbered questions + stat bars */
-.iq { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(24px, 3.4vw, 54px); align-items: start; margin: clamp(6px, 1.4vw, 16px) 0 clamp(24px, 3vw, 44px); }
+.iq { display: grid; grid-template-columns: 1fr; gap: clamp(28px, 3.4vw, 48px); align-items: start; margin: clamp(6px, 1.4vw, 16px) 0 clamp(24px, 3vw, 44px); }
 .iq-left > p:first-child { margin-bottom: clamp(16px, 2vw, 24px); }
 .iq-item { display: flex; gap: 10px; margin-bottom: clamp(18px, 2.2vw, 30px); }
 .iq-item:last-child { margin-bottom: 0; }
