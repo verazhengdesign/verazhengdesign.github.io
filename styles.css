@@ -828,3 +828,9 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 /* robust project cover fill (Safari etc.: pin the image to the cover box) */
 .cover { position: relative; overflow: hidden; }
 .cover img { position: absolute; inset: 0; }
+
+/* hero scale tweaks: bigger middle, more room before experience/education */
+.hero-id { grid-template-columns: clamp(190px, 17.5vw, 312px) 1fr; gap: clamp(40px, 5.5vw, 96px); }
+.hero h1 { font-size: clamp(3.8rem, 9.8vw, 10rem); }
+.hero-role { font-size: clamp(1.45rem, 2.9vw, 2.9rem); }
+.hero-foot { margin-top: clamp(64px, 9vw, 150px); }
