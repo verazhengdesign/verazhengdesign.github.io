@@ -32,15 +32,19 @@
   /* research methodology + participants */
   .research-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(28px, 3vw, 42px); }
   .research-card { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: clamp(20px, 2.2vw, 28px); }
-  .research-card-methodology { display: flex; flex-direction: column; justify-content: center; }
+  .research-card-methodology { display: flex; flex-direction: column; justify-content: flex-start; }
+  .research-card .research-goal-k { margin-top: 18px; margin-bottom: 8px; }
+  .research-card .research-goal { margin: 0; max-width: none; font-size: clamp(14px, 1.05vw, 15.5px); line-height: 1.55; color: #3a372f; }
   .research-card-k { display: block; margin-bottom: 12px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
-  .research-card .research-value { margin: 0; font-size: clamp(1.3rem, 2vw, 1.75rem); font-weight: 650; letter-spacing: -0.025em; line-height: 1.15; color: var(--ink); }
+  .research-card .research-value { margin: 0; font-size: clamp(14px, 1.05vw, 15.5px); font-weight: 400; letter-spacing: 0; line-height: 1.55; color: #3a372f; }
   .research-card ul { margin: 0; padding-left: 18px; max-width: none; }
   .research-card li { margin-bottom: 10px; font-size: clamp(14px, 1.05vw, 15.5px); line-height: 1.55; }
   .research-card li:last-child { margin-bottom: 0; }
   .research-procedure { margin-top: clamp(28px, 3vw, 42px); border-top: 1px solid var(--line); padding-top: clamp(20px, 2.2vw, 28px); }
   .research-procedure h3 { margin-top: 0; }
   .research-procedure ul { margin-bottom: 0; }
+  .case-section ol { margin: 0 0 18px; padding-left: 22px; max-width: 66ch; color: #3a372f; }
+  .case-section ol li { margin-bottom: 8px; line-height: 1.6; }
   @media (max-width: 720px) { .research-cards { grid-template-columns: 1fr; } }
 
   /* qualitative analysis */
@@ -131,7 +135,6 @@
         <span class="toc-label">On this page</span>
         <a href="#problem">Problem</a>
         <a href="#research">Research</a>
-        <a href="#analysis">Analysis</a>
         <a href="#prototype">Prototype</a>
       </nav>
 
@@ -179,18 +182,19 @@
         <section class="case-section" id="research">
           <span class="kicker">Research</span>
           <h2>Card Sorting</h2>
-          <p>To fix the fragmented IA and confusing heading hierarchy uncovered during initial screen-reader testing, I led an <strong>open card-sorting study</strong> with <strong>seven</strong> participants on Figma to map user mental models into an intuitive navigation structure.</p>
 
           <div class="research-cards">
             <div class="research-card research-card-methodology">
               <span class="research-card-k">Methodology</span>
-              <p class="research-value">Open card sorting</p>
+              <p class="research-value">Open card-sorting study</p>
+              <span class="research-card-k research-goal-k">Goal</span>
+              <p class="research-goal">Fix the fragmented IA and confusing heading hierarchy.</p>
             </div>
             <div class="research-card">
-              <span class="research-card-k">Participants</span>
+              <span class="research-card-k">Participants Recruitment</span>
               <ul>
-                <li><strong>Participants:</strong> 7 Master of Information (MI) students.</li>
-                <li><strong>Familiarity:</strong> Understood the academic content but rarely used the official website.</li>
+                <li>7 Master of Information (MI) students.</li>
+                <li>Understood the academic content but rarely used the official website.</li>
               </ul>
             </div>
           </div>
@@ -220,21 +224,13 @@
             <div class="carousel-counter"><span id="card-sort-index">1</span> / 7</div>
           </div>
 
-          <h3>Data Analysis</h3>
+          <h2>Qualitative Analysis</h2>
           <p>After collecting the sorting results, I organized the data and looked for early patterns. I mainly examined:</p>
-          <ul>
+          <ol>
             <li>How participants grouped certain cards together, and how they labeled their groups</li>
             <li>Which terms caused confusion and why</li>
             <li>Which items they saw as more important or less important</li>
-          </ul>
-          <p>This process gave me a clearer picture of how users think about the content and better reflects their natural ways of organizing information.</p>
-        </section>
-
-      
-        <!-- ANALYSIS -->
-        <section class="case-section" id="analysis">
-          <span class="kicker">Analysis</span>
-          <h2>Qualitative Analysis</h2>
+          </ol>
 
           <div class="analysis-grid">
             <div class="analysis-col">
