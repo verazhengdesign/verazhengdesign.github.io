@@ -74,6 +74,19 @@
   .colour-result { margin: 0; max-width: none; font-size: clamp(1.3rem, 2vw, 1.75rem); font-weight: 650; letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
   .colour-arrow { align-self: center; margin-top: 0; }
 
+  /* A/B test scenario + tasks */
+  .scenario-card { margin-top: clamp(24px, 3vw, 36px); padding: clamp(22px, 2.6vw, 32px); border-radius: 18px; background: #edf2f9; border: 1px solid #d6e0ee; color: #1e3765; }
+  .scenario-card .scenario-k { display: block; margin-bottom: 10px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #1e3765; }
+  .scenario-card p { margin: 0; max-width: none; color: #1e3765; font-size: clamp(15px, 1.2vw, 17px); line-height: 1.6; }
+  .ab-tasks { margin-top: clamp(32px, 4vw, 52px); }
+  .ab-task { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: clamp(18px, 2.4vw, 32px); border-top: 1px solid var(--line); padding-top: clamp(20px, 2.4vw, 28px); margin-top: clamp(24px, 3vw, 36px); }
+  .ab-task:first-of-type { margin-top: 0; }
+  .ab-task-num { padding-top: 4px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .ab-task-q { margin: 0; max-width: none; font-size: clamp(16px, 1.25vw, 18px); font-weight: 650; line-height: 1.55; color: var(--ink); }
+  .ab-observation { margin: 14px 0 0; max-width: none; padding-left: 14px; border-left: 2px solid var(--accent); font-size: clamp(14px, 1.05vw, 15.5px); line-height: 1.55; color: var(--muted-d); }
+  .ab-observation strong { color: var(--ink); }
+  @media (max-width: 720px) { .ab-task { grid-template-columns: 1fr; gap: 8px; } }
+
   /* redesigned colour system */
   .colour-system-intro { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: center; margin-top: clamp(28px, 3vw, 42px); }
   .colour-system-copy ul { margin: 0; }
@@ -436,6 +449,29 @@
           <span class="kicker">Testing</span>
           <h2>A/B Test</h2>
           <p>To verify whether our redesign addressed the usability barriers identified earlier, we conducted an A/B comparison between the original MI webpage (Prototype A) and our redesigned version (Prototype B). </p>
+
+          <div class="scenario-card">
+            <span class="scenario-k">A/B Test Scenario</span>
+            <p>Assume that you are a new UXD student in the MI program who still knows nothing about the MI program, and you open the official website to learn more.</p>
+          </div>
+
+          <h3>Scenario-based tasks</h3>
+          <div class="ab-tasks">
+            <div class="ab-task">
+              <span class="ab-task-num">Task 1</span>
+              <div>
+                <p class="ab-task-q"><strong>“Imagine you need to know the specific technical requirement for the MI program. Where would you look?”</strong></p>
+                <p class="ab-observation"><strong>Observation → IA structure / headings:</strong> Observe if they hesitate between the simplified headings (B) or the complex ones (A).</p>
+              </div>
+            </div>
+            <div class="ab-task">
+              <span class="ab-task-num">Task 2</span>
+              <div>
+                <p class="ab-task-q"><strong>“Take a moment to look at the main pages of both prototypes. Please describe your first impression of the overall color scheme of Prototype B. Does it look clear and professional?”</strong></p>
+                <p class="ab-observation"><strong>Observation → Visual design:</strong> Focus on their immediate reaction to the new colors and their perception of readability.</p>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>
