@@ -65,8 +65,14 @@
   .nav-compare .figure { margin: 0; }
   .nav-compare .figure img { width: 100%; height: auto; aspect-ratio: 1.7 / 1; object-fit: cover; object-position: top; }
   .nav-compare-arrow { align-self: start; margin-top: clamp(32px, 4vw, 50px); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); flex: none; }
+  .figure.no-frame { border: 0; border-radius: 0; background: transparent; }
+  .figure.no-frame figcaption { border-top: 0; }
+  .demo-compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(14px, 2vw, 28px); align-items: start; margin-top: clamp(28px, 3vw, 42px); }
+  .demo-compare .figure { margin: 0; border: 0; border-radius: 0; background: transparent; }
+  .demo-compare .figure figcaption { border-top: 0; }
+  .demo-compare .nav-compare-arrow { align-self: center; margin-top: 0; }
   @media (max-width: 720px) {
-    .nav-compare { grid-template-columns: 1fr; }
+    .nav-compare, .demo-compare { grid-template-columns: 1fr; }
     .nav-compare-arrow { transform: rotate(90deg); justify-self: center; margin-top: 0; }
   }
 
@@ -310,10 +316,31 @@
             <li>Standardized labels to resolve <strong>terminology confusion</strong> <span class="small-note">(e.g., clearly separating applicant “Admission Requirements” from current-student “Professional Requirements”).</span></li>
           </ul>
 
-          <figure class="figure">
+          <figure class="figure no-frame">
             <img src="../assets/updated_navigation_bar.png" alt="Updated navigation bar showing immediate-disclosure dropdowns for Concentration, Program Options, Professional Requirements, and Program Essentials" loading="lazy" />
             <figcaption>Updated navigation bar with immediate-disclosure dropdowns.</figcaption>
           </figure>
+
+          <h3>3. Simplifying Layout with Easy Interaction</h3>
+          <p>Added expand/collapse buttons to break dense text into bite-sized pieces.</p>
+          <ul>
+            <li><strong>User Control:</strong> Lets users scan headings and unfold content on demand, cutting down excessive scrolling.</li>
+            <li><strong>ADHD-Friendly:</strong> Keeps the screen calm and focused to prevent cognitive overload.</li>
+          </ul>
+
+          <div class="demo-compare">
+            <figure class="figure">
+              <img src="../assets/collpse.png" alt="Navigation with the accordion sections collapsed" loading="lazy" />
+              <figcaption>Collapsed navigation</figcaption>
+            </figure>
+            <span class="nav-compare-arrow" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15" /><path d="M13 6l6 6-6 6" /></svg>
+            </span>
+            <figure class="figure">
+              <img src="../assets/expand.png" alt="Navigation with the accordion sections expanded" loading="lazy" />
+              <figcaption>Expanded navigation</figcaption>
+            </figure>
+          </div>
         </section>
 
         <!-- PROTOTYPE -->
