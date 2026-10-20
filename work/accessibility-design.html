@@ -79,8 +79,8 @@
   .eval-row { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: clamp(18px, 2.4vw, 32px); align-items: start; padding: clamp(18px, 2vw, 24px) 0; border-bottom: 1px solid var(--line); }
   .eval-num { padding-top: 4px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
   .eval-row p { margin: 0; max-width: none; font-size: clamp(16px, 1.3vw, 18px); font-weight: 650; letter-spacing: -0.01em; line-height: 1.4; color: var(--ink); }
-  .eval-patterns { margin-top: clamp(32px, 4vw, 52px); }
-  .eval-patterns h3 { margin-top: 0; }
+  .eval-row > div > ul { margin-top: 14px; }
+  .eval-row > div > ul:last-child { margin-bottom: 0; }
   .eval-image { margin-top: clamp(32px, 4vw, 52px); }
   .eval-image img { width: 100%; height: auto; }
   .eval-checks { list-style: none; padding-left: 0; margin: 12px 0 18px; }
@@ -513,22 +513,24 @@
               <span class="eval-num">03</span>
               <p>More Preferred Visual Design &amp; IA Structure</p>
             </div>
-          </div>
-
-          <div class="eval-patterns">
-            <h3>4. Key Patterns Across Participants</h3>
-            <ul>
-              <li>All 5 participants preferred Prototype B overall.</li>
-              <li>Most critical improvements:
-                <ul class="eval-checks">
-                  <li>Clear category separation</li>
-                  <li>Reduced scrolling</li>
-                  <li>Immediate visibility of important information</li>
-                  <li>Stronger alignment with user needs (e.g., Current Student habits)</li>
+            <div class="eval-row">
+              <span class="eval-num">04</span>
+              <div>
+                <p>Key Patterns Across Participants</p>
+                <ul>
+                  <li>All 5 participants preferred Prototype B overall.</li>
+                  <li>Most critical improvements:
+                    <ul class="eval-checks">
+                      <li>Clear category separation</li>
+                      <li>Reduced scrolling</li>
+                      <li>Immediate visibility of important information</li>
+                      <li>Stronger alignment with user needs (e.g., Current Student habits)</li>
+                    </ul>
+                  </li>
+                  <li>Multiple users highlighted B as better for first-time MI learners.</li>
                 </ul>
-              </li>
-              <li>Multiple users highlighted B as better for first-time MI learners.</li>
-            </ul>
+              </div>
+            </div>
           </div>
 
           <figure class="figure no-frame eval-image">
