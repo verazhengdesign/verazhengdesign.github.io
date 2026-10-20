@@ -74,6 +74,22 @@
   .colour-result { margin: 0; max-width: none; font-size: clamp(1.3rem, 2vw, 1.75rem); font-weight: 650; letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
   .colour-arrow { align-self: center; margin-top: 0; }
 
+  /* evaluation result */
+  .eval-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(28px, 3vw, 42px); }
+  .eval-card { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: clamp(20px, 2.2vw, 28px); }
+  .eval-num { display: block; margin-bottom: 12px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .eval-card p { margin: 0; max-width: none; font-size: clamp(15px, 1.2vw, 17px); font-weight: 650; letter-spacing: -0.01em; line-height: 1.4; color: var(--ink); }
+  .eval-patterns { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; margin-top: clamp(32px, 4vw, 52px); }
+  .eval-patterns h3 { margin-top: 0; }
+  .eval-patterns .figure { margin: 0; }
+  .eval-checks { list-style: none; padding-left: 0; margin: 12px 0 18px; }
+  .eval-checks li { position: relative; padding-left: 24px; margin-bottom: 8px; }
+  .eval-checks li::before { content: "✔"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  @media (max-width: 720px) {
+    .eval-cards, .eval-patterns { grid-template-columns: 1fr; }
+    .eval-patterns { gap: 28px; }
+  }
+
   /* A/B test scenario + tasks */
   .scenario-card { margin-top: clamp(24px, 3vw, 36px); padding: clamp(22px, 2.6vw, 32px); border-radius: 18px; background: #edf2f9; border: 1px solid #d6e0ee; color: #1e3765; }
   .scenario-card .scenario-k { display: block; margin-bottom: 10px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #1e3765; }
@@ -186,6 +202,7 @@
         <a href="#design">Design</a>
         <a href="#prototype">Prototype</a>
         <a href="#ab-test">A/B Test</a>
+        <a href="#evaluation">Evaluation</a>
       </nav>
 
       <div class="case-content">
@@ -478,6 +495,49 @@
             <img src="../assets/abtest_quotes.png" alt="Participant quotes from the A/B test comparing the original website and the redesigned prototype" loading="lazy" />
             <figcaption>Participant quotes from the A/B test.</figcaption>
           </figure>
+        </section>
+
+        <!-- EVALUATION RESULT -->
+        <section class="case-section" id="evaluation">
+          <span class="kicker">Results</span>
+          <h2>Evaluation Result</h2>
+
+          <div class="eval-cards">
+            <div class="eval-card">
+              <span class="eval-num">01</span>
+              <p>Faster &amp; Easier to Find Key MI Program Information</p>
+            </div>
+            <div class="eval-card">
+              <span class="eval-num">02</span>
+              <p>Lower Cognitive Load &amp; Smoother Navigation</p>
+            </div>
+            <div class="eval-card">
+              <span class="eval-num">03</span>
+              <p>More Preferred Visual Design &amp; IA Structure</p>
+            </div>
+          </div>
+
+          <div class="eval-patterns">
+            <div>
+              <h3>4. Key Patterns Across Participants</h3>
+              <ul>
+                <li>All 5 participants preferred Prototype B overall.</li>
+                <li>Most critical improvements:
+                  <ul class="eval-checks">
+                    <li>Clear category separation</li>
+                    <li>Reduced scrolling</li>
+                    <li>Immediate visibility of important information</li>
+                    <li>Stronger alignment with user needs (e.g., Current Student habits)</li>
+                  </ul>
+                </li>
+                <li>Multiple users highlighted B as better for first-time MI learners.</li>
+              </ul>
+            </div>
+            <figure class="figure no-frame">
+              <img src="../assets/abtest%20result.png" alt="Prototype A versus Prototype B evaluation summary comparing navigation, visual design, and user experience" loading="lazy" />
+              <figcaption>Prototype A vs. Prototype B evaluation summary.</figcaption>
+            </figure>
+          </div>
         </section>
       </div>
     </div>
