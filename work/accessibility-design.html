@@ -75,20 +75,18 @@
   .colour-arrow { align-self: center; margin-top: 0; }
 
   /* evaluation result */
-  .eval-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(28px, 3vw, 42px); }
-  .eval-card { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: clamp(20px, 2.2vw, 28px); }
-  .eval-num { display: block; margin-bottom: 12px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
-  .eval-card p { margin: 0; max-width: none; font-size: clamp(15px, 1.2vw, 17px); font-weight: 650; letter-spacing: -0.01em; line-height: 1.4; color: var(--ink); }
-  .eval-patterns { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; margin-top: clamp(32px, 4vw, 52px); }
+  .eval-list { margin-top: clamp(28px, 3vw, 42px); border-top: 1px solid var(--line); }
+  .eval-row { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: clamp(18px, 2.4vw, 32px); align-items: start; padding: clamp(18px, 2vw, 24px) 0; border-bottom: 1px solid var(--line); }
+  .eval-num { padding-top: 4px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .eval-row p { margin: 0; max-width: none; font-size: clamp(16px, 1.3vw, 18px); font-weight: 650; letter-spacing: -0.01em; line-height: 1.4; color: var(--ink); }
+  .eval-patterns { margin-top: clamp(32px, 4vw, 52px); }
   .eval-patterns h3 { margin-top: 0; }
-  .eval-patterns .figure { margin: 0; }
+  .eval-image { margin-top: clamp(32px, 4vw, 52px); }
+  .eval-image img { width: 100%; height: auto; }
   .eval-checks { list-style: none; padding-left: 0; margin: 12px 0 18px; }
   .eval-checks li { position: relative; padding-left: 24px; margin-bottom: 8px; }
   .eval-checks li::before { content: "✔"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
-  @media (max-width: 720px) {
-    .eval-cards, .eval-patterns { grid-template-columns: 1fr; }
-    .eval-patterns { gap: 28px; }
-  }
+  @media (max-width: 720px) { .eval-row { grid-template-columns: 1fr; gap: 8px; } }
 
   /* A/B test scenario + tasks */
   .scenario-card { margin-top: clamp(24px, 3vw, 36px); padding: clamp(22px, 2.6vw, 32px); border-radius: 18px; background: #edf2f9; border: 1px solid #d6e0ee; color: #1e3765; }
@@ -502,42 +500,41 @@
           <span class="kicker">Results</span>
           <h2>Evaluation Result</h2>
 
-          <div class="eval-cards">
-            <div class="eval-card">
+          <div class="eval-list">
+            <div class="eval-row">
               <span class="eval-num">01</span>
               <p>Faster &amp; Easier to Find Key MI Program Information</p>
             </div>
-            <div class="eval-card">
+            <div class="eval-row">
               <span class="eval-num">02</span>
               <p>Lower Cognitive Load &amp; Smoother Navigation</p>
             </div>
-            <div class="eval-card">
+            <div class="eval-row">
               <span class="eval-num">03</span>
               <p>More Preferred Visual Design &amp; IA Structure</p>
             </div>
           </div>
 
           <div class="eval-patterns">
-            <div>
-              <h3>4. Key Patterns Across Participants</h3>
-              <ul>
-                <li>All 5 participants preferred Prototype B overall.</li>
-                <li>Most critical improvements:
-                  <ul class="eval-checks">
-                    <li>Clear category separation</li>
-                    <li>Reduced scrolling</li>
-                    <li>Immediate visibility of important information</li>
-                    <li>Stronger alignment with user needs (e.g., Current Student habits)</li>
-                  </ul>
-                </li>
-                <li>Multiple users highlighted B as better for first-time MI learners.</li>
-              </ul>
-            </div>
-            <figure class="figure no-frame">
-              <img src="../assets/abtest%20result.png" alt="Prototype A versus Prototype B evaluation summary comparing navigation, visual design, and user experience" loading="lazy" />
-              <figcaption>Prototype A vs. Prototype B evaluation summary.</figcaption>
-            </figure>
+            <h3>4. Key Patterns Across Participants</h3>
+            <ul>
+              <li>All 5 participants preferred Prototype B overall.</li>
+              <li>Most critical improvements:
+                <ul class="eval-checks">
+                  <li>Clear category separation</li>
+                  <li>Reduced scrolling</li>
+                  <li>Immediate visibility of important information</li>
+                  <li>Stronger alignment with user needs (e.g., Current Student habits)</li>
+                </ul>
+              </li>
+              <li>Multiple users highlighted B as better for first-time MI learners.</li>
+            </ul>
           </div>
+
+          <figure class="figure no-frame eval-image">
+            <img src="../assets/abtest%20result.png" alt="Prototype A versus Prototype B evaluation summary comparing navigation, visual design, and user experience" loading="lazy" />
+            <figcaption>Prototype A vs. Prototype B evaluation summary.</figcaption>
+          </figure>
         </section>
       </div>
     </div>
