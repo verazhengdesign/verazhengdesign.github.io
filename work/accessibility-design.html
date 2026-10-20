@@ -59,6 +59,17 @@
   .analysis-success p { margin: 0; }
   @media (max-width: 720px) { .analysis-grid { grid-template-columns: 1fr; gap: 40px; } }
 
+  /* navigation before / after */
+  .small-note { font-size: 0.86em; line-height: 1.45; color: var(--muted-d); }
+  .nav-compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(14px, 2vw, 28px); align-items: start; margin-top: clamp(28px, 3vw, 42px); }
+  .nav-compare .figure { margin: 0; }
+  .nav-compare .figure img { width: 100%; height: auto; aspect-ratio: 1.7 / 1; object-fit: cover; object-position: top; }
+  .nav-compare-arrow { align-self: start; margin-top: clamp(32px, 4vw, 50px); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); flex: none; }
+  @media (max-width: 720px) {
+    .nav-compare { grid-template-columns: 1fr; }
+    .nav-compare-arrow { transform: rotate(90deg); justify-self: center; margin-top: 0; }
+  }
+
   /* card-sorting album */
   .carousel { width: 108%; margin-left: -4%; margin-right: -4%; }
   .carousel-viewport { aspect-ratio: 2.38 / 1; touch-action: pan-y; }
@@ -135,6 +146,7 @@
         <span class="toc-label">On this page</span>
         <a href="#problem">Problem</a>
         <a href="#research">Research</a>
+        <a href="#design">Design</a>
         <a href="#prototype">Prototype</a>
       </nav>
 
@@ -266,6 +278,41 @@
           <p>Based on the data, I created a new sitemap that follows how users naturally group the content. This revised structure became an important reference for our design decisions.</p>
           <figure class="figure">
             <img src="../assets/Updated_sitemap.jpg" alt="Updated Master of Information sitemap showing five main navigation sections and standardized labels" loading="lazy" />
+          </figure>
+        </section>
+
+        <!-- DESIGN -->
+        <section class="case-section" id="design">
+          <span class="kicker">Design</span>
+          <h2>IA Restructure</h2>
+          <h3>1. Improving Navigation with Clear Information</h3>
+          <p>We simplified the navigation system to make it easier for users to find what they need and feel more confident while browsing.</p>
+
+          <div class="nav-compare">
+            <figure class="figure">
+              <img src="../assets/old_website.png" alt="Original MI website navigation with a long horizontal menu and separate search and menu buttons" loading="lazy" />
+              <figcaption>Old website</figcaption>
+            </figure>
+            <span class="nav-compare-arrow" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15" /><path d="M13 6l6 6-6 6" /></svg>
+            </span>
+            <figure class="figure">
+              <img src="../assets/updated_search_bar.png" alt="Updated navigation bar with a search field, category filter, and menu" loading="lazy" />
+              <figcaption>Updated navigation bar</figcaption>
+            </figure>
+          </div>
+
+          <h3>2. Restructured Information Architecture &amp; Navigation</h3>
+          <p>We simplified the navigation system to make it easier for users to find what they need and feel more confident while browsing.</p>
+          <ul>
+            <li><strong>Streamlined top-level navigation from 8 to 5 core categories</strong> via open card sorting.</li>
+            <li><strong>Implemented immediate-disclosure dropdowns</strong></li>
+            <li>Standardized labels to resolve <strong>terminology confusion</strong> <span class="small-note">(e.g., clearly separating applicant “Admission Requirements” from current-student “Professional Requirements”).</span></li>
+          </ul>
+
+          <figure class="figure">
+            <img src="../assets/updated_navigation_bar.png" alt="Updated navigation bar showing immediate-disclosure dropdowns for Concentration, Program Options, Professional Requirements, and Program Essentials" loading="lazy" />
+            <figcaption>Updated navigation bar with immediate-disclosure dropdowns.</figcaption>
           </figure>
         </section>
 
