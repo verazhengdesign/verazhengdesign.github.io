@@ -34,6 +34,7 @@
   .quote-emoji { font-size: 24px; line-height: 1.2; }
   .quote-item p { margin: 0; max-width: none; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.6; font-style: italic; color: var(--ink); }
   .quote-item cite { display: block; margin-top: 8px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; color: var(--accent); }
+  .client-quotes .quote-item { grid-template-columns: 1fr; }
   @media (max-width: 720px) {
     .interview-layout { grid-template-columns: 1fr; }
     .quote-item { gap: 10px; }
@@ -179,6 +180,35 @@
               <div>
                 <p>“I need more <strong>onboarding help.</strong>”</p>
                 <cite>P1</cite>
+              </div>
+            </blockquote>
+          </div>
+
+          <h3>Client Interview</h3>
+          <p>We interviewed two Elections Ontario stakeholders involved in the internship program to understand how it operates, where interns need support, and what meaningful work looks like.</p>
+          <figure class="figure no-frame">
+            <img src="../assets/client_interview.png" alt="Notes from the client interview with Elections Ontario stakeholders" loading="lazy" />
+            <figcaption>Client interview notes.</figcaption>
+          </figure>
+
+          <h3>Client Quotes</h3>
+          <div class="quote-list client-quotes">
+            <blockquote class="quote-item">
+              <div>
+                <p>“A common challenge relates to meaningful work.”</p>
+                <cite>Maria</cite>
+              </div>
+            </blockquote>
+            <blockquote class="quote-item">
+              <div>
+                <p>“However, we do not currently have a centralized digital portal specific to students.”</p>
+                <cite>Abigail</cite>
+              </div>
+            </blockquote>
+            <blockquote class="quote-item">
+              <div>
+                <p>“Interns bring fresh perspectives, new tools, and innovative thinking. They also increase organizational visibility, particularly through social media and peer networks.”</p>
+                <cite>Maria</cite>
               </div>
             </blockquote>
           </div>
