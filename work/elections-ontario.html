@@ -47,6 +47,10 @@
   .journey-zoom-frame img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 100%; width: auto; max-width: none; display: block; }
   .journey-map-2:hover img { transform: translateX(-50%); }
   .journey-lens { position: absolute; width: clamp(180px, 22vw, 240px); height: clamp(180px, 22vw, 240px); border: 2px solid var(--accent); border-radius: 50%; background-color: #fff; background-repeat: no-repeat; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18); pointer-events: none; opacity: 0; transition: opacity 0.15s ease; z-index: 2; }
+  .journey-map-0 { margin: 0; }
+  .journey-map-0 img { width: 100%; height: auto; }
+  .journey-tabs .tab-bar { gap: clamp(14px, 2vw, 26px); }
+  .journey-tabs .tab { font-size: clamp(13px, 1.2vw, 16px); }
 
   @media (max-width: 720px) {
     .interview-layout { grid-template-columns: 1fr; }
@@ -249,6 +253,49 @@
             </div>
             <figcaption>Hover to magnify · click to view full image.</figcaption>
           </figure>
+
+          <h2>As-Is Journey Map</h2>
+          <p>We turned the raw data into an as-is journey map to make opportunities and pain points clearer across the journey.</p>
+
+          <figure class="figure no-frame journey-map-0">
+            <img src="../assets/as-is-journey-map-0.png" alt="As-is journey map summarizing five internship stages, their descriptions, and outcomes for interns and the service provider" loading="lazy" />
+          </figure>
+
+          <div class="journey-arrow" aria-hidden="true">
+            <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v34" /><path d="M5 29l7 7 7-7" /></svg>
+          </div>
+
+          <div class="tabs journey-tabs">
+            <div class="tab-bar">
+              <button class="tab is-active" type="button" data-panel="0">1. Pre-Arrival and Onboarding</button>
+              <button class="tab" type="button" data-panel="1">2. Settling Into the Work</button>
+              <button class="tab" type="button" data-panel="2">3. Mentorship &amp; Alignment</button>
+              <button class="tab" type="button" data-panel="3">4. The Day-to-Day work</button>
+              <button class="tab" type="button" data-panel="4">5. Professional Growth &amp; Networking</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tab-panel is-active">
+                <div class="tab-text">This stage shapes interns’ first impression of belonging, clarity, and support before real work begins.</div>
+                <div class="tab-media"><div class="zoom-shot"><img src="../assets/as-is-1.png" alt="Pre-arrival and onboarding journey stage" loading="lazy" /></div></div>
+              </div>
+              <div class="tab-panel">
+                <div class="tab-text">Interns have just joined, are still getting familiar with the environment, and begin receiving their first real tasks.</div>
+                <div class="tab-media"><div class="zoom-shot"><img src="../assets/as-is-2.png" alt="Settling into the work journey stage" loading="lazy" /></div></div>
+              </div>
+              <div class="tab-panel">
+                <div class="tab-text">Interns rely on guidance and feedback from mentors or managers to continuously improve and align their direction.</div>
+                <div class="tab-media"><div class="zoom-shot"><img src="../assets/as-is-3.png" alt="Mentorship and alignment journey stage" loading="lazy" /></div></div>
+              </div>
+              <div class="tab-panel">
+                <div class="tab-text">Interns report progress, complete assigned tasks, and try to keep up with communication expectations.</div>
+                <div class="tab-media"><div class="zoom-shot"><img src="../assets/as-is-4.png" alt="Day-to-day work journey stage" loading="lazy" /></div></div>
+              </div>
+              <div class="tab-panel">
+                <div class="tab-text">Interns build professional connections through leadership roundtables and workshops, and prepare to translate their experience into future employment.</div>
+                <div class="tab-media"><div class="zoom-shot"><img src="../assets/as-is-5.png" alt="Professional growth and networking journey stage" loading="lazy" /></div></div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>
@@ -304,7 +351,7 @@
       function open(src, alt) { lbImg.src = src; lbImg.alt = alt; reset(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
       function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; reset(); }
 
-      document.querySelectorAll('.figure > img, .journey-zoom-frame > img').forEach(function (img) {
+      document.querySelectorAll('.figure > img, .journey-zoom-frame > img, .zoom-shot > img').forEach(function (img) {
         var fig = img.parentElement;
         function activate(e) {
           if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
@@ -401,6 +448,20 @@
 
       frame.addEventListener('mousemove', move);
       frame.addEventListener('mouseleave', function () { lens.style.opacity = '0'; });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.journey-tabs .tab'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.journey-tabs .tab-panel'));
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var i = parseInt(tab.getAttribute('data-panel'), 10);
+          tabs.forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+          panels.forEach(function (p, j) { p.classList.toggle('is-active', j === i); });
+        });
+      });
     })();
   </script>
 </body>
