@@ -17,6 +17,14 @@
   .figure.no-frame { border: 0; border-radius: 0; background: transparent; }
   .figure.no-frame figcaption { border-top: 0; }
 
+  /* interview participants */
+  .interview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(28px, 3vw, 42px); }
+  .interview-card { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: clamp(20px, 2.2vw, 28px); }
+  .interview-k { display: block; margin-bottom: 10px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .interview-card h3 { margin: 0 0 8px; font-size: clamp(1.1rem, 1.5vw, 1.35rem); }
+  .interview-card p { margin: 0; max-width: none; font-size: clamp(14px, 1.05vw, 15.5px); color: var(--muted-d); }
+  @media (max-width: 720px) { .interview-grid { grid-template-columns: 1fr; } }
+
   /* equal-size research charts, no frames */
   .student-data-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(28px, 3vw, 42px); }
   .student-data-grid .figure { margin: 0; border: 0; border-radius: 0; background: #fff; }
@@ -83,6 +91,7 @@
         <span class="toc-label">On this page</span>
         <a href="#overview">Overview</a>
         <a href="#problem">Problem</a>
+        <a href="#research">Research</a>
       </nav>
 
       <div class="case-content">
@@ -108,6 +117,26 @@
           <figure class="figure no-frame">
             <img src="../assets/problem.jpg" alt="Service design workshop board mapping outcomes, problems, constraints, and assumptions for the Elections Ontario internship program" loading="lazy" />
           </figure>
+        </section>
+
+        <section class="case-section" id="research">
+          <span class="kicker">Research</span>
+          <h2>User Interviews</h2>
+          <p>To ground the redesign in students’ lived experience, we conducted two 30-minute in-person interviews with students who had previously completed internships.</p>
+          <p>One participant had interned at the University of Toronto Innovation Hub; the other had interned at RBC Wealth Management. Their different contexts gave us a useful mix of perspectives on how internship programs support — or fail to support — students.</p>
+
+          <div class="interview-grid">
+            <div class="interview-card">
+              <span class="interview-k">Participant 01</span>
+              <h3>University of Toronto Innovation Hub</h3>
+              <p>30-minute in-person interview</p>
+            </div>
+            <div class="interview-card">
+              <span class="interview-k">Participant 02</span>
+              <h3>RBC Wealth Management</h3>
+              <p>30-minute in-person interview</p>
+            </div>
+          </div>
         </section>
       </div>
     </div>
