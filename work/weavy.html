@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.css?v=130" />
+<link rel="stylesheet" href="../styles.css?v=131" />
 <style>
   /* page-specific accent — Weavy (pink / purple) */
   :root { --accent: #c15cdb; --accent-ink: #9a3fb5; --accent-soft: rgba(193, 92, 219, 0.16); }
@@ -73,7 +73,15 @@
         <span class="toc-label">On this page</span>
         <a href="#overview">Overview</a>
         <a href="#problem">Problem</a>
-        <a href="#research">Research</a>
+        <div class="toc-group open">
+          <a href="#research" class="toc-parent">Research<span class="toc-caret" aria-hidden="true"></span></a>
+          <div class="toc-sub">
+            <a href="#research-discovery">Discovery Phase</a>
+            <a href="#research-persona">Meet Lucia — Our Persona</a>
+            <a href="#research-behaviours">4 Defining Behaviours</a>
+            <a href="#research-recommendations">Design Recommendations</a>
+          </div>
+        </div>
         <a href="#design">Design</a>
         <a href="#outcome">Outcome</a>
       </nav>
@@ -120,7 +128,7 @@
         <!-- RESEARCH -->
         <section class="case-section" id="research">
           <span class="kicker">Research</span>
-          <h2>Discovery Phase</h2>
+          <h2 id="research-discovery">Discovery Phase</h2>
           <p>As the design researcher, I designed and ran the primary research: an unmoderated, open-ended survey so participants could answer honestly, without real-time pressure or bias.</p>
 
           <h3>Research themes</h3>
@@ -174,12 +182,12 @@
             </div>
           </div>
 
-          <h2>Meet Lucia — Our Persona</h2>
+          <h2 id="research-persona">Meet Lucia — Our Persona</h2>
           <p>To better understand the problem space, we also created a persona based on the research results.</p>
           <figure class="figure"><img src="../assets/persona.png" alt="Persona — Lucia" loading="lazy" /></figure>
 
 
-          <h2>4 Defining Behaviours</h2>
+          <h2 id="research-behaviours">4 Defining Behaviours</h2>
           <div class="behaviours">
             <div class="behaviour">
               <div class="b-head"><span class="b-num">01</span><h4>Reliance on Existing Social Circles</h4></div>
@@ -220,7 +228,7 @@
           </div>
 
           
-          <h2>Design Recommendations</h2>
+          <h2 id="research-recommendations">Design Recommendations</h2>
           <p>Instead of just listing problems, we mapped participants’ major anxieties into actionable UX recommendations.</p>
           <div class="recs">
             <div class="rec">
@@ -372,15 +380,30 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-      var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc > a, .toc .toc-parent'));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-sub a'));
+      var mainSections = mainLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var subSections = subLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+
       function setActive() {
         var current = 0;
-        sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
-        links.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+        mainSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
+        mainLinks.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+
+        var sc = -1;
+        subSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) sc = i; });
+        subLinks.forEach(function (l, i) { l.classList.toggle('active', i === sc); });
       }
+
       window.addEventListener('scroll', setActive, { passive: true });
       setActive();
+
+      Array.prototype.slice.call(document.querySelectorAll('.toc-group')).forEach(function (g) {
+        g.querySelector('.toc-parent').addEventListener('click', function () { g.classList.toggle('open'); });
+      });
+      subLinks.forEach(function (l) {
+        l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
+      });
 
       var lb = document.getElementById('lightbox');
       var lbImg = document.getElementById('lightbox-img');

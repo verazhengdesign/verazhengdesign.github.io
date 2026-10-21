@@ -842,3 +842,9 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .general-wrap { display: grid; grid-template-columns: 1fr auto; gap: clamp(28px, 4vw, 64px); align-items: center; }
 .about-photo { width: clamp(150px, 18vw, 220px); height: auto; display: block; border-radius: 16px; }
 @media (max-width: 720px) { .general-wrap { grid-template-columns: 1fr; } }
+
+/* consistent case-study rhythm: H2 blocks breathe more than H3 blocks */
+.case-section { padding-bottom: clamp(72px, 8vw, 136px); }
+.case-section h2 { margin: 0 0 clamp(20px, 2.2vw, 28px); }
+.case-section h3 { margin: clamp(36px, 4vw, 56px) 0 12px; }
+.case-section h2:not(:first-of-type) { margin-top: clamp(84px, 9vw, 144px); }
