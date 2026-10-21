@@ -61,6 +61,18 @@
   .design-pillar-label { display: block; margin-top: clamp(18px, 2.2vw, 28px); font-size: clamp(18px, 2vw, 24px); font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
   .service-blueprint { margin: 0; }
   .service-blueprint img { width: 100%; height: auto; }
+
+  /* initial sketch process rows */
+  .process-row { display: grid; grid-template-columns: clamp(90px, 12vw, 140px) 1fr 1fr; gap: clamp(16px, 2vw, 24px); align-items: start; border-top: 1px solid var(--line); padding-top: clamp(20px, 2.4vw, 28px); margin-top: clamp(28px, 3vw, 42px); }
+  .process-label { padding-top: 4px; }
+  .process-num { display: block; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .process-name { display: block; margin-top: 6px; font-size: clamp(16px, 1.5vw, 20px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+  .process-img { margin: 0; background: #fff; }
+  .process-img img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
+  @media (max-width: 720px) {
+    .process-row { grid-template-columns: 1fr; gap: 14px; }
+    .process-label { margin-bottom: 4px; }
+  }
   @media (max-width: 720px) {
     .design-pillars { grid-template-columns: 1fr; gap: 36px; }
     .design-circle { max-width: 280px; }
@@ -339,6 +351,48 @@
               </div>
               <span class="design-pillar-label">Sustainable</span>
             </div>
+          </div>
+
+          <h2>Initial Sketch</h2>
+          <p>After brainstorming and group discussion, our core idea was to create a <strong>physical Responsibilities Board</strong>. This board lives in the office and gives every intern their own row to track tasks, post questions, and see feedback. It makes day-to-day work visible and shared. To improve the internship experience, we believed that person-to-person interaction mattered most. At the same time, moving away from a screen-filled world to a physical board that people can interact with felt like a strong direction.</p>
+
+          <div class="process-row">
+            <div class="process-label">
+              <span class="process-num">01</span>
+              <span class="process-name">Ideation</span>
+            </div>
+            <figure class="figure no-frame process-img">
+              <img src="../assets/ideation1.png" alt="Journey-state and pain-point sticky notes from the ideation session" loading="lazy" />
+            </figure>
+            <figure class="figure no-frame process-img">
+              <img src="../assets/ideation2.png" alt="Service concept ideation sketches and sticky notes on a table" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="process-row">
+            <div class="process-label">
+              <span class="process-num">02</span>
+              <span class="process-name">Sketching</span>
+            </div>
+            <figure class="figure no-frame process-img">
+              <img src="../assets/sketching3.png" alt="Hand-drawn sketch of the physical responsibilities board" loading="lazy" />
+            </figure>
+            <figure class="figure no-frame process-img">
+              <img src="../assets/sketching4.png" alt="Hand-drawn sketches for a welcome package and daily toolkit" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="process-row">
+            <div class="process-label">
+              <span class="process-num">03</span>
+              <span class="process-name">Initial Prototype</span>
+            </div>
+            <figure class="figure no-frame process-img">
+              <img src="../assets/initial-proto1.png" alt="Physical responsibilities board prototype with sticky notes for team, tasks, status, Q&A, and feedback" loading="lazy" />
+            </figure>
+            <figure class="figure no-frame process-img">
+              <img src="../assets/initial-proto2.png" alt="Digital template of the intern responsibilities board" loading="lazy" />
+            </figure>
           </div>
 
           <h2>Service Blueprint</h2>
