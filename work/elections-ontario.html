@@ -38,14 +38,15 @@
 
   /* as-is journey map */
   .journey-map-1 { max-width: 360px; margin: clamp(24px, 3vw, 40px) auto 0; background: var(--surface); }
-  .journey-map-1 img { width: 100%; height: auto; }
+  .journey-map-1 img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
   .journey-map-1 figcaption { padding: 14px 16px; text-align: left; border-top: 1px solid var(--line); font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
   .journey-arrow { display: flex; justify-content: center; padding: clamp(18px, 2.4vw, 28px) 0; color: var(--accent); }
   .journey-note { margin: 0 0 16px; text-align: center; font-size: clamp(13px, 1vw, 14px); color: var(--muted-d); }
-  .journey-map-2 { width: 105%; margin: 0 -2.5%; position: relative; }
-  .journey-map-2 img { width: 100%; height: auto; }
-  .journey-map-2:hover img { transform: none; }
-  .journey-lens { position: absolute; width: 140px; height: 140px; border: 2px solid var(--accent); border-radius: 50%; background-color: #fff; background-repeat: no-repeat; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18); pointer-events: none; opacity: 0; transition: opacity 0.15s ease; z-index: 2; }
+  .journey-map-2 { width: 105%; margin: 0 -2.5%; }
+  .journey-zoom-frame { position: relative; height: clamp(240px, 28vw, 340px); overflow: hidden; cursor: zoom-in; }
+  .journey-zoom-frame img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 100%; width: auto; max-width: none; display: block; }
+  .journey-map-2:hover img { transform: translateX(-50%); }
+  .journey-lens { position: absolute; width: clamp(180px, 22vw, 240px); height: clamp(180px, 22vw, 240px); border: 2px solid var(--accent); border-radius: 50%; background-color: #fff; background-repeat: no-repeat; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18); pointer-events: none; opacity: 0; transition: opacity 0.15s ease; z-index: 2; }
 
   @media (max-width: 720px) {
     .interview-layout { grid-template-columns: 1fr; }
@@ -242,8 +243,10 @@
 
           <p class="journey-note">We tagged each synthesized sticky note and grouped them again.</p>
           <figure class="figure no-frame journey-map-2" id="journey-zoom">
-            <img src="../assets/eo_journey_map2.jpg" alt="Tagged journey-map stickies grouped by touchpoints, actions, pain points, needs, ideas, and outcomes across five internship stages" loading="lazy" />
-            <div class="journey-lens" id="journey-lens" aria-hidden="true"></div>
+            <div class="journey-zoom-frame" tabindex="0" role="button" aria-label="Enlarge the tagged journey map">
+              <img src="../assets/eo_journey_map2.jpg" alt="Tagged journey-map stickies grouped by touchpoints, actions, pain points, needs, ideas, and outcomes across five internship stages" loading="lazy" />
+              <div class="journey-lens" id="journey-lens" aria-hidden="true"></div>
+            </div>
             <figcaption>Hover to magnify · click to view full image.</figcaption>
           </figure>
         </section>
@@ -301,7 +304,7 @@
       function open(src, alt) { lbImg.src = src; lbImg.alt = alt; reset(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
       function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; reset(); }
 
-      document.querySelectorAll('.figure > img').forEach(function (img) {
+      document.querySelectorAll('.figure > img, .journey-zoom-frame > img').forEach(function (img) {
         var fig = img.parentElement;
         function activate(e) {
           if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
@@ -361,26 +364,28 @@
     (function () {
       var wrap = document.getElementById('journey-zoom');
       if (!wrap) return;
-      var img = wrap.querySelector('img');
-      var lens = document.getElementById('journey-lens');
-      if (!img || !lens) return;
+      var frame = wrap.querySelector('.journey-zoom-frame');
+      var img = frame && frame.querySelector('img');
+      var lens = frame && frame.querySelector('.journey-lens');
+      if (!frame || !img || !lens) return;
 
       var zoom = 3;
 
       function move(e) {
-        var rect = img.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
+        var frameRect = frame.getBoundingClientRect();
+        var imgRect = img.getBoundingClientRect();
+        var x = e.clientX - imgRect.left;
+        var y = e.clientY - imgRect.top;
 
-        if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+        if (x < 0 || y < 0 || x > imgRect.width || y > imgRect.height) {
           lens.style.opacity = '0';
           return;
         }
 
         var lw = lens.offsetWidth;
         var lh = lens.offsetHeight;
-        var bgW = rect.width * zoom;
-        var bgH = rect.height * zoom;
+        var bgW = imgRect.width * zoom;
+        var bgH = imgRect.height * zoom;
 
         lens.style.backgroundImage = 'url("' + (img.currentSrc || img.src) + '")';
         lens.style.backgroundSize = bgW + 'px ' + bgH + 'px';
@@ -389,13 +394,13 @@
         var bgY = Math.max(-(bgH - lh), Math.min(0, -(y * zoom - lh / 2)));
 
         lens.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
-        lens.style.left = Math.max(0, Math.min(rect.width - lw, x - lw / 2)) + 'px';
-        lens.style.top = Math.max(0, Math.min(rect.height - lh, y - lh / 2)) + 'px';
+        lens.style.left = Math.max(0, Math.min(frameRect.width - lw, e.clientX - frameRect.left - lw / 2)) + 'px';
+        lens.style.top = Math.max(0, Math.min(frameRect.height - lh, e.clientY - frameRect.top - lh / 2)) + 'px';
         lens.style.opacity = '1';
       }
 
-      wrap.addEventListener('mousemove', move);
-      wrap.addEventListener('mouseleave', function () { lens.style.opacity = '0'; });
+      frame.addEventListener('mousemove', move);
+      frame.addEventListener('mouseleave', function () { lens.style.opacity = '0'; });
     })();
   </script>
 </body>
