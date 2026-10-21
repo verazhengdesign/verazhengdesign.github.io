@@ -61,6 +61,9 @@
   .design-pillar-label { display: block; margin-top: clamp(18px, 2.2vw, 28px); font-size: clamp(18px, 2vw, 24px); font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
   .service-blueprint { margin: 0; }
   .service-blueprint img { width: 100%; height: auto; }
+  .blueprint-carousel .carousel-viewport { aspect-ratio: 16 / 9; }
+  .blueprint-carousel .carousel-track { height: 100%; }
+  .blueprint-carousel .carousel-track img { height: 100%; object-fit: contain; background: #fff; }
 
   /* initial sketch process rows */
   .process-row { display: grid; grid-template-columns: clamp(90px, 12vw, 140px) 1fr 1fr; gap: clamp(16px, 2vw, 24px); align-items: start; border-top: 1px solid var(--line); padding-top: clamp(20px, 2.4vw, 28px); margin-top: clamp(28px, 3vw, 42px); }
@@ -403,6 +406,21 @@
           <figure class="figure no-frame service-blueprint">
             <img src="../assets/service-blueprintl.png" alt="Future-state internship service blueprint showing the before, during, and after stages, frontstage intern actions, backstage staff processes, and performance measures" loading="lazy" />
           </figure>
+
+          <h3>See More Blueprint Details</h3>
+          <div class="carousel blueprint-carousel">
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="blueprint-track">
+                <img src="../assets/blueprint1.png" alt="Before onboarding blueprint detail" loading="lazy" />
+                <img src="../assets/blueprint2.png" alt="Onboarding and during work blueprint detail, part one" loading="lazy" />
+                <img src="../assets/blueprint3.png" alt="Onboarding and during work blueprint detail, part two" loading="lazy" />
+                <img src="../assets/blueprint4.png" alt="Offboarding blueprint detail" loading="lazy" />
+              </div>
+              <button class="carousel-btn prev" type="button" aria-label="Previous blueprint detail"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7" /></svg></button>
+              <button class="carousel-btn next" type="button" aria-label="Next blueprint detail"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg></button>
+            </div>
+            <div class="carousel-counter"><span id="blueprint-index">1</span> / 4</div>
+          </div>
         </section>
       </div>
     </div>
@@ -467,6 +485,10 @@
         }
         fig.addEventListener('click', activate);
         fig.addEventListener('keydown', activate);
+      });
+
+      document.querySelectorAll('.carousel-track img').forEach(function (img) {
+        img.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
       });
 
       lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
@@ -584,6 +606,45 @@
           panels.forEach(function (p, j) { p.classList.toggle('is-active', j === i); });
         });
       });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var track = document.getElementById('blueprint-track');
+      if (!track) return;
+      var viewport = track.parentElement;
+      var imgs = track.querySelectorAll('img');
+      var indexEl = document.getElementById('blueprint-index');
+      var i = 0, suppressClick = false;
+
+      function go(n) {
+        i = (n + imgs.length) % imgs.length;
+        track.style.transform = 'translateX(-' + (i * 100) + '%)';
+        if (indexEl) indexEl.textContent = i + 1;
+      }
+
+      var prev = viewport.querySelector('.carousel-btn.prev');
+      var next = viewport.querySelector('.carousel-btn.next');
+      if (prev) prev.addEventListener('click', function () { go(i - 1); });
+      if (next) next.addEventListener('click', function () { go(i + 1); });
+
+      var startX = 0, startY = 0, dragging = false;
+      viewport.addEventListener('pointerdown', function (e) { startX = e.clientX; startY = e.clientY; dragging = true; });
+      viewport.addEventListener('pointerup', function (e) {
+        if (!dragging) return;
+        dragging = false;
+        var dx = e.clientX - startX, dy = e.clientY - startY;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+          go(i + (dx < 0 ? 1 : -1));
+          suppressClick = true;
+          setTimeout(function () { suppressClick = false; }, 350);
+        }
+      });
+      viewport.addEventListener('pointercancel', function () { dragging = false; });
+      viewport.addEventListener('click', function (e) {
+        if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; }
+      }, true);
     })();
   </script>
 </body>
