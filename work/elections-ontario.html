@@ -61,9 +61,12 @@
   .design-pillar-label { display: block; margin-top: clamp(18px, 2.2vw, 28px); font-size: clamp(18px, 2vw, 24px); font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
   .service-blueprint { margin: 0; }
   .service-blueprint img { width: 100%; height: auto; }
-  .blueprint-carousel .carousel-viewport { aspect-ratio: 16 / 9; }
-  .blueprint-carousel .carousel-track { height: 100%; }
-  .blueprint-carousel .carousel-track img { height: 100%; object-fit: contain; background: #fff; }
+  .blueprint-carousel .carousel-viewport,
+  .prototype-carousel .carousel-viewport { aspect-ratio: 16 / 9; }
+  .blueprint-carousel .carousel-track,
+  .prototype-carousel .carousel-track { height: 100%; }
+  .blueprint-carousel .carousel-track img,
+  .prototype-carousel .carousel-track img { height: 100%; object-fit: contain; background: #fff; }
 
   /* initial sketch process rows */
   .process-row { display: grid; grid-template-columns: clamp(90px, 12vw, 140px) 1fr 1fr; gap: clamp(16px, 2vw, 24px); align-items: start; border-top: 1px solid var(--line); padding-top: clamp(20px, 2.4vw, 28px); margin-top: clamp(28px, 3vw, 42px); }
@@ -429,23 +432,22 @@
           <h2>Prototype</h2>
           <p>We created real, usable digital and physical prototypes covering everything needed in the blueprints, including a <strong>LinkedIn post, welcome email, welcome package</strong>, <strong>Physical Responsibilities Board</strong> (frontstage), and <strong>Digital Responsibilities Board</strong> (backstage).</p>
 
-          <figure class="figure no-frame prototype-slide">
-            <img src="../assets/pro1.jpg" alt="Soft Landing LinkedIn post prototype" loading="lazy" />
-          </figure>
-          <figure class="figure no-frame prototype-slide">
-            <img src="../assets/pro2.jpg" alt="Soft Landing welcome email prototype" loading="lazy" />
-          </figure>
-          <!-- pro3.png is not in assets yet -->
-          <figure class="figure no-frame prototype-slide">
-            <img src="../assets/pro4.jpg" alt="Welcome Quest welcome package prototype" loading="lazy" />
-          </figure>
-          <figure class="figure no-frame prototype-slide">
-            <img src="../assets/pro5.jpg" alt="Feedback Loop physical Responsibilities Board prototype" loading="lazy" />
-          </figure>
-          <figure class="figure no-frame prototype-slide">
-            <img src="../assets/pro6.jpg" alt="Feedback Loop digital Responsibilities Board backstage dashboard prototype" loading="lazy" />
-          </figure>
-          <!-- pro7.png is not in assets yet -->
+          <div class="carousel prototype-carousel">
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="prototype-track">
+                <img src="../assets/pro1.jpg" alt="Soft Landing LinkedIn post prototype" loading="lazy" />
+                <img src="../assets/pro2.jpg" alt="Soft Landing welcome email prototype" loading="lazy" />
+                <!-- pro3.png is not in assets yet -->
+                <img src="../assets/pro4.jpg" alt="Welcome Quest welcome package prototype" loading="lazy" />
+                <img src="../assets/pro5.jpg" alt="Feedback Loop physical Responsibilities Board prototype" loading="lazy" />
+                <img src="../assets/pro6.jpg" alt="Feedback Loop digital Responsibilities Board backstage dashboard prototype" loading="lazy" />
+                <!-- pro7.png is not in assets yet -->
+              </div>
+              <button class="carousel-btn prev" type="button" aria-label="Previous prototype"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7" /></svg></button>
+              <button class="carousel-btn next" type="button" aria-label="Next prototype"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg></button>
+            </div>
+            <div class="carousel-counter"><span id="prototype-index">1</span> / 5</div>
+          </div>
 
           <h2>Prototype Walkthrough</h2>
           <p>This video shows how these prototypes are used in real life — and we star in it ourselves.</p>
@@ -647,6 +649,45 @@
       var viewport = track.parentElement;
       var imgs = track.querySelectorAll('img');
       var indexEl = document.getElementById('blueprint-index');
+      var i = 0, suppressClick = false;
+
+      function go(n) {
+        i = (n + imgs.length) % imgs.length;
+        track.style.transform = 'translateX(-' + (i * 100) + '%)';
+        if (indexEl) indexEl.textContent = i + 1;
+      }
+
+      var prev = viewport.querySelector('.carousel-btn.prev');
+      var next = viewport.querySelector('.carousel-btn.next');
+      if (prev) prev.addEventListener('click', function () { go(i - 1); });
+      if (next) next.addEventListener('click', function () { go(i + 1); });
+
+      var startX = 0, startY = 0, dragging = false;
+      viewport.addEventListener('pointerdown', function (e) { startX = e.clientX; startY = e.clientY; dragging = true; });
+      viewport.addEventListener('pointerup', function (e) {
+        if (!dragging) return;
+        dragging = false;
+        var dx = e.clientX - startX, dy = e.clientY - startY;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+          go(i + (dx < 0 ? 1 : -1));
+          suppressClick = true;
+          setTimeout(function () { suppressClick = false; }, 350);
+        }
+      });
+      viewport.addEventListener('pointercancel', function () { dragging = false; });
+      viewport.addEventListener('click', function (e) {
+        if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; }
+      }, true);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var track = document.getElementById('prototype-track');
+      if (!track) return;
+      var viewport = track.parentElement;
+      var imgs = track.querySelectorAll('img');
+      var indexEl = document.getElementById('prototype-index');
       var i = 0, suppressClick = false;
 
       function go(n) {
