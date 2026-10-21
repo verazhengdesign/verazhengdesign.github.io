@@ -53,6 +53,17 @@
   .journey-tabs .tab { font-size: clamp(13px, 1.2vw, 16px); }
   .journey-tabs .tab-panel { grid-template-columns: 1fr; }
 
+  /* design strategy pillars */
+  .design-pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3.5vw, 48px); align-items: start; margin-top: clamp(36px, 5vw, 64px); }
+  .design-pillar { text-align: center; }
+  .design-circle { width: 100%; max-width: 320px; aspect-ratio: 1 / 1; margin: 0 auto; border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: clamp(18px, 2.5vw, 40px); }
+  .design-circle p { margin: 0; max-width: none; color: var(--accent); font-weight: 700; font-size: clamp(13px, 1.5vw, 18px); line-height: 1.3; text-align: center; }
+  .design-pillar-label { display: block; margin-top: clamp(18px, 2.2vw, 28px); font-size: clamp(18px, 2vw, 24px); font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+  @media (max-width: 720px) {
+    .design-pillars { grid-template-columns: 1fr; gap: 36px; }
+    .design-circle { max-width: 280px; }
+  }
+
   @media (max-width: 720px) {
     .interview-layout { grid-template-columns: 1fr; }
     .quote-item { gap: 10px; }
@@ -125,6 +136,7 @@
         <a href="#overview">Overview</a>
         <a href="#problem">Problem</a>
         <a href="#research">Research</a>
+        <a href="#design">Design</a>
       </nav>
 
       <div class="case-content">
@@ -290,6 +302,33 @@
               <div class="tab-panel">
                 <div class="tab-media"><div class="zoom-shot"><img src="../assets/as-is-5.png" alt="Professional growth and networking journey stage" loading="lazy" /></div></div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" id="design">
+          <span class="kicker">Design</span>
+          <h2>Design Strategy</h2>
+          <p>To support future connections and long-term talent development, we aim to make the internship program more visible, developable, and sustainable, which also strengthens Elections Ontario’s ability to build a reliable and continuous talent pipeline for future workforce needs.</p>
+
+          <div class="design-pillars">
+            <div class="design-pillar">
+              <div class="design-circle">
+                <p>Make intern work, progress, and impact visible across Elections Ontario</p>
+              </div>
+              <span class="design-pillar-label">Visible Work</span>
+            </div>
+            <div class="design-pillar">
+              <div class="design-circle">
+                <p>Support skills growth, interns enable continuous improvement</p>
+              </div>
+              <span class="design-pillar-label">Developable</span>
+            </div>
+            <div class="design-pillar">
+              <div class="design-circle">
+                <p>Extend the value of the internship beyond a single term, provide continuous influence</p>
+              </div>
+              <span class="design-pillar-label">Sustainable</span>
             </div>
           </div>
         </section>
