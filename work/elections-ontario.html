@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Service Design — Elections Ontario Internship Program · Vera Zheng</title>
+<meta name="description" content="Case study: redesigning Elections Ontario’s internship experience through service blueprinting and physical prototyping to improve onboarding, task clarity, and ongoing feedback." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css?v=130" />
+<style>
+  /* page-specific accent — Elections Ontario yellow */
+  :root { --accent: #c99400; --accent-ink: #8a6500; --accent-soft: rgba(201, 148, 0, 0.16); }
+
+  /* keep the full title-slide composition */
+  .case-cover { aspect-ratio: 16 / 9; }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html">Vera Zheng Design</a>
+      <nav class="nav-links">
+        <a href="../index.html#work">Work</a>
+        <a href="../journal.html">Journal</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="case">
+      <h1>Service Design — Elections Ontario Internship Program</h1>
+      <p class="case-summary">Redesigning Elections Ontario’s internship experience through service blueprinting and physical prototyping to improve onboarding, task clarity, and ongoing feedback.</p>
+      <div class="case-tags">
+        <span class="tag">Service Design</span>
+        <span class="tag">Blueprint</span>
+        <span class="tag">Physical Prototype</span>
+      </div>
+
+      <div class="case-cover">
+        <img src="../assets/eo-service-design.jpg" alt="Elections Ontario internship program service design project cover" />
+      </div>
+    </article>
+
+    <div class="case-body">
+      <nav class="toc" aria-label="Sections">
+        <span class="toc-label">On this page</span>
+        <a href="#overview">Overview</a>
+      </nav>
+
+      <div class="case-content">
+        <section class="case-section" id="overview">
+          <span class="kicker">Overview</span>
+          <h2>Project Overview</h2>
+          <p>A service design project reimagining the Elections Ontario internship experience — from onboarding and task clarity to ongoing feedback — through service blueprinting and physical prototyping.</p>
+        </section>
+      </div>
+    </div>
+
+    <section class="case-next">
+      <span class="label">Other projects</span>
+      <div class="grid">
+        <a class="card" href="accessibility-design.html">
+          <div class="cover"><img src="../assets/mi-accessibility-cover.jpg" alt="Before-and-after comparison of the U of T MI website" loading="lazy" /><span class="num">04</span></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="tag">Accessibility</span><span class="tag">Web</span><span class="tag">Research &amp; Design</span></div>
+            <h3>Accessibility Design — U of T MI Website</h3>
+            <p>Rebuilt the U of T Master of Information site to remove invisible cognitive friction and screen-reader confusion — beyond AODA/WCAG compliance.</p>
+            <span class="card-go">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+        <a class="card" href="rebites.html">
+          <div class="cover"><img src="../assets/rebites.jpg" alt="ReBites cover" loading="lazy" /><span class="num">05</span></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="tag">Tablet</span><span class="tag">Hackathon</span></div>
+            <h3>ReBites — Food Sustainability for Kids</h3>
+            <p>A dual student / teacher platform for everyday food choices — 1st place, Seneca Hackathon 2025.</p>
+            <span class="card-go">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <span class="mono">Vera Zheng</span>
+      <a class="email" href="mailto:zzx0826vera@gmail.com">zzx0826vera@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var bar = document.querySelector('.topbar');
+      function onScroll() {
+        if (window.scrollY > 4) bar.classList.add('scrolled');
+        else bar.classList.remove('scrolled');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+      var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      function setActive() {
+        var current = 0;
+        sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
+        links.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+      }
+      window.addEventListener('scroll', setActive, { passive: true });
+      setActive();
+    })();
+  </script>
+</body>
+</html>
