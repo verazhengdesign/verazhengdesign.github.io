@@ -13,6 +13,10 @@
   /* page-specific accent — Elections Ontario yellow */
   :root { --accent: #c99400; --accent-ink: #8a6500; --accent-soft: rgba(201, 148, 0, 0.16); }
 
+  /* frameless figures */
+  .figure.no-frame { border: 0; border-radius: 0; background: transparent; }
+  .figure.no-frame figcaption { border-top: 0; }
+
   /* equal-size research charts, no frames */
   .student-data-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(28px, 3vw, 42px); }
   .student-data-grid .figure { margin: 0; border: 0; border-radius: 0; background: #fff; }
@@ -79,6 +83,7 @@
         <span class="toc-label">On this page</span>
         <a href="#overview">Overview</a>
         <a href="#problem">Problem</a>
+        <a href="#initial-research">Initial Research</a>
       </nav>
 
       <div class="case-content">
@@ -99,6 +104,14 @@
             <figure class="figure" tabindex="0" role="button" aria-label="Enlarge chart: mentorship, networking, and manager support"><img src="../assets/student_data3.png" alt="Student satisfaction with mentorship, networking, and manager support" loading="lazy" /></figure>
           </div>
           <p class="note">Real User Insights: Here’s what students have said about past summer placements.</p>
+        </section>
+
+        <section class="case-section" id="initial-research">
+          <span class="kicker">Research</span>
+          <h2>Initial Research</h2>
+          <figure class="figure no-frame">
+            <img src="../assets/problem.jpg" alt="Service design workshop board mapping outcomes, problems, constraints, and assumptions for the Elections Ontario internship program" loading="lazy" />
+          </figure>
         </section>
       </div>
     </div>
