@@ -135,7 +135,14 @@
         <span class="toc-label">On this page</span>
         <a href="#overview">Overview</a>
         <a href="#problem">Problem</a>
-        <a href="#research">Research</a>
+        <div class="toc-group open">
+          <a href="#research" class="toc-parent">Research<span class="toc-caret" aria-hidden="true"></span></a>
+          <div class="toc-sub">
+            <a href="#user-interviews">User Interviews</a>
+            <a href="#research-synthesis">Research Synthesis</a>
+            <a href="#as-is-journey-map">As-Is Journey Map</a>
+          </div>
+        </div>
         <a href="#design">Design</a>
       </nav>
 
@@ -166,7 +173,7 @@
 
         <section class="case-section" id="research">
           <span class="kicker">Research</span>
-          <h2>User Interviews</h2>
+          <h2 id="user-interviews">User Interviews</h2>
           <p>To ground the redesign in students’ lived experience, we conducted <strong>two 30-minute in-person interviews</strong> with students who had previously completed internships.</p>
           <p>One participant had interned at the University of Toronto Innovation Hub; the other had interned at RBC Wealth Management. Their different contexts gave us a useful mix of perspectives on how internship programs support — or fail to support — students.</p>
 
@@ -246,7 +253,7 @@
             </blockquote>
           </div>
 
-          <h2>Research Synthesis</h2>
+          <h2 id="research-synthesis">Research Synthesis</h2>
           <p>Through analysis of the interview transcripts, we conducted a qualitative analysis across six themes: <strong>Touchpoints, Actions, Pain Points, Needs, Ideas, Outcomes</strong>, and summarized five journey steps.</p>
 
           <figure class="figure journey-map-1">
@@ -267,7 +274,7 @@
             <figcaption>Hover to magnify · click to view full image.</figcaption>
           </figure>
 
-          <h2>As-Is Journey Map</h2>
+          <h2 id="as-is-journey-map">As-Is Journey Map</h2>
           <p>We turned the raw data into an as-is journey map to make opportunities and pain points clearer across the journey.</p>
 
           <figure class="figure no-frame journey-map-0">
@@ -430,15 +437,30 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-      var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc > a, .toc .toc-parent'));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-sub a'));
+      var mainSections = mainLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var subSections = subLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+
       function setActive() {
         var current = 0;
-        sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
-        links.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+        mainSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
+        mainLinks.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+
+        var sc = -1;
+        subSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) sc = i; });
+        subLinks.forEach(function (l, i) { l.classList.toggle('active', i === sc); });
       }
+
       window.addEventListener('scroll', setActive, { passive: true });
       setActive();
+
+      Array.prototype.slice.call(document.querySelectorAll('.toc-group')).forEach(function (g) {
+        g.querySelector('.toc-parent').addEventListener('click', function () { g.classList.toggle('open'); });
+      });
+      subLinks.forEach(function (l) {
+        l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
+      });
     })();
   </script>
 
