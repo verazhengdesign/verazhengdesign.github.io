@@ -35,6 +35,16 @@
   .quote-item p { margin: 0; max-width: none; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.6; font-style: italic; color: var(--ink); }
   .quote-item cite { display: block; margin-top: 8px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; color: var(--accent); }
   .client-quotes .quote-item { grid-template-columns: auto minmax(0, 1fr); }
+
+  /* as-is journey map */
+  .journey-map-1 { max-width: 360px; margin: clamp(24px, 3vw, 40px) auto 0; }
+  .journey-map-1 img { width: 100%; height: auto; }
+  .journey-map-1 figcaption { text-align: center; border-top: 0; }
+  .journey-arrow { display: flex; justify-content: center; padding: clamp(18px, 2.4vw, 28px) 0; color: var(--accent); }
+  .journey-note { margin: 0 0 16px; text-align: center; font-size: clamp(13px, 1vw, 14px); color: var(--muted-d); }
+  .journey-map-2 { margin: 0; }
+  .journey-map-2 img { width: 100%; height: auto; }
+
   @media (max-width: 720px) {
     .interview-layout { grid-template-columns: 1fr; }
     .quote-item { gap: 10px; }
@@ -215,6 +225,23 @@
               </div>
             </blockquote>
           </div>
+
+          <h2>As-Is Journey Map</h2>
+          <p>Through analysis of the interview transcripts, we conducted a qualitative analysis across six themes: <strong>Touchpoints, Actions, Pain Points, Needs, Ideas, Outcomes</strong>, and summarized five journey steps.</p>
+
+          <figure class="figure no-frame journey-map-1">
+            <img src="../assets/eo_journey_map1.png" alt="Early journey-map synthesis showing touchpoints, actions, pain points, needs, ideas, and outcomes across five internship stages" loading="lazy" />
+            <figcaption>Student Internship Service Research Synthesis 1</figcaption>
+          </figure>
+
+          <div class="journey-arrow" aria-hidden="true">
+            <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v34" /><path d="M5 29l7 7 7-7" /></svg>
+          </div>
+
+          <p class="journey-note">We tagged each synthesized sticky note and grouped them again.</p>
+          <figure class="figure no-frame journey-map-2">
+            <img src="../assets/eo_journey_map2.jpg" alt="Tagged journey-map stickies grouped by touchpoints, actions, pain points, needs, ideas, and outcomes across five internship stages" loading="lazy" />
+          </figure>
         </section>
       </div>
     </div>
