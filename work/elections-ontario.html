@@ -28,14 +28,15 @@
   .interview-script img { width: 100%; height: auto; }
 
   /* participant quotes */
-  .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 24px); margin-top: clamp(24px, 3vw, 36px); }
-  .quote-card { margin: 0; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: clamp(20px, 2.2vw, 28px); }
-  .quote-card-wide { grid-column: 1 / -1; }
-  .quote-card blockquote { margin: 0; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.55; color: var(--ink); }
-  .quote-card figcaption { margin-top: 14px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .quote-list { display: flex; flex-direction: column; gap: clamp(20px, 2.4vw, 32px); margin-top: clamp(24px, 3vw, 36px); }
+  .quote-item { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; margin: 0; padding-bottom: clamp(20px, 2.4vw, 32px); border-bottom: 1px solid var(--line); }
+  .quote-item:last-child { padding-bottom: 0; border-bottom: 0; }
+  .quote-emoji { font-size: 24px; line-height: 1.2; }
+  .quote-item p { margin: 0; max-width: none; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.6; font-style: italic; color: var(--ink); }
+  .quote-item cite { display: block; margin-top: 8px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; color: var(--accent); }
   @media (max-width: 720px) {
-    .interview-layout, .quote-grid { grid-template-columns: 1fr; }
-    .quote-card-wide { grid-column: auto; }
+    .interview-layout { grid-template-columns: 1fr; }
+    .quote-item { gap: 10px; }
   }
 
   /* equal-size research charts, no frames */
@@ -157,20 +158,29 @@
             </figure>
           </div>
 
-          <h3>For Interns</h3>
-          <div class="quote-grid">
-            <figure class="quote-card">
-              <blockquote>“I need clear task requirements. What this task needs to deliver, and when the deadline is.”</blockquote>
-              <figcaption>P1</figcaption>
-            </figure>
-            <figure class="quote-card">
-              <blockquote>“I think also if there’s like feedback from my manager, I think that would also be helpful so that I can know where I can improve, or what else I can do to make the most out of the internship.”</blockquote>
-              <figcaption>P2</figcaption>
-            </figure>
-            <figure class="quote-card quote-card-wide">
-              <blockquote>“I need more onboarding help.”</blockquote>
-              <figcaption>P1</figcaption>
-            </figure>
+          <h3>Intern Quotes</h3>
+          <div class="quote-list">
+            <blockquote class="quote-item">
+              <span class="quote-emoji" aria-hidden="true">👩🏼‍💼</span>
+              <div>
+                <p>“I need clear task requirements. What this task needs to deliver, and when the deadline is.”</p>
+                <cite>P1</cite>
+              </div>
+            </blockquote>
+            <blockquote class="quote-item">
+              <span class="quote-emoji" aria-hidden="true">🙎🏻‍♀️</span>
+              <div>
+                <p>“I think also if there’s like feedback from my manager, I think that would also be helpful so that I can know where I can improve, or what else I can do to make the most out of the internship.”</p>
+                <cite>P2</cite>
+              </div>
+            </blockquote>
+            <blockquote class="quote-item">
+              <span class="quote-emoji" aria-hidden="true">👩🏼‍💼</span>
+              <div>
+                <p>“I need more onboarding help.”</p>
+                <cite>P1</cite>
+              </div>
+            </blockquote>
           </div>
         </section>
       </div>
