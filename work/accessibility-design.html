@@ -88,6 +88,18 @@
   .eval-checks li::before { content: "✔"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
   @media (max-width: 720px) { .eval-row { grid-template-columns: 1fr; gap: 8px; } }
 
+  /* other projects carousel */
+  .case-next-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: clamp(22px, 2.5vw, 34px); }
+  .case-next-head .label { margin-bottom: 0; }
+  .project-nav { display: flex; gap: 8px; }
+  .project-nav button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: border-color 0.15s ease, opacity 0.15s ease; }
+  .project-nav button:hover { border-color: var(--ink); }
+  .project-nav button:disabled { opacity: 0.35; cursor: default; border-color: var(--line); }
+  .project-track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 4px; }
+  .project-track::-webkit-scrollbar { display: none; }
+  .project-card { flex: 0 0 calc(50% - 12px); scroll-snap-align: start; }
+  @media (max-width: 820px) { .project-card { flex-basis: 85%; } }
+
   /* A/B test scenario + tasks */
   .scenario-card { margin-top: clamp(24px, 3vw, 36px); padding: clamp(22px, 2.6vw, 32px); border-radius: 18px; background: #edf2f9; border: 1px solid #d6e0ee; color: #1e3765; }
   .scenario-card .scenario-k { display: block; margin-bottom: 10px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #1e3765; }
@@ -566,9 +578,34 @@
     </div>
 
     <section class="case-next">
-      <span class="label">Other projects</span>
-      <div class="grid">
-        <a class="card" href="rebites.html">
+      <div class="case-next-head">
+        <span class="label">Other projects</span>
+        <div class="project-nav">
+          <button class="prev" type="button" aria-label="Previous projects"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7" /></svg></button>
+          <button class="next" type="button" aria-label="Next projects"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg></button>
+        </div>
+      </div>
+
+      <div class="project-track" id="project-track">
+        <a class="card project-card" href="maatrx.html">
+          <div class="cover"><img src="../assets/maatrx.jpg" alt="MaaTRx cover" loading="lazy" /><span class="num">01</span></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="tag">Web Design</span><span class="tag">End-to-End</span><span class="tag">Research &amp; Design</span></div>
+            <h3>MaaTRx — Drug Shortage Dashboard</h3>
+            <p>Redesigned 18 screens and resolved 10 UX problems for a health-tech drug-shortage platform.</p>
+            <span class="card-go">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+        <a class="card project-card" href="weavy.html">
+          <div class="cover"><img src="../assets/weavy.jpg" alt="Weavy cover" loading="lazy" /><span class="num">02</span></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="tag">Mobile</span><span class="tag">End-to-End</span><span class="tag">Research &amp; Design</span></div>
+            <h3>Weavy — Human-Centered Matching</h3>
+            <p>Turned 10-question primary research into a low-pressure social product concept in 24 hours.</p>
+            <span class="card-go">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+        <a class="card project-card" href="rebites.html">
           <div class="cover"><img src="../assets/rebites.jpg" alt="ReBites cover" loading="lazy" /><span class="num">04</span></div>
           <div class="card-body">
             <div class="card-tags"><span class="tag">Tablet</span><span class="tag">Hackathon</span></div>
@@ -577,7 +614,7 @@
             <span class="card-go">View case study <span class="arrow">→</span></span>
           </div>
         </a>
-        <a class="card" href="lemonwise.html">
+        <a class="card project-card" href="lemonwise.html">
           <div class="cover"><img src="../assets/lemonwise.jpg" alt="LemonWise cover" loading="lazy" /><span class="num">05</span></div>
           <div class="card-body">
             <div class="card-tags"><span class="tag">Mobile</span><span class="tag">Finance</span><span class="tag">Research &amp; Design</span></div>
@@ -712,6 +749,31 @@
       viewport.addEventListener('click', function (e) {
         if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; }
       }, true);
+    })();
+  </script>
+  <script>
+    (function () {
+      var track = document.getElementById('project-track');
+      if (!track) return;
+      var cards = track.querySelectorAll('.project-card');
+      var prev = document.querySelector('.project-nav .prev');
+      var next = document.querySelector('.project-nav .next');
+
+      function step() {
+        return cards[0] ? cards[0].getBoundingClientRect().width + 24 : 320;
+      }
+
+      function update() {
+        if (!prev || !next) return;
+        prev.disabled = track.scrollLeft <= 1;
+        next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+      }
+
+      if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
     })();
   </script>
 </body>
