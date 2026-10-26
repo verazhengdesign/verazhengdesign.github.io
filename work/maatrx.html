@@ -75,7 +75,15 @@
         <a href="#overview">Overview</a>
         <a href="#problem">Problem</a>
         <a href="#research">Research</a>
-        <a href="#design">Design</a>
+        <div class="toc-group open">
+          <a href="#design" class="toc-parent">Design<span class="toc-caret" aria-hidden="true"></span></a>
+          <div class="toc-sub">
+            <a href="#design-strategies">Design Strategies</a>
+            <a href="#brand-refresh">Brand Refresh</a>
+            <a href="#design-system">Design System</a>
+            <a href="#design-process">Design Process</a>
+          </div>
+        </div>
         <a href="#usability-test">Usability test</a>
         <a href="#prototype">Prototype</a>
         <a href="#outcome">Outcome</a>
@@ -166,20 +174,27 @@
         <!-- DESIGN -->
         <section class="case-section" id="design">
           <span class="kicker">Design</span>
-          <h2>Design Strategies</h2>
+          <h2 id="design-strategies">Design Strategies</h2>
           <div class="strategies">
             <div class="strategy"><span class="s-name"><span class="s-idx">1</span>Standardized UI</span></div>
             <div class="strategy"><span class="s-name"><span class="s-idx">2</span>Information hierarchy</span></div>
             <div class="strategy"><span class="s-name"><span class="s-idx">3</span>System feedback</span></div>
           </div>
 
-          <h2>Brand Refresh</h2>
+          <h2 id="brand-refresh">Brand Refresh</h2>
           <p>To ensure continuity with the client’s established brand, we retained their core colours while elevating the typography and overall design feel.</p>
           <figure class="figure">
             <img src="../assets/maatrx-brand.jpg" alt="MaaTRx brand refresh" loading="lazy" />
           </figure>
-          
-          <h2>Design Process</h2>
+
+          <h2 id="design-system">Design System</h2>
+          <p>We built and followed a strict, unified design system that defines every component, spacing value, and icon, so the interface stays consistent as the team iterates.</p>
+          <figure class="figure">
+            <img src="../assets/maatrx-design-system.png" alt="MaaTRx design system showing components, spacing, and icons" loading="lazy" />
+          </figure>
+          <p class="note"><a class="ext-link" href="https://www.figma.com/design/UU1XfWQjvHkla8YR5KWyN1/-Maatrx-.prototype.final--Copy---Copy-?node-id=2-33" target="_blank" rel="noopener">See the full design system — Figma page ↗</a></p>
+
+          <h2 id="design-process">Design Process</h2>
           <p>Through continuous discussion and iteration as a team, the work moved from our original design deliverables through two rounds of iteration. Guided by our design strategies, we worked through the three quick-win problems and arrived at new pages that feels modern, trustworthy, and more user-friendly.</p>
 
           <div class="shots">
@@ -404,15 +419,30 @@
       onScroll();
 
       // highlight the active table-of-contents link
-      var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-      var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc > a, .toc .toc-parent'));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-sub a'));
+      var mainSections = mainLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var subSections = subLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+
       function setActive() {
         var current = 0;
-        sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
-        links.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+        mainSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
+        mainLinks.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+
+        var sc = -1;
+        subSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) sc = i; });
+        subLinks.forEach(function (l, i) { l.classList.toggle('active', i === sc); });
       }
+
       window.addEventListener('scroll', setActive, { passive: true });
       setActive();
+
+      Array.prototype.slice.call(document.querySelectorAll('.toc-group')).forEach(function (g) {
+        g.querySelector('.toc-parent').addEventListener('click', function () { g.classList.toggle('open'); });
+      });
+      subLinks.forEach(function (l) {
+        l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
+      });
     })();
   </script>
 
