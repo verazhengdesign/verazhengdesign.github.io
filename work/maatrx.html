@@ -12,6 +12,13 @@
 <style>
   /* page-specific accent for this case study only */
   :root { --accent: #42c49e; --accent-ink: #2e9a7a; --accent-soft: rgba(66, 196, 158, 0.16); }
+
+  /* three-up design strategy summary */
+  .design-strategy-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); margin-top: clamp(24px, 3vw, 36px); }
+  .strategy-num { width: 44px; height: 44px; border: 1.5px solid var(--ink); border-radius: 50%; display: grid; place-items: center; font-size: 16px; font-weight: 600; margin-bottom: clamp(20px, 2vw, 28px); }
+  .design-strategy-item h3 { margin: 0 0 12px; font-size: clamp(1.5rem, 2.2vw, 2rem); font-weight: 650; letter-spacing: -0.03em; line-height: 1.1; }
+  .design-strategy-item p { margin: 0; max-width: none; font-size: clamp(15px, 1.15vw, 17px); line-height: 1.6; color: #3a372f; }
+  @media (max-width: 720px) { .design-strategy-grid { grid-template-columns: 1fr; gap: 32px; } }
 </style>
 </head>
 <body>
@@ -175,10 +182,22 @@
         <section class="case-section" id="design">
           <span class="kicker">Design</span>
           <h2 id="design-strategies">Design Strategies</h2>
-          <div class="strategies">
-            <div class="strategy"><span class="s-name"><span class="s-idx">1</span>Standardized UI</span></div>
-            <div class="strategy"><span class="s-name"><span class="s-idx">2</span>Information hierarchy</span></div>
-            <div class="strategy"><span class="s-name"><span class="s-idx">3</span>System feedback</span></div>
+          <div class="design-strategy-grid">
+            <div class="design-strategy-item">
+              <span class="strategy-num">1</span>
+              <h3>Standardized UI</h3>
+              <p>We conducted a brand refresh to establish a consistent visual language creating scalable components.</p>
+            </div>
+            <div class="design-strategy-item">
+              <span class="strategy-num">2</span>
+              <h3>Information hierarchy</h3>
+              <p>We restructured how content is organized and surfaced, so users can quickly orient themselves.</p>
+            </div>
+            <div class="design-strategy-item">
+              <span class="strategy-num">3</span>
+              <h3>System feedback</h3>
+              <p>We introduced clear, responsive signals throughout the interface so users always know where they are.</p>
+            </div>
           </div>
 
           <h2 id="brand-refresh">Brand Refresh</h2>
