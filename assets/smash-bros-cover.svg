@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1760" height="800" viewBox="0 0 1760 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1024"/>
+      <stop offset="0.55" stop-color="#19133d"/>
+      <stop offset="1" stop-color="#2b0f2e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.38" r="0.62">
+      <stop offset="0" stop-color="#ffcc00" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffcc00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1760" height="800" fill="url(#bg)"/>
+  <rect width="1760" height="800" fill="url(#glow)"/>
+
+  <g opacity="0.14" stroke="#ffcc00" stroke-width="1">
+    <path d="M0 200h1760M0 400h1760M0 600h1760"/>
+    <path d="M220 0v800M440 0v800M660 0v800M880 0v800M1100 0v800M1320 0v800M1540 0v800"/>
+  </g>
+
+  <text x="110" y="126" fill="#ffcc00" font-family="Arial, Helvetica, sans-serif" font-size="21" letter-spacing="6">GAME UX RESEARCH · CASE STUDY</text>
+
+  <text x="104" y="342" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="104" font-weight="700" letter-spacing="-3">SUPER SMASH BROS.</text>
+  <text x="104" y="452" fill="#ffcc00" font-family="Arial, Helvetica, sans-serif" font-size="104" font-weight="700" letter-spacing="-3">ULTIMATE</text>
+
+  <text x="110" y="532" fill="#b9bed1" font-family="Arial, Helvetica, sans-serif" font-size="27">Making a complex game menu easier to navigate</text>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#ffcc00" text-anchor="middle">
+    <rect x="110" y="612" width="150" height="52" rx="26" fill="none" stroke="#ffcc00" stroke-opacity="0.7"/>
+    <text x="185" y="645">SOLO</text>
+    <rect x="276" y="612" width="150" height="52" rx="26" fill="none" stroke="#ffcc00" stroke-opacity="0.7"/>
+    <text x="351" y="645">GROUP</text>
+    <rect x="442" y="612" width="150" height="52" rx="26" fill="none" stroke="#ffcc00" stroke-opacity="0.45"/>
+    <text x="517" y="645" fill="#b9bed1">STAGES</text>
+    <rect x="608" y="612" width="150" height="52" rx="26" fill="none" stroke="#ffcc00" stroke-opacity="0.45"/>
+    <text x="683" y="645" fill="#b9bed1">RULES</text>
+  </g>
+
+  <g transform="translate(1280 220)" opacity="0.9">
+    <rect width="360" height="340" rx="18" fill="#0a0e1e" stroke="#ffcc00" stroke-opacity="0.35"/>
+    <text x="28" y="48" fill="#ffcc00" font-family="Arial, Helvetica, sans-serif" font-size="15" letter-spacing="4">MAIN MENU</text>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#eef0f8">
+      <rect x="24" y="74" width="312" height="40" rx="8" fill="#ffcc00" fill-opacity="0.16"/>
+      <text x="44" y="100">Smash</text>
+      <text x="44" y="146" fill="#aeb4c8">Spirits</text>
+      <text x="44" y="192" fill="#aeb4c8">Online</text>
+      <text x="44" y="238" fill="#aeb4c8">Vault</text>
+      <text x="44" y="284" fill="#aeb4c8">Options</text>
+    </g>
+    <path d="M24 118h312M24 164h312M24 210h312M24 256h312" stroke="#ffffff" stroke-opacity="0.08"/>
+  </g>
+</svg>
