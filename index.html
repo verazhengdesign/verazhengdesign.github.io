@@ -115,7 +115,7 @@
       <a class="card" href="work/smash-bros.html">
         <div class="cover"><img src="assets/smash-bros-cover.svg" alt="Super Smash Bros. Ultimate game UX research cover" loading="lazy" /><span class="num">05</span></div>
         <div class="card-body">
-          <div class="card-tags"><span class="tag">Game UX</span><span class="tag">UI Redesign</span><span class="tag">Research &amp; Design</span></div>
+          <div class="card-tags"><span class="tag">Game UX</span><span class="tag">Card Sorting</span><span class="tag">UX Research</span><span class="tag">IA Analysis</span></div>
           <h3>Game Research — Super Smash Bros. Ultimate</h3>
           <p>Making a complex game menu easier to navigate through user research and information architecture.</p>
           <span class="card-go">View case study <span class="arrow">→</span></span>
@@ -206,7 +206,7 @@
         var tags = Array.prototype.slice.call(card.querySelectorAll('.card-tags .tag')).map(function (t) {
           return t.textContent.trim();
         });
-        if (key === 'ux') return tags.indexOf('Research & Design') !== -1;
+        if (key === 'ux') return tags.indexOf('Research & Design') !== -1 || tags.indexOf('UX Research') !== -1;
         if (key === 'service') return tags.indexOf('Service Design') !== -1;
         if (key === 'web') return tags.indexOf('Web Design') !== -1 || tags.indexOf('Web') !== -1;
         if (key === 'mobile') return tags.indexOf('Mobile') !== -1;
