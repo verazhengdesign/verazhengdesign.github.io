@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=131" />
+  <link rel="stylesheet" href="styles.css?v=132" />
 
 </head>
 <body>
@@ -64,8 +64,17 @@
     <div class="wrap">
     <div class="work-head">
       <h2>Projects</h2>
-      <span class="mono">06 projects · 2024–2026</span>
+      <span class="mono"><span id="project-count">06</span> <span id="project-count-label">projects</span> · 2024–2026</span>
     </div>
+
+    <div class="project-filter" role="group" aria-label="Filter projects by category">
+      <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" type="button" data-filter="ux" aria-pressed="false">UX Design</button>
+      <button class="filter-btn" type="button" data-filter="service" aria-pressed="false">Service Design</button>
+      <button class="filter-btn" type="button" data-filter="web" aria-pressed="false">Web</button>
+      <button class="filter-btn" type="button" data-filter="mobile" aria-pressed="false">Mobile</button>
+    </div>
+
     <div class="grid">
       <a class="card" href="work/maatrx.html">
         <div class="cover"><img src="assets/maatrx.jpg" alt="MaaTRx cover" loading="lazy" /><span class="num">01</span></div>
@@ -172,6 +181,51 @@
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+    })();
+  </script>
+  <script>
+    (function () {
+      var filter = document.querySelector('.project-filter');
+      if (!filter) return;
+      var buttons = Array.prototype.slice.call(filter.querySelectorAll('.filter-btn'));
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.work .grid > .card'));
+      var countEl = document.getElementById('project-count');
+      var labelEl = document.getElementById('project-count-label');
+
+      function matches(card, key) {
+        if (key === 'all') return true;
+        var tags = Array.prototype.slice.call(card.querySelectorAll('.card-tags .tag')).map(function (t) {
+          return t.textContent.trim();
+        });
+        if (key === 'ux') return tags.indexOf('Research & Design') !== -1;
+        if (key === 'service') return tags.indexOf('Service Design') !== -1;
+        if (key === 'web') return tags.indexOf('Web Design') !== -1 || tags.indexOf('Web') !== -1;
+        if (key === 'mobile') return tags.indexOf('Mobile') !== -1;
+        return true;
+      }
+
+      function apply(key) {
+        var visible = 0;
+        cards.forEach(function (card) {
+          var show = matches(card, key);
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        if (countEl) countEl.textContent = String(visible).padStart(2, '0');
+        if (labelEl) labelEl.textContent = visible === 1 ? 'project' : 'projects';
+      }
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var key = btn.getAttribute('data-filter');
+          buttons.forEach(function (b) {
+            var active = b === btn;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+          apply(key);
+        });
+      });
     })();
   </script>
 </body>

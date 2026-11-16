@@ -114,6 +114,11 @@
   .work-head h2 { margin: 0; font-size: clamp(2rem, 4.5vw, 3.6rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
   .work-head .mono { color: var(--muted-d); }
 
+  .project-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 clamp(24px, 3vw, 38px); }
+  .filter-btn { appearance: none; font-family: "Geist Mono", monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-d); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease; }
+  .filter-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .filter-btn.is-active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(18px, 2vw, 30px); }
   .card {
     display: flex; flex-direction: column; overflow: hidden;
