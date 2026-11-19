@@ -11,6 +11,27 @@
 <link rel="stylesheet" href="../styles.css?v=132" />
 <style>
   :root { --accent: #c99400; --accent-ink: #a87a00; --accent-soft: rgba(201, 148, 0, 0.16); }
+
+  /* research visuals */
+  .smash-two-up, .smash-survey-stack, .finding-grid, .smash-feedback, .recommendation-grid { display: grid; gap: clamp(16px, 2.2vw, 26px); margin-top: clamp(20px, 2.6vw, 32px); }
+  .smash-two-up { grid-template-columns: 1fr 1fr; }
+  .smash-survey-stack { grid-template-columns: 1fr; gap: 16px; }
+  .smash-two-up .figure, .smash-survey-stack .figure, .finding-card, .smash-feedback .figure { margin: 0; }
+  .finding-grid { grid-template-columns: 1fr 1fr; }
+  .finding-card figcaption { padding: 16px 18px; font-size: 14px; line-height: 1.55; color: #3a372f; border-top: 1px solid var(--line); }
+  .finding-card figcaption strong { display: block; margin-bottom: 6px; font-size: 16px; color: var(--ink); }
+  .finding-detail { max-width: 720px; margin-left: auto; margin-right: auto; }
+  .smash-feedback { grid-template-columns: 1fr; }
+  .smash-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 24px); }
+  .smash-quotes blockquote { margin: 0; padding-left: 16px; border-left: 2px solid var(--accent); font-size: clamp(15px, 1.25vw, 18px); font-style: italic; line-height: 1.55; color: var(--ink); }
+  .recommendation-grid { grid-template-columns: repeat(3, 1fr); }
+  .recommendation-card { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: clamp(18px, 2vw, 24px); }
+  .recommendation-card .r-num { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--accent); }
+  .recommendation-card h4 { margin: 8px 0; font-size: clamp(16px, 1.4vw, 19px); font-weight: 650; letter-spacing: -0.02em; }
+  .recommendation-card p { margin: 0; max-width: none; font-size: 14px; line-height: 1.55; color: var(--muted-d); }
+  @media (max-width: 720px) {
+    .smash-two-up, .smash-survey-stack, .finding-grid, .smash-feedback, .recommendation-grid, .smash-quotes { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -85,7 +106,23 @@
           <h2>Understanding the Menu Problem</h2>
 
           <h3>Heuristic Evaluation</h3>
-          <p>Based on my own play experience and the heuristic list, I focused on <strong>UI1</strong>: whether text, icons, and visual indicators are legible, visible, and convey relevant information. The main menu’s largest central graphic is not clickable, and the “Smash” label does not clearly explain which modes it contains. After entering, I was placed into CPU battles even though I wanted to play with others; online play sits under a separate “Online” section that also contains a mode called “Smash.” “Vault” and “Games &amp; More” were similarly opaque, and newer systems like Spirits relied on knowledge first-time players may not have.</p>
+          <p>Based on my own play experience and the <strong>UI1</strong> heuristic, I examined whether text, icons, and visual indicators were legible, visible, and meaningful. The largest graphic on the main menu is not clickable, and the “Smash” label does not explain which modes it contains. After entering, I was placed in CPU battles even though I wanted to play with others. Online play sits under a separate “Online” section that also contains a mode called “Smash.” “Vault” and “Games &amp; More” were similarly opaque, and Spirits assumed knowledge new players may not have.</p>
+
+          <figure class="figure">
+            <img src="../assets/smash-1.jpg" alt="Super Smash Bros. Ultimate main menu with annotations for the non-clickable centre graphic and section descriptions" />
+            <figcaption>The largest central graphic is not clickable, and “Smash” does not explain the modes inside.</figcaption>
+          </figure>
+
+          <div class="smash-two-up">
+            <figure class="figure">
+              <img src="../assets/smash-2.jpg" alt="Smash and Online submenus both containing a mode called Smash" />
+              <figcaption>Both “Smash” and “Online” contain a mode called “Smash.”</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/smash-3.jpg" alt="Menu comparison across Super Smash Bros. Brawl, 3DS, Wii U, and Ultimate" />
+              <figcaption>Several labels come from older Smash titles, assuming prior knowledge.</figcaption>
+            </figure>
+          </div>
 
           <h3>Open Card Sorting</h3>
           <p>I ran an open card sort in UXtweak with <strong>10 participants</strong> who had some Smash experience but were not experts. The study used <strong>20 cards</strong> focused on the main menu, and each card included the in-game description to match the real experience. Participants grouped items in whatever way made sense and created their own category labels.</p>
@@ -97,23 +134,93 @@
             <div class="stat"><div class="n">9/10</div><div class="c">Grouped Mob Smash under Smash</div></div>
           </div>
 
+          <div class="smash-survey-stack">
+            <figure class="figure">
+              <img src="../assets/smash-4.jpg" alt="Pre-study survey showing all participants had played Super Smash Bros. Ultimate" />
+              <figcaption>All 10 participants had played Smash before.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/smash-5.jpg" alt="Pre-study survey showing most participants described themselves as casual or occasional players" />
+              <figcaption>Most described themselves as casual or occasional players.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/smash-6.jpg" alt="Pre-study survey showing half of participants had felt confused in the main menu" />
+              <figcaption>Half had previously felt confused in the main menu.</figcaption>
+            </figure>
+          </div>
+
           <h3>What We Found</h3>
           <p>I compared the card-sorting results with a recreated original sitemap, using darker colors for frequently used category names and highlighting cards that more than half of participants grouped together.</p>
-          <ul>
-            <li><strong>Smash:</strong> “Mode” appeared often; 9/10 participants grouped Mob Smash here.</li>
-            <li><strong>Spirits:</strong> “Collection” and “Spirit” were common labels; 6/10 grouped Home-Run Contest with Spirit Board, and 6/10 grouped Challenges with Collection and DLC Spirits.</li>
-            <li><strong>Online:</strong> relatively high agreement, with labels such as “Online &amp; Community” and “Multiplayers.”</li>
-            <li><strong>Vault:</strong> participants described it as “Stats &amp; History,” “Mine,” or “Collection,” and often grouped Spectate and Collection together.</li>
-            <li><strong>Games &amp; More:</strong> the most inconsistent category; few participants grouped the original items together in a consistent way.</li>
-            <li>The duplicate “Smash” labels confused many participants, and “Adventure” was the most inconsistently placed card.</li>
-          </ul>
+
+          <div class="smash-two-up">
+            <figure class="figure">
+              <img src="../assets/smash-7.jpg" alt="Similarity matrix from the open card-sorting study" />
+              <figcaption>Similarity matrix: darker cells show stronger associations between cards.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/smash-8.jpg" alt="Original Super Smash Bros. Ultimate menu sitemap" />
+              <figcaption>The original sitemap, recreated as a comparison point.</figcaption>
+            </figure>
+          </div>
+
+          <div class="finding-grid">
+            <figure class="figure finding-card">
+              <img src="../assets/smash-9.jpg" alt="Participant groupings for the Smash category" />
+              <figcaption><strong>Smash</strong>“Mode” appeared often; 9/10 participants grouped Mob Smash here.</figcaption>
+            </figure>
+            <figure class="figure finding-card">
+              <img src="../assets/smash-10.jpg" alt="Participant groupings for the Spirits category" />
+              <figcaption><strong>Spirits</strong>“Collection” and “Spirit” were common; 6/10 grouped Home-Run Contest with Spirit Board.</figcaption>
+            </figure>
+            <figure class="figure finding-card">
+              <img src="../assets/smash-11.jpg" alt="Participant groupings for the Online category" />
+              <figcaption><strong>Online</strong>Relatively high agreement, with labels such as “Online &amp; Community” and “Multiplayers.”</figcaption>
+            </figure>
+            <figure class="figure finding-card">
+              <img src="../assets/smash-12.jpg" alt="Participant groupings for the Vault category" />
+              <figcaption><strong>Vault</strong>Participants described it as “Stats &amp; History,” “Mine,” or “Collection.”</figcaption>
+            </figure>
+            <figure class="figure finding-card">
+              <img src="../assets/smash-13.jpg" alt="Participant groupings for the Games and More category" />
+              <figcaption><strong>Games &amp; More</strong>The most inconsistent category; few participants grouped the original items together in a consistent way.</figcaption>
+            </figure>
+          </div>
+
+          <figure class="figure finding-detail">
+            <img src="../assets/smash-14.jpg" alt="Similarity matrix detail showing Adventure as the most inconsistently placed card" />
+            <figcaption>“Adventure” was the most inconsistently placed card across participants.</figcaption>
+          </figure>
+
+          <h3>Participant Feedback</h3>
+          <div class="smash-feedback">
+            <figure class="figure">
+              <img src="../assets/smash-15.jpg" alt="Post-study survey showing most participants rated the card-sorting task four or five out of five" />
+              <figcaption>Most participants rated the sorting task 4/5 or 5/5.</figcaption>
+            </figure>
+            <div class="smash-quotes">
+              <blockquote>“There are some words that I couldn’t remember its context in the game, that would be confusing for me.”</blockquote>
+              <blockquote>“Some of the cards seem to be redundant (e.g. the 2 ‘Smash’ cards).”</blockquote>
+            </div>
+          </div>
 
           <h3>Design Recommendations</h3>
-          <ul>
-            <li>Rename the duplicate “Smash” labels to <strong>Local Smash</strong> and <strong>Online Smash</strong>.</li>
-            <li>Replace “Games &amp; More” and “Vault” with clearer, descriptive labels, separating game modes from training.</li>
-            <li>Surface the Spirit story mode on the main menu with a clearer label such as <strong>Story Mode</strong> or <strong>Adventure</strong>.</li>
-          </ul>
+          <div class="recommendation-grid">
+            <div class="recommendation-card">
+              <span class="r-num">01</span>
+              <h4>Rename duplicate labels</h4>
+              <p>Use <strong>Local Smash</strong> and <strong>Online Smash</strong> so players can tell the two modes apart.</p>
+            </div>
+            <div class="recommendation-card">
+              <span class="r-num">02</span>
+              <h4>Replace opaque category names</h4>
+              <p>Replace “Games &amp; More” and “Vault” with clearer, descriptive labels, separating game modes from training.</p>
+            </div>
+            <div class="recommendation-card">
+              <span class="r-num">03</span>
+              <h4>Surface the Spirit story mode</h4>
+              <p>Put the story mode on the main menu with a clearer label such as <strong>Story Mode</strong> or <strong>Adventure</strong>.</p>
+            </div>
+          </div>
         </section>
       </div>
     </div>
@@ -149,6 +256,59 @@
       <a class="email" href="mailto:zzx0826vera@gmail.com">zzx0826vera@gmail.com</a>
     </div>
   </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img id="lightbox-img" src="" alt="" draggable="false" />
+    <span class="lightbox-hint">Scroll / pinch to zoom · Esc to close</span>
+  </div>
+
+  <script>
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      var scale = 1, tx = 0, ty = 0, dragging = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
+
+      function apply() {
+        lbImg.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
+        lbImg.classList.toggle('zoomed', scale > 1);
+      }
+      function reset() { scale = 1; tx = 0; ty = 0; apply(); }
+      function open(src, alt) { lbImg.src = src; lbImg.alt = alt; reset(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+      function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; reset(); }
+
+      document.querySelectorAll('.figure > img').forEach(function (img) {
+        var fig = img.parentElement;
+        function activate(e) {
+          if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+          e.preventDefault();
+          open(img.currentSrc || img.src, img.alt);
+        }
+        fig.addEventListener('click', activate);
+        fig.addEventListener('keydown', activate);
+      });
+
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+      lb.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        var factor = e.ctrlKey ? 0.012 : 0.0018;
+        scale = Math.max(1, Math.min(6, scale * Math.exp(-e.deltaY * factor)));
+        if (scale === 1) { tx = 0; ty = 0; }
+        apply();
+      }, { passive: false });
+      lbImg.addEventListener('pointerdown', function (e) {
+        if (scale <= 1) return;
+        dragging = true; startX = e.clientX; startY = e.clientY; startTx = tx; startTy = ty;
+        lbImg.setPointerCapture(e.pointerId);
+      });
+      lbImg.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        tx = startTx + (e.clientX - startX); ty = startTy + (e.clientY - startY); apply();
+      });
+      lbImg.addEventListener('pointerup', function () { dragging = false; });
+      lbImg.addEventListener('click', function () { if (scale <= 1) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>
 
   <script>
     (function () {
