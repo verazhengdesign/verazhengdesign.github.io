@@ -70,6 +70,7 @@
       <nav class="toc" aria-label="Sections">
         <span class="toc-label">On this page</span>
         <a href="#overview">Overview</a>
+        <a href="#research">Research</a>
       </nav>
 
       <div class="case-content">
@@ -77,6 +78,42 @@
           <span class="kicker">Overview</span>
           <h2>Project Overview</h2>
           <p>This was a solo project. Super Smash Bros. Ultimate is a dense, menu-heavy fighting game, so I ran an open card-sorting study with <strong>10 participants</strong> to understand how players group its content. The results revealed a mismatch between the game’s existing information categories and players’ mental models. I used those findings to guide a new information architecture and design a new home page menu.</p>
+        </section>
+
+        <section class="case-section" id="research">
+          <span class="kicker">Research</span>
+          <h2>Understanding the Menu Problem</h2>
+
+          <h3>Heuristic Evaluation</h3>
+          <p>Based on my own play experience and the heuristic list, I focused on <strong>UI1</strong>: whether text, icons, and visual indicators are legible, visible, and convey relevant information. The main menu’s largest central graphic is not clickable, and the “Smash” label does not clearly explain which modes it contains. After entering, I was placed into CPU battles even though I wanted to play with others; online play sits under a separate “Online” section that also contains a mode called “Smash.” “Vault” and “Games &amp; More” were similarly opaque, and newer systems like Spirits relied on knowledge first-time players may not have.</p>
+
+          <h3>Open Card Sorting</h3>
+          <p>I ran an open card sort in UXtweak with <strong>10 participants</strong> who had some Smash experience but were not experts. The study used <strong>20 cards</strong> focused on the main menu, and each card included the in-game description to match the real experience. Participants grouped items in whatever way made sense and created their own category labels.</p>
+
+          <div class="stats">
+            <div class="stat"><div class="n">10</div><div class="c">Card-sorting participants</div></div>
+            <div class="stat"><div class="n">20</div><div class="c">Main-menu cards</div></div>
+            <div class="stat"><div class="n">5</div><div class="c">Original menu categories</div></div>
+            <div class="stat"><div class="n">9/10</div><div class="c">Grouped Mob Smash under Smash</div></div>
+          </div>
+
+          <h3>What We Found</h3>
+          <p>I compared the card-sorting results with a recreated original sitemap, using darker colors for frequently used category names and highlighting cards that more than half of participants grouped together.</p>
+          <ul>
+            <li><strong>Smash:</strong> “Mode” appeared often; 9/10 participants grouped Mob Smash here.</li>
+            <li><strong>Spirits:</strong> “Collection” and “Spirit” were common labels; 6/10 grouped Home-Run Contest with Spirit Board, and 6/10 grouped Challenges with Collection and DLC Spirits.</li>
+            <li><strong>Online:</strong> relatively high agreement, with labels such as “Online &amp; Community” and “Multiplayers.”</li>
+            <li><strong>Vault:</strong> participants described it as “Stats &amp; History,” “Mine,” or “Collection,” and often grouped Spectate and Collection together.</li>
+            <li><strong>Games &amp; More:</strong> the most inconsistent category; few participants grouped the original items together in a consistent way.</li>
+            <li>The duplicate “Smash” labels confused many participants, and “Adventure” was the most inconsistently placed card.</li>
+          </ul>
+
+          <h3>Design Recommendations</h3>
+          <ul>
+            <li>Rename the duplicate “Smash” labels to <strong>Local Smash</strong> and <strong>Online Smash</strong>.</li>
+            <li>Replace “Games &amp; More” and “Vault” with clearer, descriptive labels, separating game modes from training.</li>
+            <li>Surface the Spirit story mode on the main menu with a clearer label such as <strong>Story Mode</strong> or <strong>Adventure</strong>.</li>
+          </ul>
         </section>
       </div>
     </div>
