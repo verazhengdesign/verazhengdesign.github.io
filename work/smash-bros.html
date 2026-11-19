@@ -13,24 +13,37 @@
   :root { --accent: #c99400; --accent-ink: #a87a00; --accent-soft: rgba(201, 148, 0, 0.16); }
 
   /* research visuals */
-  .smash-two-up, .smash-survey-stack, .finding-grid, .smash-feedback, .recommendation-grid { display: grid; gap: clamp(16px, 2.2vw, 26px); margin-top: clamp(20px, 2.6vw, 32px); }
+  #research .figure { border: 0; border-radius: 0; background: transparent; }
+  #research .figure figcaption { border-top: 0; }
+  #research .figure img { border-radius: 0; }
+
+  .smash-two-up, .smash-survey-stack, .smash-feedback, .recommendation-grid { display: grid; gap: clamp(16px, 2.2vw, 26px); margin-top: clamp(20px, 2.6vw, 32px); }
   .smash-two-up { grid-template-columns: 1fr 1fr; }
   .smash-survey-stack { grid-template-columns: 1fr; gap: 16px; }
-  .smash-two-up .figure, .smash-survey-stack .figure, .finding-card, .smash-feedback .figure { margin: 0; }
-  .finding-grid { grid-template-columns: 1fr 1fr; }
-  .finding-card figcaption { padding: 16px 18px; font-size: 14px; line-height: 1.55; color: #3a372f; border-top: 1px solid var(--line); }
-  .finding-card figcaption strong { display: block; margin-bottom: 6px; font-size: 16px; color: var(--ink); }
+  .smash-two-up .figure, .smash-survey-stack .figure, .smash-feedback .figure { margin: 0; }
+
+  .smash-stack { display: flex; flex-direction: column; gap: clamp(22px, 2.6vw, 32px); margin-top: clamp(20px, 2.6vw, 32px); }
+  .smash-stack .figure { margin: 0; }
+
+  .finding-rows { margin-top: clamp(28px, 3.4vw, 44px); border-top: 1px solid var(--line); }
+  .finding-row { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(24px, 3vw, 40px); align-items: center; padding: clamp(24px, 3vw, 36px) 0; border-bottom: 1px solid var(--line); }
+  .finding-row .figure { margin: 0; }
+  .finding-copy h4 { margin: 0 0 8px; font-size: clamp(18px, 1.6vw, 22px); font-weight: 650; letter-spacing: -0.02em; }
+  .finding-copy p { margin: 0; max-width: none; font-size: clamp(15px, 1.1vw, 17px); line-height: 1.6; color: #3a372f; }
+
   .finding-detail { max-width: 720px; margin-left: auto; margin-right: auto; }
   .smash-feedback { grid-template-columns: 1fr; }
   .smash-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 24px); }
   .smash-quotes blockquote { margin: 0; padding-left: 16px; border-left: 2px solid var(--accent); font-size: clamp(15px, 1.25vw, 18px); font-style: italic; line-height: 1.55; color: var(--ink); }
+
   .recommendation-grid { grid-template-columns: repeat(3, 1fr); }
-  .recommendation-card { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: clamp(18px, 2vw, 24px); }
+  .recommendation-card { border: 0; border-top: 1px solid var(--line); border-radius: 0; background: transparent; padding: clamp(18px, 2vw, 24px) 0 0; }
   .recommendation-card .r-num { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--accent); }
   .recommendation-card h4 { margin: 8px 0; font-size: clamp(16px, 1.4vw, 19px); font-weight: 650; letter-spacing: -0.02em; }
   .recommendation-card p { margin: 0; max-width: none; font-size: 14px; line-height: 1.55; color: var(--muted-d); }
+
   @media (max-width: 720px) {
-    .smash-two-up, .smash-survey-stack, .finding-grid, .smash-feedback, .recommendation-grid, .smash-quotes { grid-template-columns: 1fr; }
+    .smash-two-up, .smash-survey-stack, .smash-feedback, .recommendation-grid, .smash-quotes, .finding-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -149,10 +162,10 @@
             </figure>
           </div>
 
-          <h3>What We Found</h3>
+          <h3>What I Found</h3>
           <p>I compared the card-sorting results with a recreated original sitemap, using darker colors for frequently used category names and highlighting cards that more than half of participants grouped together.</p>
 
-          <div class="smash-two-up">
+          <div class="smash-stack">
             <figure class="figure">
               <img src="../assets/smash-7.jpg" alt="Similarity matrix from the open card-sorting study" />
               <figcaption>Similarity matrix: darker cells show stronger associations between cards.</figcaption>
@@ -163,27 +176,42 @@
             </figure>
           </div>
 
-          <div class="finding-grid">
-            <figure class="figure finding-card">
-              <img src="../assets/smash-9.jpg" alt="Participant groupings for the Smash category" />
-              <figcaption><strong>Smash</strong>“Mode” appeared often; 9/10 participants grouped Mob Smash here.</figcaption>
-            </figure>
-            <figure class="figure finding-card">
-              <img src="../assets/smash-10.jpg" alt="Participant groupings for the Spirits category" />
-              <figcaption><strong>Spirits</strong>“Collection” and “Spirit” were common; 6/10 grouped Home-Run Contest with Spirit Board.</figcaption>
-            </figure>
-            <figure class="figure finding-card">
-              <img src="../assets/smash-11.jpg" alt="Participant groupings for the Online category" />
-              <figcaption><strong>Online</strong>Relatively high agreement, with labels such as “Online &amp; Community” and “Multiplayers.”</figcaption>
-            </figure>
-            <figure class="figure finding-card">
-              <img src="../assets/smash-12.jpg" alt="Participant groupings for the Vault category" />
-              <figcaption><strong>Vault</strong>Participants described it as “Stats &amp; History,” “Mine,” or “Collection.”</figcaption>
-            </figure>
-            <figure class="figure finding-card">
-              <img src="../assets/smash-13.jpg" alt="Participant groupings for the Games and More category" />
-              <figcaption><strong>Games &amp; More</strong>The most inconsistent category; few participants grouped the original items together in a consistent way.</figcaption>
-            </figure>
+          <div class="finding-rows">
+            <div class="finding-row">
+              <figure class="figure"><img src="../assets/smash-9.jpg" alt="Participant groupings for the Smash category" /></figure>
+              <div class="finding-copy">
+                <h4>Smash</h4>
+                <p>“Mode” appeared often; 9/10 participants grouped Mob Smash here.</p>
+              </div>
+            </div>
+            <div class="finding-row">
+              <figure class="figure"><img src="../assets/smash-10.jpg" alt="Participant groupings for the Spirits category" /></figure>
+              <div class="finding-copy">
+                <h4>Spirits</h4>
+                <p>“Collection” and “Spirit” were common; 6/10 grouped Home-Run Contest with Spirit Board.</p>
+              </div>
+            </div>
+            <div class="finding-row">
+              <figure class="figure"><img src="../assets/smash-11.jpg" alt="Participant groupings for the Online category" /></figure>
+              <div class="finding-copy">
+                <h4>Online</h4>
+                <p>Relatively high agreement, with labels such as “Online &amp; Community” and “Multiplayers.”</p>
+              </div>
+            </div>
+            <div class="finding-row">
+              <figure class="figure"><img src="../assets/smash-12.jpg" alt="Participant groupings for the Vault category" /></figure>
+              <div class="finding-copy">
+                <h4>Vault</h4>
+                <p>Participants described it as “Stats &amp; History,” “Mine,” or “Collection.”</p>
+              </div>
+            </div>
+            <div class="finding-row">
+              <figure class="figure"><img src="../assets/smash-13.jpg" alt="Participant groupings for the Games and More category" /></figure>
+              <div class="finding-copy">
+                <h4>Games &amp; More</h4>
+                <p>The most inconsistent category; few participants grouped the original items together in a consistent way.</p>
+              </div>
+            </div>
           </div>
 
           <figure class="figure finding-detail">
