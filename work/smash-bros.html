@@ -54,6 +54,16 @@
   .recommendation-card h4 { margin: 8px 0; font-size: clamp(16px, 1.4vw, 19px); font-weight: 650; letter-spacing: -0.02em; }
   .recommendation-card p { margin: 0; max-width: none; font-size: 14px; line-height: 1.55; color: var(--muted-d); }
 
+  /* three-level TOC */
+  .toc .toc-subgroup { display: flex; flex-direction: column; }
+  .toc .toc-sub .toc-subparent { display: flex; align-items: center; gap: 6px; }
+  .toc .toc-sub .toc-subparent .toc-caret { width: 6px; height: 6px; margin: 0 0 2px 0; }
+  .toc .toc-subgroup.open > .toc-subparent .toc-caret { transform: rotate(225deg); margin-bottom: -2px; }
+  .toc .toc-subsub { display: flex; flex-direction: column; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .toc .toc-subgroup.open .toc-subsub { max-height: 240px; }
+  .toc .toc-sub .toc-subsub a { padding: 5px 0 5px 46px; font-size: 10.8px; letter-spacing: 0.01em; text-transform: none; color: rgba(20, 19, 15, 0.36); }
+  .toc .toc-group.open .toc-sub { max-height: 460px; }
+
   @media (max-width: 720px) {
     .smash-two-up, .smash-feedback, .recommendation-grid, .smash-quotes, .finding-row { grid-template-columns: 1fr; }
   }
@@ -120,8 +130,21 @@
           <a href="#research" class="toc-parent">Research<span class="toc-caret" aria-hidden="true"></span></a>
           <div class="toc-sub">
             <a href="#heuristic-evaluation">Heuristic Evaluation</a>
-            <a href="#open-card-sorting">Open Card Sorting</a>
-            <a href="#result-analysis">Result Analysis</a>
+            <div class="toc-subgroup open">
+              <a href="#open-card-sorting" class="toc-subparent">Open Card Sorting<span class="toc-caret" aria-hidden="true"></span></a>
+              <div class="toc-subsub">
+                <a href="#methodology">Methodology</a>
+                <a href="#pre-study-question">Pre-study Question</a>
+              </div>
+            </div>
+            <div class="toc-subgroup open">
+              <a href="#result-analysis" class="toc-subparent">Result Analysis<span class="toc-caret" aria-hidden="true"></span></a>
+              <div class="toc-subsub">
+                <a href="#similarity-matrix">Similarity Matrix</a>
+                <a href="#sitemap">Sitemap</a>
+                <a href="#post-study-questions">Post-study Questions</a>
+              </div>
+            </div>
           </div>
         </div>
         <a href="#design">Design</a>
@@ -163,11 +186,11 @@
           </div>
 
           <h2 id="open-card-sorting">Open Card Sorting</h2>
-          <h3>Methodology</h3>
+          <h3 id="methodology">Methodology</h3>
           <p>I chose an <strong>open card sort</strong> because the issues I found were mainly about unclear labels and how the game organizes its features. An open sort lets participants create their own categories and labels, revealing their intuitive mental model without being influenced by the existing menu structure.</p>
           <p>I ran an open card sort in <strong>UXtweak</strong> with <strong>10 participants</strong> who had some Smash experience but were not experts. The study used <strong>20 cards</strong> focused on the main menu, and each card included the in-game description to match the real experience. Participants grouped items in whatever way made sense and created their own category labels.</p>
 
-          <h3>Pre-study Question</h3>
+          <h3 id="pre-study-question">Pre-study Question</h3>
           <p>The purpose of these pre-study questions was to understand participants’ backgrounds and confirm they matched the study criteria.</p>
           <div class="prestudy-stack">
             <div class="prestudy-item">
@@ -194,7 +217,7 @@
           </div>
 
           <h2 id="result-analysis">Result Analysis</h2>
-          <h3>Similarity Matrix</h3>
+          <h3 id="similarity-matrix">Similarity Matrix</h3>
           <p>When examining the <strong>similarity matrix</strong>, darker blue areas indicate a higher percentage of participants who grouped two cards together; the higher the percentage and the darker the shade, the stronger the association.</p>
 
           <figure class="figure">
@@ -202,7 +225,7 @@
             <figcaption>Similarity matrix: darker cells show stronger associations between cards.</figcaption>
           </figure>
 
-          <h3>Sitemap</h3>
+          <h3 id="sitemap">Sitemap</h3>
           <p>In my visualization, I recreated the <strong>original sitemap</strong> as a comparison group for the card-sorting results. I used darker colors to highlight category names that appeared frequently among participants. For the cards themselves, I applied a lighter color to those with a similarity score above 50%, indicating that most participants tended to place those items in the same group.</p>
           <figure class="figure">
             <img src="../assets/smash-sitemap-1.jpg" alt="Original Super Smash Bros. Ultimate menu sitemap" />
@@ -262,7 +285,7 @@
             <figcaption>Updated sitemap based on the card-sorting findings.</figcaption>
           </figure>
 
-          <h3>Post-study Questions</h3>
+          <h3 id="post-study-questions">Post-study Questions</h3>
           <div class="smash-feedback">
             <div>
               <h4 class="poststudy-question">1. How easy or difficult was it for you to group the menu items? (Scale Rating)</h4>
@@ -404,9 +427,11 @@
       onScroll();
 
       var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc > a, .toc .toc-parent'));
-      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-sub a'));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-sub > a, .toc .toc-sub .toc-subparent'));
+      var subSubLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-subsub a'));
       var mainSections = mainLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
       var subSections = subLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var subSubSections = subSubLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
 
       function setActive() {
         var current = 0;
@@ -416,6 +441,10 @@
         var sc = -1;
         subSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) sc = i; });
         subLinks.forEach(function (l, i) { l.classList.toggle('active', i === sc); });
+
+        var ssc = -1;
+        subSubSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) ssc = i; });
+        subSubLinks.forEach(function (l, i) { l.classList.toggle('active', i === ssc); });
       }
 
       window.addEventListener('scroll', setActive, { passive: true });
@@ -424,8 +453,16 @@
       Array.prototype.slice.call(document.querySelectorAll('.toc-group')).forEach(function (g) {
         g.querySelector('.toc-parent').addEventListener('click', function () { g.classList.toggle('open'); });
       });
-      subLinks.forEach(function (l) {
-        l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
+      Array.prototype.slice.call(document.querySelectorAll('.toc-subgroup')).forEach(function (g) {
+        g.querySelector('.toc-subparent').addEventListener('click', function () { g.classList.toggle('open'); });
+      });
+      subLinks.concat(subSubLinks).forEach(function (l) {
+        l.addEventListener('click', function () {
+          var group = l.closest('.toc-group');
+          var subgroup = l.closest('.toc-subgroup');
+          if (group) group.classList.add('open');
+          if (subgroup) subgroup.classList.add('open');
+        });
       });
     })();
   </script>
