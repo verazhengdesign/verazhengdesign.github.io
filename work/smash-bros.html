@@ -24,10 +24,14 @@
   .smash-stack { display: flex; flex-direction: column; gap: clamp(22px, 2.6vw, 32px); margin-top: clamp(20px, 2.6vw, 32px); }
   .smash-stack .figure { margin: 0; }
 
-  .heuristic-stack { display: flex; flex-direction: column; gap: clamp(32px, 4vw, 48px); margin-top: clamp(20px, 2.6vw, 32px); }
+  .heuristic-stack { display: flex; flex-direction: column; gap: clamp(48px, 5vw, 64px); margin-top: clamp(20px, 2.6vw, 32px); }
   .heuristic-item h4 { margin: 0 0 8px; font-size: clamp(17px, 1.5vw, 20px); font-weight: 650; letter-spacing: -0.02em; }
   .heuristic-item p { margin: 0 0 18px; max-width: none; font-size: clamp(15px, 1.1vw, 17px); line-height: 1.6; color: #3a372f; }
   .heuristic-item .figure { margin: 0; }
+
+  .prestudy-stack { display: flex; flex-direction: column; gap: clamp(44px, 5vw, 64px); margin-top: clamp(20px, 2.6vw, 32px); }
+  .prestudy-item h4 { margin: 0 0 14px; font-size: clamp(15px, 1.2vw, 17px); font-weight: 650; line-height: 1.45; letter-spacing: -0.01em; }
+  .prestudy-item .figure { margin: 0; }
 
   .finding-rows { margin-top: clamp(28px, 3.4vw, 44px); border-top: 1px solid var(--line); }
   .finding-row { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(24px, 3vw, 40px); align-items: center; padding: clamp(24px, 3vw, 36px) 0; border-bottom: 1px solid var(--line); }
@@ -151,19 +155,29 @@
           <p>I chose an <strong>open card sort</strong> because the issues I found were mainly about unclear labels and how the game organizes its features. An open sort lets participants create their own categories and labels, revealing their intuitive mental model without being influenced by the existing menu structure.</p>
           <p>I ran an open card sort in <strong>UXtweak</strong> with <strong>10 participants</strong> who had some Smash experience but were not experts. The study used <strong>20 cards</strong> focused on the main menu, and each card included the in-game description to match the real experience. Participants grouped items in whatever way made sense and created their own category labels.</p>
 
-          <div class="smash-stack">
-            <figure class="figure">
-              <img src="../assets/smash-4.jpg" alt="Pre-study survey showing all participants had played Super Smash Bros. Ultimate" />
-              <figcaption>All 10 participants had played Smash before.</figcaption>
-            </figure>
-            <figure class="figure">
-              <img src="../assets/smash-5.jpg" alt="Pre-study survey showing most participants described themselves as casual or occasional players" />
-              <figcaption>Most described themselves as casual or occasional players.</figcaption>
-            </figure>
-            <figure class="figure">
-              <img src="../assets/smash-6.jpg" alt="Pre-study survey showing half of participants had felt confused in the main menu" />
-              <figcaption>Half had previously felt confused in the main menu.</figcaption>
-            </figure>
+          <h3>Pre-study Question</h3>
+          <div class="prestudy-stack">
+            <div class="prestudy-item">
+              <h4>1. Have you played Super Smash Bros. Ultimate before? (Multiple Choice)</h4>
+              <figure class="figure">
+                <img src="../assets/smash-4.jpg" alt="Pre-study survey showing all participants had played Super Smash Bros. Ultimate" />
+                <figcaption>All 10 participants had played Smash before.</figcaption>
+              </figure>
+            </div>
+            <div class="prestudy-item">
+              <h4>2. How would you describe your experience with the game? (Multiple Choice)</h4>
+              <figure class="figure">
+                <img src="../assets/smash-5.jpg" alt="Pre-study survey showing most participants described themselves as casual or occasional players" />
+                <figcaption>Most described themselves as casual or occasional players. This matched my participant recruitment criteria: participants were familiar enough with the game to navigate it, but not so experienced that they already knew the menu by heart.</figcaption>
+              </figure>
+            </div>
+            <div class="prestudy-item">
+              <h4>3. Before this study, did you ever feel confused or lost when navigating the game’s main menu? (Multiple Choice)</h4>
+              <figure class="figure">
+                <img src="../assets/smash-6.jpg" alt="Pre-study survey showing half of participants had felt confused in the main menu" />
+                <figcaption>Half had previously felt confused in the main menu.</figcaption>
+              </figure>
+            </div>
           </div>
 
           <h2>What I Found</h2>
