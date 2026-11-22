@@ -116,7 +116,15 @@
       <nav class="toc" aria-label="Sections">
         <span class="toc-label">On this page</span>
         <a href="#overview">Overview</a>
-        <a href="#research">Research</a>
+        <div class="toc-group open">
+          <a href="#research" class="toc-parent">Research<span class="toc-caret" aria-hidden="true"></span></a>
+          <div class="toc-sub">
+            <a href="#heuristic-evaluation">Heuristic Evaluation</a>
+            <a href="#open-card-sorting">Open Card Sorting</a>
+            <a href="#result-analysis">Result Analysis</a>
+          </div>
+        </div>
+        <a href="#design">Design</a>
       </nav>
 
       <div class="case-content">
@@ -128,7 +136,7 @@
 
         <section class="case-section" id="research">
           <span class="kicker">Research</span>
-          <h2>Heuristic Evaluation</h2>
+          <h2 id="heuristic-evaluation">Heuristic Evaluation</h2>
 
           <div class="heuristic-stack">
             <div class="heuristic-item">
@@ -154,7 +162,7 @@
             </div>
           </div>
 
-          <h2>Open Card Sorting</h2>
+          <h2 id="open-card-sorting">Open Card Sorting</h2>
           <h3>Methodology</h3>
           <p>I chose an <strong>open card sort</strong> because the issues I found were mainly about unclear labels and how the game organizes its features. An open sort lets participants create their own categories and labels, revealing their intuitive mental model without being influenced by the existing menu structure.</p>
           <p>I ran an open card sort in <strong>UXtweak</strong> with <strong>10 participants</strong> who had some Smash experience but were not experts. The study used <strong>20 cards</strong> focused on the main menu, and each card included the in-game description to match the real experience. Participants grouped items in whatever way made sense and created their own category labels.</p>
@@ -185,7 +193,7 @@
             </div>
           </div>
 
-          <h2>Result Analysis</h2>
+          <h2 id="result-analysis">Result Analysis</h2>
           <h3>Similarity Matrix</h3>
           <p>When examining the <strong>similarity matrix</strong>, darker blue areas indicate a higher percentage of participants who grouped two cards together; the higher the percentage and the darker the shade, the stronger the association.</p>
 
@@ -274,7 +282,11 @@
             </div>
           </div>
 
-          <h3>Design Recommendations</h3>
+        </section>
+
+        <section class="case-section" id="design">
+          <span class="kicker">Design</span>
+          <h2>Design Recommendations</h2>
           <div class="recommendation-grid">
             <div class="recommendation-card">
               <span class="r-num">01</span>
@@ -391,15 +403,30 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-      var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc > a, .toc .toc-parent'));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-sub a'));
+      var mainSections = mainLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var subSections = subLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+
       function setActive() {
         var current = 0;
-        sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
-        links.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+        mainSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
+        mainLinks.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+
+        var sc = -1;
+        subSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) sc = i; });
+        subLinks.forEach(function (l, i) { l.classList.toggle('active', i === sc); });
       }
+
       window.addEventListener('scroll', setActive, { passive: true });
       setActive();
+
+      Array.prototype.slice.call(document.querySelectorAll('.toc-group')).forEach(function (g) {
+        g.querySelector('.toc-parent').addEventListener('click', function () { g.classList.toggle('open'); });
+      });
+      subLinks.forEach(function (l) {
+        l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
+      });
     })();
   </script>
 </body>
