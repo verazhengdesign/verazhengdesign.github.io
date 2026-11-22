@@ -25,6 +25,11 @@
   .smash-stack { display: flex; flex-direction: column; gap: clamp(22px, 2.6vw, 32px); margin-top: clamp(20px, 2.6vw, 32px); }
   .smash-stack .figure { margin: 0; }
 
+  .heuristic-stack { display: flex; flex-direction: column; gap: clamp(32px, 4vw, 48px); margin-top: clamp(20px, 2.6vw, 32px); }
+  .heuristic-item h4 { margin: 0 0 8px; font-size: clamp(17px, 1.5vw, 20px); font-weight: 650; letter-spacing: -0.02em; }
+  .heuristic-item p { margin: 0 0 18px; max-width: none; font-size: clamp(15px, 1.1vw, 17px); line-height: 1.6; color: #3a372f; }
+  .heuristic-item .figure { margin: 0; }
+
   .finding-rows { margin-top: clamp(28px, 3.4vw, 44px); border-top: 1px solid var(--line); }
   .finding-row { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(24px, 3vw, 40px); align-items: center; padding: clamp(24px, 3vw, 36px) 0; border-bottom: 1px solid var(--line); }
   .finding-row .figure { margin: 0; }
@@ -119,21 +124,28 @@
           <h2>Understanding the Menu Problem</h2>
 
           <h3>Heuristic Evaluation</h3>
-          <p>I evaluated whether the menu’s text, icons, and visual indicators were legible, visible, and meaningful. The main menu immediately exposed a gap between what looked interactive and what actually was.</p>
-
-          <div class="smash-stack">
-            <figure class="figure">
-              <img src="../assets/smash-heuristic-1.jpg" alt="Super Smash Bros. Ultimate main menu with annotations for the non-clickable centre graphic and section descriptions" />
-              <figcaption>The largest central graphic is not clickable, and “Smash” does not explain the modes inside; “a great place to get started” does not help players predict what they will play.</figcaption>
-            </figure>
-            <figure class="figure">
-              <img src="../assets/smash-heuristic-2.jpg" alt="Smash and Online submenus both containing a mode called Smash" />
-              <figcaption>“Smash” and “Online” both contain a mode called “Smash,” creating duplicate labels.</figcaption>
-            </figure>
-            <figure class="figure">
-              <img src="../assets/smash-heuristic-3.jpg" alt="Menu comparison across Super Smash Bros. Brawl, 3DS, Wii U, and Ultimate" />
-              <figcaption>Several labels come from older Smash titles, relying on prior knowledge new players may not have.</figcaption>
-            </figure>
+          <div class="heuristic-stack">
+            <div class="heuristic-item">
+              <h4>1. Main Menu</h4>
+              <p>Using the <strong>UI1</strong> heuristic, I examined whether menu text, icons, and visual indicators were legible, visible, and meaningful. The largest central graphic is not clickable, and “Smash” does not explain the modes inside; “a great place to get started” does not help players predict what they will play.</p>
+              <figure class="figure">
+                <img src="../assets/smash-heuristic-1.jpg" alt="Super Smash Bros. Ultimate main menu with annotations for the non-clickable centre graphic and section descriptions" />
+              </figure>
+            </div>
+            <div class="heuristic-item">
+              <h4>2. Local and Online Mode</h4>
+              <p>“Smash” and “Online” both contain a mode called “Smash,” creating duplicate labels. The duplicated naming and vague labels made it hard to understand where different features were located.</p>
+              <figure class="figure">
+                <img src="../assets/smash-heuristic-2.jpg" alt="Smash and Online submenus both containing a mode called Smash" />
+              </figure>
+            </div>
+            <div class="heuristic-item">
+              <h4>3. Labels from Older Versions</h4>
+              <p>Other labels, such as “Vault” (Sounds, Replays, Records, and Tips) and “Games &amp; More” (including Training), did not help players predict what was inside, increasing guesswork and trial-and-error. Many of these names come from earlier Smash titles. Newer systems such as Spirits also rely on prior knowledge, so several categories assume familiarity that first-time players do not have.</p>
+              <figure class="figure">
+                <img src="../assets/smash-heuristic-3.jpg" alt="Menu comparison across Super Smash Bros. Brawl, 3DS, Wii U, and Ultimate" />
+              </figure>
+            </div>
           </div>
 
           <h3>Open Card Sorting</h3>
