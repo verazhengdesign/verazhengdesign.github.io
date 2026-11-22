@@ -456,7 +456,7 @@
       Array.prototype.slice.call(document.querySelectorAll('.toc-subgroup')).forEach(function (g) {
         g.querySelector('.toc-subparent').addEventListener('click', function () { g.classList.toggle('open'); });
       });
-      subLinks.concat(subSubLinks).forEach(function (l) {
+      subSubLinks.forEach(function (l) {
         l.addEventListener('click', function () {
           var group = l.closest('.toc-group');
           var subgroup = l.closest('.toc-subgroup');
