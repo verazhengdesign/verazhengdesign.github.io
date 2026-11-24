@@ -880,15 +880,15 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .hero-name:hover .hero-bio { opacity: 1; pointer-events: auto; }
 .hero-bio-motto {
   margin: 0;
-  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-  font-size: clamp(30px, 3.4vw, 44px);
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.02;
-  letter-spacing: -0.02em;
+  font-family: "Geist", sans-serif;
+  font-size: clamp(28px, 3vw, 40px);
+  font-style: normal;
+  font-weight: 650;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   color: var(--ink);
 }
-.hero-bio-hi { margin: 8px 0 0; font-size: clamp(15px, 1.3vw, 18px); font-weight: 600; line-height: 1.4; color: var(--accent); }
+.hero-bio-hi { margin: clamp(18px, 2vw, 26px) 0 0; font-size: clamp(15px, 1.3vw, 18px); font-weight: 600; line-height: 1.4; color: var(--accent); }
 .hero-bio-copy { margin: 8px 0 0; max-width: 62ch; font-size: clamp(14px, 1.15vw, 16px); line-height: 1.5; color: #3a372f; }
 
 /* gentle card lift + cover zoom */
