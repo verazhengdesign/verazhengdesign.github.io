@@ -805,8 +805,8 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 }
 .hero-status { animation: heroRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .hero .photo { animation: heroPhotoIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
-.hero-name h1 { animation: heroRise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both; }
-.hero-role { animation: heroRise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
+.hero-name h1 { animation: heroRise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards; }
+.hero-role { animation: heroRise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.25s backwards; }
 .hero-foot { animation: heroRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
 
 /* playful sticky note on the portrait */
@@ -860,48 +860,27 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 }
 .photo:hover .photo-note { opacity: 1; transform: translate(0, 0) rotate(5deg) scale(1); }
 
-/* short bio reveal on the name */
+/* swap the name for a short bio on hover */
 .hero-name { position: relative; }
+.hero-name h1,
+.hero-role { transition: opacity 0.2s ease; }
 .hero-bio {
   position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  width: min(600px, 100%);
-  padding: 14px 16px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow: 0 18px 40px rgba(15, 15, 14, 0.13);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   opacity: 0;
-  transform: translateY(8px);
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: 6;
+  transition: opacity 0.2s ease;
+  z-index: 2;
 }
-.hero-bio::before {
-  content: "";
-  position: absolute;
-  top: -7px;
-  left: 34px;
-  width: 12px;
-  height: 12px;
-  background: var(--surface);
-  border-left: 1px solid var(--line);
-  border-top: 1px solid var(--line);
-  transform: rotate(45deg);
-}
-.hero-bio::after {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: 0;
-  right: 0;
-  height: 12px;
-}
-.hero-name:hover .hero-bio { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.hero-bio-motto { margin: 0; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
-.hero-bio-hi { margin: 6px 0 0; font-size: 13px; font-weight: 600; line-height: 1.4; color: var(--accent); }
-.hero-bio-copy { margin: 5px 0 0; font-size: 13px; line-height: 1.45; color: #3a372f; }
+.hero-name:hover h1,
+.hero-name:hover .hero-role { opacity: 0; }
+.hero-name:hover .hero-bio { opacity: 1; pointer-events: auto; }
+.hero-bio-motto { margin: 0; font-size: clamp(18px, 2vw, 24px); font-weight: 650; line-height: 1.2; color: var(--ink); }
+.hero-bio-hi { margin: 8px 0 0; font-size: clamp(15px, 1.3vw, 18px); font-weight: 600; line-height: 1.4; color: var(--accent); }
+.hero-bio-copy { margin: 8px 0 0; max-width: 62ch; font-size: clamp(14px, 1.15vw, 16px); line-height: 1.5; color: #3a372f; }
 
 /* gentle card lift + cover zoom */
 .card { transition: box-shadow 0.28s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
