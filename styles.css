@@ -863,7 +863,7 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 /* swap the name for a short bio on hover */
 .hero-name { position: relative; }
 .hero-name h1,
-.hero-role { transition: opacity 0.2s ease; }
+.hero-role { transition: opacity 0.14s ease 0.14s; }
 .hero-bio {
   position: absolute;
   inset: 0;
@@ -872,12 +872,12 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.14s ease;
   z-index: 2;
 }
 .hero-name:hover h1,
-.hero-name:hover .hero-role { opacity: 0; }
-.hero-name:hover .hero-bio { opacity: 1; pointer-events: auto; }
+.hero-name:hover .hero-role { opacity: 0; transition-delay: 0s; }
+.hero-name:hover .hero-bio { opacity: 1; pointer-events: auto; transition-delay: 0.14s; }
 .hero-bio-motto {
   margin: 0;
   font-family: "Geist", sans-serif;
