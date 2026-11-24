@@ -191,29 +191,21 @@
 .case { padding: clamp(36px, 6vw, 92px) 0 0; }
 .case-meta {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  max-width: none;
-  margin-top: clamp(30px, 4vw, 56px);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  overflow: hidden;
-  background: var(--surface);
+  grid-template-columns: repeat(4, max-content);
+  justify-content: space-between;
+  align-items: start;
+  gap: clamp(32px, 4vw, 64px);
+  width: 80%;
+  max-width: 1000px;
+  margin: clamp(30px, 4vw, 56px) auto 0;
 }
 .case-meta .meta-item {
-  display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0;
-  gap: 8px; padding: clamp(16px, 1.9vw, 26px) clamp(14px, 1.6vw, 28px);
-  border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; align-items: flex-start; text-align: left; min-width: 0;
+  gap: 8px; padding: 0; border: 0;
 }
-.case-meta .meta-item:last-child { border-right: 0; }
-.case-meta .meta-label { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
-.case-meta .meta-value { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 34px; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--ink); }
-.case-meta .meta-caption { font-size: clamp(13px, 1.05vw, 15px); color: var(--muted-d); line-height: 1.4; max-width: 22ch; }
-.case-meta .avatars { display: flex; }
-.case-meta .avatars span { width: 30px; height: 30px; border-radius: 50%; background: #d8d1c4; border: 2px solid var(--surface); margin-left: -10px; }
-.case-meta .avatars span:first-child { margin-left: 0; }
-.case-meta .tool-chip { width: 36px; height: 36px; border-radius: 11px; background: var(--panel); border: 1px solid var(--line); display: grid; place-items: center; font-family: "Geist Mono", monospace; font-size: 11px; color: var(--ink); }
-.case-meta .tool-icon { display: inline-flex; align-items: center; justify-content: center; }
-.case-meta .tool-icon svg { display: block; }
+.case-meta .meta-label { font-family: inherit; font-size: clamp(15px, 1.15vw, 17px); font-weight: 650; letter-spacing: 0; text-transform: none; line-height: 1.4; color: var(--accent); }
+.case-meta .meta-text { display: block; max-width: none; font-size: clamp(15px, 1.15vw, 17px); font-weight: 400; letter-spacing: 0; line-height: 1.5; color: #3a372f; }
+.case-meta .meta-line { display: block; }
 .case h1 { margin: 0; font-size: clamp(2rem, 4.6vw, 3.4rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.03; max-width: none; text-align: left; }
 .case-summary { margin: clamp(18px, 2vw, 28px) 0 0; max-width: 78ch; font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.45; color: var(--muted-d); text-align: left; }
 .case-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(22px, 2.4vw, 32px); justify-content: flex-start; }
@@ -259,10 +251,8 @@
 .case-next .label { display: block; margin-bottom: clamp(22px, 2.5vw, 34px); font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); }
 
 @media (max-width: 720px) {
-  .case-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .case-meta .meta-item { border-bottom: 1px solid var(--line); }
-  .case-meta .meta-item:nth-child(2n) { border-right: 0; }
-  .case-meta .meta-item:nth-child(3), .case-meta .meta-item:nth-child(4) { border-bottom: 0; }
+  .case-meta { grid-template-columns: 1fr 1fr; gap: 28px; width: 100%; max-width: none; }
+  .case-meta .meta-item { border: 0; }
   .case-body { grid-template-columns: 1fr; gap: 28px; }
   .toc { position: static; flex-direction: row; gap: 18px; overflow-x: auto; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
   .toc .toc-label { display: none; }
@@ -441,16 +431,6 @@ p.f-quote .f-by { display: block; margin-top: 6px; color: #7cc4ab; }
 .compare + p { margin-top: clamp(28px, 3.4vw, 48px); }
 
 /* meta card: allow team popover to overflow */
-.case-meta { overflow: visible; }
-.case-meta .meta-item.team { position: relative; cursor: help; }
-.case-meta .team-pop { position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translate(-50%, 6px); white-space: nowrap; background: var(--ink); color: #fff; font-size: 12.5px; font-weight: 500; letter-spacing: -0.01em; padding: 8px 12px; border-radius: 10px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16); opacity: 0; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 20; }
-.case-meta .meta-item.team:hover .team-pop { opacity: 1; transform: translate(-50%, 0); }
-
-/* weavy: team popover below + procreate image icon */
-.case-meta .team-pop { top: calc(100% + 8px); bottom: auto; transform: translate(-50%, -6px); }
-.case-meta .meta-item.team:hover .team-pop { transform: translate(-50%, 0); }
-.case-meta .tool-icon img { width: 26px; height: 26px; object-fit: contain; display: block; }
-
 /* ---------- research themes (numbered rows) ---------- */
 .themes { display: flex; flex-direction: column; gap: clamp(26px, 3.2vw, 48px); margin-top: clamp(24px, 3vw, 36px); }
 .theme { display: grid; grid-template-columns: 0.95fr 1.15fr; gap: clamp(28px, 4vw, 64px); }
