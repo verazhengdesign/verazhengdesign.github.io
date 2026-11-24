@@ -878,7 +878,16 @@ p.note { font-size: clamp(14px, 1.1vw, 15.5px); line-height: 1.5; color: var(--m
 .hero-name:hover h1,
 .hero-name:hover .hero-role { opacity: 0; }
 .hero-name:hover .hero-bio { opacity: 1; pointer-events: auto; }
-.hero-bio-motto { margin: 0; font-size: clamp(18px, 2vw, 24px); font-weight: 650; line-height: 1.2; color: var(--ink); }
+.hero-bio-motto {
+  margin: 0;
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 3.4vw, 44px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
 .hero-bio-hi { margin: 8px 0 0; font-size: clamp(15px, 1.3vw, 18px); font-weight: 600; line-height: 1.4; color: var(--accent); }
 .hero-bio-copy { margin: 8px 0 0; max-width: 62ch; font-size: clamp(14px, 1.15vw, 16px); line-height: 1.5; color: #3a372f; }
 
