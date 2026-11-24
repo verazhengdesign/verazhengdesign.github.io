@@ -72,14 +72,14 @@
       <button class="filter-btn" type="button" data-filter="ux-design" aria-pressed="false">UX Design</button>
       <button class="filter-btn" type="button" data-filter="ux-research" aria-pressed="false">UX Research</button>
       <button class="filter-btn" type="button" data-filter="service" aria-pressed="false">Service Design</button>
-      <button class="filter-btn" type="button" data-filter="accessibility" aria-pressed="false">Accessibility Design</button>
+      <button class="filter-btn" type="button" data-filter="web-design" aria-pressed="false">Web Design</button>
     </div>
 
     <div class="grid">
       <a class="card" href="work/maatrx.html">
         <div class="cover"><img src="assets/maatrx.jpg" alt="MaaTRx cover" loading="lazy" /><span class="num">01</span></div>
         <div class="card-body">
-          <div class="card-tags"><span class="tag tag-main">UX Design</span><span class="tag">Web Design</span><span class="tag">End-to-End</span></div>
+          <div class="card-tags"><span class="tag tag-main">UX Design</span><span class="tag tag-main">Web Design</span><span class="tag">End-to-End</span></div>
           <h3>MaaTRx — Drug Shortage Dashboard</h3>
           <p>Redesigned 18 screens and resolved 10 UX problems for a health-tech drug-shortage platform.</p>
           <span class="card-go">View case study <span class="arrow">→</span></span>
@@ -106,7 +106,7 @@
       <a class="card" href="work/accessibility-design.html">
         <div class="cover"><img src="assets/mi-accessibility-cover.jpg" alt="Before-and-after comparison of the U of T MI website" loading="lazy" /><span class="num">04</span></div>
         <div class="card-body">
-          <div class="card-tags"><span class="tag tag-main">Accessibility Design</span><span class="tag">Web Design</span><span class="tag">AODA / WCAG</span><span class="tag">Card Sorting</span></div>
+          <div class="card-tags"><span class="tag tag-main">Web Design</span><span class="tag">AODA / WCAG</span><span class="tag">Card Sorting</span></div>
           <h3>Accessibility Design — U of T MI Website</h3>
           <p>Rebuilt the U of T Master of Information site to remove invisible cognitive friction and screen-reader confusion — beyond AODA/WCAG compliance.</p>
           <span class="card-go">View case study <span class="arrow">→</span></span>
@@ -209,7 +209,7 @@
         if (key === 'ux-design') return tags.indexOf('UX Design') !== -1;
         if (key === 'ux-research') return tags.indexOf('UX Research') !== -1;
         if (key === 'service') return tags.indexOf('Service Design') !== -1;
-        if (key === 'accessibility') return tags.indexOf('Accessibility Design') !== -1;
+        if (key === 'web-design') return tags.indexOf('Web Design') !== -1;
         return true;
       }
 
