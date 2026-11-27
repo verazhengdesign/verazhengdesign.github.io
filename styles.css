@@ -48,6 +48,9 @@
   .nav-links .lang-switch { display: inline-flex; align-items: center; justify-content: center; min-width: 46px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted-d); font-size: 12px; font-weight: 600; letter-spacing: 0; }
   .nav-links .lang-switch:hover { color: var(--ink); border-color: var(--ink); }
   html[lang="zh"] body { font-family: "Geist", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  html[lang="zh"] .hero h1 { font-family: "Songti SC", "Noto Serif SC", "STSong", serif; font-style: normal; font-weight: 600; font-size: clamp(4.5rem, 12vw, 12rem); letter-spacing: 0.02em; }
+  .brand .brand-zh { font-family: "Songti SC", "Noto Serif SC", "STSong", serif; font-weight: 600; letter-spacing: 0.02em; }
+  .brand .brand-en { font-family: "Great Vibes", "Segoe Script", cursive; font-weight: 400; }
   .zh-note { margin: 14px 0 0; max-width: 62ch; font-size: 13px; line-height: 1.55; color: var(--muted-d); }
 
   .hero-status { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: clamp(40px, 5vw, 80px) 0 clamp(30px, 4vw, 60px); color: var(--muted); }
