@@ -1,18 +1,11 @@
 ---
+layout: default
 lang: en
 ref: lemonwise
+title: "LemonWise — Student Finance App · Vera Zheng"
+description: "Case study: LemonWise, a habit-building budgeting app that helps students build financial literacy."
+permalink: /work/lemonwise.html
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>LemonWise — Student Finance App · Vera Zheng</title>
-<meta name="description" content="Case study: LemonWise, a habit-building budgeting app that helps students build financial literacy." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.css?v=149" />
 <style>
   /* page-specific accent — LemonWise (yellow) */
   :root { --accent: #c99000; --accent-ink: #9c6f00; --accent-soft: rgba(201, 144, 0, 0.16); }
@@ -35,20 +28,8 @@ ref: lemonwise
   .lm-marquee .marquee-track { animation: lm-marquee 45s linear infinite; }
   @keyframes lm-marquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 </style>
-</head>
-<body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="../index.html">Vera Zheng Design</a>
-      <nav class="nav-links">
-        <a href="../index.html#work">Work</a>
-        <a href="../journal.html">Journal</a>
-        <a href="../about.html">About</a>
-      </nav>
-    </div>
-  </header>
 
-  <main class="wrap">
+<main class="wrap">
     <article class="case">
       <h1>LemonWise — Student Finance App</h1>
       <p class="case-summary">A habit-building budgeting app that turns student money stress into small, motivating wins.</p>
@@ -403,14 +384,7 @@ ref: lemonwise
     </section>
   </main>
 
-  <footer class="foot">
-    <div class="wrap foot-inner">
-      <span class="mono">Vera Zheng</span>
-      <a class="email" href="mailto:zzx0826vera@gmail.com">zzx0826vera@gmail.com</a>
-    </div>
-  </footer>
-
-  <div class="lightbox" id="lightbox" aria-hidden="true">
+<div class="lightbox" id="lightbox" aria-hidden="true">
     <img id="lightbox-img" src="" alt="" draggable="false" />
     <span class="lightbox-hint">Scroll / pinch to zoom · Esc to close</span>
   </div>
@@ -512,5 +486,3 @@ ref: lemonwise
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
     })();
   </script>
-</body>
-</html>

@@ -1,0 +1,697 @@
+---
+layout: default
+lang: zh
+ref: elections-ontario
+title: "服务设计 — Elections Ontario 实习项目"
+description: "案例研究：通过服务蓝图与实体原型，重新设计 Elections Ontario 的实习体验。"
+permalink: /zh/work/elections-ontario.html
+---
+<style>
+  /* page-specific accent — Elections Ontario yellow */
+  :root { --accent: #c99400; --accent-ink: #8a6500; --accent-soft: rgba(201, 148, 0, 0.16); }
+
+  /* frameless figures */
+  .figure.no-frame { border: 0; border-radius: 0; background: transparent; }
+  .figure.no-frame figcaption { border-top: 0; }
+
+  /* interview participants + script */
+  .interview-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 40px); align-items: start; margin-top: clamp(28px, 3vw, 42px); }
+  .interview-list { display: flex; flex-direction: column; gap: clamp(14px, 1.6vw, 20px); }
+  .interview-card { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: clamp(20px, 2.2vw, 28px); }
+  .interview-k { display: block; margin-bottom: 10px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .interview-card h3 { margin: 0 0 8px; font-size: clamp(1.1rem, 1.5vw, 1.35rem); }
+  .interview-card p { margin: 0; max-width: none; font-size: clamp(14px, 1.05vw, 15.5px); color: var(--muted-d); }
+  .interview-script { margin: 0; }
+  .interview-script img { width: 100%; height: auto; }
+
+  /* participant quotes */
+  .quote-list { display: flex; flex-direction: column; gap: clamp(20px, 2.4vw, 32px); margin-top: clamp(24px, 3vw, 36px); }
+  .quote-item { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; margin: 0; padding-bottom: clamp(20px, 2.4vw, 32px); border-bottom: 1px solid var(--line); }
+  .quote-item:last-child { padding-bottom: 0; border-bottom: 0; }
+  .quote-emoji { font-size: 24px; line-height: 1.2; }
+  .quote-item p { margin: 0; max-width: none; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.6; font-style: italic; color: var(--ink); }
+  .quote-item cite { display: block; margin-top: 8px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; color: var(--accent); }
+  .client-quotes .quote-item { grid-template-columns: auto minmax(0, 1fr); }
+
+  /* as-is journey map */
+  .journey-map-1 { max-width: 360px; margin: clamp(24px, 3vw, 40px) auto 0; background: var(--surface); }
+  .journey-map-1 img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
+  .journey-map-1 figcaption { padding: 14px 16px; text-align: left; border-top: 1px solid var(--line); font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+  .journey-arrow { display: flex; justify-content: center; padding: clamp(18px, 2.4vw, 28px) 0; color: var(--accent); }
+  .journey-note { margin: 0 0 16px; text-align: center; font-size: clamp(13px, 1vw, 14px); color: var(--muted-d); }
+  .journey-map-2 { width: 105%; margin: 0 -2.5%; }
+  .journey-zoom-frame { position: relative; height: clamp(240px, 28vw, 340px); overflow: hidden; cursor: zoom-in; }
+  .journey-zoom-frame img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 100%; width: auto; max-width: none; display: block; }
+  .journey-map-2:hover img { transform: translateX(-50%); }
+  .journey-lens { position: absolute; width: clamp(180px, 22vw, 240px); height: clamp(180px, 22vw, 240px); border: 2px solid var(--accent); border-radius: 50%; background-color: #fff; background-repeat: no-repeat; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18); pointer-events: none; opacity: 0; transition: opacity 0.15s ease; z-index: 2; }
+  .journey-map-0 { margin: 0; }
+  .journey-map-0 img { width: 100%; height: auto; }
+  .journey-tabs .tab-bar { gap: clamp(14px, 2vw, 26px); }
+  .journey-tabs .tab { font-size: clamp(13px, 1.2vw, 16px); }
+  .journey-tabs .tab-panel { grid-template-columns: 1fr; }
+
+  /* design strategy pillars */
+  .design-pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3.5vw, 48px); align-items: start; margin-top: clamp(36px, 5vw, 64px); }
+  .design-pillar { text-align: center; }
+  .design-circle { width: 100%; max-width: 320px; aspect-ratio: 1 / 1; margin: 0 auto; border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: clamp(18px, 2.5vw, 40px); }
+  .design-circle p { margin: 0; max-width: none; color: var(--accent); font-weight: 700; font-size: clamp(13px, 1.5vw, 18px); line-height: 1.3; text-align: center; }
+  .design-pillar-label { display: block; margin-top: clamp(18px, 2.2vw, 28px); font-size: clamp(18px, 2vw, 24px); font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+  .service-blueprint { margin: 0; }
+  .service-blueprint img { width: 100%; height: auto; }
+  .blueprint-carousel .carousel-viewport,
+  .prototype-carousel .carousel-viewport { aspect-ratio: 16 / 9; }
+  .blueprint-carousel .carousel-track,
+  .prototype-carousel .carousel-track { height: 100%; }
+  .blueprint-carousel .carousel-track img,
+  .prototype-carousel .carousel-track img { height: 100%; object-fit: contain; background: #fff; }
+
+  /* initial sketch process rows */
+  .process-row { display: grid; grid-template-columns: clamp(90px, 12vw, 140px) 1fr 1fr; gap: clamp(16px, 2vw, 24px); align-items: start; border-top: 1px solid var(--line); padding-top: clamp(20px, 2.4vw, 28px); margin-top: clamp(28px, 3vw, 42px); }
+  .process-label { padding-top: 4px; }
+  .process-num { display: block; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .process-name { display: block; margin-top: 6px; font-size: clamp(16px, 1.5vw, 20px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+  .process-img { margin: 0; background: #fff; }
+  .process-img img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
+  @media (max-width: 720px) {
+    .process-row { grid-template-columns: 1fr; gap: 14px; }
+    .process-label { margin-bottom: 4px; }
+  }
+  @media (max-width: 720px) {
+    .design-pillars { grid-template-columns: 1fr; gap: 36px; }
+    .design-circle { max-width: 280px; }
+  }
+
+  @media (max-width: 720px) {
+    .interview-layout { grid-template-columns: 1fr; }
+    .quote-item { gap: 10px; }
+  }
+
+  /* equal-size research charts, no frames */
+  .student-data-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(28px, 3vw, 42px); }
+  .student-data-grid .figure { margin: 0; border: 0; border-radius: 0; background: #fff; }
+  .student-data-grid img { width: 100%; height: 100%; aspect-ratio: 1 / 1; object-fit: contain; display: block; }
+  @media (max-width: 720px) { .student-data-grid { grid-template-columns: 1fr; } }
+</style>
+
+<main class="wrap">
+<article class="case">
+<h1>服务设计 — Elections Ontario 实习项目</h1>
+<p class="case-summary">通过服务蓝图与实体原型，重新设计 Elections Ontario 的实习体验，改善入职引导、任务清晰度与持续反馈。</p>
+<div class="case-tags">
+<span class="tag tag-main">服务设计</span>
+<span class="tag">服务蓝图</span>
+<span class="tag">实体原型</span>
+</div>
+<div class="case-cover">
+<img alt="Elections Ontario internship program service design project cover" src="/assets/eo-service-design.jpg"/>
+</div>
+<div class="meta-five">
+<div class="meta-item">
+<span class="meta-label">角色</span>
+<span class="meta-text">
+<span class="meta-line">研究员</span>
+<span class="meta-line">服务设计师</span>
+</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">贡献</span>
+<span class="meta-text">
+<span class="meta-line">用户访谈</span>
+<span class="meta-line">UX 研究与分析</span>
+<span class="meta-line">现状旅程地图</span>
+<span class="meta-line">AI 辅助原型</span>
+<span class="meta-line">利益相关者协作</span>
+<span class="meta-line">视频制作与剪辑</span>
+</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">时间线</span>
+<span class="meta-text">4 个月</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">团队</span>
+<span class="meta-text">
+<span class="meta-line">Tansu Demir</span>
+<span class="meta-line">Vera Zheng</span>
+<span class="meta-line">Yingying Xu</span>
+<span class="meta-line">Yiqin Huang</span>
+</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">工具</span>
+<span class="meta-text">
+<span class="meta-line">Figma</span>
+<span class="meta-line">FigJam</span>
+<span class="meta-line">Claude</span>
+<span class="meta-line">Miro</span>
+</span>
+</div>
+</div>
+</article>
+<div class="case-body">
+<nav aria-label="Sections" class="toc">
+<span class="toc-label">本页目录</span>
+<a href="#overview">概述</a>
+<a href="#problem">问题</a>
+<div class="toc-group open">
+<a class="toc-parent" href="#research">研究<span aria-hidden="true" class="toc-caret"></span></a>
+<div class="toc-sub">
+<a href="#user-interviews">用户访谈</a>
+<a href="#research-synthesis">研究综合</a>
+<a href="#as-is-journey-map">现状旅程地图</a>
+</div>
+</div>
+<div class="toc-group open">
+<a class="toc-parent" href="#design">设计<span aria-hidden="true" class="toc-caret"></span></a>
+<div class="toc-sub">
+<a href="#design-strategy">设计策略</a>
+<a href="#initial-sketch">初始草图</a>
+<a href="#service-blueprint">服务蓝图</a>
+</div>
+</div>
+<a href="#prototype">原型</a>
+<a href="#outcome">结果</a>
+</nav>
+<div class="case-content">
+<section class="case-section" id="overview">
+<span class="kicker">概述</span>
+<h2>项目概况</h2>
+<p>该项目的重点是通过服务蓝图、前台与后台流程梳理以及实体原型，设计结构化的入职与反馈体验，帮助明确实习生职责并加强持续支持。</p>
+<p>作为团队中的研究员和服务设计师，我领导了研究并为设计工作做出了重大贡献。我进行了 30 分钟的访谈，负责数据分析，并创建了所有现状旅程地图。我还构建了实体和数字责任看板原型，并负责原型演练视频的录制、编辑和配音。</p>
+</section>
+<section class="case-section" id="problem">
+<span class="kicker">问题</span>
+<h2>问题</h2>
+<p>Elections Ontario缺乏人才管道来识别、培训和培养成为下一代选举专业人士。</p>
+<div class="student-data-grid">
+<figure aria-label="Enlarge chart: student satisfaction with onboarding" class="figure" role="button" tabindex="0"><img alt="Student satisfaction with the 2025 onboarding experience" loading="lazy" src="/assets/student_data1.png"/></figure>
+<figure aria-label="Enlarge chart: role clarity, support, and training" class="figure" role="button" tabindex="0"><img alt="Student ratings for role clarity, support, training, and special assignments" loading="lazy" src="/assets/student_data2.png"/></figure>
+<figure aria-label="Enlarge chart: mentorship, networking, and manager support" class="figure" role="button" tabindex="0"><img alt="Student satisfaction with mentorship, networking, and manager support" loading="lazy" src="/assets/student_data3.png"/></figure>
+</div>
+<p class="note">真实用户见解：以下是学生对过去暑期实习的评价。</p>
+<h2>初步研究</h2>
+<figure class="figure no-frame">
+<img alt="Service design workshop board mapping outcomes, problems, constraints, and assumptions for the Elections Ontario internship program" loading="lazy" src="/assets/problem.jpg"/>
+</figure>
+</section>
+<section class="case-section" id="research">
+<span class="kicker">研究</span>
+<h2 id="user-interviews">用户访谈</h2>
+<p>为了根据学生的生活经验进行重新设计，我们对之前完成实习的学生进行了两次 30 分钟的面对面访谈。</p>
+<p>一名参与者曾在多伦多大学创新中心实习；另一个曾在加拿大皇家银行财富管理公司实习。他们的不同背景为我们提供了关于实习项目如何支持（或未能支持）学生的有用观点。</p>
+<div class="interview-layout">
+<div class="interview-list">
+<div class="interview-card">
+<span class="interview-k">参与者01</span>
+<h3>多伦多大学创新中心</h3>
+<p>30 分钟面对面访谈</p>
+</div>
+<div class="interview-card">
+<span class="interview-k">参与者02</span>
+<h3>加拿大皇家银行财富管理</h3>
+<p>30 分钟面对面访谈</p>
+</div>
+</div>
+<figure class="figure no-frame interview-script">
+<img alt="Interview script and notes from the two student interviews" loading="lazy" src="/assets/interview_script.png"/>
+<figcaption>访谈脚本和笔记。</figcaption>
+</figure>
+</div>
+<h3>实习生语录</h3>
+<div class="quote-list">
+<blockquote class="quote-item">
+<span aria-hidden="true" class="quote-emoji">👩🏼‍💼</span>
+<div>
+<p>“我需要明确的任务要求。这个任务需要交付什么，以及截止日期。”</p>
+<cite>P1</cite>
+</div>
+</blockquote>
+<blockquote class="quote-item">
+<span aria-hidden="true" class="quote-emoji">🙎🏻‍♀️</span>
+<div>
+<p>“我认为，如果我的经理提供类似的反馈，我认为这也会很有帮助，这样我就可以知道自己可以在哪些方面改进，或者我还可以做些什么来充分利用实习机会。”</p>
+<cite>P2</cite>
+</div>
+</blockquote>
+<blockquote class="quote-item">
+<span aria-hidden="true" class="quote-emoji">👩🏼‍💼</span>
+<div>
+<p>“我需要更多的入职帮助。”</p>
+<cite>P1</cite>
+</div>
+</blockquote>
+</div>
+<h3>客户访谈</h3>
+<p>我们访谈了参与实习项目的两名 Elections Ontario 利益相关者，以了解该实习项目的运作方式、实习生在哪些方面需要支持以及什么是有意义的工作。</p>
+<figure class="figure no-frame">
+<img alt="Notes from the client interview with Elections Ontario stakeholders" loading="lazy" src="/assets/client_interview.png"/>
+<figcaption>客户访谈笔记。</figcaption>
+</figure>
+<h3>客户引述</h3>
+<div class="quote-list client-quotes">
+<blockquote class="quote-item">
+<span aria-hidden="true" class="quote-emoji">👩🏻‍💼</span>
+<div>
+<p>“一个共同的挑战与有意义的工作有关。”</p>
+<cite>Maria</cite>
+</div>
+</blockquote>
+<blockquote class="quote-item">
+<span aria-hidden="true" class="quote-emoji">👩🏼‍💼</span>
+<div>
+<p>“但是，我们目前没有专门针对学生的集中式数字门户。”</p>
+<cite>Abigail</cite>
+</div>
+</blockquote>
+<blockquote class="quote-item">
+<span aria-hidden="true" class="quote-emoji">👩🏻‍💼</span>
+<div>
+<p>“实习生带来了新的视角、新的工具和创新思维。他们还提高了组织的知名度，特别是通过社交媒体和同事网络。”</p>
+<cite>Maria</cite>
+</div>
+</blockquote>
+</div>
+<h2 id="research-synthesis">研究综合</h2>
+<p>通过对访谈笔录的分析，我们对六个主题进行了定性分析：接触点、行动、痛点、需求、想法、结果，并总结了五个旅程步骤。</p>
+<figure class="figure journey-map-1">
+<img alt="Early journey-map synthesis showing touchpoints, actions, pain points, needs, ideas, and outcomes across five internship stages" loading="lazy" src="/assets/eo_journey_map1.png"/>
+<figcaption>学生实习服务研究综合1</figcaption>
+</figure>
+<div aria-hidden="true" class="journey-arrow">
+            <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v34" /><path d="M5 29l7 7 7-7" /></svg>
+          </div>
+<p class="journey-note">我们标记了每个合成的便签并再次将它们分组。</p>
+<figure class="figure no-frame journey-map-2" id="journey-zoom">
+<div aria-label="Enlarge the tagged journey map" class="journey-zoom-frame" role="button" tabindex="0">
+<img alt="Tagged journey-map stickies grouped by touchpoints, actions, pain points, needs, ideas, and outcomes across five internship stages" loading="lazy" src="/assets/eo_journey_map2.jpg"/>
+<div aria-hidden="true" class="journey-lens" id="journey-lens"></div>
+</div>
+<figcaption>悬停放大·单击查看完整图像。</figcaption>
+</figure>
+<h2 id="as-is-journey-map">现状旅程地图</h2>
+<p>我们将原始数据转化为现状旅程地图，以使整个旅程中的机会和痛点更加清晰。</p>
+<figure class="figure no-frame journey-map-0">
+<img alt="As-is journey map summarizing five internship stages, their descriptions, and outcomes for interns and the service provider" loading="lazy" src="/assets/as-is-journey-map-0.png"/>
+</figure>
+<div aria-hidden="true" class="journey-arrow">
+            <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v34" /><path d="M5 29l7 7 7-7" /></svg>
+          </div>
+<div class="tabs journey-tabs">
+<div class="tab-bar">
+<button class="tab is-active" data-panel="0" type="button">1. 抵达前和入职</button>
+<button class="tab" data-panel="1" type="button">2. 投入工作</button>
+<button class="tab" data-panel="2" type="button">3. 指导与协调</button>
+<button class="tab" data-panel="3" type="button">4. 日常工作</button>
+<button class="tab" data-panel="4" type="button">5. 职业成长和人际网络</button>
+</div>
+<div class="tab-panels">
+<div class="tab-panel is-active">
+<div class="tab-media"><div class="zoom-shot"><img alt="Pre-arrival and onboarding journey stage" loading="lazy" src="/assets/as-is-1.png"/></div></div>
+</div>
+<div class="tab-panel">
+<div class="tab-media"><div class="zoom-shot"><img alt="Settling into the work journey stage" loading="lazy" src="/assets/as-is-2.png"/></div></div>
+</div>
+<div class="tab-panel">
+<div class="tab-media"><div class="zoom-shot"><img alt="Mentorship and alignment journey stage" loading="lazy" src="/assets/as-is-3.png"/></div></div>
+</div>
+<div class="tab-panel">
+<div class="tab-media"><div class="zoom-shot"><img alt="Day-to-day work journey stage" loading="lazy" src="/assets/as-is-4.png"/></div></div>
+</div>
+<div class="tab-panel">
+<div class="tab-media"><div class="zoom-shot"><img alt="Professional growth and networking journey stage" loading="lazy" src="/assets/as-is-5.png"/></div></div>
+</div>
+</div>
+</div>
+</section>
+<section class="case-section" id="design">
+<span class="kicker">设计</span>
+<h2 id="design-strategy">设计策略</h2>
+<p>为了支持未来的联系和长期人才发展，我们的目标是使实习项目更加可见、可发展和可持续，这也增强了Elections Ontario为满足未来劳动力需求建立可靠和持续的人才管道的能力。</p>
+<div class="design-pillars">
+<div class="design-pillar">
+<div class="design-circle">
+<p>让实习生的工作、进展和影响在Elections Ontario中可见</p>
+</div>
+<span class="design-pillar-label">看得见的工作</span>
+</div>
+<div class="design-pillar">
+<div class="design-circle">
+<p>支持技能发展，实习生实现持续改进</p>
+</div>
+<span class="design-pillar-label">可开发</span>
+</div>
+<div class="design-pillar">
+<div class="design-circle">
+<p>将实习的价值扩展到单个学期之外，提供持续的影响</p>
+</div>
+<span class="design-pillar-label">可持续的</span>
+</div>
+</div>
+<h2 id="initial-sketch">初始草图</h2>
+<p>经过集思广益和小组讨论，我们的核心想法是创建一个实体责任看板。这块看板放在办公室，为每个实习生提供了自己的行来跟踪任务、发布问题和查看反馈。它使日常工作可见并共享。</p>
+<p>为了改善实习体验，我们认为人与人之间的互动最重要。与此同时，从充满屏幕的世界转向人们可以互动的实体板感觉像是一个强有力的方向。</p>
+<div class="process-row">
+<div class="process-label">
+<span class="process-num">01</span>
+<span class="process-name">构思</span>
+</div>
+<figure class="figure no-frame process-img">
+<img alt="Journey-state and pain-point sticky notes from the ideation session" loading="lazy" src="/assets/ideation1.jpg"/>
+</figure>
+<figure class="figure no-frame process-img">
+<img alt="Service concept ideation sketches and sticky notes on a table" loading="lazy" src="/assets/ideation2.jpg"/>
+</figure>
+</div>
+<div class="process-row">
+<div class="process-label">
+<span class="process-num">02</span>
+<span class="process-name">素描</span>
+</div>
+<figure class="figure no-frame process-img">
+<img alt="Hand-drawn sketch of the physical responsibilities board" loading="lazy" src="/assets/sketching3.jpg"/>
+</figure>
+<figure class="figure no-frame process-img">
+<img alt="Hand-drawn sketches for a welcome package and daily toolkit" loading="lazy" src="/assets/sketching4.jpg"/>
+</figure>
+</div>
+<div class="process-row">
+<div class="process-label">
+<span class="process-num">03</span>
+<span class="process-name">初始原型</span>
+</div>
+<figure class="figure no-frame process-img">
+<img alt="Physical responsibilities board prototype with sticky notes for team, tasks, status, Q&amp;A, and feedback" loading="lazy" src="/assets/initial-proto1.jpg"/>
+</figure>
+<figure class="figure no-frame process-img">
+<img alt="Digital template of the intern responsibilities board" loading="lazy" src="/assets/initial-proto2.jpg"/>
+</figure>
+</div>
+<h2 id="service-blueprint">服务蓝图</h2>
+<p>根据我们的想法，我们创建了一个服务蓝图，展示实习生如何使用实体板。</p>
+<p>该服务蓝图展示了整个实习历程，分为三个阶段：入职前、实习期间和离职。它描绘了实习生的前台体验和Elections Ontario 工作人员的后台支持。</p>
+<figure class="figure no-frame service-blueprint">
+<img alt="Future-state internship service blueprint showing the before, during, and after stages, frontstage intern actions, backstage staff processes, and performance measures" loading="lazy" src="/assets/service-blueprintl.png"/>
+</figure>
+<h3>查看更多服务蓝图细节</h3>
+<div class="carousel blueprint-carousel">
+<div class="carousel-viewport">
+<div class="carousel-track" id="blueprint-track">
+<img alt="Before onboarding blueprint detail" loading="lazy" src="/assets/blueprint1.png"/>
+<img alt="Onboarding and during work blueprint detail, part one" loading="lazy" src="/assets/blueprint2.png"/>
+<img alt="Onboarding and during work blueprint detail, part two" loading="lazy" src="/assets/blueprint3.png"/>
+<img alt="Offboarding blueprint detail" loading="lazy" src="/assets/blueprint4.png"/>
+</div>
+<button aria-label="Previous blueprint detail" class="carousel-btn prev" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7" /></svg></button>
+<button aria-label="Next blueprint detail" class="carousel-btn next" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg></button>
+</div>
+<div class="carousel-counter"><span id="blueprint-index">1</span> / 4</div>
+</div>
+</section>
+<section class="case-section" id="prototype">
+<span class="kicker">原型</span>
+<h2>原型</h2>
+<p>我们创建了真实、可用的数字和实体原型，涵盖了服务蓝图中所列的一切，包括 LinkedIn 帖子、欢迎电子邮件、欢迎包、实体责任看板（前台）和数字责任看板（后台）。</p>
+<div class="carousel prototype-carousel">
+<div class="carousel-viewport">
+<div class="carousel-track" id="prototype-track">
+<img alt="Soft Landing LinkedIn post prototype" loading="lazy" src="/assets/pro1.jpg"/>
+<img alt="Soft Landing welcome email prototype" loading="lazy" src="/assets/pro2.jpg"/>
+<!-- pro3.png is not in assets yet -->
+<img alt="Welcome Quest welcome package prototype" loading="lazy" src="/assets/pro4.jpg"/>
+<img alt="Feedback Loop physical Responsibilities Board prototype" loading="lazy" src="/assets/pro5.jpg"/>
+<img alt="Feedback Loop digital Responsibilities Board backstage dashboard prototype" loading="lazy" src="/assets/pro6.jpg"/>
+<!-- pro7.png is not in assets yet -->
+</div>
+<button aria-label="Previous prototype" class="carousel-btn prev" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7" /></svg></button>
+<button aria-label="Next prototype" class="carousel-btn next" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg></button>
+</div>
+<div class="carousel-counter"><span id="prototype-index">1</span> / 5</div>
+</div>
+<h2>原型演练</h2>
+<p>该视频展示了这些原型如何在现实生活中使用——我们自己也在其中担任主演。</p>
+<figure class="figure">
+<video aria-label="Prototype walkthrough video showing the service design prototypes in use" controls="" playsinline="" preload="metadata" src="/assets/service-design-walkthrough.m4v"></video>
+</figure>
+</section>
+<section class="case-section" id="outcome">
+<span class="kicker">结果</span>
+<h2>结果</h2>
+<p>该项目历时四个月。我有幸与我出色的导师、我的队友以及 Elections Ontario 利益相关者一起工作。</p>
+<p>构建实体原型比我们预期的更具挑战性，但也确实很有趣。尽管经历了许多曲折，我对我们创造的成果感到自豪，并感谢有机会向我们的利益相关者展示最终产品。</p>
+<p>我们收到了非常积极的反馈。利益相关者尤其被实体责任委员会所吸引。她认为，在数字屏幕主导的世界中，为人们创造站立、走动和面对面交流的机会是一项有意义且有价值的策略。</p>
+</section>
+</div>
+</div>
+<section class="case-next">
+<span class="label">其他项目</span>
+<div class="grid">
+<a class="card" href="/zh/work/accessibility-design.html">
+<div class="cover"><img alt="Before-and-after comparison of the U of T MI website" loading="lazy" src="/assets/mi-accessibility-cover.jpg"/><span class="num">04</span></div>
+<div class="card-body">
+<div class="card-tags"><span class="tag tag-main">网页设计</span><span class="tag">AODA / WCAG</span><span class="tag">卡片分类</span></div>
+<h3>无障碍设计 — 多伦多大学 MI 网站</h3>
+<p>重建了多伦多大学信息硕士网站，以消除看不见的认知摩擦和屏幕阅读器困惑——超出了 AODA/WCAG 合规性。</p>
+<span class="card-go">查看案例研究 <span class="arrow">→</span></span>
+</div>
+</a>
+<a class="card" href="/zh/work/rebites.html">
+<div class="cover"><img alt="ReBites cover" loading="lazy" src="/assets/rebites.jpg"/><span class="num">06</span></div>
+<div class="card-body">
+<div class="card-tags"><span class="tag">平板</span><span class="tag">黑客松</span></div>
+<h3>ReBites — 儿童食物可持续性</h3>
+<p>用于日常食物选择的面向学生和教师的双平台 - Seneca 黑客松 2025 第一名。</p>
+<span class="card-go">查看案例研究 <span class="arrow">→</span></span>
+</div>
+</a>
+</div>
+</section>
+</main>
+<div aria-hidden="true" class="lightbox" id="lightbox">
+<img alt="" draggable="false" id="lightbox-img" src=""/>
+<span class="lightbox-hint">滚动/捏合缩放 · Esc 关闭</span>
+</div>
+
+  <script>
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      var scale = 1, tx = 0, ty = 0, dragging = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
+
+      function apply() {
+        lbImg.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
+        lbImg.classList.toggle('zoomed', scale > 1);
+      }
+      function reset() { scale = 1; tx = 0; ty = 0; apply(); }
+      function open(src, alt) { lbImg.src = src; lbImg.alt = alt; reset(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+      function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; reset(); }
+
+      document.querySelectorAll('.figure > img, .journey-zoom-frame > img, .zoom-shot > img').forEach(function (img) {
+        var fig = img.parentElement;
+        function activate(e) {
+          if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+          e.preventDefault();
+          open(img.currentSrc || img.src, img.alt);
+        }
+        fig.addEventListener('click', activate);
+        fig.addEventListener('keydown', activate);
+      });
+
+      document.querySelectorAll('.carousel-track img').forEach(function (img) {
+        img.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
+      });
+
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+      lb.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        var factor = e.ctrlKey ? 0.012 : 0.0018;
+        scale = Math.max(1, Math.min(6, scale * Math.exp(-e.deltaY * factor)));
+        if (scale === 1) { tx = 0; ty = 0; }
+        apply();
+      }, { passive: false });
+      lbImg.addEventListener('pointerdown', function (e) {
+        if (scale <= 1) return;
+        dragging = true; startX = e.clientX; startY = e.clientY; startTx = tx; startTy = ty;
+        lbImg.setPointerCapture(e.pointerId);
+      });
+      lbImg.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        tx = startTx + (e.clientX - startX); ty = startTy + (e.clientY - startY); apply();
+      });
+      lbImg.addEventListener('pointerup', function () { dragging = false; });
+      lbImg.addEventListener('click', function () { if (scale <= 1) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var bar = document.querySelector('.topbar');
+      function onScroll() {
+        if (window.scrollY > 4) bar.classList.add('scrolled');
+        else bar.classList.remove('scrolled');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc > a, .toc .toc-parent'));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-sub a'));
+      var mainSections = mainLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var subSections = subLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+
+      function setActive() {
+        var current = 0;
+        mainSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
+        mainLinks.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+
+        var sc = -1;
+        subSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) sc = i; });
+        subLinks.forEach(function (l, i) { l.classList.toggle('active', i === sc); });
+      }
+
+      window.addEventListener('scroll', setActive, { passive: true });
+      setActive();
+
+      Array.prototype.slice.call(document.querySelectorAll('.toc-group')).forEach(function (g) {
+        g.querySelector('.toc-parent').addEventListener('click', function () { g.classList.toggle('open'); });
+      });
+      subLinks.forEach(function (l) {
+        l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var wrap = document.getElementById('journey-zoom');
+      if (!wrap) return;
+      var frame = wrap.querySelector('.journey-zoom-frame');
+      var img = frame && frame.querySelector('img');
+      var lens = frame && frame.querySelector('.journey-lens');
+      if (!frame || !img || !lens) return;
+
+      var zoom = 3;
+
+      function move(e) {
+        var frameRect = frame.getBoundingClientRect();
+        var imgRect = img.getBoundingClientRect();
+        var x = e.clientX - imgRect.left;
+        var y = e.clientY - imgRect.top;
+
+        if (x < 0 || y < 0 || x > imgRect.width || y > imgRect.height) {
+          lens.style.opacity = '0';
+          return;
+        }
+
+        var lw = lens.offsetWidth;
+        var lh = lens.offsetHeight;
+        var bgW = imgRect.width * zoom;
+        var bgH = imgRect.height * zoom;
+
+        lens.style.backgroundImage = 'url("' + (img.currentSrc || img.src) + '")';
+        lens.style.backgroundSize = bgW + 'px ' + bgH + 'px';
+
+        var bgX = Math.max(-(bgW - lw), Math.min(0, -(x * zoom - lw / 2)));
+        var bgY = Math.max(-(bgH - lh), Math.min(0, -(y * zoom - lh / 2)));
+
+        lens.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
+        lens.style.left = Math.max(0, Math.min(frameRect.width - lw, e.clientX - frameRect.left - lw / 2)) + 'px';
+        lens.style.top = Math.max(0, Math.min(frameRect.height - lh, e.clientY - frameRect.top - lh / 2)) + 'px';
+        lens.style.opacity = '1';
+      }
+
+      frame.addEventListener('mousemove', move);
+      frame.addEventListener('mouseleave', function () { lens.style.opacity = '0'; });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.journey-tabs .tab'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.journey-tabs .tab-panel'));
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var i = parseInt(tab.getAttribute('data-panel'), 10);
+          tabs.forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+          panels.forEach(function (p, j) { p.classList.toggle('is-active', j === i); });
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var track = document.getElementById('blueprint-track');
+      if (!track) return;
+      var viewport = track.parentElement;
+      var imgs = track.querySelectorAll('img');
+      var indexEl = document.getElementById('blueprint-index');
+      var i = 0, suppressClick = false;
+
+      function go(n) {
+        i = (n + imgs.length) % imgs.length;
+        track.style.transform = 'translateX(-' + (i * 100) + '%)';
+        if (indexEl) indexEl.textContent = i + 1;
+      }
+
+      var prev = viewport.querySelector('.carousel-btn.prev');
+      var next = viewport.querySelector('.carousel-btn.next');
+      if (prev) prev.addEventListener('click', function () { go(i - 1); });
+      if (next) next.addEventListener('click', function () { go(i + 1); });
+
+      var startX = 0, startY = 0, dragging = false;
+      viewport.addEventListener('pointerdown', function (e) { startX = e.clientX; startY = e.clientY; dragging = true; });
+      viewport.addEventListener('pointerup', function (e) {
+        if (!dragging) return;
+        dragging = false;
+        var dx = e.clientX - startX, dy = e.clientY - startY;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+          go(i + (dx < 0 ? 1 : -1));
+          suppressClick = true;
+          setTimeout(function () { suppressClick = false; }, 350);
+        }
+      });
+      viewport.addEventListener('pointercancel', function () { dragging = false; });
+      viewport.addEventListener('click', function (e) {
+        if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; }
+      }, true);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var track = document.getElementById('prototype-track');
+      if (!track) return;
+      var viewport = track.parentElement;
+      var imgs = track.querySelectorAll('img');
+      var indexEl = document.getElementById('prototype-index');
+      var i = 0, suppressClick = false;
+
+      function go(n) {
+        i = (n + imgs.length) % imgs.length;
+        track.style.transform = 'translateX(-' + (i * 100) + '%)';
+        if (indexEl) indexEl.textContent = i + 1;
+      }
+
+      var prev = viewport.querySelector('.carousel-btn.prev');
+      var next = viewport.querySelector('.carousel-btn.next');
+      if (prev) prev.addEventListener('click', function () { go(i - 1); });
+      if (next) next.addEventListener('click', function () { go(i + 1); });
+
+      var startX = 0, startY = 0, dragging = false;
+      viewport.addEventListener('pointerdown', function (e) { startX = e.clientX; startY = e.clientY; dragging = true; });
+      viewport.addEventListener('pointerup', function (e) {
+        if (!dragging) return;
+        dragging = false;
+        var dx = e.clientX - startX, dy = e.clientY - startY;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+          go(i + (dx < 0 ? 1 : -1));
+          suppressClick = true;
+          setTimeout(function () { suppressClick = false; }, 350);
+        }
+      });
+      viewport.addEventListener('pointercancel', function () { dragging = false; });
+      viewport.addEventListener('click', function (e) {
+        if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; }
+      }, true);
+    })();
+  </script>

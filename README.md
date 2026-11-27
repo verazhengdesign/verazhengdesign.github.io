@@ -7,7 +7,7 @@ Live: <https://verazhengdesign.github.io/>
 ## Bilingual structure
 
 - English pages live at the repository root.
-- Chinese pages live under `/zh/`.
+- Chinese pages live under `/zh/`, including translated case studies under `/zh/work/`.
 - Page shells, navigation, footer, and language switch are shared through Jekyll.
 
 | File | Purpose |
@@ -19,7 +19,7 @@ Live: <https://verazhengdesign.github.io/>
 | `index.html` / `zh/index.html` | Homepage |
 | `about.html` / `zh/about.html` | About page |
 | `journal.html` / `zh/journal.html` | Journal index |
-| `work/*.html` | Case studies (English; Chinese versions coming) |
+| `work/*.html` / `zh/work/*.html` | Case studies in English and Chinese |
 | `styles.css` | Shared styles for every page and both languages |
 | `assets/` | Images, project covers, tool icons |
 

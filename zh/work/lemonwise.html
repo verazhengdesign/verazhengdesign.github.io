@@ -1,0 +1,459 @@
+---
+layout: default
+lang: zh
+ref: lemonwise
+title: "LemonWise — 学生理财应用"
+description: "案例研究：LemonWise，围绕真实学生行为设计的习惯养成预算体验。"
+permalink: /zh/work/lemonwise.html
+---
+<style>
+  /* page-specific accent — LemonWise (yellow) */
+  :root { --accent: #c99000; --accent-ink: #9c6f00; --accent-soft: rgba(201, 144, 0, 0.16); }
+  /* LemonWise: frameless figures that blend into the page; no hover zoom, click to enlarge */
+  .figure { border: 0; border-radius: 18px; background: transparent; }
+  .figure img { mix-blend-mode: darken; }
+  .figure:hover img { transform: none; }
+  /* white-background, non-interactive figure */
+  .figure.white { background: #fff; }
+  .figure.white img { mix-blend-mode: normal; }
+  .figure.noclick { cursor: default; }
+  /* sketch row: 3-up with hover + click zoom */
+  .sketch-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.6vw, 20px); margin: clamp(24px, 3vw, 42px) 0; }
+  .sketch-row .figure { margin: 0; }
+  .sketch-row .figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .sketch-row .figure:hover img { transform: scale(1.04); }
+  @media (max-width: 720px) { .sketch-row { grid-template-columns: 1fr; } }
+  /* wireframe marquee: auto-scroll to the right, seamless loop, frameless */
+  .lm-marquee { overflow: hidden; width: 100%; height: clamp(240px, 30vw, 400px); margin: clamp(24px, 3vw, 42px) 0; }
+  .lm-marquee .marquee-track { animation: lm-marquee 45s linear infinite; }
+  @keyframes lm-marquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+</style>
+
+<main class="wrap">
+<article class="case">
+<h1>LemonWise — 学生理财应用</h1>
+<p class="case-summary">一款帮助养成习惯的预算应用，把学生的金钱压力转化为一步步的小成就。</p>
+<div class="case-tags">
+<span class="tag tag-main">UX 设计</span>
+<span class="tag">移动端</span>
+<span class="tag">金融</span>
+<span class="tag">端到端</span>
+</div>
+<div class="case-cover">
+<img alt="LemonWise app screens" src="/assets/lemonwise.jpg"/>
+</div>
+<div class="meta-five">
+<div class="meta-item">
+<span class="meta-label">角色</span>
+<span class="meta-text">
+<span class="meta-line">产品设计师</span>
+<span class="meta-line">UX 研究员</span>
+</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">贡献</span>
+<span class="meta-text">
+<span class="meta-line">用户访谈</span>
+<span class="meta-line">UX 研究与分析</span>
+<span class="meta-line">用户画像与旅程图</span>
+<span class="meta-line">交互与 UI 设计</span>
+</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">时间线</span>
+<span class="meta-text">4 个月</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">团队</span>
+<span class="meta-text">
+<span class="meta-line">Vera Zheng</span>
+<span class="meta-line">Lily (Yueqing) Wang</span>
+<span class="meta-line">Cynthia Hua</span>
+<span class="meta-line">Emi Sun</span>
+</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">工具</span>
+<span class="meta-text">Figma</span>
+</div>
+</div>
+</article>
+<div class="case-body">
+<nav aria-label="Sections" class="toc">
+<span class="toc-label">本页目录</span>
+<a href="#overview">概述</a>
+<a href="#context">语境</a>
+<div class="toc-group open">
+<a class="toc-parent" href="#research">研究<span aria-hidden="true" class="toc-caret"></span></a>
+<div class="toc-sub">
+<a href="#research-learned">方法论</a>
+<a href="#research-questions">访谈问题</a>
+<a href="#research-data">研究数据</a>
+<a href="#research-analysis">数据分析</a>
+</div>
+</div>
+<div class="toc-group open">
+<a class="toc-parent" href="#design">设计<span aria-hidden="true" class="toc-caret"></span></a>
+<div class="toc-sub">
+<a href="#design-approach">设计方法</a>
+<a href="#design-sketch">草图</a>
+<a href="#design-wireframes">线框图</a>
+<a href="#design-usability">可用性测试</a>
+<a href="#design-iteration">迭代</a>
+<a href="#design-final">最终高保真</a>
+</div>
+</div>
+<a href="#outcome">结果</a>
+</nav>
+<div class="case-content">
+<!-- OVERVIEW -->
+<section class="case-section" id="overview">
+<span class="kicker">概述</span>
+<h2 id="overview-what">项目简介</h2>
+<p>LemonWise 是一款移动应用，可以帮助年轻人，特别是大学生，提高他们的财务素养并建立更好的理财习惯。</p>
+<p>由四人团队花了一个学期的时间进行设计，从访谈到经过测试的高保真原型。</p>
+<div class="stats">
+<div class="stat"><div class="n">8</div><div class="c">半结构化访谈</div></div>
+<div class="stat"><div class="n">19</div><div class="c">屏幕设计</div></div>
+<div class="stat"><div class="n">8</div><div class="c">可用性测试</div></div>
+<div class="stat"><div class="n">4</div><div class="c">团队成员</div></div>
+</div>
+<p>我担任UX 设计师和研究员，制定研究计划，进行访谈，并设计从线框图到最终原型的核心流程。</p>
+</section>
+<!-- CONTEXT -->
+<section class="case-section" id="context">
+<span class="kicker">语境</span>
+<h2 id="context-problem">问题</h2>
+<p>许多学生在预算、储蓄和理解基本财务概念方面遇到困难，这可能会导致糟糕的财务决策和长期后果。</p>
+<blockquote class="bubble">“我刚刚毕业，第一次自己赚钱。我现在该怎么办？！”</blockquote>
+<div class="method-grid stack">
+<div class="m-cell"><span class="m-k">问题陈述</span><span class="m-v">帮助应届毕业生尽早找到不令人生畏的投资方式，以便他们能够建立财务素养并培养健康的理财习惯，以获得长期成功。</span></div>
+<div class="m-cell"><span class="m-k">解决方案说明</span><span class="m-v">为新毕业生提供工具来设定明确的财务目标、可视化消费习惯并获取可行的建议，通过引导投资和奖励学习激励措施促进财务独立。</span></div>
+</div>
+</section>
+<!-- RESEARCH -->
+<section class="case-section" id="research">
+<span class="kicker">研究</span>
+<h2 id="research-learned">研究方法</h2>
+<p>我和我的团队对 8 名 21-25 岁的参与者（所有经济独立的学生）进行了半结构化访谈，以了解学生资金管理背后的行为和困境。</p>
+<div class="rstudy">
+<div class="rstudy-stats">
+<div class="rstat"><span class="rstat-n">8</span><span class="rstat-c">受访者</span></div>
+<div class="rstat"><span class="rstat-n">21–25</span><span class="rstat-c">岁数</span></div>
+<div class="rstat"><span class="rstat-n">15–20</span><span class="rstat-c">分钟</span></div>
+</div>
+<div class="rstudy-cards">
+<div class="rcard">
+<p>用户研究计划采用访谈的方式，深入了解参与者的财务经历及其对资金管理的影响。</p>
+</div>
+<div class="rcard">
+<p class="rlead">重点关注领域：</p>
+<p>了解学生，特别是那些经济独立的学生如何管理自己的财务，以及他们目前使用哪些资源或工具。</p>
+</div>
+</div>
+</div>
+<h2 id="research-questions">访谈问题</h2>
+<div class="iq">
+<div class="iq-left">
+<p>最重要的 3 个研究问题：</p>
+<div class="iq-item">
+<span class="iq-n">1.</span>
+<div>
+<p class="iq-t">了解日常财务习惯</p>
+<p class="iq-q">“您能告诉我一些您的日常消费习惯吗？”</p>
+</div>
+</div>
+<div class="iq-item">
+<span class="iq-n">2.</span>
+<div>
+<p class="iq-t">评估支出意识</p>
+<p class="iq-q">“如果你发现自己的支出超出了预算，你会怎么做？”</p>
+</div>
+</div>
+<div class="iq-item">
+<span class="iq-n">3.</span>
+<div>
+<p class="iq-t">探索财务目标</p>
+<p class="iq-q">“您未来有什么具体的财务目标要实现吗？”</p>
+</div>
+</div>
+</div>
+<div class="iq-right">
+<div class="stat-bars">
+<div class="sb">
+<span class="sb-label">之前使用过金融应用：</span>
+<span class="sb-row"><span class="sb-track"><span class="sb-fill" style="width:75%"></span></span><span class="sb-val">75%</span></span>
+</div>
+<div class="sb">
+<span class="sb-label">经济上对父母的依赖：</span>
+<span class="sb-row"><span class="sb-track"><span class="sb-fill" style="width:100%"></span></span><span class="sb-val">100%</span></span>
+</div>
+<div class="sb">
+<span class="sb-label">自我认定财务素养较差：</span>
+<span class="sb-row"><span class="sb-track"><span class="sb-fill" style="width:87.5%"></span></span><span class="sb-val">87.5%</span></span>
+</div>
+</div>
+</div>
+</div>
+<h2 id="research-data">研究数据</h2>
+<figure class="figure"><img alt="Research data: investment interest, financial tracking challenges, and financial literacy" loading="lazy" src="/assets/lemonwise-research-data.png"/></figure>
+<h3 id="research-quotes">用户语录</h3>
+<figure class="figure white noclick"><img alt="Interview participants" loading="lazy" src="/assets/lemonwise-participants.jpg"/></figure>
+<h2 id="research-analysis">数据分析</h2>
+<figure class="figure white"><img alt="User pain points" loading="lazy" src="/assets/lemonwise-painpoints.jpg"/></figure>
+<h3 id="research-persona">用户画像和旅程地图</h3>
+<p>我们将访谈转化为用户画像和端到端旅程地图，然后使用影响/可行性优先级矩阵来决定首先构建哪些功能。</p>
+<figure class="figure white"><img alt="User persona and pain points" loading="lazy" src="/assets/lemonwise-persona.jpg"/></figure>
+<figure class="figure white"><img alt="Journey map" loading="lazy" src="/assets/lemonwise-journey.jpg"/></figure>
+<h3 id="research-matrix">优先级矩阵</h3>
+<figure class="figure white"><img alt="Feasibility-priority matrix" loading="lazy" src="/assets/lemonwise-matrix.jpg"/></figure>
+</section>
+<!-- DESIGN -->
+<section class="case-section" id="design">
+<span class="kicker">设计</span>
+<h2 id="design-approach">设计方法</h2>
+<p>我将研究转化为四个高层级支柱——每个设计决策都必须服务的目标——然后从线框图转向第二次可用性测试、迭代和最终高保真。</p>
+<div class="pillars">
+<div class="pillar p-green">
+<h4>支出分析</h4>
+<p>提供实时支出分析，帮助用户获得更多财务意识，做出明智的决策。</p>
+</div>
+<div class="pillar p-lav">
+<h4>投资整合</h4>
+<p>创建无缝且直观的体验，使用户能够有效地管理资金，同时努力实现自己的财务目标。</p>
+</div>
+<div class="pillar p-blue">
+<h4>目标设定</h4>
+<p>允许用户按照明确的类别设定财务目标，并考虑与其生活方式相符的时间表和金额。</p>
+</div>
+<div class="pillar p-gold">
+<h4>学习中心</h4>
+<p>为用户提供学习机会，包括视频、文章和互动测验。</p>
+</div>
+</div>
+<h2 id="design-sketch">草图</h2>
+<div class="sketch-row">
+<figure class="figure white"><img alt="Sketch 1 — app screen wireframes" loading="lazy" src="/assets/lemonwise-sketch-1.jpg"/></figure>
+<figure class="figure white"><img alt="Sketch 2 — navigation flow" loading="lazy" src="/assets/lemonwise-sketch-2.jpg"/></figure>
+<figure class="figure white"><img alt="Sketch 3 — paper prototypes" loading="lazy" src="/assets/lemonwise-sketch-3.jpg"/></figure>
+</div>
+<h2 id="design-wireframes">线框图</h2>
+<div class="lm-marquee">
+<div class="marquee-track">
+<img alt="Wireframe screens" loading="lazy" src="/assets/wireframe.png"/>
+<img alt="" aria-hidden="true" loading="lazy" src="/assets/wireframe.png"/>
+</div>
+</div>
+<h2 id="design-usability">可用性测试</h2>
+<p>任务：设定个人财务目标，为韩国旅行节省 2000 美元，并每周分配资金用于未来投资。</p>
+<div class="utable-wrap">
+<table class="utable">
+<thead>
+<tr><th>主题</th><th>用户数</th><th>推荐</th></tr>
+</thead>
+<tbody>
+<tr>
+<td class="u-theme">难以定位目标特征</td>
+<td class="u-count"><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg></td>
+<td class="u-rec">使目标功能在主页中易于访问或使页脚中的图标更加清晰</td>
+</tr>
+<tr>
+<td class="u-theme">缺乏明确的投资解释</td>
+<td class="u-count"><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg></td>
+<td class="u-rec">在投资页面添加清晰的说明，特别是关于潜在风险的说明</td>
+</tr>
+<tr>
+<td class="u-theme">需要改进新手引导</td>
+<td class="u-count"><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg></td>
+<td class="u-rec">添加一个简短的演示，介绍用户第一次使用该应用时如何使用该应用</td>
+</tr>
+<tr>
+<td class="u-theme">类别选择困难</td>
+<td class="u-count"><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg></td>
+<td class="u-rec">使类别选择与目标标题不同</td>
+</tr>
+<tr>
+<td class="u-theme">可定制的主页</td>
+<td class="u-count"><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg></td>
+<td class="u-rec">主页小部件</td>
+</tr>
+<tr>
+<td class="u-theme">灵活的储蓄选项</td>
+<td class="u-count"><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg></td>
+<td class="u-rec">添加随时储蓄的选项</td>
+</tr>
+<tr>
+<td class="u-theme">需要保存提醒</td>
+<td class="u-count"><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg></td>
+<td class="u-rec">添加允许通知的选项</td>
+</tr>
+<tr>
+<td class="u-theme">需要删除目标</td>
+<td class="u-count"><svg class="u-person" viewBox="0 0 16 22" aria-hidden="true"><circle cx="8" cy="4" r="3.6"/><path d="M8 8.6c-3.9 0-6.6 2.1-6.6 5.1V21h4.4v-4.4h4.4V21h4.4v-7.3c0-3-2.7-5.1-6.6-5.1z"/></svg></td>
+<td class="u-rec">添加删除目标的选项</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="design-iteration">迭代</h2>
+<div class="igallery-wrap">
+<div class="igallery">
+<figure class="ig-item"><img alt="Iteration — home and spending dashboard" loading="lazy" src="/assets/lemonwise-iteration-1.png"/></figure>
+<figure class="ig-item"><img alt="Iteration — goals" loading="lazy" src="/assets/lemonwise-iteration-2.png"/></figure>
+<figure class="ig-item"><img alt="Iteration — contribution options" loading="lazy" src="/assets/lemonwise-iteration-3.png"/></figure>
+<figure class="ig-item"><img alt="Iteration — investment info" loading="lazy" src="/assets/lemonwise-iteration-4.png"/></figure>
+<figure class="ig-item"><img alt="Iteration — learning" loading="lazy" src="/assets/lemonwise-iteration-5.png"/></figure>
+</div>
+<button aria-label="Previous iteration" class="igal-btn prev" type="button">‹</button>
+<button aria-label="Next iteration" class="igal-btn next" type="button">›</button>
+</div>
+<h2 id="design-final">最终高保真</h2>
+<div class="igallery-wrap">
+<div class="igallery one">
+<figure class="ig-item"><img alt="Final screens across the four pillars" loading="lazy" src="/assets/lemonwise-screens.jpg"/></figure>
+<figure class="ig-item"><img alt="Spending analytics" loading="lazy" src="/assets/lemonwise-spending.jpg"/></figure>
+<figure class="ig-item"><img alt="Investment dashboard" loading="lazy" src="/assets/lemonwise-investment.jpg"/></figure>
+<figure class="ig-item"><img alt="Goal setting" loading="lazy" src="/assets/lemonwise-goal-setting.jpg"/></figure>
+<figure class="ig-item"><img alt="Learning hub" loading="lazy" src="/assets/lemonwise-learning-hub.jpg"/></figure>
+</div>
+<button aria-label="Previous screen" class="igal-btn prev" type="button">‹</button>
+<button aria-label="Next screen" class="igal-btn next" type="button">›</button>
+</div>
+</section>
+<!-- OUTCOME -->
+<section class="case-section" id="outcome">
+<span class="kicker">结果</span>
+<h2 id="outcome-changed">发生了什么变化</h2>
+<p>我在端到端用户体验流程中获得了从用户研究到设计和原型制作的实践经验。通过与队友的密切合作，我学会了如何将用户洞察转化为设计决策，并共同努力将概念变为现实。</p>
+<figure class="figure"><img alt="The LemonWise team" loading="lazy" src="/assets/lemonwise-team.jpg"/></figure>
+<p>感谢我的队友 Lily (Yueqing) Wang、Cynthia Hua 和 Emi Sun 在这个项目上的辛勤工作和协作。</p>
+<p>当生活给你柠檬时，让它为你工作！ 🍋</p>
+</section>
+</div>
+</div>
+<section class="case-next">
+<span class="label">其他项目</span>
+<div class="grid">
+<a class="card" href="/zh/work/maatrx.html">
+<div class="cover"><img alt="MaaTRx cover" loading="lazy" src="/assets/maatrx.jpg"/><span class="num">01</span></div>
+<div class="card-body">
+<div class="card-tags"><span class="tag tag-main">UX 设计</span><span class="tag tag-main">网页设计</span><span class="tag">端到端</span></div>
+<h3>MaaTRx — 药品短缺仪表盘</h3>
+<p>为健康科技药品短缺平台重新设计了 18 个屏幕并解决了 10 个用户体验问题。</p>
+<span class="card-go">查看案例研究 <span class="arrow">→</span></span>
+</div>
+</a>
+<a class="card" href="/zh/work/rebites.html">
+<div class="cover"><img alt="ReBites cover" loading="lazy" src="/assets/rebites.jpg"/><span class="num">06</span></div>
+<div class="card-body">
+<div class="card-tags"><span class="tag">平板</span><span class="tag">黑客松</span></div>
+<h3>ReBites — 儿童食物可持续性</h3>
+<p>用于日常食物选择的面向学生和教师的双平台 - Seneca 黑客松 2025 第一名。</p>
+<span class="card-go">查看案例研究 <span class="arrow">→</span></span>
+</div>
+</a>
+</div>
+</section>
+</main>
+<div aria-hidden="true" class="lightbox" id="lightbox">
+<img alt="" draggable="false" id="lightbox-img" src=""/>
+<span class="lightbox-hint">滚动/捏合缩放 · Esc 关闭</span>
+</div>
+  <script>
+    (function () {
+      var bar = document.querySelector('.topbar');
+      function onScroll() {
+        if (window.scrollY > 4) bar.classList.add('scrolled');
+        else bar.classList.remove('scrolled');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc > a, .toc .toc-parent'));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-sub a'));
+      var mainSections = mainLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var subSections = subLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      function setActive() {
+        var current = 0;
+        mainSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
+        mainLinks.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+        var sc = -1;
+        subSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) sc = i; });
+        subLinks.forEach(function (l, i) { l.classList.toggle('active', i === sc); });
+      }
+      window.addEventListener('scroll', setActive, { passive: true });
+      setActive();
+
+      Array.prototype.slice.call(document.querySelectorAll('.toc-group')).forEach(function (g) {
+        g.querySelector('.toc-parent').addEventListener('click', function () { g.classList.toggle('open'); });
+      });
+      subLinks.forEach(function (l) {
+        l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
+      });
+
+      Array.prototype.slice.call(document.querySelectorAll('.igallery-wrap')).forEach(function (wrap) {
+        var g = wrap.querySelector('.igallery');
+        var items = g.querySelectorAll('.ig-item');
+        var prev = wrap.querySelector('.igal-btn.prev');
+        var next = wrap.querySelector('.igal-btn.next');
+        function step() { var w = items.length ? items[0].getBoundingClientRect().width : 320; return w + 20; }
+        function update() {
+          var maxScroll = g.scrollWidth - g.clientWidth - 2;
+          if (prev) prev.disabled = g.scrollLeft <= 2;
+          if (next) next.disabled = g.scrollLeft >= maxScroll;
+        }
+        if (prev) prev.addEventListener('click', function () { g.scrollBy({ left: -step(), behavior: 'smooth' }); });
+        if (next) next.addEventListener('click', function () { g.scrollBy({ left: step(), behavior: 'smooth' }); });
+        g.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        Array.prototype.slice.call(g.querySelectorAll('img')).forEach(function (im) { im.addEventListener('load', update); });
+        update();
+      });
+
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      var scale = 1, tx = 0, ty = 0, dragging = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
+      function apply() {
+        lbImg.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
+        lbImg.classList.toggle('zoomed', scale > 1);
+      }
+      function reset() { scale = 1; tx = 0; ty = 0; apply(); }
+      function open(src, alt) { lbImg.src = src; lbImg.alt = alt; reset(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+      function close() { lb.classList.remove('open'); document.body.style.overflow = ''; reset(); }
+      document.querySelectorAll('.method-thumb > img, .zoom-shot > img, .figure:not(.noclick) > img').forEach(function (img) {
+        img.parentElement.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
+      });
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+      lb.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        var factor = e.ctrlKey ? 0.012 : 0.0018;
+        scale = Math.max(1, Math.min(6, scale * Math.exp(-e.deltaY * factor)));
+        if (scale === 1) { tx = 0; ty = 0; }
+        apply();
+      }, { passive: false });
+      lbImg.addEventListener('pointerdown', function (e) {
+        if (scale <= 1) return;
+        dragging = true; startX = e.clientX; startY = e.clientY; startTx = tx; startTy = ty;
+        lbImg.setPointerCapture(e.pointerId);
+      });
+      lbImg.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        tx = startTx + (e.clientX - startX); ty = startTy + (e.clientY - startY); apply();
+      });
+      lbImg.addEventListener('pointerup', function () { dragging = false; });
+      lbImg.addEventListener('click', function () { if (scale <= 1) close(); });
+      var pinchDist = 0, pinchScale = 1;
+      lb.addEventListener('touchstart', function (e) {
+        if (e.touches.length === 2) { pinchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); pinchScale = scale; }
+      }, { passive: true });
+      lb.addEventListener('touchmove', function (e) {
+        if (e.touches.length === 2 && pinchDist) {
+          e.preventDefault();
+          var d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+          scale = Math.max(1, Math.min(6, pinchScale * d / pinchDist)); apply();
+        }
+      }, { passive: false });
+      lb.addEventListener('touchend', function () { pinchDist = 0; });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>

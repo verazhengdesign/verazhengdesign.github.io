@@ -1,0 +1,535 @@
+---
+layout: default
+lang: zh
+ref: maatrx
+title: "MaaTRx — 药品短缺仪表盘"
+description: "案例研究：重新设计 MaaTRx 药品短缺仪表盘，让团队更快、更清晰地做决策。"
+permalink: /zh/work/maatrx.html
+---
+<style>
+  /* page-specific accent for this case study only */
+  :root { --accent: #42c49e; --accent-ink: #2e9a7a; --accent-soft: rgba(66, 196, 158, 0.16); }
+
+  /* three-up design strategy summary */
+  .design-strategy-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); margin-top: clamp(24px, 3vw, 36px); }
+  .strategy-num { width: 30px; height: 30px; border: 1px solid rgba(20, 19, 15, 0.35); border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 500; color: var(--muted-d); margin-bottom: clamp(14px, 1.6vw, 18px); }
+  .design-strategy-item h3 { margin: 0 0 12px; font-size: clamp(1.5rem, 2.2vw, 2rem); font-weight: 650; letter-spacing: -0.03em; line-height: 1.1; }
+  .design-strategy-item p { margin: 0; max-width: none; font-size: clamp(15px, 1.15vw, 17px); line-height: 1.6; color: #3a372f; }
+  @media (max-width: 720px) { .design-strategy-grid { grid-template-columns: 1fr; gap: 32px; } }
+</style>
+
+<main class="wrap">
+<!-- ===== hero ===== -->
+<article class="case">
+<h1>MaaTRx — 药品短缺仪表盘</h1>
+<p class="case-summary">重新设计密集的药品短缺工具，以便药房团队能够一目了然地了解风险并采取行动。</p>
+<div class="case-tags">
+<span class="tag tag-main">UX 设计</span>
+<span class="tag tag-main">网页设计</span>
+<span class="tag">端到端</span>
+</div>
+<div class="case-cover">
+<img alt="MaaTRx drug shortage dashboard" src="/assets/maatrx.jpg"/>
+</div>
+<div class="meta-five">
+<div class="meta-item">
+<span class="meta-label">角色</span>
+<span class="meta-text">
+<span class="meta-line">产品设计师</span>
+<span class="meta-line">UX 研究员</span>
+</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">贡献</span>
+<span class="meta-text">
+<span class="meta-line">用户访谈</span>
+<span class="meta-line">UX 研究与分析</span>
+<span class="meta-line">AI 辅助原型</span>
+<span class="meta-line">设计系统对齐</span>
+<span class="meta-line">利益相关者协作</span>
+</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">时间线</span>
+<span class="meta-text">4 个月</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">团队</span>
+<span class="meta-text">
+<span class="meta-line">Cynthia Hua</span>
+<span class="meta-line">Olivia Townsend</span>
+<span class="meta-line">Pema Selden</span>
+<span class="meta-line">Vera Zheng</span>
+<span class="meta-line">Yongxiu Guo</span>
+</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">工具</span>
+<span class="meta-text">
+<span class="meta-line">Figma</span>
+<span class="meta-line">Figma Make</span>
+<span class="meta-line">Excel</span>
+</span>
+</div>
+</div>
+</article>
+<!-- ===== body: TOC + sections ===== -->
+<div class="case-body">
+<nav aria-label="Sections" class="toc">
+<span class="toc-label">本页目录</span>
+<a href="#overview">概述</a>
+<a href="#problem">问题</a>
+<a href="#research">研究</a>
+<div class="toc-group open">
+<a class="toc-parent" href="#design">设计<span aria-hidden="true" class="toc-caret"></span></a>
+<div class="toc-sub">
+<a href="#design-strategies">设计策略</a>
+<a href="#brand-refresh">品牌刷新</a>
+<a href="#design-system">设计系统</a>
+<a href="#design-process">设计流程</a>
+</div>
+</div>
+<a href="#usability-test">可用性测试</a>
+<a href="#prototype">原型</a>
+<a href="#outcome">结果</a>
+</nav>
+<div class="case-content">
+<!-- OVERVIEW -->
+<section class="case-section" id="overview">
+<span class="kicker">概述</span>
+<h2>项目简介</h2>
+<p>该项目是多伦多大学信息硕士课程的毕业设计项目。</p>
+<p>MaaTRx 是一家加拿大健康科技公司，成立于 2025 年。其网页平台帮助医疗从业者预测和管理药品短缺。</p>
+<p>该项目重点关注 MaaTRx 中的一个工具，该工具可帮助用户识别替代药品并生成有关如何在实践中实施这些替代药品的指南。</p>
+<div class="stats">
+<div class="stat"><div class="n">2</div><div class="c">用户访谈</div></div>
+<div class="stat"><div class="n">8</div><div class="c">可用性参与者</div></div>
+<div class="stat"><div class="n">10</div><div class="c">用户体验问题得到解决</div></div>
+<div class="stat"><div class="n">18</div><div class="c">屏幕重新设计</div></div>
+</div>
+<p>我作为研究员和设计师加入了这个项目。</p>
+<p>在研究阶段，我主导了对 Matrix 利益相关者的访谈并整合了访谈数据。在设计方面，我设计了主页和加载状态。我还进行了两次可用性测试访谈，分析了参与者的反应，确定了三个关键发现，并提供了迭代建议，为我们的原型改进提供了信息。</p>
+</section>
+<!-- PROBLEM -->
+<section class="case-section" id="problem">
+<span class="kicker">问题</span>
+<h2>我们要解决的问题</h2>
+<p>用户无法有效地导航 MaaTRx 的工具 SynapseRx。这会导致挫败感、错误以及对工具的信心下降。</p>
+<figure class="figure">
+<video controls="" playsinline="" preload="metadata" src="/assets/maatrx-walkthrough.mp4"></video>
+<figcaption>原始 MaaTRx 网站的演练。</figcaption>
+</figure>
+</section>
+<!-- RESEARCH -->
+<section class="case-section" id="research">
+<span class="kicker">研究</span>
+<h2>发现阶段</h2>
+<p>在发现阶段，我们使用 4 种方法来了解有关 SynapseRx 工作流程的更多信息，确定用户可能面临的挑战，并找到设计改进。</p>
+<div class="methods">
+<div class="method">
+<div class="method-thumb"><img alt="SWOT analysis" loading="lazy" src="/assets/maatrx-swot.png"/></div>
+<div class="method-body">
+<span class="name">SWOT</span>
+<p>进行竞争性 SWOT 以确定 MaaTRx 的战略地位。</p>
+</div>
+</div>
+<div class="method">
+<div class="method-thumb"><img alt="Heuristic evaluation" loading="lazy" src="/assets/maatrx-heuristic.png"/></div>
+<div class="method-body">
+<span class="name">启发式评估</span>
+<p>根据既定的可用性原则审核 MaaTRx，确定关键摩擦点。</p>
+</div>
+</div>
+<div class="method">
+<div class="method-thumb"><img alt="User interviews" loading="lazy" src="/assets/maatrx-interview.png"/></div>
+<div class="method-body">
+<span class="name">用户访谈</span>
+<p>进行用户访谈，以了解 MaaTRx 采用前后的工作流程。</p>
+</div>
+</div>
+<div class="method">
+<div class="method-thumb"><img alt="Effort–impact prioritization" loading="lazy" src="/assets/maatrx-effort-impact.png"/></div>
+<div class="method-body">
+<span class="name">努力-影响</span>
+<p>对所有问题的发现进行优先排序，使团队能够确定首先关注的重点。</p>
+</div>
+</div>
+</div>
+<h3>我们发现的 10 个问题</h3>
+<p>发现阶段发现了整个产品的 10 个问题。前三个都非常有影响力并且易于实施——这些也是我们优先解决的快速改进。</p>
+<div class="problems">
+<div class="problem quick"><span class="num">01</span><span class="name">信息架构</span><span class="q">快速见效</span></div>
+<div class="problem quick"><span class="num">02</span><span class="name">系统反馈</span><span class="q">快速见效</span></div>
+<div class="problem quick"><span class="num">03</span><span class="name">UI 一致性与视觉设计</span><span class="q">快速见效</span></div>
+<div class="problem"><span class="num">04</span><span class="name">导航和工作流程清晰度</span></div>
+<div class="problem"><span class="num">05</span><span class="name">人工智能信任与透明度</span></div>
+<div class="problem"><span class="num">06</span><span class="name">用户采用和入职</span></div>
+<div class="problem"><span class="num">07</span><span class="name">工作流程集成和产品凝聚力</span></div>
+<div class="problem"><span class="num">08</span><span class="name">定制化和灵活性</span></div>
+<div class="problem"><span class="num">09</span><span class="name">参与和反馈</span></div>
+<div class="problem"><span class="num">10</span><span class="name">分享与协作</span></div>
+</div>
+</section>
+<!-- DESIGN -->
+<section class="case-section" id="design">
+<span class="kicker">设计</span>
+<h2 id="design-strategies">设计策略</h2>
+<div class="design-strategy-grid">
+<div class="design-strategy-item">
+<span class="strategy-num">1</span>
+<h3>标准化用户界面</h3>
+<p>我们进行了品牌更新，以建立一致的视觉语言，创建可扩展的组件。</p>
+</div>
+<div class="design-strategy-item">
+<span class="strategy-num">2</span>
+<h3>信息层级</h3>
+<p>我们重新调整了内容的组织和显示方式，以便用户可以快速定位自己。</p>
+</div>
+<div class="design-strategy-item">
+<span class="strategy-num">3</span>
+<h3>系统反馈</h3>
+<p>我们在整个界面中引入了清晰、清晰的反馈信号，以便用户始终知道他们在哪里。</p>
+</div>
+</div>
+<h2 id="brand-refresh">品牌刷新</h2>
+<p>为了确保与客户既定品牌的连续性，我们保留了他们的核心颜色，同时提升了版式和整体设计感。</p>
+<figure class="figure">
+<img alt="MaaTRx brand refresh" loading="lazy" src="/assets/maatrx-brand.jpg"/>
+</figure>
+<h2 id="design-system">设计系统</h2>
+<p>我们构建并遵循严格、统一的设计系统，该系统定义了每个组件、间距值和图标，因此界面在团队迭代时保持一致。</p>
+<figure class="figure">
+<img alt="MaaTRx design system showing components, spacing, and icons" loading="lazy" src="/assets/maatrx-design-system.png"/>
+</figure>
+<p class="note"><a class="ext-link" href="https://www.figma.com/design/UU1XfWQjvHkla8YR5KWyN1/-MaaTRx-.prototype.final--Copy---Copy-?node-id=2-33" rel="noopener" target="_blank">查看完整的设计系统 — Figma 页面 ↗</a></p>
+<h2 id="design-process">设计流程</h2>
+<p>通过团队不断的讨论和迭代，工作从最初的设计交付物经过两轮迭代。在我们的设计策略的指导下，我们解决了三个快速见效的问题，并得到了感觉现代、值得信赖且更加用户友好的新页面。</p>
+<div class="shots">
+<div class="shot">
+<div class="method-thumb"><img alt="Design deliverables" loading="lazy" src="/assets/maatrx-deliverables.png"/></div>
+<span class="shot-name">设计成果</span>
+</div>
+<div aria-hidden="true" class="shots-arrow"><svg width="18" height="30" viewBox="0 0 18 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v22" /><path d="M3 19l6 6 6-6" /></svg></div>
+<div class="shot">
+<div class="method-thumb"><img alt="Iteration 1" loading="lazy" src="/assets/maatrx-iteration-1.png"/></div>
+<span class="shot-name">第 1 次迭代</span>
+</div>
+<div aria-hidden="true" class="shots-arrow"><svg width="18" height="30" viewBox="0 0 18 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v22" /><path d="M3 19l6 6 6-6" /></svg></div>
+<div class="shot">
+<div class="method-thumb"><img alt="Iteration 2" loading="lazy" src="/assets/maatrx-iteration-2.png"/></div>
+<span class="shot-name">第 2 次迭代</span>
+</div>
+</div>
+<p class="note">看看我们的设计流程——从最初的可交付成果到两轮迭代。</p>
+<p>完整流程请参见 <a class="ext-link" href="https://www.figma.com/design/UU1XfWQjvHkla8YR5KWyN1/-MaaTRx-.prototype.final--Copy---Copy-?node-id=2-32" rel="noopener" target="_blank">重新设计说明 — Figma 页面 ↗</a>.</p>
+</section>
+<!-- USABILITY TEST -->
+<section class="case-section" id="usability-test">
+<span class="kicker">可用性测试</span>
+<h2>方法论</h2>
+<div class="info-cards">
+<div class="info-card">
+<span class="info-k">测试目标</span>
+<ol>
+<li>用户导航典型 SynapseRx 工作流程场景的效率如何？</li>
+<li>评估我们解决三个优先设计改进的情况。</li>
+</ol>
+</div>
+<div class="info-card">
+<span class="info-k">参加者标准</span>
+<ul>
+<li>向任何人开放</li>
+<li>我们通过预问卷解释了参与者之间的差异</li>
+</ul>
+</div>
+<div class="info-card">
+<span class="info-k">格式</span>
+<ul>
+<li>30 分钟在线/现场访谈</li>
+<li>主持的“出声思考”测试</li>
+<li>提供的场景+24个迷你任务</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="case-section" id="data">
+<div class="data-panel">
+<h2>数据收集、组织和分析</h2>
+<div class="tabs">
+<div class="tab-bar">
+<button class="tab is-active" data-panel="0" type="button">痛点追踪器</button>
+<button class="tab" data-panel="1" type="button">定性数据分析</button>
+<button class="tab" data-panel="2" type="button">成功指标</button>
+<button class="tab" data-panel="3" type="button">预测试</button>
+<button class="tab" data-panel="4" type="button">后测</button>
+</div>
+<div class="tab-panels">
+<div class="tab-panel is-active">
+<div class="tab-text">记录测试期间观察到的可用性问题和用户遇到困难的时刻。</div>
+<div class="tab-media"><div class="zoom-shot"><img alt="Pain point tracker" loading="lazy" src="/assets/data-1.jpg"/></div></div>
+</div>
+<div class="tab-panel">
+<div class="tab-text">参与者对不可操作任务的评价——例如“你觉得你能在这里做什么？”</div>
+<div class="tab-media"><div class="zoom-shot"><img alt="Qualitative data analysis" loading="lazy" src="/assets/data-2.jpg"/></div></div>
+</div>
+<div class="tab-panel">
+<div class="tab-text">使用完成率和用户成功等指标来衡量可操作任务的任务绩效。</div>
+<div class="tab-media"><div class="zoom-shot"><img alt="Success metrics" loading="lazy" src="/assets/data-3.jpg"/></div></div>
+</div>
+<div class="tab-panel">
+<div class="tab-text">获取参与者的背景信息并让他们在测试前阅读同意书。</div>
+<div class="tab-media"><div class="zoom-shot"><img alt="Pre-test" loading="lazy" src="/assets/data-4.jpg"/></div></div>
+</div>
+<div class="tab-panel">
+<div class="tab-text">收集用户完成任务后的反馈、反思和满意度。</div>
+<div class="tab-media"><div class="zoom-shot"><img alt="Post-test" loading="lazy" src="/assets/data-5.jpg"/></div></div>
+</div>
+</div>
+</div>
+<h2>发现</h2>
+<div class="findings">
+<div class="finding">
+<span class="f-num">1</span>
+<p class="f-title">超过一半的参与者发现 Synapse 的入口不清楚。</p>
+<p>5/8 的参与者在与主页上的搜索栏交互并被重定向到其他页面时感到困惑。</p>
+<div class="dots"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+</div>
+<div class="finding">
+<span class="f-num">2</span>
+<p class="f-title">一半的参与者发现用户期望与系统操作之间存在脱节。</p>
+<p>4/8 的参与者感到困惑，因为“生成文档”操作与他们寻找药品替代品的目标不一致。</p>
+<div class="dots"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span></div>
+</div>
+<div class="finding">
+<span class="f-num">3</span>
+<p class="f-title">参与者发现某些 UI 文案降低了用户对结果解读的信心。</p>
+<p>3/8 的参与者在任务流程中表示由于指导和解释不足而不确定。</p>
+<div class="dots"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+</div>
+<div class="finding-quotes">
+<p class="f-quote">“我之前尝试单击侧面菜单上的‘Synapse’选项，但没有成功，所以我点击了上一页上的绿色框，这将我带到了这个 Synapse 主页。” — 参与者 6</p>
+<p class="f-quote">“我希望行动按钮从‘寻找替代方案’而不是‘生成文档’开始……我认为开头部分令人困惑。” — 参与者 4</p>
+<p class="f-quote">“我想我有点困惑，因为我想，这像母药吗？这像主药吗？” — 参与者 3</p>
+</div>
+</div>
+</section>
+<!-- Prototypes -->
+<section class="case-section" id="prototype">
+<span class="kicker">原型</span>
+<h2>设计细节</h2>
+<p>仔细看看一些重新设计的屏幕。</p>
+<div class="carousel">
+<div class="carousel-viewport">
+<div class="carousel-track" id="carousel-track">
+<img alt="Design detail 1" loading="lazy" src="/assets/maatrx-detail-01.jpg"/>
+<img alt="Design detail 2" loading="lazy" src="/assets/maatrx-detail-02.jpg"/>
+<img alt="Design detail 3" loading="lazy" src="/assets/maatrx-detail-03.jpg"/>
+<img alt="Design detail 4" loading="lazy" src="/assets/maatrx-detail-04.jpg"/>
+<img alt="Design detail 5" loading="lazy" src="/assets/maatrx-detail-05.jpg"/>
+<img alt="Design detail 6" loading="lazy" src="/assets/maatrx-detail-06.jpg"/>
+<img alt="Design detail 7" loading="lazy" src="/assets/maatrx-detail-07.jpg"/>
+<img alt="Design detail 8" loading="lazy" src="/assets/maatrx-detail-08.jpg"/>
+<img alt="Design detail 9" loading="lazy" src="/assets/maatrx-detail-09.jpg"/>
+<img alt="Design detail 10" loading="lazy" src="/assets/maatrx-detail-10.jpg"/>
+</div>
+<button aria-label="Previous" class="carousel-btn prev" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7" /></svg></button>
+<button aria-label="Next" class="carousel-btn next" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg></button>
+</div>
+<div class="carousel-counter"><span id="carousel-index">1</span> / 10</div>
+</div>
+<p>想要查看完整的原型吗？请参阅 <a class="ext-link" href="https://www.figma.com/proto/UU1XfWQjvHkla8YR5KWyN1/-MaaTRx-.prototype.final--Copy---Copy-?node-id=18-19118&amp;viewport=320%2C711%2C0.06&amp;t=e3VQfPdGY9kHJHL1-1&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=18%3A19118&amp;page-id=2%3A29" rel="noopener" target="_blank">MaaTRx 最终原型 ↗</a>.</p>
+</section>
+<!-- OUTCOME -->
+<section class="case-section" id="outcome">
+<span class="kicker">结果</span>
+<h2>发生了什么变化</h2>
+<div class="goals">
+<div class="goal"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg></span><span class="goal-t">优先考虑 3 个具有高影响力的“快速见效的改进”</span></div>
+<div class="goal"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg></span><span class="goal-t">确定并实施 10 项设计建议</span></div>
+<div class="goal"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg></span><span class="goal-t">开发了 SynapseRx 的交互式原型</span></div>
+<div class="goal"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg></span><span class="goal-t">进行可用性测试以验证改进</span></div>
+</div>
+<p>经过四个多月的工作以及每周与利益相关者同步，我们完成了重新设计。在我们的最终汇报中，利益相关者及其团队给了我们非常积极的反馈。</p>
+<div class="callout">
+<p>“谢谢大家！我们非常感谢你们过去几周的辛勤工作。很高兴与你们一起工作并一起学习。”</p>
+<span class="by">— MaaTRx 的利益相关者</span>
+</div>
+<p>最近，MaaTRx 更新了他们的网站，新网站引用了我们的工作。</p>
+<div class="compare">
+<figure>
+<div class="zoom-shot"><img alt="Our prototype" loading="lazy" src="/assets/our-prototype.jpg"/></div>
+<figcaption>我们的原型</figcaption>
+</figure>
+<figure>
+<div class="zoom-shot"><img alt="MaaTRx new website" loading="lazy" src="/assets/maatrx-new-website.jpg"/></div>
+<figcaption>MaaTRx 新网站</figcaption>
+</figure>
+</div>
+<p>我很高兴看到我们的工作对一家真正的公司产生了积极的影响。这是一个端到端的项目，我非常感谢队友之间的协作，以及与利益相关者的开放沟通和积极跟进。</p>
+</section>
+</div>
+</div>
+<!-- ===== other projects ===== -->
+<section class="case-next">
+<span class="label">其他项目</span>
+<div class="grid">
+<a class="card" href="/zh/work/weavy.html">
+<div class="cover"><img alt="Weavy cover" loading="lazy" src="/assets/weavy.jpg"/><span class="num">02</span></div>
+<div class="card-body">
+<div class="card-tags"><span class="tag tag-main">UX 设计</span><span class="tag">移动端</span><span class="tag">端到端</span></div>
+<h3>Weavy — 以人为中心的交友匹配</h3>
+<p>在 24 小时内将 10 个问题的初步研究转化为低压力社交产品概念。</p>
+<span class="card-go">查看案例研究 <span class="arrow">→</span></span>
+</div>
+</a>
+<a class="card" href="/zh/work/rebites.html">
+<div class="cover"><img alt="ReBites cover" loading="lazy" src="/assets/rebites.jpg"/><span class="num">06</span></div>
+<div class="card-body">
+<div class="card-tags"><span class="tag">平板</span><span class="tag">黑客松</span></div>
+<h3>ReBites — 儿童食物可持续性</h3>
+<p>用于日常食物选择的面向学生和教师的双平台 - Seneca 黑客松 2025 第一名。</p>
+<span class="card-go">查看案例研究 <span class="arrow">→</span></span>
+</div>
+</a>
+</div>
+</section>
+</main>
+
+<script>
+    (function () {
+      var bar = document.querySelector('.topbar');
+      function onScroll() {
+        if (window.scrollY > 4) bar.classList.add('scrolled');
+        else bar.classList.remove('scrolled');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // highlight the active table-of-contents link
+      var mainLinks = Array.prototype.slice.call(document.querySelectorAll('.toc > a, .toc .toc-parent'));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll('.toc .toc-sub a'));
+      var mainSections = mainLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+      var subSections = subLinks.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+
+      function setActive() {
+        var current = 0;
+        mainSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) current = i; });
+        mainLinks.forEach(function (l, i) { l.classList.toggle('active', i === current); });
+
+        var sc = -1;
+        subSections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 170) sc = i; });
+        subLinks.forEach(function (l, i) { l.classList.toggle('active', i === sc); });
+      }
+
+      window.addEventListener('scroll', setActive, { passive: true });
+      setActive();
+
+      Array.prototype.slice.call(document.querySelectorAll('.toc-group')).forEach(function (g) {
+        g.querySelector('.toc-parent').addEventListener('click', function () { g.classList.toggle('open'); });
+      });
+      subLinks.forEach(function (l) {
+        l.addEventListener('click', function () { l.closest('.toc-group').classList.add('open'); });
+      });
+    })();
+  </script>
+
+  <div aria-hidden="true" class="lightbox" id="lightbox">
+<img alt="" draggable="false" id="lightbox-img" src=""/>
+<span class="lightbox-hint">滚动/捏合缩放 · Esc 关闭</span>
+</div>
+  <script>
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      var scale = 1, tx = 0, ty = 0, dragging = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
+
+      function apply() {
+        lbImg.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
+        lbImg.classList.toggle('zoomed', scale > 1);
+      }
+      function reset() { scale = 1; tx = 0; ty = 0; apply(); }
+      function open(src, alt) {
+        lbImg.src = src; lbImg.alt = alt; reset();
+        lb.classList.add('open'); document.body.style.overflow = 'hidden';
+      }
+      function close() { lb.classList.remove('open'); document.body.style.overflow = ''; reset(); }
+
+      document.querySelectorAll('.method-thumb > img, .zoom-shot > img, .figure > img').forEach(function (img) {
+        img.parentElement.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
+      });
+
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+
+      // scroll / trackpad-pinch to zoom
+      lb.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        var factor = e.ctrlKey ? 0.012 : 0.0018;
+        scale = Math.max(1, Math.min(6, scale * Math.exp(-e.deltaY * factor)));
+        if (scale === 1) { tx = 0; ty = 0; }
+        apply();
+      }, { passive: false });
+
+      // drag to pan when zoomed
+      lbImg.addEventListener('pointerdown', function (e) {
+        if (scale <= 1) return;
+        dragging = true; startX = e.clientX; startY = e.clientY; startTx = tx; startTy = ty;
+        lbImg.setPointerCapture(e.pointerId);
+      });
+      lbImg.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        tx = startTx + (e.clientX - startX); ty = startTy + (e.clientY - startY); apply();
+      });
+      lbImg.addEventListener('pointerup', function () { dragging = false; });
+
+      // click image to close when not zoomed
+      lbImg.addEventListener('click', function () { if (scale <= 1) close(); });
+
+      // touch pinch
+      var pinchDist = 0, pinchScale = 1;
+      lb.addEventListener('touchstart', function (e) {
+        if (e.touches.length === 2) { pinchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); pinchScale = scale; }
+      }, { passive: true });
+      lb.addEventListener('touchmove', function (e) {
+        if (e.touches.length === 2 && pinchDist) {
+          e.preventDefault();
+          var d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+          scale = Math.max(1, Math.min(6, pinchScale * d / pinchDist)); apply();
+        }
+      }, { passive: false });
+      lb.addEventListener('touchend', function () { pinchDist = 0; });
+
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>
+  <script>
+    (function () {
+      var track = document.getElementById('carousel-track');
+      if (!track) return;
+      var imgs = track.querySelectorAll('img');
+      var indexEl = document.getElementById('carousel-index');
+      var i = 0;
+      function go(n) {
+        i = (n + imgs.length) % imgs.length;
+        track.style.transform = 'translateX(-' + (i * 100) + '%)';
+        if (indexEl) indexEl.textContent = i + 1;
+      }
+      var prev = document.querySelector('.carousel-btn.prev');
+      var next = document.querySelector('.carousel-btn.next');
+      if (prev) prev.addEventListener('click', function () { go(i - 1); });
+      if (next) next.addEventListener('click', function () { go(i + 1); });
+    })();
+  </script>
+  <script>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.tab-panel'));
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var i = parseInt(tab.getAttribute('data-panel'), 10);
+          tabs.forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+          panels.forEach(function (p, j) { p.classList.toggle('is-active', j === i); });
+        });
+      });
+    })();
+  </script>
