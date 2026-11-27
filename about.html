@@ -1,26 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About — Vera Zheng</title>
-<meta name="description" content="About Vera Zheng — Product Designer & Research Analyst based in Toronto. Background, experience, education, and interests." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Instrument+Serif:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=148" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="index.html">Vera Zheng Design</a>
-      <nav class="nav-links">
-        <a href="index.html#work">Work</a>
-        <a href="journal.html">Journal</a>
-        <a href="about.html">About</a>
-      </nav>
-    </div>
-  </header>
+---
+layout: default
+lang: en
+ref: about
+title: About — Vera Zheng
+description: About Vera Zheng — Product Designer & Research Analyst based in Toronto. Background, experience, education, and interests.
+permalink: /about.html
+---
 
   <main class="page wrap">
     <span class="kicker">About</span>
@@ -50,6 +35,7 @@
           <li>Being on time matters to me, and I <strong>never miss a deadline</strong> 😎</li>
         </ul>
         <img class="umanual-img" src="assets/about-user-manual.png" alt="My user manual" />
+      </div>
     </section>
 
     <section class="jgroup">
@@ -116,27 +102,12 @@
     </section>
   </main>
 
-  <footer class="foot">
-    <div class="wrap foot-inner">
-      <span class="mono">Vera Zheng</span>
-      <a class="email" href="mailto:zzx0826vera@gmail.com">zzx0826vera@gmail.com</a>
-    </div>
-  </footer>
-
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <img id="lightbox-img" src="" alt="" draggable="false" />
     <span class="lightbox-hint">Scroll / pinch to zoom · Esc to close</span>
   </div>
   <script>
     (function () {
-      var bar = document.querySelector('.topbar');
-      function onScroll() {
-        if (window.scrollY > 4) bar.classList.add('scrolled');
-        else bar.classList.remove('scrolled');
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-
       Array.prototype.slice.call(document.querySelectorAll('.igallery-wrap')).forEach(function (wrap) {
         var g = wrap.querySelector('.igallery');
         var items = g.querySelectorAll('.ig-item');
@@ -191,5 +162,3 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
     })();
   </script>
-</body>
-</html>

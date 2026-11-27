@@ -1,0 +1,19 @@
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="{{ home_url }}">Vera Zheng Design</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      {% if page.lang == 'zh' %}
+        <a href="{{ '/zh/#work' | relative_url }}">作品</a>
+        <a href="{{ '/zh/journal.html' | relative_url }}">日志</a>
+        <a href="{{ '/zh/about.html' | relative_url }}">关于</a>
+      {% else %}
+        <a href="{{ '/#work' | relative_url }}">Work</a>
+        <a href="{{ '/journal.html' | relative_url }}">Journal</a>
+        <a href="{{ '/about.html' | relative_url }}">About</a>
+      {% endif %}
+      <a class="lang-switch" href="{{ alt_url }}" hreflang="{{ alt_lang }}" lang="{{ alt_lang }}">
+        {% if page.lang == 'zh' %}EN{% else %}&#20013;&#25991;{% endif %}
+      </a>
+    </nav>
+  </div>
+</header>

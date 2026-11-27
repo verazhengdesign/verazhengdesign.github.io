@@ -45,6 +45,10 @@
   .nav-links { display: flex; gap: clamp(22px, 2.4vw, 40px); align-items: center; font-size: clamp(13.5px, 1.1vw, 15.5px); }
   .nav-links a { color: var(--ink); font-weight: 700; transition: color .15s ease; }
   .nav-links a:hover { color: var(--accent); }
+  .nav-links .lang-switch { display: inline-flex; align-items: center; justify-content: center; min-width: 46px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted-d); font-size: 12px; font-weight: 600; letter-spacing: 0; }
+  .nav-links .lang-switch:hover { color: var(--ink); border-color: var(--ink); }
+  html[lang="zh"] body { font-family: "Geist", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .zh-note { margin: 14px 0 0; max-width: 62ch; font-size: 13px; line-height: 1.55; color: var(--muted-d); }
 
   .hero-status { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: clamp(40px, 5vw, 80px) 0 clamp(30px, 4vw, 60px); color: var(--muted); }
   .hero-status .d { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 9px; vertical-align: middle; }

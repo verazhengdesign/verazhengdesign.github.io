@@ -1,33 +1,52 @@
 # verazhengdesign.github.io
 
-Personal portfolio site for **Vera Zheng — UX Designer & Researcher**.
+Personal portfolio site for **Vera Zheng — Product Designer & Research Analyst**.
 
 Live: <https://verazhengdesign.github.io/>
 
-## Structure
+## Bilingual structure
+
+- English pages live at the repository root.
+- Chinese pages live under `/zh/`.
+- Page shells, navigation, footer, and language switch are shared through Jekyll.
 
 | File | Purpose |
 |---|---|
-| `index.html` | Homepage — hero + Projects |
-| `styles.css` | Shared styles for every page |
-| `about.html` | About page (in progress) |
-| `journal.html` | Journal page (in progress) |
-| `resume.pdf` | ⚠️ Add your résumé here (linked from the "Download résumé" button) |
-| `.nojekyll` | Tells GitHub Pages to skip Jekyll processing |
+| `_config.yml` | Jekyll configuration |
+| `_layouts/default.html` | Shared HTML shell + SEO/language metadata |
+| `_includes/header.html` | Shared navigation + language switch |
+| `_includes/footer.html` | Shared footer |
+| `index.html` / `zh/index.html` | Homepage |
+| `about.html` / `zh/about.html` | About page |
+| `journal.html` / `zh/journal.html` | Journal index |
+| `work/*.html` | Case studies (English; Chinese versions coming) |
+| `styles.css` | Shared styles for every page and both languages |
+| `assets/` | Images, project covers, tool icons |
 
-## Branches
+Pages use front matter like:
 
-- **`main`** — the live site. GitHub Pages publishes this branch's root.
-- **`design`** — design explorations and prototypes. Not published.
+```yaml
+---
+layout: default
+lang: zh
+ref: home
+title: 页面标题
+description: 页面描述
+permalink: /zh/
+---
+```
+
+The language switch matches pages by `ref`. When adding a translated page, give it the same `ref` as the English page and set `lang` accordingly.
 
 ## Editing
 
-Edit the HTML/CSS and push to `main`; GitHub Pages redeploys in ~1 minute.
+Edit the source files and push to `main`. GitHub Pages builds Jekyll automatically and redeploys in about a minute.
 
-## TODO
+For local preview, build the site with Jekyll and serve the generated `_site` folder:
 
-- [ ] Add a portrait photo (replace the `.photo` placeholder in `index.html`)
-- [ ] Add project cover images (replace the `.cover` placeholders)
-- [ ] Add `resume.pdf`
-- [ ] Fill in `about.html` and `journal.html`
-- [ ] Build the case study pages and link them from the project cards
+```bash
+jekyll build
+python3 -m http.server 4173 --directory _site
+```
+
+Do not serve the repository root directly: `index.html` and `about.html` use Jekyll layouts.
